@@ -1,0 +1,1832 @@
+
+===== PDF page 1 =====
+Team # apmcm25304268
+Team Number: apmcm25304268
+Problem Chosen: B
+2025 APMCM summary sheet
+PDMS thin films are suited for radiative cooling. This study employs spectral analy-
+sis and adaptive optimization algorithms to comprehensively investigate their emissivity
+and cooling performance, exploring the impact of film thickness, material selection, and
+multilayer mold structure design on overall cooling efficiency and cost feasibility.
+For question 1, the transfer matrix method (TMM) was used to compute the spec-
+tral reflectance of PDMS films, and Kirchhoff’s law was applied to derive wavelength-
+dependent emissivity. Model validation shows a solar-band average emissivity of
+0.0389 and an atmospheric-window standard deviation of 0.1651, consistent with
+physical expectations. Results indicate very low emissivity in the solar spectrum and
+a marked increase in the atmospheric window with thickness.
+In response to question 2, we assess the radiative cooling performance of PDMS
+thin films using a weighted evaluation function that combines net cooling power,
+atmospheric-window emissivity, and solar absorptivity. Grey relational analysis
+was applied to dynamically determine indicator weights, emphasizing net cooling power
+as the primary factor. The weights for net cooling power, atmospheric-window emis-
+sivity, and solar absorptivity are 0.484, 0.333, and 0.183, respectively.We propose the
+following three recommendations:the thickness of PDMS films should be controlled
+within the range of 20-60 𝜇m;doping the PDMS matrix with high-refractive-index
+nanoparticles;adopting multilayer structures or photonic crystal structures.
+In addressing question 3, the optimization function was constructed by combining
+the performance evaluation model and material cost function from question 2. Then,
+an adaptive differential evolution algorithm was used to optimize the multilayer thin
+film structure. The optimal solution is a three-layer structure of PDMS, SiO2, and
+Ag, with thicknesses of 19.206𝜇m, 0.010𝜇m and 0.120𝜇m, respectively.
+Regarding question 4, A porous PDMS/SiO2/Ag multilayer was optimized using
+MG-EMT for microstructural modeling, TMM for spectral emissivity, and GRA for
+multi-objective optimization of cooling power and lifecycle cost.The final design com-
+bines a 24.6𝜇m porous PDMS layer(11.9% porosity) with Al2O3 protection, yielding
+high emissivity, low solar absorption, and a low cost of $14.95 m−2.
+Keywords: PDMS TMM GRA DE MG-EMT LCA
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-94-
+
+===== PDF page 2 =====
+Team # apmcm25304268
+Contents
+1. Introduction. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 1 Background . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 2 Question Restatement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 2 . 1 Question 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 2 . 2 Question 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 2 . 3 Question 3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 2 . 4 Question 4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+2. Problem Analysis. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2 . 1 Analysis of Question 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2 . 2 Analysis of Question 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2 . 3 Analysis of Question 3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2 . 4 Analysis of Question 4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3. Problem Assumptions. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4. Symbol Explanation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+5. Models . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+5 . 1 Establishment and Solution of Model for Problem 1 . . . . . . . . . . . . . . . . . . 5
+5 . 1 . 1 Data Preprocessing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+5 . 1 . 2 Establishment of the TMM Model . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+5 . 1 . 3 Model Solution and Result Analysis . . . . . . . . . . . . . . . . . . . . . . . . . 8
+5 . 1 . 4 Model Rationality Verification. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+5 . 2 Establishment and Solution of Model for Problem 2 . . . . . . . . . . . . . . . . . . 12
+5 . 2 . 1 Data Preprocessing for Solar and Atmospheric Data. . . . . . . . . . . . 12
+5 . 2 . 2 Comprehensive Evaluation Function. . . . . . . . . . . . . . . . . . . . . . . . . 13
+5 . 2 . 3 Numerical Solution and Trend Analysis . . . . . . . . . . . . . . . . . . . . . . 16
+5 . 2 . 4 Optimization Results and Discussion . . . . . . . . . . . . . . . . . . . . . . . . 17
+5 . 2 . 5 Recommendations for Advancement and Application . . . . . . . . . . . . 18
+5 . 3 Establishment and Solution of Model for Problem 3 . . . . . . . . . . . . . . . . . . 19
+5 . 3 . 1 Data Preprocessing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+5 . 3 . 2 Establishment of the Optimization Model for the PDMS Multilayer
+Structure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+5 . 3 . 3 Model Solution and Result Analysis . . . . . . . . . . . . . . . . . . . . . . . . . 23
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-95-
+
+===== PDF page 3 =====
+Team # apmcm25304268
+5 . 4 Establishment and Solution of Model for Problem 4 . . . . . . . . . . . . . . . . . . 25
+5 . 4 . 1 Design Strategy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+5 . 4 . 2 Establishment of the Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+5 . 4 . 3 Optimization Results and Discussion . . . . . . . . . . . . . . . . . . . . . . . . 28
+6. Model evaluation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+6 . 1 Advantages of the model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+6 . 1 . 1 Accurate Calculation Results. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+6 . 1 . 2 Comprehensive and Holistic Evaluation . . . . . . . . . . . . . . . . . . . . . . 31
+6 . 1 . 3 Integration of Microstructural Modeling and Multi-Objective Optimization
+32
+6 . 2 Disadvantages of the model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+6 . 2 . 1 High Computational Complexity. . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+6 . 2 . 2 Idealized Assumptions Do Not Match Practical Applications. . . . . . 32
+6 . 2 . 3 Practical Fabrication Constraints . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+7. References . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+8. Appendix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-96-
+
+===== PDF page 4 =====
+Team # apmcm25304268 Page 1 of 51
+I. Introduction
+In order to indicate the origin of problems, the following background is worth mention-
+ing.
+1 . 1 Background
+1 . 2 Question Restatement
+This study addresses a mathematical modeling problem focused on the analysis, evalu-
+ation, and optimization of radiative cooling materials and structures.
+1 . 2 . 1 Question 1
+A mathematical model is required to characterize the spectral emissivity of PDMS
+thin films as a function of wavelength for varying film thicknesses. This model aims
+to quantify the influence of film thickness on emissivity and provide a theoretical
+foundation for evaluating radiative cooling performance.
+1 . 2 . 2 Question 2
+A performance evaluation model is established to assess the radiative cooling effective-
+ness of PDMS thin films with different thicknesses. The model should incorporate the
+thermal radiation exchange through the atmospheric transparency window and quan-
+tify the cooling potential under varying material configurations, providing guidance for
+material selection and design.
+1 . 2 . 3 Question 3
+Based on the emissivity characteristics of PDMS, suitable additional materials are
+selected to construct a multilayer film. An optimization model is then developed to
+determine the appropriate material selection and layer thickness for each component,
+aiming to maximize radiative cooling performance while considering practical feasibility
+constraints.
+1 . 2 . 4 Question 4
+Building upon the previous tasks, an integrated optimization model is constructed to
+achieve the optimal design of radiative cooling materials and multilayer structures.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-97-
+
+===== PDF page 5 =====
+Team # apmcm25304268 Page 2 of 51
+The model simultaneously considers material properties, multilayer configuration, and
+practical constraints, such as manufacturing feasibility and cost, to provide a systematic
+approach for high-performance radiative cooling design.
+II. Problem Analysis
+2 . 1 Analysis of Question 1
+This problem requires establishing a physical model to simulate the wavelength-dependent
+reflectance and emissivity of a PDMS optical structure and to analyze how film thick-
+ness influences its radiative behavior for passive cooling. Considering that the sys-
+tem is governed by electromagnetic wave propagation in stratified media, the Transfer
+Matrix Method (TMM) derived from Maxwell’s equations is introduced to describe
+multilayer interference and to compute spectral reflectance 𝑅(𝜆,𝑑) and emissivity
+𝜀(𝜆,𝑑)= 1−𝑅(𝜆,𝑑). With accurate emissivity evaluation across the solar (0.3–2.5𝜇m)
+and mid-infrared (3–25𝜇m) bands as the objective and consistent optical-constant data
+as the constraint, a full-spectrum computational model is constructed through pre-
+processing, interpolation, and fusion of multisource refractive-index datasets. Then,
+the reflectivity is solved using the TMM algorithm, and the emissivity spectrum and
+wavelength–thickness mapping are obtained according to Kirchhoff’s laws, thereby
+identifying key emission features and high-emissivity regions. Sensitivity checks on
+solar-band transparency and mid-IR emissivity smoothness are finally used to validate
+the physical correctness and robustness of the model.
+2 . 2 Analysis of Question 2
+This problem requires establishing a model to evaluate the radiative cooling performance
+of PDMS films under realistic environmental conditions by integrating solar spectral
+irradiance and atmospheric emission into the optical simulation. Considering that
+solar heating and atmospheric back-radiation fundamentally impact the net cooling
+power, we incorporate the ASTM G173 AM1.5 solar spectrum and a Planck-law-based
+atmospheric radiation model into a unified wavelength grid. With accurate computation
+of net cooling power, atmospheric-window emissivity, and solar absorptivity as the
+objective, and PDMS thickness as the design variable, we construct a multi-indicator
+evaluation framework using Gray Relational Analysis (GRA) to determine adaptive
+weights for these metrics. The transfer matrix method (TMM) is then used to compute
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-98-
+
+===== PDF page 6 =====
+Team # apmcm25304268 Page 3 of 51
+wavelength-dependent emissivity, from which each performance indicator is derived
+through numerical integration. A comprehensive score function is formulated to balance
+radiative cooling efficiency, spectral selectivity, and solar suppression. By applying
+numerical optimization to the resulting score–thickness curve, the optimal film thickness
+is identified, followed by trend analysis to examine the growth, saturation, and trade-off
+phases of cooling performance. Sensitivity analysis further validates the robustness of
+the model under variations in optical and environmental parameters.
+2 . 3 Analysis of Question 3
+Problem 3 focuses on designing a cost-effective multilayer radiative-cooling structure
+by constructing a model that jointly evaluates optical performance and material cost.
+Based on the transfer matrix method, the spectral reflectance and emissivity of arbi-
+trary multilayer stacks are computed across the solar and mid-infrared ranges, enabling
+quantitative evaluation of net cooling power, atmospheric-window emissivity, and solar
+absorption. These metrics are integrated into a weighted performance function, to which
+a cost-penalty term is added for balancing cooling efficiency and material expense. The
+design variables include discrete material selections and continuous thickness parame-
+ters; thus, an adaptive differential evolution algorithm is adopted for global optimization
+of the mixed-variable space. By tuning the cost-penalty coefficient, the performance–
+cost Pareto frontier is obtained, revealing the optimal configurations under different cost
+constraints. The final results show that the PDMS/SiO2/Ag structure provides the best
+trade-off between cooling performance and material cost.
+2 . 4 Analysis of Question 4
+Problem 4 aims to translate the theoretically optimal multilayer radiative-cooling struc-
+ture obtained in Problem 3 into a practically deployable engineering design by in-
+tegrating considerations of microstructural tunability, environmental durability, and
+long-term economic feasibility. To account for microstructural effects without resorting
+to expensive full-wave simulations, porous PDMS is introduced and modeled via the
+Maxwell–Garnett Effective Medium Theory, enabling efficient evaluation of refractive-
+index tuning and seamless incorporation into the Transfer Matrix Method. In addition,
+an ultrathin Al2O3 protection layer is included as a discrete design option to mitigate
+the oxidation and sulfidation of the Ag reflector, thereby improving service reliability.
+A lifecycle cost (TCO) model is established to quantify material, processing, and main-
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-99-
+
+===== PDF page 7 =====
+Team # apmcm25304268 Page 4 of 51
+tenance expenditures over a 10-year lifespan, capturing the economic consequences of
+degradation with and without protective coatings. To objectively balance robust cooling
+performance under multiple climatic conditions with economic cost, Grey Relational
+Analysis (GRA) is adopted to construct a bias-free comprehensive evaluation metric.
+The resulting optimization problem, comprising continuous variables (PDMS thickness
+and porosity) and a discrete protection decision, is solved using a mixed-integer dif-
+ferential evolution algorithm, enabling the identification of an optimal structure that
+simultaneously maximizes radiative performance, durability, and cost-effectiveness for
+real-world deployment.
+III. Problem Assumptions
+The following assumptions are made for the optical and thermal modeling of the PDMS
+radiative cooling system:
+• Wavelength Range: The spectral calculations cover the range from 0.3 𝜇m to
+55.56 𝜇m, with particular emphasis on 0.3–2.5 𝜇m for solar absorption and 8–
+13𝜇m for the atmospheric window.
+• Optical Properties: Each layer is assumed to be planar, homogeneous, and
+isotropic. Layer thicknesses can vary from a few nanometers to several microme-
+ters depending on the material. Surface roughness is neglected, but can optionally
+be included in a scattering model.
+• Angle of Incidence: Optical properties are averaged over all angles, either through
+angular integration or by approximating a Lambertian surface, assuming unpolar-
+ized incident light.
+• Temperature Effects: Convection and conduction losses are accounted for using
+a linearized approximation with a heat transfer coefficientℎ𝑐.
+• Atmosphere: Wavelength-dependent atmospheric transmittance 𝜏atm(𝜆) is ap-
+plied, with all materials assumed to be under atmospheric pressure.
+• Substrate Effect: Without a substrate, light would transmit directly through the
+film, resulting in extremely low emissivity regardless of thickness. Therefore, a
+Ag substrate is used. For sufficiently thick PDMS films in the infrared band, the
+transmittance is assumed to be negligible,𝑇(𝜆)≈ 0.
+• Normal Incidence Assumption: All spectral calculations are performed under
+normal incidence to isolate and analyze the effect of PDMS film thickness on the
+intrinsic optical properties of the system.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-100-
+
+===== PDF page 8 =====
+Team # apmcm25304268 Page 5 of 51
+IV. Symbol Explanation
+symbol illustrate
+𝜀(𝜆) Emissivity
+𝑇(𝜆) Transmittance
+𝑅(𝜆) Reflectance
+𝑃net Net cooling power
+𝜀8−13 Atmospheric window emissivity
+𝛼sun Solar absorptance
+𝐶total Total cost
+𝑆score Performance score
+TCO Economic cost
+V. Models
+5 . 1 Establishment and Solution of Model for Problem 1
+5 . 1 . 1 Data Preprocessing
+Before constructing the model, we first perform data cleaning and normalization. The
+data required in this study come from diverse sources and exhibit heterogeneous struc-
+tures. Specifically, the optical constants of materials are obtained from the experimental
+measurement database provided on the website in the problem statement and the solar
+spectral irradiance is sourced from the ASTM standard. These raw datasets differ sub-
+stantially in spectral range and physical units. To ensure consistent matrix dimensions
+for subsequent calculations using the transfer matrix method, a unified data standard
+must be established.
+According to Planck’s law of blackbody radiation, the thermal radiation of objects
+on the Earth’s surface is concentrated primarily in the wavelength range of 3–25 𝜇m,
+while solar radiation is concentrated primarily in the range of 0.3–2.5𝜇m. Therefore,
+we select 0.3–25𝜇m as the wavelength range for this study.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-101-
+
+===== PDF page 9 =====
+Team # apmcm25304268 Page 6 of 51
+The data processing procedures are summarized as follows:
+1. Integrated multisource data for PDMS in the near-infrared and mid-infrared bands
+using multisource data fusion techniques, thereby establishing a complete database
+of optical constants.
+2. Constructed a continuous wavelength-dependent optical function through linear
+interpolation and extrapolation algorithms to ensure full-band computational cov-
+erage.
+3. Eliminated outliers through data cleaning and sorting, ensuring numerical stability.
+4. Unified and standardized all categories of raw data into a consistent format for
+subsequent modeling and analysis.
+5 . 1 . 2 Establishment of the TMM Model
+Model Principle. The Transfer Matrix Method is a rigorous numerical model based on
+Maxwell’s equations and thin-film optics theory. This method treats light propagation in
+multilayer thin-film structures as the sequential multiplication of transfer matrices. By
+calculating the reflection and transmission of light at each interface and accounting for
+interference effects within each layer, TMM enables precise determination of the overall
+reflectance and transmittance of the system. In this study, we use TMM to compute the
+reflectance spectrum of PDMS thin films and subsequently derive the spectral emissivity
+according to Kirchhoff’s law of thermal radiation.
+In this study, we use TMM to compute the reflectance spectrum of PDMS thin
+films, from which the spectral emissivity is derived according to Kirchhoff’s law of
+thermal radiation.
+Model Derivation. As previously noted, if no substrate is present, light will
+pass directly through the film; regardless of thickness, the emissivity remains very low.
+Therefore, this study considers a three-layer structure composed of an air layer, a PDMS
+thin-film layer, and an Ag substrate, with light incident normally from the air side. Our
+objective is to determine the relationship between the reflectance of the system and the
+wavelength at different film thicknesses, and consequently obtain the spectral emissivity
+variation with wavelength for PDMS films of varying thickness.
+The optical configuration is defined as follows: the incident medium is air, with
+complex refractive index ˜𝑛0 = 1+ 0𝑖; the thin-film layer is PDMS, characterized by a
+complex refractive index ˜𝑛1 = 𝑛1+𝑖𝑘1 and physical thickness 𝑑; and the substrate is
+silver (Ag), with complex refractive index ˜𝑛2=𝑛2+𝑖𝑘2.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-102-
+
+===== PDF page 10 =====
+Team # apmcm25304268 Page 7 of 51
+For the interface between layer 𝑗 and layer 𝑗+ 1, the relationship between the
+forward (𝐸+ 𝑗 ) and backward (𝐸− 𝑗 ) electric-field amplitudes is given by the interface
+transfer matrix: "
+𝐸+ 𝑗
+𝐸− 𝑗
+#
+= 1 𝑡𝑗,𝑗+1
+"
+1 𝑟𝑗,𝑗+1
+𝑟𝑗,𝑗+1 1
+#  𝐸+ 𝑗+1 𝐸− 𝑗+1  , (1)
+where the amplitude reflection and transmission coefficients are
+𝑟𝑗,𝑗+1= ˜𝑛𝑗− ˜𝑛𝑗+1 ˜𝑛𝑗+ ˜𝑛𝑗+1 , 𝑡𝑗,𝑗+1= 2 ˜𝑛𝑗 ˜𝑛𝑗+ ˜𝑛𝑗+1 . (2)
+After propagating a distance𝑑 inside the PDMS layer, the phase shift is
+𝛿= 2𝜋 𝜆 ˜𝑛1𝑑, (3)
+and the propagation (or layer) transfer matrix is
+"
+𝐸+ 1
+𝐸− 1
+#
+=
+"
+𝑒−𝑖𝛿 0
+0 𝑒𝑖𝛿
+# "
+𝐸+ 2
+𝐸− 2
+#
+. (4)
+The total transfer matrix for the complete system relates the fields in air to those in
+the substrate: "
+𝐸+ 0
+𝐸− 0
+#
+=𝑀total
+"
+𝐸+ 2
+𝐸− 2
+#
+, (5)
+with
+𝑀total=𝐼01·𝐿1·𝐼12. (6)
+Here, 𝐼01 denotes the interface matrix at the air/PDMS boundary, 𝐿1 represents the
+propagation matrix through the PDMS layer, and𝐼12 corresponds to the interface matrix
+at the PDMS/silver interface.
+Explicitly,
+𝑀total= 1 𝑡01
+"
+1 𝑟01
+𝑟01 1
+# "
+𝑒−𝑖𝛿 0
+0 𝑒𝑖𝛿
+#
+1
+𝑡12
+"
+1 𝑟12
+𝑟12 1
+#
+. (7)
+The system reflection coefficient is obtained from the elements of the total transfer
+matrix:
+𝑟 = 𝑀21
+𝑀11
+, (8)
+and the reflectivity is the squared modulus of this coefficient:
+𝑅=|𝑟|2=
+ 𝑀21 𝑀11  2 . (9)
+The interface coefficients are calculated as follows:
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-103-
+
+===== PDF page 11 =====
+Team # apmcm25304268 Page 8 of 51
+Air/PDMS interface:
+𝑟01= 1− ˜𝑛1 1+ ˜𝑛1 , 𝑡01= 2 1+ ˜𝑛1 . (10)
+PDMS/Ag interface:
+𝑟12= ˜𝑛1− ˜𝑛2 ˜𝑛1+ ˜𝑛2 , 𝑡12= 2 ˜𝑛1 ˜𝑛1+ ˜𝑛2 . (11)
+Using these, the relevant matrix elements are
+𝑀11= 1 𝑡01𝑡12  𝑒−𝑖𝛿+𝑟01𝑟12𝑒𝑖𝛿  , (12)
+𝑀21= 1 𝑡01𝑡12  𝑟01𝑒−𝑖𝛿+𝑟12𝑒𝑖𝛿  . (13)
+Thus, the reflection coefficient simplifies to
+𝑟 = 𝑟01+𝑟12𝑒𝑖2𝛿
+1+𝑟01𝑟12𝑒𝑖2𝛿, (14)
+and the reflectivity as a function of wavelength𝜆 and film thickness𝑑 is
+𝑅(𝜆,𝑑)=
+ 𝑟01+𝑟12𝑒𝑖2𝛿 1+𝑟01𝑟12𝑒𝑖2𝛿  2 , where 𝛿= 2𝜋 𝜆 ˜𝑛1𝑑. (15)
+According to Kirchhoff’s law of thermal radiation, the spectral emissivity equals the
+absorptivity. Since the silver substrate is opaque, transmittance is negligible (𝑇(𝜆)≈ 0),
+and the emissivity is therefore
+𝜀(𝜆,𝑑)= 1−𝑅(𝜆,𝑑). (16)
+5 . 1 . 3 Model Solution and Result Analysis
+Based on the transfer matrix method, we conducted the following solution process to
+analyze the variation of emissivity with wavelength for PDMS/Ag systems at different
+thicknesses.
+Thickness parameter selection. Given the extremely low emissivity of PDMS in
+the solar radiation band (0.3–2.5𝜇m) and its high emissivity in the 8–13𝜇m atmospheric
+window, a representative set of film thicknesses was selected for analysis: 0.3𝜇m,
+0.712𝜇m, and 2.49𝜇m for solar spectrum-focused cases, and 8.5𝜇m, 12.5𝜇m, and
+19.2𝜇m for atmospheric window-focused cases.
+Solution procedure. The computational workflow was implemented as follows:
+1. Data acquisition and material properties: Optical constant data were imported, and
+the complex refractive indices ˜𝑛𝑗 = 𝑛𝑗+𝑖𝑘𝑗 (𝑗 = 0, 1, 2) for air, PDMS, and Ag
+were determined across the spectral range of interest.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-104-
+
+===== PDF page 12 =====
+Team # apmcm25304268 Page 9 of 51
+2. Thickness iteration: Iterative calculations were performed over the predefined set of
+thickness values to evaluate the spectral response of each PDMS/Ag configuration.
+3. Spectral resolution: For each thickness, wavelength-grid iterations were carried
+out, and the transfer matrix method (TMM) was applied to compute the reflectance
+𝑅(𝜆,𝑑) at each wavelength𝜆.
+4. Emissivity derivation: According to Kirchhoff’s law of thermal radiation and the
+opacity of the Ag substrate (𝑇 ≈ 0), the spectral emissivity was obtained via
+Equation (16).
+Results analysis. Figure 1 illustrates the spectral emissivity of the PDMS/Ag
+system as a function of wavelength for the selected thicknesses. PDMS films of all
+thicknesses exhibit extremely low emissivity (generally below 0.1) in the solar radiation
+band (0.3–2.5𝜇m). This behavior stems from the near-zero extinction coefficient (𝑘≈ 0)
+of PDMS in this spectral range, rendering the material highly transparent and minimizing
+solar absorption. Consequently, most incident solar radiation is reflected rather than
+absorbed, preventing significant temperature rise under sunlight—an essential feature
+for daytime radiative cooling applications.
+In contrast, within the atmospheric window (8–13𝜇m), PDMS films demonstrate
+significantly elevated emissivity (typically exceeding 0.8), confirming their strong ra-
+diative cooling capability. The spectral curves reveal two distinct emission peaks: one
+near 9𝜇m, attributed to the antisymmetric stretching vibration of the Si–O–Si backbone
+in PDMS, and another near 12𝜇m, corresponding to the stretching vibration of Si–H
+bonds. These molecular vibrational modes induce strong infrared absorption in the
+atmospheric window, thereby enabling high emissivity. The computational results are
+consistent with theoretical expectations, validating the accuracy of the model.
+Figure 2 presents a two-dimensional colormap of emissivity across the parame-
+ter space of film thickness (𝑑 = 0.1–20𝜇m) and wavelength (𝜆 = 0.3–20𝜇m). The
+deep blue regions—indicating low emissivity—are predominantly confined to the solar
+band, confirming that PDMS effectively reflects sunlight regardless of thickness. Con-
+versely, bright yellow bands—representing high emissivity—are concentrated within
+the 8–13𝜇m atmospheric window. Notably, an optimal performance point is identified
+at(𝜆 = 11.9𝜇m, 𝑑 = 12.6𝜇m), where emissivity reaches a local maximum. This
+demonstrates that precise tuning of radiative cooling performance in key spectral bands
+can be achieved through controlled adjustment of film thickness, providing a foundation
+for subsequent design optimization.
+Figure 3 shows a three-dimensional surface plot of emissivity as a function of
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-105-
+
+===== PDF page 13 =====
+Team # apmcm25304268 Page 10 of 51
+Figure 1 Spectral emissivity of the PDMS/Ag system at selected film thicknesses.
+Figure 2 Two-dimensional colormap of emissivity as a function of wavelength and PDMS
+film thickness.
+both wavelength and film thickness. In the solar spectrum band, emissivity remains
+consistently low across all thicknesses, reaffirming the high transparency of PDMS
+to solar radiation and its ability to avoid solar heat gain. Within the atmospheric
+window, emissivity increases markedly with film thickness, fully corroborating the
+trends observed in Figures 1 and 2. This thickness-dependent enhancement arises
+from increased optical path length and stronger interaction with vibrational resonances,
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-106-
+
+===== PDF page 14 =====
+Team # apmcm25304268 Page 11 of 51
+further underscoring the critical role of geometric design in tailoring thermal emission
+properties.
+Figure 3 Three-dimensional surface plot of emissivity versus wavelength and film thickness.
+5 . 1 . 4 Model Rationality Verification
+To validate the physical correctness of the model’s computational results, two auxiliary
+evaluation metrics are introduced.
+1) Average emissivity in the solar band, denoted as ¯𝜀solar, is theoretically expected
+to satisfy ¯𝜀solar< 0.07. It is defined as
+¯𝜀solar= 1 2.2 ∫ 2.5 0.3 𝜀(𝜆)𝑑𝜆, (17)
+where the integration limits (in𝜇m) correspond to the solar radiation spectrum (0.3–2.5𝜇m).
+2) Standard deviation of emissivity within the atmospheric window, denoted as
+𝜎atm, is theoretically expected to satisfy𝜎atm< 0.2. It is computed as
+𝜎atm=
+vt 1
+𝑁
+∑︁
+𝜆𝑖∈[8,13]
+(𝜀(𝜆𝑖)− ¯𝜀atm)2, (18)
+where ¯𝜀atm is the mean emissivity over the atmospheric window (8–13𝜇m), and 𝑁 is
+the number of sampled wavelengths in this interval.
+The quantitative validation results of the model are presented in Table 1. Where
+¯𝜀solar denotes the average emissivity in the solar band (0.3–2.5𝜇m), and𝜎atm represents
+the standard deviation of emissivity in the atmospheric window (8–13𝜇m). The results
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-107-
+
+===== PDF page 15 =====
+Team # apmcm25304268 Page 12 of 51
+demonstrate that both values strictly satisfy the theoretical constraints ( ¯𝜀solar< 0.07 and
+𝜎atm < 0.2), thereby verifying the physical correctness and numerical stability of the
+proposed model.
+Table 1 Calculated Validation Metrics for Model Rationality
+Metric Value
+¯𝜀solar 0.0389
+𝜎atm 0.1651
+The results indicate that the calculated value of ¯𝜀solar= 0.0389 remains well below
+the threshold of 0.07, consistent with PDMS’s near-transparent physical properties in
+the solar band. Simultaneously, the computed 𝜎atm = 0.1651 is below the upper
+limit of 0.2, demonstrating smooth spectral emissivity curves within the atmospheric
+window without anomalous oscillations. This further validates the numerical stability
+and physical rationality of the model.
+5 . 2 Establishment and Solution of Model for Problem 2
+5 . 2 . 1 Data Preprocessing for Solar and Atmospheric Data
+In addition to material properties, accurate solar spectral irradiance and atmospheric
+emission data are crucial for the simulation. The solar spectrum was obtained from
+the ASTM G173 standard, which provides detailed information on the solar irradiance
+at ground level under clear sky conditions. For atmospheric emission, we adopted
+a simplified model based on Planck’s law with adjustments for typical atmospheric
+transmittance in different wavelength bands.
+The specific steps taken for solar and atmospheric data processing include:
+1. Solar Spectral Irradiance: Downloaded the AM1.5G spectrum provided by the
+ASTM G173 standard. Converted the spectral irradiance from units of W/m2/nm
+to W/m2/𝜇m to align with our wavelength range of interest (0.3–25 𝜇m). Linear
+interpolation was used to fill gaps between measured points and ensure a continuous
+spectrum.
+2. Atmospheric Emission: Calculated the thermal radiation emitted by the atmo-
+sphere using Planck’s law, assuming an average temperature of 300 K for the
+Earth’s surface. Adjustments were made to account for the lower emissivity in the
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-108-
+
+===== PDF page 16 =====
+Team # apmcm25304268 Page 13 of 51
+atmospheric window (8–13𝜇m), where the transmission is higher due to reduced
+absorption by greenhouse gases.
+3. Data Integration: Integrated the processed solar and atmospheric data into the
+same wavelength grid as the optical constants of materials. This step ensures
+that all datasets can be directly used in the transfer matrix method without further
+conversion.
+4. Normalization: Normalized the solar spectral irradiance and atmospheric emis-
+sion to facilitate comparison and analysis across different wavelengths. This nor-
+malization process helps in identifying key wavelengths that significantly affect the
+radiative cooling performance.
+5 . 2 . 2 Comprehensive Evaluation Function
+To objectively determine the relative importance of multiple performance metrics in
+radiative cooling design, we adopt the Gray Relational Analysis (GRA) method to
+dynamically assign weights to the key indicators. Unlike arbitrary or experience-based
+weighting, GRA quantifies the correlation between each candidate design and an ideal
+reference sequence based on their geometric proximity in normalized space, thereby
+yielding data-driven, adaptive weights.
+Specifically, let𝑥(𝑘) 𝑖 denote the𝑘-th performance metric (𝑘 = 1,...,𝐾) of the𝑖-th
+design, normalized to the interval[0, 1]. The ideal reference sequence is defined as
+x0=[1, 1,..., 1], representing the optimal value for all benefit-type criteria. The gray
+relational coefficient between design𝑖 and the ideal reference for metric𝑘 is computed
+as
+𝛾(𝑘) 𝑖 = Δmin+𝜌Δmax
+Δ(𝑘) 𝑖 +𝜌Δmax , (19)
+whereΔ(𝑘) 𝑖 =|𝑥(𝑘) 0 −𝑥(𝑘) 𝑖 |=|1−𝑥(𝑘) 𝑖 | is the absolute deviation,Δmin= min𝑖 min𝑘Δ(𝑘) 𝑖 ,
+Δmax = max𝑖 max𝑘Δ(𝑘) 𝑖 , and 𝜌∈(0, 1] is a distinguishing coefficient (typically set to
+𝜌 = 0.5). The overall gray relational grade for design𝑖 is then obtained by averaging
+across all metrics:
+Γ𝑖 = 1 𝐾 𝐾∑︁ 𝑘=1 𝛾(𝑘) 𝑖 . (20)
+This grade Γ𝑖 ∈ [0, 1] serves as the comprehensive score for ranking designs, with
+higher values indicating closer alignment to the ideal performance profile.
+We select three core metrics that collectively characterize radiative cooling per-
+formance: Each of the three selected metrics captures a distinct physical dimension
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-109-
+
+===== PDF page 17 =====
+Team # apmcm25304268 Page 14 of 51
+of radiative cooling performance, and their combined consideration enables a holistic
+assessment:
+• Net cooling power (𝑃net): system-level output (benefit-type);
+• Atmospheric-window emissivity (𝜀8−13): intrinsic radiative efficiency in the 8–
+13𝜇m band (benefit-type);
+• Solar absorptivity (𝛼sun): susceptibility to solar heating (cost-type).
+All metrics are first normalized to the interval [0, 1] using Min-Max scaling over
+the sampled design space (PDMS thickness: 1–150 𝜇m). For benefit-type indicators
+(𝑃net,𝜀8−13), normalization is defined as:
+𝑥∗= 𝑥−𝑥min
+𝑥max−𝑥min
+, (21)
+where 𝑥min and 𝑥max denote the minimum and maximum values observed across all
+simulated thicknesses. For the cost-type indicator (𝛼sun), we invert the direction to align
+with a higher-is-better convention:
+𝑥∗= 𝑥max−𝑥 𝑥max−𝑥min . (22)
+The gray relational grade for each metric is computed relative to the ideal reference
+sequence, comprising the best achievable value for each normalized metric. Using a
+distinguishing coefficient𝜌= 0.5, the weight𝑤𝑖 for metric𝑖 is derived from its average
+gray relational grade, followed by normalization to ensure ˝𝑤𝑖 = 1.
+The final comprehensive score is formulated as a weighted sum:
+𝑆score=𝑤1·𝑃∗ net+𝑤2·𝜀∗ 8−13+𝑤3·𝛼∗ sun, (23)
+where the weights 𝑤1, 𝑤2, and 𝑤3 are determined objectively via GRA. The physi-
+cal definitions of the three core metrics are grounded in fundamental thermodynamic
+and radiative principles. This approach ensures that the evaluation function adapts to
+the actual trade-offs present in the design space, rather than imposing preconceived
+preferences.
+Net Cooling Power (𝑃net). This is the net radiative heat flux density that the cooler
+can reject to outer space under ambient conditions. It accounts for all energy exchange
+channels:
+𝑃net(𝑇)=𝑃rad(𝑇)−𝑃atm(𝑇amb)−𝑃sun−𝑃cond+conv, (24)
+where the net cooling power 𝑃net is determined by the balance of four radiative and
+convective heat fluxes: The thermal radiation emitted by the PDMS film at its surface
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-110-
+
+===== PDF page 18 =====
+Team # apmcm25304268 Page 15 of 51
+temperature𝑇 is given by
+𝑃rad(𝑇)=
+∫ ∞
+0
+𝐼BB(𝜆,𝑇)𝜀(𝜆,𝑑)𝑑𝜆, (25)
+where𝐼BB(𝜆,𝑇) denotes the blackbody spectral radiance according to Planck’s law. The
+downward atmospheric radiation absorbed by the film is expressed as
+𝑃atm(𝑇amb)=
+∫ ∞
+0
+𝐼BB(𝜆,𝑇amb)𝜀sky(𝜆)𝜀(𝜆,𝑑)𝑑𝜆, (26)
+where 𝜀sky(𝜆) models the wavelength-dependent emissivity of the atmosphere. The
+solar power absorbed by the film is
+𝑃sun=
+∫ ∞
+0
+𝐼AM1.5(𝜆)𝜀(𝜆,𝑑)𝑑𝜆, (27)
+with 𝐼AM1.5(𝜆) representing the ASTM G173 standard solar spectral irradiance under
+AM1.5 conditions. Finally, parasitic heat gain due to conduction and convection is
+modeled as
+𝑃cond+conv=ℎ𝑐(𝑇−𝑇amb), (28)
+whereℎ𝑐 is the combined heat transfer coefficient and𝑇amb is the ambient temperature.
+In our simulations, we evaluate 𝑃net at thermal equilibrium (𝑇 = 𝑇amb = 300 K), so
+𝑃cond+conv= 0.
+Atmospheric-Window Emissivity (𝜀8−13). This metric quantifies the intrinsic effi-
+ciency of the radiative cooling channel through the atmospheric transparency window
+(8–13𝜇m):
+𝜀8−13= 1 13− 8 ∫ 13 8 𝜀(𝜆,𝑑)𝑑𝜆. (29)
+A high𝜀8−13 ensures strong coupling between the emitter and the cold universe ( 3 K),
+enabling effective heat dissipation even under clear-sky conditions. This is a key
+indicator of spectral selectivity and is independent of environmental variables such as
+solar irradiance or wind speed.
+Solar Absorptivity (𝛼sun). This parameter measures the fraction of incident solar
+energy (0.3–2.5𝜇m) that is absorbed by the cooler, acting as a parasitic heat load:
+𝛼sun=
+∫ 2.5
+0.3 𝐼AM1.5(𝜆)𝜀(𝜆,𝑑)𝑑𝜆 ∫ 2.5
+0.3 𝐼AM1.5(𝜆)𝑑𝜆
+. (30)
+Since𝜀(𝜆,𝑑)=𝛼(𝜆,𝑑) by Kirchhoff’s law of thermal radiation, this expression directly
+computes solar absorption from the emissivity spectrum. A low 𝛼sun is critical for
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-111-
+
+===== PDF page 19 =====
+Team # apmcm25304268 Page 16 of 51
+daytime sub-ambient cooling, as it minimizes unwanted heating from sunlight. Unlike
+the previous two metrics,𝛼sun is a cost-type indicator—lower values correspond to better
+performance.
+5 . 2 . 3 Numerical Solution and Trend Analysis
+We performed numerical integration and comprehensive scoring calculations for PDMS
+films with thicknesses ranging from 1𝜇m to 150𝜇m, setting the ambient temperature
+at 300 K to simulate standard operating conditions. The resulting spectral response and
+power variations are illustrated in Figure 4.
+Figure 4 Spectral response and radiative cooling power as a function of PDMS film thick-
+ness (1–150𝜇m) under ambient temperature of 300 K.
+Rapid Growth Phase. In the initial thin-film regime (0–20 𝜇m), the radiative
+cooling performance exhibits a steep ascent. This phenomenon is governed by the
+increasing optical path length, which allows the PDMS layer to interact more effectively
+with infrared radiation. As predicted by the Beer-Lambert law, the absorbance-and
+consequently the emissivity-increases exponentially with thickness in this range. As
+a result, the net cooling power 𝑃net surges from negligible levels to approximately 75
+W/m2, indicating that even a relatively thin layer of PDMS can establish a significant
+radiative cooling channel.
+Saturation Phase. As the film thickness progresses into the intermediate range
+(20–60𝜇m), the rate of performance improvement decelerates markedly. In this region,
+the material becomes optically opaque in its primary characteristic emission bands,
+specifically the Si-O-Si and Si-C stretching modes. Consequently, the emissivity𝜀8−13
+approaches its theoretical upper bound, entering a state of saturation. Further addition
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-112-
+
+===== PDF page 20 =====
+Team # apmcm25304268 Page 17 of 51
+of material yields diminishing returns in terms of radiative heat dissipation, as the
+”effective” emitting volume has largely been established.
+Performance Trade-off. In the thick-film regime (>60 𝜇m), a detrimental effect
+becomes prominent. While the radiative cooling power stabilizes and plateaus, the
+parasitic absorption of solar radiation (𝛼sun) continues to accumulate linearly or quasi-
+linearly. This indicates that excessively thick films not only fail to provide significant
+additional cooling benefits but also introduce unnecessary solar heat gain. This parasitic
+absorption undermines the overall thermal management efficiency, creating a divergence
+between the physical maximum of cooling power and the comprehensive efficiency of
+the system.
+5 . 2 . 4 Optimization Results and Discussion
+Table 2 Comparison of Optimization Results: Single-Objective (Max 𝑃net) vs. Multi-
+Objective (Max Score).
+Metric Single-Obj. Multi-Obj.
+PDMS Thickness (𝜇m) 83.8 38.6
+𝑃net (W/m2) 84.84 84.38
+𝜀8−13 0.944 0.911
+𝛼sun 0.027 0.023
+Score 91.8 95.4
+Based on the trends identified above, the weighted scoring model was applied to
+identify a design that not only maintains high cooling performance but also achieves a
+superior balance among net cooling power, atmospheric-window emissivity, and solar
+reflectance. The weights assigned to these metrics were determined via GRA, which
+quantifies the correlation between each candidate design and an ideal reference sequence
+in normalized space. The resulting data-driven weights are: 𝑤𝑃1 = 0.484, 𝑤𝜀2 =
+0.333, and 𝑤𝛼3 = 0.183. This approach ensures an objective, adaptive prioritization
+of performance criteria, leading to a multi-objective optimal solution with a higher
+comprehensive score (95.4) than the single-objective maximum (91.8).
+Determination of Optimal Thickness. By analyzing the comprehensive evalua-
+tion scores, we identified a global maximum at a thickness of approximately 38.6𝜇m.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-113-
+
+===== PDF page 21 =====
+Team # apmcm25304268 Page 18 of 51
+This value represents the precise equilibrium point where the marginal gain in cool-
+ing power is outweighed by the penalties of increased solar absorption and material
+consumption. At this optimal thickness, the system achieves a net cooling power of
+84.38 W/m2, demonstrating robust radiative cooling capabilities suitable for practical
+applications while attaining the highest multi-objective score of 95.4.
+Figure 5 Variation of the composite evaluation score (0–100) as a function of PDMS film
+thickness. The optimal thickness of 38.6 𝜇m corresponds to the peak score,
+indicating the best trade-off between radiative cooling performance and solar
+reflectance.
+Comparative Performance Analysis. A critical comparison between this optimal
+point and the theoretical physical maximum reveals the efficacy of the optimization
+strategy. While the absolute maximum cooling power of 84.84 W/m2 is attainable at a
+much greater thickness of 83.8𝜇m, the multi-objective solution at 38.6𝜇m incurs a per-
+formance penalty of less than 0.6%. However, this negligible sacrifice in cooling power
+yields significant practical advantages: the PDMS layer thickness—and consequently
+the primary material consumption—is reduced by over 50%, while solar absorptivity is
+further suppressed from 0.027 to 0.023, enhancing daytime cooling stability.
+5 . 2 . 5 Recommendations for Advancement and Application
+Based on the evaluation model results, we propose the following three recommendations
+for the development of radiative cooling technology.
+Optimal Thickness Control: In practical manufacturing, the thickness of PDMS
+films should be controlled within the range of 20-60𝜇m. This range ensures over 90%
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-114-
+
+===== PDF page 22 =====
+Team # apmcm25304268 Page 19 of 51
+of the maximum theoretical cooling potential while minimizing raw material costs and
+reducing thermal resistance.
+Composite Material Modification: Our analysis shows that pure PDMS still has
+weak solar absorption. We recommend doping the PDMS matrix with high-refractive-
+index nanoparticles. These particles can enhance solar scattering without affecting
+infrared transparency, thereby improving daytime cooling performance.
+Structural Design Optimization: Single-layer films have physical limitations.
+Future applications should adopt multilayer structures or photonic crystal structures.
+For example, adding a specialized solar reflection layer below the PDMS layer can
+effectively block the residual sunlight that penetrates the PDMS, further enhancing the
+net cooling power.
+5 . 3 Establishment and Solution of Model for Problem 3
+5 . 3 . 1 Data Preprocessing
+To ensure the accuracy and reliability of the proposed model, a systematic preprocessing
+of the optical constant data for all involved materials was conducted. The dataset includes
+the complex refractive index of PDMS over the visible–near-infrared and mid-infrared
+spectral ranges, as well as the optical constants of aluminum (Al), silver (Ag), silicon
+dioxide (SiO2), titanium dioxide (TiO2), and aluminum oxide (Al2O3). By consulting
+relevant literature and performing necessary data cleaning procedures, the unit-thickness
+cost of each material was obtained.
+Table 3 Unit thickness cost (USD/𝜇m) of materials used in the model.
+Material Unit Thickness Cost (USD/𝜇m)
+PDMS 0.10–0.50
+Al 0.50–2.00
+Ag 5.00–15.00
+SiO2 1.50–5.00
+TiO2 3.00–8.00
+Al2O3 20.00–100.00
+The data preprocessing workflow is summarized as follows:
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-115-
+
+===== PDF page 23 =====
+Team # apmcm25304268 Page 20 of 51
+1. Data Merging and Alignment: The two spectral segments of PDMS were con-
+catenated according to wavelength, and duplicate or conflicting data points were
+removed.
+2. Outlier and Missing Value Handling: The optical constant datasets of aluminum,
+silicon dioxide, and titanium dioxide were cleaned by eliminating invalid entries
+and retaining only the optical constants within their valid wavelength ranges.
+3. Construction of Interpolation Functions: To enable the retrieval of refractive
+indices and extinction coefficients at arbitrary wavelengths, linear interpolation was
+applied to construct continuous functions for each material. For queries beyond
+the original wavelength range, extrapolation was enabled to prevent computation
+interruptions. Although extrapolation introduces some uncertainty, the optical
+behavior of PDMS near the starting wavelength of the solar spectrum is well
+understood (with approximately𝑘≈ 0 and𝑛≈ 1.4), ensuring that any extrapolation
+error remains controlled.
+4. Physical Consistency Verification: Non-negativity constraints were imposed on
+all interpolated results to prevent nonphysical negative values arising from numer-
+ical errors.
+5 . 3 . 2 Establishment of the Optimization Model for the PDMS Multilayer Structure
+Model Principle. As the core radiative cooling material, PDMS exhibits intrinsically
+high emissivity within the atmospheric window. However, its transparency in the so-
+lar spectrum allows solar radiation to reach the underlying reflective layer, resulting
+in undesired absorption and thus reducing cooling efficiency. To address this issue,
+a dielectric layer is introduced as an impedance-matching layer. By leveraging its
+optical interference effects, the dielectric layer suppresses reflection in the solar spec-
+trum, thereby reducing solar absorption, while simultaneously maintaining resonant
+enhancement within the atmospheric window to increase infrared emissivity. The bot-
+tom metallic layer, featuring high reflectivity, further reflects the transmitted infrared
+radiation, forming an effective radiative pathway. Accordingly, the multilayer structure
+investigated in this work is composed of four layers: air / PDMS / dielectric layer /
+reflective layer.
+To optimize the performance of this multilayer configuration, the multi-objective
+weighted scoring model developed in Problem 2 is adopted as the evaluation framework.
+By incorporating the unit-thickness cost of each layer as a penalty term, a multi-objective
+optimization function is constructed that jointly considers optical performance and
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-116-
+
+===== PDF page 24 =====
+Team # apmcm25304268 Page 21 of 51
+manufacturing cost. Through dynamically adjusting the cost-penalty weighting, the
+model systematically balances the trade-off between radiative cooling efficiency and
+economic feasibility, providing a set of Pareto-optimal solutions for practical engineering
+applications.
+The optimization algorithm employed in this study is the adaptive differential
+evolution algorithm, a population-based global optimization method. Its core mech-
+anism lies in dynamically adjusting the mutation factor and crossover probability to
+balance exploration and exploitation capabilities. By simulating biological evolu-
+tion processes—mutation, crossover, and selection—the algorithm conducts parallel
+searches for the global optimum within the solution space. Compared with conventional
+differential evolution, its adaptive variant automatically tunes the search strategy accord-
+ing to population diversity: maintaining a relatively large mutation factor in the early
+stage to enhance global exploration and avoid premature convergence, and reducing the
+mutation factor in the later stage to strengthen local refinement and improve convergence
+accuracy.
+Model Structure. The optimization model for the PDMS multilayer structure consists
+of the following core components. The model adopts the comprehensive performance
+evaluation framework established in Section 5.2, where the performance score𝑆score is
+computed using the weighted scoring function defined in Equation (23), with all metrics
+normalized to[0, 1] and weights satisfying𝑤1+𝑤2+𝑤3= 1.
+Cost Quantification Module: A unit-thickness cost model is constructed based on
+material market prices and physical properties, yielding the total material cost
+𝐶mat=
+∑︁
+𝑖
+(𝑐𝑖·𝑑𝑖), (31)
+where𝑐𝑖 denotes the unit thickness cost of material𝑖 (in USD/𝜇m· m2) and 𝑑𝑖 is the
+corresponding layer thickness (𝜇m).
+Multi-objective Optimization Function: By introducing a cost-penalty coefficient
+𝜆cost, the objective function is formulated as
+Maximize Objective=𝑆score−𝜆cost·𝐶mat, (32)
+where 𝑆score is scaled to the 0–100 range. The Pareto front under different values of
+𝜆cost is obtained via global optimization.
+Optimization Algorithm. An adaptive differential evolution (DE) algorithm is em-
+ployed to simultaneously optimize discrete variables and continuous variables, ensuring
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-117-
+
+===== PDF page 25 =====
+Team # apmcm25304268 Page 22 of 51
+robust exploration of the design space. The optimization proceeds as follows. Let the
+design vector be
+X=[𝑥diel, 𝑥refl, 𝑑PDMS, 𝑑diel, 𝑑refl]⊤, (33)
+where𝑥diel,𝑥refl∈[0, 1] are continuous surrogates for discrete material choices, mapped
+via
+matdiel=Mdiel
+ round 𝑥diel·(𝑁diel− 1), (34)
+matrefl=Mrefl
+ round 𝑥refl·(𝑁refl− 1), (35)
+withMdiel andMrefl denoting the dielectric and reflector material libraries, and𝑁diel,𝑁refl
+their cardinalities.
+Given a population{X(𝑔) 𝑖 }𝑁𝑃 𝑖=1 at generation 𝑔, the DE generates a mutant vector
+V(𝑔) 𝑖 for each individual X(𝑔) 𝑖 by:
+V(𝑔) 𝑖 = X(𝑔) 𝑟1 +𝐹·  X(𝑔) 𝑟2 − X(𝑔) 𝑟3  , (36)
+where 𝑟1,𝑟2,𝑟3∈{1,...,𝑁𝑃} are distinct random indices different from𝑖, and 𝐹∈
+[0, 2] is the scaling factor.
+A trial vector U(𝑔) 𝑖 =[𝑢𝑖1,...,𝑢𝑖5]⊤ is then formed via binomial crossover:
+𝑢(𝑔) 𝑖𝑗 =
+
+
+𝑣(𝑔) 𝑖𝑗 , if rand𝑗≤𝐶𝑅 or 𝑗 = 𝑗rand,
+𝑥(𝑔) 𝑖𝑗 , otherwise, (37)
+for 𝑗 = 1,..., 5, where rand𝑗 ∼ U(0, 1), 𝐶𝑅 ∈ [0, 1] is the crossover rate, and
+𝑗rand∈{1,..., 5} is a randomly chosen index to ensure U(𝑔) 𝑖 ≠ X(𝑔) 𝑖 .
+The objective function incorporates a cost-penalized performance score:
+L(X;𝜆cost)=−
+
+𝑆score(X)−𝜆cost·𝐶mat(X)
+
+, (38)
+where 𝑆score is the weighted normalized performance metric (see Eq. (23)), 𝐶mat =
+˝
+𝑘𝑐𝑘𝑑𝑘 is the total material cost, and𝜆cost≥ 0 controls the cost-performance trade-off.
+Finally, selection is performed greedily:
+X(𝑔+1) 𝑖 =
+
+
+U(𝑔) 𝑖 , ifL(U(𝑔) 𝑖 ;𝜆cost)<L(X(𝑔) 𝑖 ;𝜆cost),
+X(𝑔) 𝑖 , otherwise. (39)
+This process iterates until convergence, yielding Pareto-optimal designs across
+varying𝜆cost.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-118-
+
+===== PDF page 26 =====
+Team # apmcm25304268 Page 23 of 51
+5 . 3 . 3 Model Solution and Result Analysis
+Solution Produce
+1. An accurate optical model was established based on the transfer matrix method,
+in which the spectral response of the multilayer film structure was calculated by
+solving Maxwell’s equations.
+2. The optical constants of the six candidate materials were imported from the orig-
+inal datasets and preprocessed to construct wavelength-dependent interpolation
+functions for their complex refractive indices.
+3. The comprehensive performance model developed in Problem 2 was combined
+with the material cost weighting to generate the objective function, forming a
+performance–cost trade-off optimization framework.
+4. A hybrid integer–continuous encoding scheme was adopted to simultaneously
+optimize material selection (discrete variables) and layer thicknesses (continuous
+variables).
+5. A five-dimensional search space was defined, and a global optimization approach
+was used to prevent convergence to local optima.
+6. By scanning across different cost-weight parameters, the optimal trade-off relation-
+ship between performance and manufacturing cost was systematically investigated.
+7. The adaptive differential evolution algorithm was employed to solve the aforemen-
+tioned multi-objective optimization function.
+Result Analysis
+1. The optimized spectral response is shown in Figure 6. The PDMS/SiO2/Ag tri-
+layer structure successfully achieves the spectral selectivity required for radiative
+cooling: extremely low emissivity in the solar spectrum (minimizing heat gain)
+and high emissivity within the 8–13𝜇m atmospheric window (enabling efficient
+radiative cooling). An enhanced emissivity peak in the far-infrared region further
+improves overall performance.
+The optimal structure is a three-layer configuration with the following thicknesses:
+2. The Pareto frontier analysis results are summarized in Table 5. The PDMS/SiO2/Ag
+combination consistently outperforms others across all cost-weighting scenarios.
+When cost is ignored (𝜆cost = 0), the system achieves the highest score (78.21) at
+a PDMS thickness of 19.41𝜇m, but with a high cost of 23.17. As𝜆cost increases,
+the algorithm reduces PDMS thickness to balance cost and performance. At
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-119-
+
+===== PDF page 27 =====
+Team # apmcm25304268 Page 24 of 51
+Figure 6 Optimized spectral emissivity of the PDMS/SiO2/Ag trilayer structure.
+Table 4 Optimal layer thicknesses and performance metrics.
+Layer Thickness (𝜇m)
+PDMS 19.206
+SiO2 0.010
+Ag 0.120
+Net cooling power: 79.49 W/m2
+Solar absorptivity: 0.019
+𝜆cost= 3.57, an optimal trade-off is achieved (score = 67.95, cost = 6.84,𝑑PDMS=
+19.21𝜇m). These results confirm that performance is primarily driven by PDMS
+thickness, while the SiO2/Ag stack provides stable optical synergy. Figure 7
+visualizes these trends.
+3. Figure 8 presents a scatter plot of PDMS thickness versus performance and cost.
+PDMS thickness is positively correlated with performance, but total cost rises
+sharply with thickness, highlighting the necessity of balancing performance and
+economics.
+4. Figure 9 shows the marginal performance efficiency (performance gain per ad-
+ditional dollar) for the PDMS/SiO2/Ag structure. Initially, each dollar yields
+significant performance improvement, but marginal returns diminish rapidly. At
+𝜆cost= 50, the initial design achieves optimal cost-effectiveness; beyond this point,
+further investment leads to sharply declining returns.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-120-
+
+===== PDF page 28 =====
+Team # apmcm25304268 Page 25 of 51
+Figure 7 Pareto frontier showing the trade-off between performance score and total cost.
+Figure 8 Relationship among PDMS thickness, performance score, and total cost.
+5 . 4 Establishment and Solution of Model for Problem 4
+5 . 4 . 1 Design Strategy
+Previous sections focused on maximizing the theoretical radiative cooling power. How-
+ever, bridging the gap between laboratory research and large-scale industrial application
+requires addressing critical engineering challenges: material cost, environmental dura-
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-121-
+
+===== PDF page 29 =====
+Team # apmcm25304268 Page 26 of 51
+Table 5 Pareto-optimal solutions under varying cost weights.
+𝜆cost 𝑆score Cost Structure 𝑑PDMS (𝜇m)
+50.00 -1.38 1.39 SiO2/Ag 2.26
+46.43 -0.88 1.40 SiO2/Ag 2.26
+42.86 -0.39 1.41 SiO2/Ag 2.26
+39.29 0.11 1.42 SiO2/Ag 2.26
+35.71 0.60 1.44 SiO2/Ag 2.26
+32.14 1.10 1.45 SiO2/Ag 2.26
+28.57 1.59 1.47 SiO2/Ag 2.26
+25.00 24.32 2.34 SiO2/Ag 5.11
+21.43 24.82 2.36 SiO2/Ag 5.11
+17.86 39.18 3.15 SiO2/Ag 7.66
+14.29 39.68 3.18 SiO2/Ag 7.66
+10.71 50.75 4.12 SiO2/Ag 10.66
+7.14 61.61 5.46 SiO2/Ag 14.93
+3.57 67.95 6.84 SiO2/Ag 19.21
+0.00 78.21 23.17 SiO2/Ag 19.41
+Figure 9 Marginal performance efficiency versus cost weight.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-122-
+
+===== PDF page 30 =====
+Team # apmcm25304268 Page 27 of 51
+bility, and manufacturing feasibility.
+In this section, we propose a robust design framework based on the Porous PDMS /
+SiO2 / Ag multilayer structure derived from Problem 3. To further enhance performance
+and reliability, we introduce two engineering modifications:
+• Microstructural Enhancement: Introducing air voids into the PDMS matrix to tune
+the refractive index and enhance optical matching.
+• Reliability Enhancement: Adding an ultra-thin Al2O3 protection layer to prevent
+the oxidation and sulfidation of the Ag reflector.
+5 . 4 . 2 Establishment of the Model
+Maxwell-Garnett Effective Medium Theory (MG-EMT). To simulate the optical
+properties of porous PDMS without the prohibitive computational cost of full-wave 3D
+simulations, we employ the MG-EMT.
+EMT homogenizes the complex heterogeneous microstructure (PDMS host with
+air inclusions) into a material with an effective complex permittivity𝜀eff. The defining
+equation is:
+𝜀eff−𝜀host
+𝜀eff+ 2𝜀host
+=𝜙 𝜀air−𝜀host
+𝜀air+ 2𝜀host
+(40)
+where 𝜀host =(𝑛PDMS+𝑖𝑘PDMS)2 denotes the complex permittivity of pure PDMS,
+𝜀air≈ 1 represents the permittivity of the air voids, and𝜙 is the porosity—defined as
+the volume fraction of air—which serves as a new continuous optimization variable in
+the design of porous PDMS structures. The effective refractive index is then derived as
+˜𝑛eff=√𝜀eff.
+The Effective Medium Theory (EMT) is adopted for two key reasons. First, it dra-
+matically enhances computational efficiency by representing complex microstructures as
+homogeneous materials with effective optical constants, enabling seamless integration
+with the Transfer Matrix Method (TMM) and facilitating rapid evaluation of thousands
+of design candidates in global optimization frameworks such as Differential Evolution.
+Second, EMT offers clear physical insight by establishing an analytical relationship be-
+tween porosity and effective refractive index, thereby elucidating how tailored porosity
+improves impedance matching and suppresses surface reflection.
+Lifecycle Cost Analysis (LCA) Mode. To evaluate economic feasibility, we
+establish a Total Cost of Ownership (TCO) model that accounts for material, processing,
+and maintenance costs over a 10-year lifespan.
+TCO=𝐶mat+𝐶proc+𝐶maint (41)
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-123-
+
+===== PDF page 31 =====
+Team # apmcm25304268 Page 28 of 51
+where the total cost is decomposed into three components:𝐶mat= ˝(𝑐𝑖·𝑑𝑖) represents
+the direct material cost, calculated as the sum of the unit cost 𝑐𝑖 multiplied by the
+thickness𝑑𝑖 of each layer;𝐶proc denotes the manufacturing process cost, which depends
+on a binary decision variable𝑥protwhen𝑥prot= 1, additional costs associated with Atomic
+Layer Deposition (ALD) are incurred; and𝐶maint accounts for maintenance expenses,
+modeled as a function of the degradation rate of the Ag layer.
+𝐶maint=(𝐶mat+𝐶proc)·𝑀factor· Lifespan (42)
+Here,𝑀factor represents the annual maintenance ratio. Without protection (𝑥prot=
+0), exposed Ag degrades rapidly (𝑀factor = 0.20). With an Al2O3 barrier (𝑥prot = 1),
+degradation is suppressed (𝑀factor= 0.02), significantly reducing long-term OPEX.
+Grey Relational Analysis (GRA) We aim to maximize a comprehensive Final
+Score that balances robust cooling performance 𝑃min net under extreme conditions and
+economic cost TCO. To avoid subjective weighting, we utilize GRA.
+The GRA Grade represents the geometric similarity between the candidate design
+and an Ideal Reference Sequence (High Power, Low Cost). The optimization objective
+is:
+Maximize𝑆GRA= GRA(𝑃min net, TCO) (43)
+Where 𝑃min net is the worst-case cooling power across temperate, tropical, and desert
+climate scenarios, ensuring environmental robustness.
+Differential Evolution (DE) algorithm. This approach is identical in principle to
+that employed in Question 3: it evolves a diverse set of candidate solutions through
+mutation, crossover, and selection operations over successive generations, without re-
+quiring gradient information. DE efficiently explores the trade-off space between𝑃min net
+and TCO, converging to a Pareto-relevant design that maximizes the GRA-based final
+score while respecting physical and practical constraints.
+5 . 4 . 3 Optimization Results and Discussion
+The comprehensive design optimization was executed using a mixed-integer Differential
+Evolution algorithm, incorporating both continuous variables and discrete decisions.
+The algorithm successfully converged to a global optimum that balances thermodynamic
+performance with economic constraints. The detailed configuration and performance
+metrics are summarized in Table 6.
+Microstructural and Spectral Analysis. The optimal configuration features a
+relatively thin PDMS layer (24.59 𝜇m) with a porosity of 11.9%, challenging the
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-124-
+
+===== PDF page 32 =====
+Team # apmcm25304268 Page 29 of 51
+Table 6 Optimal Design Parameters and Performance Metrics
+Design Parameters Value Evaluation Metrics Value
+Structure Porous PDMS/SiO2/Ag Robust𝑃net (min) 57.37 W/m2
+PDMS Thickness (𝑑) 24.59𝜇m Solar Absorptivity (𝛼solar) 0.025
+PDMS Porosity (𝜙) 11.9% Lifecycle Cost (TCO) $14.95 / m2
+Protection Layer Enabled (Al2O3) Final GRA Score 74.91
+conventional intuition that ”thicker is better” for radiative cooling. As illustrated in
+Figure 10, the spectral emissivity profile reveals the underlying optical mechanism.
+The introduction of air voids lowers the effective refractive index of the PDMS matrix,
+thereby improving impedance matching at the air-material interface and minimizing
+surface reflection. Furthermore, the spectrum exhibits distinct Fabry-Perot resonance
+peaks, indicating that the design leverages thin-film interference effects to maximize
+emission within the 8–13𝜇m atmospheric window. Crucially, the film maintains near-
+zero emissivity in the 0.3–2.5𝜇m solar band, confirming that the thin, porous structure
+effectively minimizes parasitic solar absorption, which is often a bottleneck for thicker
+bulk materials.
+Economic Feasibility and Lifecycle Strategy. Beyond physical performance, the
+economic viability of the design is validated through the Total Cost of Ownership (TCO)
+model. Figure 11 presents the breakdown of the lifecycle costs. A key strategic decision
+made by the optimizer was the inclusion of the Al2O3 protection layer. Although
+this addition increases the initial manufacturing complexity and process cost, it yields a
+disproportionate benefit in durability. The protection layer suppresses the degradation of
+the Ag reflector, reducing the annual maintenance ratio from 20% to 2%. Consequently,
+the long-term maintenance expenditure is drastically curtailed, resulting in a highly
+competitive final TCO of $14.95/m2. This result underscores the necessity of a lifecycle
+perspective; a design that appears cheaper initially due to simplified processing would
+ultimately prove more costly due to rapid failure rates.
+Global Optimality and Sensitivity Analysis. To elucidate why the algorithm
+converged to 24.6 𝜇m, we performed a sensitivity analysis of the Grey Relational
+Analysis (GRA) score, as depicted in Figure 12. The trends reveal a clear trade-off
+mechanism. The cooling power 𝑃net increases rapidly in the thin-film regime but
+saturates near∼20𝜇m. Beyond this point, the infrared emission gains diminish, while
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-125-
+
+===== PDF page 33 =====
+Team # apmcm25304268 Page 30 of 51
+Figure 10 Spectral emissivity of the optimized porous structure, demonstrating high selec-
+tivity in the atmospheric window and low solar absorption.
+Figure 11 Lifecycle cost breakdown showing the strategic trade-off between upfront process
+investment and long-term maintenance savings.
+parasitic solar absorption continues to accumulate, causing performance to fluctuate
+or even decline. Conversely, the TCO increases linearly with thickness. The GRA
+score, which geometrically aggregates these factors, identifies a sharp global maximum
+at 24.6𝜇m. This point represents the precise ”sweet spot” where the marginal gain in
+cooling performance no longer justifies the marginal increase in material cost and solar
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-126-
+
+===== PDF page 34 =====
+Team # apmcm25304268 Page 31 of 51
+absorption risk, confirming the robustness of the optimization result.
+Figure 12 Sensitivity analysis of GRA score versus PDMS thickness. The optimal point
+marks the trade-off between performance saturation and linear cost increase.
+VI. Model evaluation
+6 . 1 Advantages of the model
+6 . 1 . 1 Accurate Calculation Results
+The Transfer Matrix Method (TMM) enables accurate computation of the spectral
+reflectance of multilayer films, from which wavelength-dependent emissivity can be de-
+rived. Model validation (e.g., solar-band average emissivity of 0.0389 and atmospheric-
+window standard deviation of 0.1651) aligns well with physical expectations, demon-
+strating reliability.
+6 . 1 . 2 Comprehensive and Holistic Evaluation
+Grey Relational Analysis (GRA) enables multi-objective evaluation by weighting net
+cooling power, atmospheric-window emissivity, and solar absorptivity. Unlike fixed-
+weight methods, GRA dynamically determines the relative importance of each indicator,
+allowing the model to adaptively emphasize the most critical factors, such as net cooling
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-127-
+
+===== PDF page 35 =====
+Team # apmcm25304268 Page 32 of 51
+power in radiative cooling optimization. This method performs well even with small
+sample sizes or incomplete data.
+6 . 1 . 3 Integration of Microstructural Modeling and Multi-Objective Optimization
+MG-EMT (Maxwell-Garnett Effective Medium Theory) combined with TMM facilitates
+accurate modeling of porous PDMS microstructures, and coupled with lifecycle cost
+(LCA) considerations, enables high-performance, cost-effective design.
+6 . 2 Disadvantages of the model
+6 . 2 . 1 High Computational Complexity
+The combination of TMM, MG-EMT, and DE optimization increases computational
+cost, especially when considering multiple parameters such as thickness, porosity, and
+material types.
+6 . 2 . 2 Idealized Assumptions Do Not Match Practical Applications
+This model primarily considers standard atmospheric conditions and an ideal solar spec-
+trum, and may not fully reflect cooling performance under different climatic conditions.
+Furthermore, MG-EMT homogenizes the porous structure, potentially neglecting the
+effects of pore shape and non-uniform distribution. TMM assumes smooth interfaces
+and uniform thickness, which may not fully reflect deviations in actual manufacturing
+processes.
+6 . 2 . 3 Practical Fabrication Constraints
+Optimized structures may be challenging to fabricate in practice, reducing practical
+applicability of the model results.
+VII. References
+[1] Macleod, H. A., Thin-film optical filters, Boca Raton: CRC Press, 2010.
+[2] Storn, R. and Price, K., Differential evolution–a simple and efficient heuristic for
+global optimization over continuous spaces, Journal of Global Optimization, 11:
+341–359, 1997.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-128-
+
+===== PDF page 36 =====
+Team # apmcm25304268 Page 33 of 51
+[3] Julong, D., Introduction to grey system theory, The Journal of Grey System, 1:
+1–24, 1989.
+[4] Maxwell, G. J. C. and Garnett, B. A., Colours in metal glasses and in metallic
+films, Philosophical Transactions of the Royal Society of London. Series A, 203:
+385–420, 1904.
+[5] Luce, A. and Mahdavi, A. and Marquardt, F. and et al., TMM-Fast, a transfer matrix
+computation package for multilayer thin-film optimization: tutorial, Journal of the
+Optical Society of America A, 39: 1007–1013, 2022.
+[6] Li, S. and An, M. and Zheng, Z. and et al., Daytime radiative cooling multilayer films
+designed by a machine learning method and genetic algorithm, Applied Optics, 62:
+4359–4369, 2023.
+[7] Zhan, Y. and Yin, H. and Wang, J. and et al., Enhanced performance of diurnal ra-
+diative cooling for solar cells based on a grating-textured PDMS photonic structure,
+Materials Today Communications, 35: 106117, 2023.
+[8] Xie, A. Q. and Qiu, H. and Jiang, W. and et al., Recent Advances in Spectrally
+Selective Daytime Radiative Cooling Materials, Nano-Micro Letters, 17: 264,
+2025.
+[9] Liu, G. and Chen, S. and Lin, C., Optimization of dielectric-metal multilayer struc-
+ture for color-preserving radiative cooling window, ACS omega, 9: 30425–30435,
+2024.
+[10] Jung, J. and Yoon, S. and Kim, B. and et al., Development of high-performance
+flexible radiative cooling film using PDMS/TiO2 Microparticles, Micromachines,
+14: 2223, 2023.
+[11] Herrmann, Kai and Lauster, Tobias and Song, Qimeng and Retsch, Markus, Ho-
+mogeneous polymer films for passive daytime cooling: optimized thickness for
+maximized cooling performance, Advanced Energy and Sustainability Research, 3:
+2100166, 2022.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-129-

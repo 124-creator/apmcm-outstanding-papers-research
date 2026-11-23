@@ -1,0 +1,16 @@
+# 官方手册原件（11MB，切分源，版权敏感；来源URL与SHA256见README.md，可复得）
+manual/
+*.zip
+
+# 抽查图渲染缓存（9.2MB，非论文内容，多数为空目录）
+images/
+
+# 错位/残缺副本（正式笔记在 notes/）
+fulltext/notes/
+
+# Git 与系统文件
+.git/
+*.json.tmp
+gh_*.json
+.DS_Store
+Thumbs.db

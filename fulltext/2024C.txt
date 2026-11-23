@@ -1,0 +1,1735 @@
+
+===== PDF page 1 =====
+Team # apmcm24200658                                                            
+ 
+ 
+Team Number : apmcm24200658 
+Problem Chosen : C 
+ 
+2024 APMCM summary sheet  
+This study offers a comprehensive examination of future trends in the pet industry 
+both in China and globally, utilizing various mathematical modeling techniques to 
+forecast market developments. The research employs tools such as multiple linear 
+regression, time series analysis, and game theory to investigate changes in pet 
+populations, pet food consumption dynamics, and the effects of policy shifts on the 
+market. 
+In response to question 1, we analyzed data from China's pet industry over the last 
+five years, focusing on cat and dog population changes. Initially, time series analysis 
+was employed to identify overall pet population trends, followed by multiple linear 
+regression to evaluate how macroeconomic factors like GDP per capita, consumer 
+spending on pets, and urbanization influence these populations. Our predictions indicate 
+continued growth in cat numbers, while dog population growth may decelerate, 
+signaling a shift in market demand. 
+For question 2, we analyzed the US and European markets, utilizing panel data 
+models to assess the relationship between pet ownership and pet food market size across 
+countries. By creating a vector autoregressive (VAR) model, we examined the dynamic 
+interplay between market size and pet numbers, predicting a significant expansion of 
+the global pet food market due to rising pet ownership. 
+In addressing question 3, we analyzed production and export data from China's pet 
+food industry. Using the Holt-Winters time series model, we forecasted the industry's 
+gross production value and applied multiple regression analysis to understand how 
+various economic factors influence export trends. Our model also assesses the effects of 
+global economic changes on China's pet food exports and anticipates future recovery 
+and growth in export markets. 
+Regarding question 4, we explored the implications of new external economic 
+policies, particularly tariff adjustments, on China's pet food sector. We developed static 
+and dynamic game-theoretic models to simulate strategic interactions with major trading 
+partners under the new policy environment. The analysis reveals that policies from key 
+European and American countries significantly affect China's pet food exports, leading 
+us to propose optimal strategies for enhancing the international competitiveness of 
+China's pet food industry. 
+Finally, we evaluated the strengths and limitations of our model, providing 
+scientific insights for the sustainable development of the pet industry, particularly in 
+light of uncertainties in international trade policy, and offering guidance for strategic 
+adjustments in China's pet food sector. 
+Keywords: time series, static and dynamic game theory, forecasting, Nash equilibrium 
+analysis 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-240-
+
+===== PDF page 2 =====
+Team # apmcm24200658                                                            
+ 
+Content 
+ 
+1. Introduction ......................................................................................................1 
+1.1 Background  ............................................................................................... 1 
+1.2 Questtion Restatement  .......................................................................... 1 
+1.2.1Question 1.........................................................................................  1 
+1.2.2Question 2.........................................................................................  1 
+1.2.3Question 3.........................................................................................  2 
+1.2.4Question 4.........................................................................................  2 
+2. Problem analysis  .............................................................................................2 
+2.1 Analysis of question one  .......................................................................... 2 
+2.2 Analysis of question two  .......................................................................... 2 
+2.3 Analysis of question three  ........................................................................ 3 
+2.4 Analysis of question four  ......................................................................... 3 
+3. Model assumptions  .........................................................................................3 
+4. Description of the symbol ................................................................................4 
+5. Problem 1: Establishment and solution of the model  .................................4 
+5.1 Data analysis  .............................................................................................. 4 
+5.2 Analysis of the development factors of China’s pet industry ..................... 6 
+5.2.1 Data Colletion .................................................................................  6 
+5.2.2 Analysis of the controlling factors  ................................................  6 
+5.3 Forecast for the development of China’s pet industry  ............. 9 
+5.3.1 Time series forecasting  .................................................................  9 
+5.3.2 Randomforest regression prediction  ............................................. 10 
+5.3.3 Hybrid predictive models  ............................................................. 11 
+6. Problem 2: Establishment and solution of the model  ................................ 12 
+6.1 Data analysis  ............................................................................................ 12 
+6.2 Forecast of pet food demand in other countries ..................................... 15 
+6.2.1 Data Collection .............................................................................  15 
+6.2.2 Feature construction, selection, and correlation analysis .............  15 
+6.2.3 Model construction and solving ..................................................  17 
+7. Problem 3: Establishment and solution of the model  ................................ 18 
+7.1 Analysis of the development of China’s pet food industry  .................. 18 
+7.2 Forecast for the future development of China’s pet food industry  ...... 19 
+7.2.1 Data Collection .............................................................................  19 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-241-
+
+===== PDF page 3 =====
+Team # apmcm24200658                                                            
+ 
+7.2.2 Data processing .............................................................................  20 
+7.2.3 Model building and solving ..........................................................  21 
+8. Problem 4: Establishment and solution of the model  ................................ 23 
+8.1 Assumptions and variable definitions  ................................................... 24 
+8.2 Static game model  .................................................................................. 24 
+8.2.1 Gain funtion definition .................................................................  24 
+8.2.2 Policy space ..................................................................................  24 
+8.2.3 Earning matrix ..............................................................................  24 
+8.2.4 Dynamic game model ...................................................................  25 
+8.3 Solving process and results  .................................................................... 25 
+9. Model evaluation ............................................................................................27 
+9.1 Advantages of the Model  ....................................................................... 27 
+9.2 Disadvantages of the Model ....................................................................28 
+10. References .....................................................................................................28 
+11. Appendix  .......................................................................................................29 
+ 
+ 
+  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-242-
+
+===== PDF page 4 =====
+Team # apmcm24200658                                                              Page 1 of 39 
+1 
+ 
+ 
+I、 Introduction 
+1.1 Background 
+Since the early 21st century, China's pet industry has undergone significant growth driven 
+by the gradual liberalization of pet-related policies. Pets have evolved from being simple 
+household aids to vital emotional companions. Urbanization and demographic changes, such as 
+an aging population and declining birth rates, have further propelled the industry's expansion, 
+resulting in flourishing ancillary sectors. Increased consumer expenditure on pets has 
+transformed purchasing habits, escalating the demand for pet food, supplies, veterinary care, 
+and services. 
+Emerging in the 1990s, China's pet industry coincided with rising disposable incomes 
+following economic reforms. The relaxation of governmental restrictions facilitated the entry 
+of international brands, such as Royal Bear and Little Star, marking the sector’s initial growth 
+phase. Although the rate of dog ownership has plateaued, other pet categories remain robust, 
+and independent brands are capturing market share. The emergence of innovative retail models 
+that blend online and offline sales is influencing the market, alongside advancements in 
+scientific pet care and intelligent management solutions. 
+Globally, the pet industries in Europe and the United States continue to expand rapidly, 
+holding a substantial portion of the global market. Nonetheless, China's pet sector encounters 
+challenges from evolving domestic and international policies, including post-Trump tariff 
+reforms, as well as fluctuating market demands and economic conditions. 
+This study aims to assess the development of China's pet industry over the past five years, 
+taking into account global market dynamics and potential tariff implications. It seeks to 
+establish a scientific framework for forecasting future trends and to provide strategic 
+recommendations for sustainable growth in both China's and the global pet industry. 
+ 
+1.2 Question Restatement 
+Leveraging the provided datasets and supplementary information gathered by our team, we 
+will perform a comprehensive analysis of the pet industry’s development trends and market 
+demands. In conjunction with the prevailing economic context, we will propose strategic 
+recommendations for the advancement of the pet industry in China. 
+1.2.1Question 1:  
+This paper analyzes the development of China's pet industry in the past five years, 
+especially the changes in the number of pet cats and dogs, and discusses the factors affecting 
+the development of China's pet industry. Build a mathematical model to predict the 
+development of China's pet industry in the next three years. 
+1.2.2 Question 2:  
+In recent years, the pet industry in Europe and the United States has witnessed substantial 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-243-
+
+===== PDF page 5 =====
+Team # apmcm24200658                                                              Page 2 of 39 
+2 
+ 
+growth. Utilizing the data presented in Annex 2 and supplementary information collected by 
+the team, an analysis of global pet industry trends by species is warranted. Furthermore, this 
+study will examine the primary factors influencing the global pet industry's development and 
+establish an appropriate mathematical model to forecast the demand for pet food over the next 
+three years. 
+1.2.3Question 3:  
+Based on the data regarding China's pet food production and export value presented in 
+Annex 3, along with the trends in global demand for pet food and China's developmental 
+trajectory, please conduct an analysis of the current state of China's pet food industry and project 
+the production and export outlook for the next three years, assuming the continuity of existing 
+economic policies. 
+1.2.4Question 4:  
+The pet food sector in China will undoubtedly be influenced by the new economic policies 
+implemented by European nations and the United States, including tariff regulations. Develop 
+a suitable mathematical model, utilizing the provided data, supplementary information gathered, 
+and the outcomes of the preceding analyses. Based on these computations, formulate a viable 
+strategy for the sustainable advancement of China's pet food industry. 
+II、 Problem analysis 
+ 
+2.1 Analysis of Question 1 
+The aim of the analysis for question 1 is to evaluate the evolution of China's pet industry 
+over the last five years and to forecast trends for the upcoming three years. This involves a 
+preliminary examination of historical pet population data through descriptive statistics and 
+visualization techniques to illustrate annual changes in the number of pet cats and dogs. 
+Subsequently, multiple linear regression will be employed to identify significant economic and 
+social determinants influencing pet ownership, including per capita GDP and pet-related 
+expenditures. To enhance forecasting precision, a hybrid approach combining time series 
+analysis (like the ARIMA model) with principal component regression (PCR) will be utilized, 
+leveraging both the temporal trends and the variations explained by key influencing factors for 
+predictions regarding the pet industry’s growth over the next three years. 
+2.2 Analysis of Question 2 
+Question 2 seeks to analyze the global development trends of the pet industry and forecast 
+future demand for pet food. This will involve a thorough assessment utilizing pet population 
+and market data from various countries over recent years. We will employ descriptive statistical 
+analysis and visualization methods, including trend line charts, to illustrate the trends in pet 
+numbers and the pet food market. Furthermore, a panel data regression model will be developed 
+to examine the relationship between economic indicators such as per capita GDP and 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-244-
+
+===== PDF page 6 =====
+Team # apmcm24200658                                                              Page 3 of 39 
+3 
+ 
+urbanization rates and the pet food market size. To enhance the accuracy of our predictions 
+regarding market demand and the dynamic interactions among variables, we will also 
+implement vector autoregressive (VAR) models for a deeper analysis. 
+2.3 Analysis of Question 3 
+In addressing Question 3, we will perform a comprehensive analysis and projection of the 
+production and export metrics within China's pet food sector. Initially, a time series analysis 
+will be conducted on pertinent data, incorporating seasonal decomposition and trend 
+examination to elucidate the primary patterns in production and export figures. Following this, 
+we will integrate external economic variables (such as shifts in international trade policies and 
+the global economic landscape) alongside internal industry metrics (including domestic 
+production capacity and market demand). By employing cointegration and error correction 
+models (ECM), we will simultaneously assess the long-term equilibrium and short-term 
+dynamics, facilitating precise forecasts for future production and export activities. 
+2.4 Analysis of Question 4 
+Question 4 will examine international trade policies, focusing on the effects of tariff 
+modifications on China's pet food sector. We will employ a game theory framework to analyze 
+and forecast effective strategies for the industry. Specifically, a bilateral game model will 
+simulate the strategic interactions between China and key trading partners, such as the United 
+States, to evaluate optimal export pricing decisions across various tariff scenarios. By 
+determining the Nash equilibrium, we will identify the most advantageous strategy for China's 
+pet food industry within a specified tariff regime. Furthermore, dynamic game analysis will be 
+utilized to offer model-driven strategic recommendations for industry leaders, taking into 
+account temporal strategy adaptations. 
+III、 Model assumptions 
+(1) Assuming that the pet market is in a state of supply and demand balance, the market 
+price can naturally adjust the supply and demand relationship of pets, and there is no significant 
+market imbalance; 
+(2) It is assumed that the macroeconomic indicators (such as GDP growth rate and 
+household consumption level) will change steadily during the analysis period, and there will be 
+no sudden economic crisis or extreme economic fluctuations; 
+(3) It is assumed that pet food production technology and efficiency remain constant and 
+production costs and conditions are stable during the forecast period. 
+(4) It is assumed that all the data obtained and used are accurate and can truly reflect the 
+actual situation of the market and industry, and there is no measurement error or missing data.  
+(5) Assuming that in the short term, domestic and foreign tax policies, trade policies and 
+relevant laws have not changed, the short-term impact of external policy adjustments on the 
+industry should be appropriately considered.  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-245-
+
+===== PDF page 7 =====
+Team # apmcm24200658                                                              Page 4 of 39 
+4 
+ 
+(6) It is assumed that the exchange rate involved in international trade remains stable in the 
+short term and does not fluctuate significantly.  
+IV、 Description of the symbol 
+symbol illustrate 
+x
+ Model regression coefficient 
+ò
+ Error term 
+M Target variable 
+Tt
+ Time series prediction trend value 
+R t
+ Multiple regression model predicted value 
+d The highest order of polynomial 
+GDP Gross Domestic Product 
+V、 Problem 1: Establishment and solution of the 
+model 
+5.1 Data analysis 
+First of all, a detailed analysis of the provided data on the number of pet cats and dogs is 
+carried out, analyzing characteristics such as trends, growth rates, etc. 
+Table 1 Changes in the number of cats and dogs in China in different years 
+Year The number of pet cats（ten thousand） The number of pet dogs（ten thousand） 
+2019 4412 5503 
+2020 4862 5222 
+2021 5806 5429 
+2022 6536 5119 
+2023 6980 5175 
+In order to provide a clearer picture of the evolution of pet populations over time, our team 
+has completed a histogram of the number of pet cats and dogs by year, as shown in Figure 2. 
+Next, we will analyze the changes in the number of cats and dogs in detail. 
+As illustrated in Figure 2, the population of pet cats has experienced a consistent upward 
+trajectory, increasing from 44.12 million in 2019 to 69.8 million in 2023, representing an 
+approximate growth of 58%. In contrast, the number of pet dogs exhibited fluctuations during 
+the same period, peaking at approximately 55.03 million in 2019 before declining between 2020 
+and 2022. Although the pet dog population rebounded to around 51.75 million in 2023, it 
+remains below the 2019 levels. 
+The number of pet cats is showing a clear upward trend, while the number of pet dogs is 
+showing a slight downward trend. By 2023, the number of pet cats has surpassed that of pet 
+dogs, a phenomenon that reflects the growing number of families who prefer cats as pets. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-246-
+
+===== PDF page 8 =====
+Team # apmcm24200658                                                              Page 5 of 39 
+5 
+ 
+ 
+Fig.2 The number of pet cats and dogs changes over time 
+In order to further analyze the quantitative changes of the two, the growth rate of the two 
+is calculated as follows: 
+𝐺𝑟𝑜𝑤𝑡ℎ 𝑟𝑎𝑡𝑒 = 𝐶𝑢𝑟𝑟𝑒𝑛𝑡 𝑦𝑒𝑎𝑟 𝑞𝑢𝑎𝑛𝑡𝑖𝑡𝑦 − 𝑇ℎ𝑒 𝑝𝑟𝑒𝑣𝑖𝑜𝑢𝑠 𝑦𝑒𝑎𝑟 𝑞𝑢𝑎𝑛𝑡𝑖𝑡𝑦 𝑇ℎ𝑒 𝑝𝑟𝑒𝑣𝑖𝑜𝑢𝑠 𝑦𝑒𝑎𝑟 𝑞𝑢𝑎𝑛𝑡𝑖𝑡𝑦 × 100% (1) 
+The growth trend of pet cats and pet dogs over time is shown in Figure 3. The growth of 
+cats and dogs will be analyzed separately below: 
+For pet cats: 
+• In 2020, the growth rate was about 10%, marking the beginning of an accelerated increase 
+in the number of pet cats. 
+• In 2021, the growth rate rose significantly to 19%, reaching its highest point, reflecting 
+a sharp increase in demand for cats during the year. 
+• In 2022, growth slowed to 12.5%, but remained at a double-digit level. 
+• In 2023, the growth rate slowed further to 6.8%, and although the pace of growth 
+continues to slow, market demand remains positive. 
+Overall, the number of pet cats is growing rapidly, but the rate of growth is gradually 
+slowing. 
+For pet dogs: 
+• In 2020, the growth rate was about -5%, indicating a decrease in the number of pet dogs, 
+possibly due to declining market demand or being limited by feeding policies. 
+• In 2021, the growth rate returned to 4%, indicating a recovery in demand for pet dogs. 
+• In 2022, the growth rate fell again to -6%, which may be related to external factors such 
+as policy and the economy. 
+• In 2023, the growth rate rebounded to 1%, indicating that the demand for pet dogs is 
+starting to stabilize. 
+Overall, the growth rate of pet dogs fluctuates greatly, showing a downward trend overall, 
+but there are signs of stabilization in recent years. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-247-
+
+===== PDF page 9 =====
+Team # apmcm24200658                                                              Page 6 of 39 
+6 
+ 
+ 
+Fig. 3 Growth rate of pet cats and dogs over time 
+ 
+5.2 Analysis of the development factors of China's pet industry 
+5.2.1 Data Collection 
+Through literature research, it was determined that the following factors have an impact 
+on the development of the pet industry, as shown in Figure 4. 
+ 
+Figure 4 Indicator chart 
+5.2.2 Analysis of controlling factors 
+First, we will evaluate the strength of the linear relationship between the two independent 
+variables, the number of pet cats and pet dogs, and the target variable (i.e., the number of cats 
+or dogs) through correlation analysis. Next, we will use a ridge regression model to quantify 
+the specific effect of each independent variable on the target variable, and in the process, solve 
+possible multicollinearity problems. Finally, we will use LASSO regression to identify and 
+screen out the independent variables that have the most significant impact on the target variables. 
+Through this series of analyses, we can more accurately understand the relationship between 
+pet numbers and identify the key factors that influence the target variables. 
+(1)Correlation analysis:  
+We will perform a quantitative analysis of the correlation between variables to evaluate the 
+degree of linear correlation between them. Since the attachment data provided are numerical 
+data, we will use the Pearson correlation coefficient method to measure the correlation between 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-248-
+
+===== PDF page 10 =====
+Team # apmcm24200658                                                              Page 7 of 39 
+7 
+ 
+the variables. This approach gives us an accurate measure of the linear relationship between 
+variables.  
+( )( )
+,
+cov( , ) XY
+XY
+X Y X Y
+E X YXY      −−==
+ (2) 
+The above equation is about the definition of the overall correlation coefficient, and the 
+Greek symbol is often used 
+ as the representative symbol. Then, the covariance and standard 
+deviation of the sample are estimated to obtain the Pearson correlation coefficient, which is 
+often represented by the English letter r 
+( )( )
+( ) ( )
+1
+22
+11
+n
+ii
+i
+nn
+ii
+ii
+X X Y Y
+r
+X X Y Y
+=
+==
+−−
+=
+−−
+
+
+ (3) 
+r can also be estimated from the 
+iX standard fractional mean of the (,) sample points to 
+obtain an equivalent expression to the above equation:
+iY  
+1
+1
+1
+n
+ii
+i XY
+X X Y Yr n =   −−=   −    
+ (4) 
+( )
+2
+2
+61
+1
+id
+nn
+ =−
+−
+
+ (5) 
+(2)Ridge return 
+Ridge regression is an improved technique of traditional linear regression, especially 
+suitable for processing datasets with multicollinearity. In this method, the L2 norm is introduced 
+into the loss function as a penalty term, and the regression coefficient is constrained to reduce 
+the complexity of the model. This not only helps to alleviate the instability of parameter 
+estimation caused by the high correlation between dependent variables, but also enhances the 
+prediction performance of the model on new data. 
+2
+2
+0
+1 1 1
+min
+ppn
+i j ij j
+i j j
+yx    
+= = =
+− − +
+
+  
+ (6) 
+(3) LASSO regression 
+LASSO (Least Absolute Shrinkage and Selection Operator) regression is a regularization 
+technique of linear regression, which constrains the model parameters by introducing the L1 
+norm as a penalty term in the loss function. Unlike ridge regression, LASSO is able to generate 
+sparse solutions, which means that some of the coefficients are reduced to zero, thus achieving 
+feature selection. This approach not only helps to improve the simplicity of the model, but also 
+enhances its generalization ability. 
+The function takes the form of: 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-249-
+
+===== PDF page 11 =====
+Team # apmcm24200658                                                              Page 8 of 39 
+8 
+ 
+2
+0
+1 1 1
+min | |
+ppn
+i j ij j
+i j j
+yx    
+= = =
+− − +
+
+  
+ (7) 
+(4) Analyze the results 
+Pet cat population analysis 
+(1) The pet market size and pet food expenditure had the highest positive correlation with 
+the number of cats, indicating that these factors were the main driving factors for the change of 
+cat population. There was a weak negative correlation between total fertility and the number of 
+cats. 
+(2) The regression coefficient of pet food expenditure on the number of cats was higher, 
+indicating that it had the greatest impact on the number of cats. Spending on veterinary services 
+also has a significant impact on cat populations. 
+(3) The important factors screened out include pet food expenses and veterinary service 
+expenses. 
+Pet dog population analysis 
+(1) The size of the pet market has a significant positive correlation with the number of 
+dogs. Pet food spending is also strongly correlated with the number of dogs. 
+(2) Pet food expenditure and pet market size are the main contributors to the number of 
+dogs. Other variables, such as China's pet household penetration rate, have a weaker impact on 
+dog populations. 
+(3) The size of the pet market is the most important variable to be screened out. 
+Note: The horizontal coordinates of the following four bar charts are The size of pet market、
+Expenditure for pet food 、 Expenditure on Veterinary Services 、 Chinese pet household 
+penetration rate、total fertility rate、Index number of food production、per capital GDP、urban 
+population, from left to right 
+ 
+Fig.5 Correlation between each trait and the number of cats 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-250-
+
+===== PDF page 12 =====
+Team # apmcm24200658                                                              Page 9 of 39 
+9 
+ 
+ 
+Fig.6 Correlation between each feature and the number of dogs 
+ 
+Fig.7 Regression coefficients of each trait and the number of cats 
+ 
+Fig.8 Regression coefficients of each trait and the number of dogs 
+5.3 Forecast for the development of China's pet industry 
+5.3.1 Time series forecasting 
+Polynomial regression is an extended form of linear regression that describes the nonlinear 
+relationship between dependent and independent variables by adding a higher-order term. 
+Polynomial transformations of years can more effectively fit nonlinear trends that may exist in 
+a time series. 
+Let the year be x and the target value (e.g. number of cats or dogs) be y. The model of 
+polynomial regression is: 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-251-
+
+===== PDF page 13 =====
+Team # apmcm24200658                                                              Page 10 of 39 
+10 
+ 
+𝐶𝑜𝑟𝑟𝑒𝑙𝑎𝑡𝑖𝑜𝑛 𝑖𝑛𝑑𝑒𝑥 = 𝐶𝑜𝑣𝑎𝑟𝑖𝑎𝑛𝑐𝑒（𝑋, 𝑌） 𝜎𝑥 ⋅ 𝜎𝑦  (8) 
+
+—The regression coefficient of the model 
+dx
+—The d-power of the year, which represents the higher order term in the polynomial 
+ò
+—Error term 
+The predicted value can be expressed as: 
+0
+ˆ
+d
+i
+i
+i
+yx
+=
+=
+ (9) 
+where x: year and d: the highest order of the polynomial. 
+5.3.2 Random forest regression prediction 
+Random forest is a popular ensemble learning algorithm that builds multiple decision tree 
+models based on the Bagging (Bootstrap Aggregating) method. In a random forest, each 
+decision tree is a weak learner that is independently trained to make predictions about the 
+sample. When it is necessary to classify or regress a new sample, the random forest collects the 
+predictions of all decision trees and decides the final output by majority voting. This approach 
+improves the accuracy of predictions because it reduces the risk of overfitting and takes 
+advantage of the diversity of multiple models. 
+Information entropy is a measure of uncertainty in the amount of information, which 
+reflects the diversity of different outcomes that an event may have. The lower the value of 
+information entropy, the lower the uncertainty of the information. The calculation equation is 
+as follows: 
+ (10) 
+Where: the probability of 
+ a random variable
+ .  
+Conditional information entropy refers to the uncertainty of the random variable X given 
+the random variable Y. The conditional entropy and information gain equations are as follows: 
+Conditional entropy: refers to the uncertainty exhibited by the random variable X when 
+the random variable Y is known. 
+ (11) 
+Information gain: refers to the degree to which the uncertainty of information is reduced 
+under certain conditions. 
+ (12) 
+The Gini index reflects the probability that a randomly selected sample will be 
+misclassified in a sample set. A smaller Gini index indicates a lower probability of 
+misclassification, i.e., a higher purity of the sample (0 when all samples in the set belong to the 
+same category). The calculation equation is as follows: 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-252-
+
+===== PDF page 14 =====
+Team # apmcm24200658                                                              Page 11 of 39 
+11 
+ 
+ (13) 
+Random forest (RF) is a model that integrates multiple decision trees and can be used for 
+both classification tasks and regression analysis. A schematic diagram of a decision tree and a 
+random forest is shown in Figure 9. 
+ 
+Fig.9 Schematic diagram of decision tree and random forest 
+For M trees, the prediction result for each tree is , then the final prediction value is: 
+1
+1ˆ () M m
+m
+y f XM = = 
+ (14) 
+5.3.3 Hybrid predictive models 
+The hybrid forecasting method combines time series forecasting and regression 
+forecasting of the main controlling factors, and obtains the final prediction results in the form 
+of weighted averages. Adjusting the weights controls the relative importance of the time series 
+forecast and the master factor forecast in the overall forecast. 
+hybridˆy  The equation for 
+calculating the mixed prediction is: 
+hybrid mc tsˆ ˆ ˆ(1 )y wy w y= + −
+ (15) 
+The prediction results are shown in Figures 10 and 11. 
+(1) Prediction results of the number of cats 
+Actual Trends: From 2019 to 2023, the number of pet cats continues to rise, reflecting the 
+continued growth of the pet cat market size and demand. 
+Forecast trends: From 2024 to 2026, the number of cats will continue to show an upward 
+trend, and although it continues to grow, the pace may slow down. 
+This trend is consistent with the natural characteristics of cat population growth, and the 
+prediction results of the model show an appropriate nonlinear growth pattern. The predicted 
+number of cats is reasonable, indicating that the model successfully identifies and reflects the 
+growth trends presented in the historical data. The number of cats is expected to maintain a 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-253-
+
+===== PDF page 15 =====
+Team # apmcm24200658                                                              Page 12 of 39 
+12 
+ 
+steady growth trajectory over the next three years, suggesting that the pet cat market has broad 
+growth potential. 
+(2) Prediction results of the number of dogs 
+Actual trends: From 2019 to 2023, the number of dogs showed significant volatility, with 
+large increases and decreases during the period, reflecting a high level of instability in historical 
+data. Since 2022, the number of dogs has gradually stabilized. 
+Predict trends 
+Projections show that the number of dogs is expected to remain relatively stable between 
+2024 and 2026, with a limited range of fluctuations. This trend may be due to the influence of 
+volatility in historical data and the tendency of models to smooth out these fluctuations. 
+Time Series Trend Analysis: Overall, the model is relatively accurate in predicting cat 
+populations, and its growth trends are consistent with historical data. Forecasts for dog 
+populations, on the other hand, smooth out fluctuations and show a possible stable trend in the 
+future. The hybrid model combines time series with major influencing factors, reasonably 
+models the nonlinear trend in historical data, and comprehensively considers the impact of 
+multiple main controlling factors (such as pet market size, food expenditure, etc.). 
+ 
+Fig.10 Prediction of cat population 
+ 
+Fig.11 Prediction of dog population 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-254-
+
+===== PDF page 16 =====
+Team # apmcm24200658                                                              Page 13 of 39 
+13 
+ 
+VI、 Problem 2: Establishment and solution of the 
+model 
+6.1 Data analysis 
+Start with a trend analysis. The results are shown in Figure 12~Figure 15. 
+(1) Analysis of the number and growth trend of cats 
+In terms of quantitative trends: 
+The number of pet cats in the United States is visibly higher than in France and Germany. 
+From 2019 to 2023, there is an overall downward trend, indicating that the number of pet 
+cats in the United States is gradually decreasing. 
+The number of pet cats in France and Germany is relatively close, with France having 
+slightly more. 
+The data shows that the number of pet cats in France is on the rise, while the number of 
+pet cats in Germany is more stable, but there is also a slight increase. 
+In terms of growth rate: 
+The growth rate of pet cats in the United States experienced significant fluctuations, with 
+a sharp decline in 2020 and a slight recovery in 2021, but then declining again, culminating in 
+a modest increase in 2023. 
+The instability of the growth rate also reflects the instability of the pet cat market in the 
+United States. 
+The rate of growth of pet cats in France continues to rise steadily, indicating that the 
+number of people owning cats is on the rise. 
+The growth rate of pet cats in Germany tends to be stable and does not fluctuate much, but 
+the growth rate is slightly slower than that of pet cats in France. 
+(2) Analysis of dog numbers and growth trends 
+In terms of quantitative trends: 
+The number of pet dogs in the United States is also significantly higher than in France and 
+Germany, and the number of pet dogs has been relatively stable between 2019 and 2023, with 
+a slight decrease. 
+The number of pet dogs in France, although slightly lower than in Germany, is slowly 
+increasing. 
+The number of pet dogs in Germany is close to the number of pet dogs in France, but 
+slightly more. However, compared to France, the number of pet dogs in Germany has decreased 
+slightly after 2022. 
+In terms of growth rate: 
+The growth rate of pet dogs in the United States fluctuates significantly, but the overall 
+trend is declining, especially after 2022, and the negative growth is even more obvious. 
+After 2022, the number of pet dogs in France has increased significantly, reaching a high 
+level in 2023, indicating that the dog breeding market in France has great potential. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-255-
+
+===== PDF page 17 =====
+Team # apmcm24200658                                                              Page 14 of 39 
+14 
+ 
+The growth rate of the pet dog population in Germany has stabilized, and the overall level 
+is low, indicating that the dog breeding market in Germany has reached a relatively saturated 
+state. 
+ 
+Fig. 12 Trends in cat populations by country 
+ 
+Fig. 13 Trends in the growth rate of cat populations by country 
+ 
+ 
+Fig. 14 Trends in dog populations by country 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-256-
+
+===== PDF page 18 =====
+Team # apmcm24200658                                                              Page 15 of 39 
+15 
+ 
+ 
+Figure 15 Trends in the growth rate of dog populations by country 
+6.2 Forecast of pet food demand in other countries 
+6.2.1 Data Collection 
+(1) The number of pets 
+Annual statistics on pet cats and dogs by country provide insights into yearly trends in pet 
+ownership, aiding in the prediction of overall pet food demand. 
+(2) Relevant data of the pet food market 
+Pet Food Industry Market Size (USD 100 million): This indicator reflects the overall 
+consumption level of the pet food market and is a direct measure of market demand. 
+Annual Pet Food Expenditure ($100 million): This data provides the total amount of pet 
+food spent each year and helps estimate the average food consumption per pet. 
+Total Pet Food Exports (USD 100 million): This indicator reveals the demand for pet food 
+in the global market and is of great significance for global market analysis. 
+(3) Other relevant indicators of the pet industry 
+Pet Market Size (USD 100 million): This indicator maps the overall trend of pet-related 
+consumption, which is indirectly related to the demand for pet food, reflecting the breadth and 
+depth of economic activity in the pet industry. 
+Veterinary Services Expenditure (US$ 100 million): reflects pet owners' willingness to pay 
+for pet consumption, which indirectly determines their spending on pet food. 
+(4) Socio-economic and demographic factors 
+Pet Household Penetration: This indicator reflects the popularity of pet ownership, which 
+can indirectly infer the potential size of the pet market. 
+GDP per capita (USD): reflects the level of a country's national economy and is highly 
+correlated with the ability to spend on pet food. 
+Urban population: The level of urbanization may promote pet keeping habits, which 
+indirectly affects the demand for pet food. 
+6.2.2 Feature construction, selection, and correlation analysis 
+(1) Feature construction 
+For more efficient and accurate modeling and prediction, we construct the following new 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-257-
+
+===== PDF page 19 =====
+Team # apmcm24200658                                                              Page 16 of 39 
+16 
+ 
+features: 
+Total number of pets 
+total cat dogP P P=+
+ (16) 
+Per capita spending on pet food 
+avg
+total
+ME P=
+ (17) 
+Quantify the effect of features on the target variable by calculating the correlation 
+coefficient between the variables: 
+𝐶𝑜𝑟𝑟𝑒𝑙𝑎𝑡𝑖𝑜𝑛 𝑖𝑛𝑑𝑒𝑥 = 𝐶𝑜𝑣𝑎𝑟𝑖𝑎𝑛𝑐𝑒（X, Y） 𝜎𝑥 ⋅ 𝜎𝑦  (18) 
+(2) Feature selection 
+A total of 10 feature variables were obtained. In order to reduce redundancy and improve 
+the efficiency and interpretability of the model, the following methods will be used to filter the 
+independent variables. 
+⚫ Correlation analysis of features 
+The correlation between features and target variables (market size) is analyzed by 
+calculating the Pearson correlation coefficient, and a heat map is generated using Python. The 
+results are shown in Figure 16. 
+ 
+ 
+Fig.16 Correlation analysis results 
+The correlation coefficient between the total number of pets and the market size is 
+extremely high at 0.96, indicating that the number of pets is a major factor driving the growth 
+of the pet food market. 
+The correlation coefficient of per capita pet food expenditure is 0.78, which indicates that 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-258-
+
+===== PDF page 20 =====
+Team # apmcm24200658                                                              Page 17 of 39 
+17 
+ 
+it has a certain importance in measuring the consumption power of the pet food market. 
+Although the correlation of urban population is not high, it still deserves in-depth analysis 
+as a basic role of consumption. 
+⚫ Eliminate redundant features 
+Number of cats and dogs: Comprehensively reflected by the total number of pets, 
+eliminated. 
+Characteristics such as pet food export value, pet market size, and veterinary service 
+expenditure: the direct correlation with market size is low; There may be collinearity 
+between the data, culling. 
+⚫ The final selection feature 
+Based on our team's analysis of the data, we will select the following 4 characteristics 
+as independent variables: 
+argument Select a reason 
+Total number of pets Indicates the pet base of the market and reflects the potential size of the market. 
+Urban population 
+Provide a reference to the number of consumers, 
+the larger the population size, the higher the 
+market demand. 
+GDP per capita 
+Reflecting the level of economic development of 
+the country, the more developed the economy, the 
+larger the pet food market. 
+Pet food per capita 
+The higher the pet owner's willingness to spend on 
+pets, which plays a decisive role in increasing the 
+market size. 
+ 
+6.2.3 Model construction and solving 
+(1) Multiple linear regression model 
+Multiple linear regression equations: 
+0 1 total 2 urban 3 percapita 4 avgM P P GDP E    = + + + + + ò
+ (19) 
+The regression results are as follows: 
+United States 
+total urban percapita avg120 0.021 0.005 0.63 140M P P GDP E=− + + + +
+ (20) 
+R2=0.985，MSE=1.3 
+France 
+total urban percapita avg55 0.017 0.002 0.51 115M P P GDP E=− + + + +
+ (21) 
+R2=0.976，MSE=0.6 
+Germany 
+total urban percapita avg62 0.019 0.004 0.54 130M P P GDP E=− + + + +
+ (22) 
+R2=0.981，MSE=0.8 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-259-
+
+===== PDF page 21 =====
+Team # apmcm24200658                                                              Page 18 of 39 
+18 
+ 
+(2) Time series model 
+Autoregressive (AR): 
+1 1 2 2t t t tX X X−−= + + +
+ ò
+ (23) 
+Differential (I): Eliminates non-stationarity of the data. 
+Moving Average (MA): 
+11ttX −= + +
+ò
+ (24) 
+Figure 17 illustrates that the projected market size in the United States is anticipated to 
+surpass that of France and Germany significantly, underscoring its greater market potential and 
+consumption capacity. Furthermore, each country's market size is expected to experience 
+modest growth by 2026 relative to 2024. 
+ 
+Figure 17 Market size forecast and comparison by country 
+VII、 Problem 3: Establishment and solution of the 
+model 
+7.1 Analysis of the development of China's pet food industry 
+Draw line charts and analyze trends. 
+(1) The trend of China's total output value of pet food 
+Analysis of the data of the total output value of pet food (RMB): 
+From 2019 to 2023, the total output value of the industry increased from 44.07 billion yuan 
+to 279.3 billion yuan. 
+The growth rate reached 533.5%, with an average annual compound growth rate of about 
+56%. 
+This indicates that the industry has experienced rapid expansion over the past five years, 
+especially in 2022 and 2023, with particularly significant increases, which may be affected by 
+the expansion of the market size or other policy factors. 
+(2) The trend of China's total pet food exports 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-260-
+
+===== PDF page 22 =====
+Team # apmcm24200658                                                              Page 19 of 39 
+19 
+ 
+An observation of the total export value of pet food (USD) shows that from 2019 to 2023, 
+the total export value decreased from US$15.41 billion to US$980 million, and then gradually 
+recovered to US$3.96 billion. 
+There have been significant fluctuations along the way, especially in 2020, which 
+experienced significant declines. 
+Possible reasons include the direct impact of changes in the external economic 
+environment (e.g., the spread of the epidemic, adjustments in international trade policies) on 
+exports. 
+(3) Changes in market demand in China's pet industry 
+Based on the total number of pets (millions) and pet food spending: 
+In 2019, the total number of pets was 99.8 million, and by 2023 it has increased to 132.02 
+million. 
+During this period, spending on pet food rose from US$15.1 billion to US$20.3 billion, 
+with an average annual growth rate of about 7.5%. 
+This suggests that the growth in the number of pets is directly contributing to the demand 
+in the domestic market, while consumer demand for the quality of pet food may also increase. 
+ 
+Figure 18 China's total output value of pet food (RMB, 100 million) 
+ 
+Figure 19 China's total pet food exports (US$, 100 million). 
+7.2 Forecast for the future development of China's pet food industry 
+7.2.1 Data Collection 
+(1) Data related to the number of pets: the number of cats and dogs (unit: 10,000): the 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-261-
+
+===== PDF page 23 =====
+Team # apmcm24200658                                                              Page 20 of 39 
+20 
+ 
+basic market size used to analyze the demand for pet food. 
+Total number of pets (unit: millions): A direct reflection of the overall pet market size. 
+(2) Relevant data of pet food industry: 
+China's Pet Food Gross Output Value (RMB): Used to analyze the trend of the industry's 
+production capacity. 
+China's total pet food exports (USD): directly reflects changes in the export market. 
+(3) Pet market related data: 
+Pet Market Size (in USD billion): Helps assess changes in the overall size of the industry. 
+Pet Food Expenditure (in US$100 million): Changes in market demand by segment. 
+(4) Economic and demographic factors (indirect effects): 
+Urban and rural population: reflects the geographical structure of the consumer market. 
+Food Production Index: Assesses the potential impact of overall domestic food production 
+capacity on the pet food industry. 
+GDP per capita and final consumption expenditure of households: reflect the role of 
+economic level and consumption power in driving market demand. 
+7.2.2 Data processing 
+(1) Description of variables 
+Target variable: China's total pet food output value (gross domestic product, unit: RMB). 
+China's total pet food exports in US dollars. 
+Influencing factor (independent variable): number of pets (millions). 
+Pet market size (USD billion). 
+Pet food spending (US$ billion). 
+Urban population (persons). 
+GDP per capita (USD). 
+Food Production Index (2014-2016 = 100). 
+(2) Data standardization 
+To prevent the influence of different units on the prediction results, we normalize the 
+independent variables: 
+XX   −=
+ (25) 
+(3) Feature selection 
+Correlation Analysis: 
+The Pearson correlation coefficient between the target variable and the independent 
+variable was calculated, and the characteristics with significant correlation between the two 
+were screened out. 
+Multicollinearity detection: 
+The variance expansion factor (VIF) was used to evaluate multicollinearity between 
+independent variables for the purpose of removing the characteristics of VIF>10. 
+Figure 20 shows the relevance of each feature to China's pet food industry. It is not difficult 
+to see that: 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-262-
+
+===== PDF page 24 =====
+Team # apmcm24200658                                                              Page 21 of 39 
+21 
+ 
+(1) Pet number, pet market size, pet food expenditure: There is a strong positive correlation 
+between these three indicators and GDP (0.95, 0.96, 0.95), which indicates that the rise of these 
+variables usually leads to an increase in GDP. These factors may directly reflect the increase in 
+domestic market demand. 
+(2) Total export value: There is a significant negative correlation between these factors and 
+total export value (-0.59, -0.51, -0.52), which indicates that with the continuous expansion of 
+the domestic market, the increase in domestic consumption may lead to a decrease in foreign 
+exports. 
+(3) Urban population and per capita GDP: These two indicators show a significant positive 
+correlation (0.94 and 0.82, respectively), indicating that the level of economic development and 
+the process of urbanization may be the main factors driving production growth. However, the 
+negative impact on the total value of exports is also significant. 
+ 
+Fig.20 Heat map of the correlation between features and target variables 
+In the end, the characteristics chosen by our team are as follows: 
+ Number of pets (millions).  Pet market size (USD billion).  Food Production Index 
+(2014-2016 = 100). 
+7.2.3 Model building and solving 
+(1) Holt-Winters model 
+A Holt-Winters model in a time series model based on the target variable, and step-by-step 
+break down the trend portions of the data: 
+Trending Items: 
+11(1 )( )t t t tT Y T B−−= + − +
+ (26) 
+Smoothing items 
+11( ) (1 )t t t tL T T B−−= − + −
+ (27) 
+Predicted value 
+F{t+m} = Lt + mBt
+ (28) 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-263-
+
+===== PDF page 25 =====
+Team # apmcm24200658                                                              Page 22 of 39 
+22 
+ 
+(2) Multiple regression analysis 
+Use the regression model to fit the time series residual portions: 
+0 1 1 2 2t n n tR X X X   = + + + + +
+ ò
+ (29) 
+(3) Hybrid model 
+The final forecast consists of two parts: the time series trend and the multiple regression 
+residuals: 
+Yt = Tt + Rt
+ (30) 
+Figure 21 illustrates the time-series trend of China's real pet food production fitting to the 
+Holt-Winters method. The solid line represents the actual annual data point, while the dotted 
+line represents the predicted trend line. As can be seen from the figure, the model reflects the 
+growth trend of GDP well, suggesting that it may continue to grow in the future. 
+ 
+Fig.21 Time series trend of GDP (RMB, 100 million) 
+Blue: Real GDP ；Yellow: Holt-Winters trend 
+Similar to GDP, Figure 22 shows the actual data on the total value of exports and their 
+trends. Although the total value of exports has declined since 2019, it has gradually recovered 
+and shown growth since 2021, and the model predicts that this growth will continue in the future. 
+ 
+Fig. 22 Time series trend of total export value (US$, 100 million) 
+Blue: Real GDP ；Yellow: Optimized Holt-Winters trend 
+Figures 23 and 24 illustrate future trends in the pet food industry, with solid lines 
+representing historical actual data and dotted lines indicating forecasted future values. Forecasts 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-264-
+
+===== PDF page 26 =====
+Team # apmcm24200658                                                              Page 23 of 39 
+23 
+ 
+of GDP suggest that GDP will grow significantly over the next few years, especially after 2023, 
+which may be closely related to a significant increase in market demand. 
+Forecast of total exports: Forecasts of total exports show signs of recovery and are 
+expected to return to pre-2019 levels and continue to grow in the following years. 
+ 
+ 
+Fig. 23 Comparison of actual and forecasted GDP (RMB, 100 million yuan) 
+Blue (Real GDP)； Yellow (Forecasted GDP) 
+ 
+Figure 24 Comparison of actual and forecasted total exports (US$, 100 million) 
+Blue (Actual Total Exports) ；Yellow (Forecasted Total Exports) 
+VIII、 Problem 4: Establishment and solution of the 
+model 
+Our team will conduct research using a static game method to simulate the strategic 
+competition between China and the United States in the pet food market, construct a revenue 
+matrix and solve the Nash equilibrium. At the same time, in order to analyze the dynamic 
+adjustment of the strategy, the team members came up with the idea of introducing a dynamic 
+game model. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-265-
+
+===== PDF page 27 =====
+Team # apmcm24200658                                                              Page 24 of 39 
+24 
+ 
+8.1 Assumptions and variable definitions 
+There are only two major players in the market for this model: China (Player 1) and the 
+United States (Player 2). 
+The strategies held by both sides are to adjust export prices and maintain existing prices, 
+respectively. 
+The revenue function will be affected by a variety of factors such as market share, tariff 
+policy, and production costs. 
+Other countries and regions (e.g., Southeast Asia) have less impact on the pet food market 
+and currently do not have a large share of the international market, so they are not included in 
+the game analysis. 
+SC, SA: Market share in China and the United States.  
+PC, PA: Export Prices from China and the United States.  
+CC, CA: Production Costs in China and the United States.  
+T: U.S. tariff rate on China (25%Now). 
+πC, πA: the function of returns between China and the United States.  
+8.2 Static game model 
+8.2.1 Gain function definition 
+The return function is defined as follows (after joining both China and the United States): 
+( ) , ( )C C C C A A A AP C T S P C S= − −  = − 
+ (31) 
+The relationship between market share and price can be approximated as: 
+()
+1 ,11 CAC A CPPS S Se −= = −+
+ (32) 
+Among them, α>0: market price sensitivity coefficient, which indicates the degree of 
+impact of price differences on market share. 
+8.2.2 Policy space 
+China-Owned Strategy: Choosing Whether to Reduce Prices: 
+PC=P1 (maintain the current price).  
+PC=P2 (reduced price).  
+U.S.-Held Strategy: Choosing Whether to Raise Tariffs Further: 
+T = 25% (maintain existing tariffs). 
+T = 30% (tariff increase). 
+8.2.3 Earnings matrix 
+Combined with the above definitions, the benefit matrix is constructed: 
+ United States: Maintenance 
+tariffs (T=25%) 
+United States: Tariff increase 
+(T=30%) 
+China: Maintenance Price 
+(PC=P1) 
+π11，π12 π13，π14 
+China: Maintenance Price π21，π22 π23，π24 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-266-
+
+===== PDF page 28 =====
+Team # apmcm24200658                                                              Page 25 of 39 
+25 
+ 
+(PC=P2) 
+8.2.4 Dynamic game model 
+Introduce a two-stage model of dynamic games: 
+Phase 1: The U.S. chooses whether or not to adjust the tariffs. 
+Phase 2: China chooses whether to lower prices based on the tariff adjustments given by 
+the United States. 
+In this dynamic game, we will use the backward method to solve: 
+In Phase 2, China chooses the best price under the known tariff strategy: 
+arg max
+CPC
+ (33) 
+In Phase 1, the U.S. chooses a tariff strategy to maximize its own benefits: 
+arg maxTA
+ (34) 
+8.3 Solving process and results 
+Using the above-mentioned return function and strategy space, the Nash equilibrium in the 
+static game and the perfect equilibrium of the sub-game in the dynamic game are solved step 
+by step. 
+The solution steps are as follows: 
+(1) Parameters 
+α=1.5: price sensitivity coefficient.  
+P C = [50,45], P A = 55 (USD).  
+C = 30, C A = 35 (USD).  
+T=25%,30%。 
+(2) Calculation of the Earnings Matrix: 
+The parameters are substituted into the return function to calculate the return matrix. 
+(3) Nash equilibrium solving: 
+Seek a combination of strategies that will make the best results for both strategies. 
+(4) Using dynamic game to solve: 
+Use the backward method to determine the optimal strategy for each stage. 
+The results of the static game, as shown in Figures 25 and 26. 
+From China's earnings matrix, it can be seen that: 
+When China's prices remain high (PC=50), China's earnings remain high regardless of the 
+U.S. tariff policy. Specifically, if the tariff rate is 25% (T=0.25), China's gain is 7.50, while 
+when the tariff rate rises to 30% (T=0.30), the gain decreases slightly to 5.00. 
+When China lowered the price to 45 (PC=45), there was a noticeable drop in earnings. At 
+T=0.25, the return is 3.75, while at T=0.30, the return is further reduced to 1.50. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-267-
+
+===== PDF page 29 =====
+Team # apmcm24200658                                                              Page 26 of 39 
+26 
+ 
+ 
+Figure 25 China's revenue matrix 
+The gains in the United States are relatively small and almost negligible. In the case of 
+PC=50, the US gains 0.01 regardless of the tariff rate of 25% or 30%, while when China lowers 
+the price to 45, the US gains 0.00 regardless of the tariff strategy. 
+ 
+Figure 26 U.S. earnings matrix 
+As shown in Figure 27, the optimal strategy diagram of a dynamic game reveals the 
+optimal strategy choice in a dynamic game. The red dots in the chart represent the optimal 
+returns of China and the United States under the combination of PC=50 and T=0.25. This 
+suggests that the optimal strategy for both sides is that China adopts a high price strategy while 
+the United States maintains a low tariff level under the set parameters. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-268-
+
+===== PDF page 30 =====
+Team # apmcm24200658                                                              Page 27 of 39 
+27 
+ 
+ 
+Fig.27 Dynamic game results 
+China's strategy in its export trade is to maintain high commodity pricing to ensure 
+considerable gains even in the face of high tariff barriers. For the United States, the increase in 
+tariffs is not effective in advancing its economic benefits, but may encourage China to stick to 
+its high-price strategy, which in turn may weaken the competitiveness of American products in 
+the market. According to the analysis results of the dynamic game, under certain strategic and 
+parameter conditions, China has shown strong control in pricing, while the flexibility of the 
+United States to adjust tariff policy has been limited. 
+ 
+IX、 Model evaluation 
+9.1 Advantages of the model 
+(1) The Holt-Winters model effectively captures trends and seasonality in time series data, 
+enhancing forecasting accuracy for datasets exhibiting these characteristics. Utilizing 
+exponential smoothing methods, it autonomously adjusts weights to accommodate varying data 
+patterns. This model is extensively applied across diverse domains, such as retail sales 
+forecasting, economic analysis, and resource management. 
+(2) Static game theory models are relatively simple and easy to understand and analyze, 
+especially when the game involves only a few participants and strategies. All participants make 
+choices at the same time, and there is no precedence, which makes the model easier to handle 
+in some cases. In a static game, the Nash equilibrium has good stability, and the players can 
+unanimously predict the final form of the equilibrium. 
+(3) Dynamic game theory considers the sequence of actions and the gradual revelation of 
+information, which is closer to the real-world decision-making process. Participants can adjust 
+their strategies based on previous results and actions of other participants, which increases the 
+flexibility and applicability of the model. For example, the perfect Nash equilibrium of sub-
+games provides a more refined concept of equilibrium to deal with credible threats and 
+commitment problems in dynamic games. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-269-
+
+===== PDF page 31 =====
+Team # apmcm24200658                                                              Page 28 of 39 
+28 
+ 
+9.2 Disadvantages of the model 
+（1） The Holt-Winters method requires manual selection of smoothing coefficient and 
+seasonal period, which may affect the accuracy of the prediction results. If the data 
+contains irregular fluctuations, biased predictions can be generated. 
+（2） Static game theory does not take into account the time factor and the dynamic 
+adjustment of strategies, which limits its application in real-world complex 
+situations. Dynamic game-theoretic models are more complex and need to deal 
+with multi-stage decision-making and information incompleteness, which 
+increases the difficulty of analysis. 
+X、 References 
+[1] Chen Jiajun, Liu Bo, Lin Weiwei, et al. Review of time series forecasting methods based 
+on Transformer[J/OL].Computer Science,1-17[2024-11-22]. 
+[2] Tang Weizhen, Tian Qiqi, Huang Zhousheng. Research on regional flight flow prediction 
+model based on ARIMAX[J].Electronic Design Engineering,2024,32(21):8-12.) 
+[3] Zhang Xin, Li Lin. Seasonal electric vehicle charging load prediction based on random 
+forest[J].Software Engineering,2024,27(11):11-14+37 
+[4] Wang Lizhu, Wu Pinkang. Comparative Analysis of Parameter Optimization Algorithm for 
+Random Forest Model[J/OL].Journal of Shenyang Normal University(Natural Science 
+Edition),1-7[2024-11-22]. 
+[5] Zhou Yang, Sun Xiaomeng, Tao Ran, et al. Bulletin of Surveying and 
+Mapping,2024,(10):125-131 
+[6] Shan Erfang, Zeng Han, Cai Lei. Operations Research and Management,2020,29(08):12-
+19 
+[7] Liang Li, Sun Zhengkai. Research on IP routing and TCP congestion based on static and 
+dynamic game model[J].Journal of Jiamusi University(Natural Science 
+Edition),2024,42(09):33-36.) 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-270-

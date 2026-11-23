@@ -1,0 +1,171 @@
+{
+  "source": "官方英文参赛手册 SISU OAA",
+  "source_sha256": "82b9a6bbdcac881c00d7a70c2b6ea130370a98f16cbcf9e9cff3722ba88a1219",
+  "papers": [
+    {
+      "tag": "2025A",
+      "team": "apmcm25302425",
+      "pdf_pages": [
+        67,
+        95
+      ],
+      "printed_pages": [
+        65,
+        93
+      ],
+      "n_pages": 29,
+      "file": "2025A_apmcm25302425.pdf",
+      "size_bytes": 751380
+    },
+    {
+      "tag": "2025B",
+      "team": "apmcm25304268",
+      "pdf_pages": [
+        96,
+        131
+      ],
+      "printed_pages": [
+        94,
+        129
+      ],
+      "n_pages": 36,
+      "file": "2025B_apmcm25304268.pdf",
+      "size_bytes": 536890
+    },
+    {
+      "tag": "2025C",
+      "team": "apmcm25301412",
+      "pdf_pages": [
+        132,
+        158
+      ],
+      "printed_pages": [
+        130,
+        156
+      ],
+      "n_pages": 27,
+      "file": "2025C_apmcm25301412.pdf",
+      "size_bytes": 554568
+    },
+    {
+      "tag": "2025D",
+      "team": "apmcm25310840",
+      "pdf_pages": [
+        159,
+        185
+      ],
+      "printed_pages": [
+        157,
+        183
+      ],
+      "n_pages": 27,
+      "file": "2025D_apmcm25310840.pdf",
+      "size_bytes": 384664
+    },
+    {
+      "tag": "2024A",
+      "team": "apmcm24200438",
+      "pdf_pages": [
+        186,
+        213
+      ],
+      "printed_pages": [
+        184,
+        211
+      ],
+      "n_pages": 28,
+      "file": "2024A_apmcm24200438.pdf",
+      "size_bytes": 517026
+    },
+    {
+      "tag": "2024B",
+      "team": "apmcm24200636",
+      "pdf_pages": [
+        214,
+        241
+      ],
+      "printed_pages": [
+        212,
+        239
+      ],
+      "n_pages": 28,
+      "file": "2024B_apmcm24200636.pdf",
+      "size_bytes": 593354
+    },
+    {
+      "tag": "2024C",
+      "team": "apmcm24200658",
+      "pdf_pages": [
+        242,
+        272
+      ],
+      "printed_pages": [
+        240,
+        270
+      ],
+      "n_pages": 31,
+      "file": "2024C_apmcm24200658.pdf",
+      "size_bytes": 768330
+    },
+    {
+      "tag": "2024D",
+      "team": "apmcm24207218",
+      "pdf_pages": [
+        273,
+        348
+      ],
+      "printed_pages": [
+        271,
+        346
+      ],
+      "n_pages": 76,
+      "file": "2024D_apmcm24207218.pdf",
+      "size_bytes": 1496313
+    },
+    {
+      "tag": "2023A",
+      "team": "apmcm2309364",
+      "pdf_pages": [
+        349,
+        388
+      ],
+      "printed_pages": [
+        347,
+        386
+      ],
+      "n_pages": 40,
+      "file": "2023A_apmcm2309364.pdf",
+      "size_bytes": 1321517
+    },
+    {
+      "tag": "2023B",
+      "team": "apmcm2307379",
+      "pdf_pages": [
+        389,
+        411
+      ],
+      "printed_pages": [
+        387,
+        409
+      ],
+      "n_pages": 23,
+      "file": "2023B_apmcm2307379.pdf",
+      "size_bytes": 432717
+    },
+    {
+      "tag": "2023C",
+      "team": "apmcm2303763",
+      "pdf_pages": [
+        412,
+        438
+      ],
+      "printed_pages": [
+        410,
+        436
+      ],
+      "n_pages": 27,
+      "file": "2023C_apmcm2303763.pdf",
+      "size_bytes": 612180
+    }
+  ]
+}

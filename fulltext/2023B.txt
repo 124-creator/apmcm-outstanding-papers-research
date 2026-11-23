@@ -1,0 +1,972 @@
+
+===== PDF page 1 =====
+Team # apmcm2307379
+Team Number: apmcm2307379
+Problem Chosen: B
+2023 APMCM summary sheet
+In this study, with the aim to optimize the temperature and wind speed distribution
+in a glass greenhouse to promote crop growth, we addressed four key issues step by step.
+To solve the first problem, we built mathematical equations under crop-free condi-
+tions, based on the fundamental physical principles, with Python and a computational
+fluid dynamics software (CFD), ANSYS Fluent. The temperature and wind speed distri-
+bution at 0.5 m was further validated by the numerical simulation results from ANSYS
+Fluent, with an indicator (𝑅) showing the overlapping interval, achieving 89.84% and
+93.75% respectively.
+For problem two, we improved the current model by adding a porous media region
+representing crops. The consideration on its porosity and permeability ensured us
+the effectiveness of 𝑅 more than 89% in simulating the temperature and wind speed
+distribution at specific heights (0.5 m and 0.1 m) in the greenhouse, compared with
+results from the CFD software. An initial claim on the unsuitable conditions for crops
+growth was made.
+For two scenarios in problem three, we adjusted the relevant parameters via the
+two methods, simulating the effect of individually changed fan parameter on the two
+target fields. Compared to results in problem two, we deducted that increasing velocity
+in canopy would achieve warmer living conditions in the canopy, on the contrary, lower
+position of the fans benefits roots for better uniformity.
+In order to solve problem four, we applied genetic algorithm to optimize the number,
+location, speed and temperature in designing fans. With the length magnification, the
+constrains on number and locations of the fans and the convergence guaranteed by
+the Markov Chain, we could obtain relatively random schemes while making sure
+comfortable living conditions for crops. Two schemes including five fans and three fans
+were given respectively.
+In summary, our research not only established an effective model to simulate the
+environmental conditions in the glass greenhouse, but also optimized the fan design
+through a genetic algorithm, providing scientific guidance and optimization solutions
+for greenhouse design and crop planting.
+Keywords: Greenhouse simulation ANSYS Fluent Genetic algorithm
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-387-
+
+===== PDF page 2 =====
+Team # apmcm2307379
+Contents
+1. Introduction. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 1 Natural ventilation. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 2 Mechanical ventilation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+2. Restatements and Analyses of problems. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+2 . 1 Restatements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+2 . 2 Analyses . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+3. Models . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+3 . 1 Terms, Definitions and Symbols . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3 . 2 Assumptions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3 . 2 . 1 Model for transferring energy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3 . 3 Establishment of the CFD model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3 . 4 Evaluation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+4. Solutions and Results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+4 . 1 Question one . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+4 . 2 Question two . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+4 . 2 . 1 Results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+4 . 2 . 2 Analyses . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+4 . 3 Question three . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+4 . 3 . 1 Results and comparisons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+4 . 3 . 2 Validations. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+4 . 4 Question 4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+4 . 4 . 1 Select Crops. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+4 . 4 . 2 Fans optimization by the Genetic Algorithm . . . . . . . . . . . . . . . . . . . 16
+4 . 4 . 2.1 Innovative points . . . . . . . . . . . . . . . . . . . . 17
+4 . 4 . 2.2 Results . . . . . . . . . . . . . . . . . . . . . . . . . 17
+5. Pros and Cons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+5 . 1 Pros . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+5 . 2 Cons. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+6. References . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+7. Appendix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-388-
+
+===== PDF page 3 =====
+Team # apmcm2307379 Page 1 of 44
+I. Introduction
+Temperature, humidity and wind speed play significant importance in crop yields
+in modern greenhouses. To achieve the suppression of high temperature, improvement
+of air components, and decrement of humidity inside the greenhouse, there are two
+kinds of ventilation systems.
+1 . 1 Natural ventilation
+In natural ventilation systems, air flow is respectively promoted by the different
+temperature and different wind velocity between the inside and outside of the facility ,
+which requires low investments but also only has limited capabilities. In summer, the
+greenhouse tends to rely on high-speed winds to generate horizontal air flow, while in
+winter, heat is more likely to be utilized with vertical air flow determined by heights
+between the up outlet and down inlet.
+1 . 2 Mechanical ventilation
+The mechanical ventilation systems contain two type of patterns, taking air in
+or exhaust.The intake ventilating system has low requirements on air tightness, could
+resist contamination from outside pollutants that may impair inner environment, but
+has a varying velocity field. On the contrary, the exhaust ventilating system provides
+a relatively uniform distribution of wind velocity, requires good seal, but may result in
+contamination from outside. The position of outlet in a mechanical system could be
+the at top and bottom of the greenhouse, as well as the in horizontal and longitudinal
+direction of the greenhouse.
+II. Restatements and Analyses of problems
+2 . 1 Restatements
+Here, in order to regulate climate factors mentioned above, ventilation systems
+with greenhouse fans in breadth-wise are used, of which the position and the velocity
+speed affect the distribution and uniformity of the velocity field and the temperature field
+inside the greenhouse. The inlet fan blows in warm air at 40°in the horizontal direction
+with an average velocity of 2 m/s. The outer glass and bottom soil of the greenhouse are
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-389-
+
+===== PDF page 4 =====
+Team # apmcm2307379 Page 2 of 44
+set as wall conditions, primarily exchanging energy with the entire greenhouse through
+convective heat transfer and conduction.
+Without considering external factors such as doors, drafts, solar radiation, and
+other environmental factors, the greenhouse that is sealed and placed indoors, should
+be clearly given the velocity and temperature field without (Question one) at a height
+of 0.5 meters and with crops (Question two) at a height of 0.5 meters and 0.1 meters
+respectively, analyzing the conditions for crop growth.
+Further, by increasing the velocity of warm air inlet from 2 m/s to 3 m/s, and
+decreasing the position of the greenhouse fan by moving it from 1.3 m to 1 m, the
+temperature and wind speed distribution inside the glass greenhouse should be provided
+(Question three) and made comparisons with results in question two. Based on the
+performance of the adjustment, the number of greenhouse fan, location, wind speed,
+blowing temperature, specifications and different crops and other factors could then be
+optimized (Question four) for a better uniformity.
+2 . 2 Analyses
+As mentioned in the problem statements, the convective heat transfer, conduction
+and the aerodynamics should be considered to figure out the temperature and wind ve-
+locity field. Thus, to clearly show the two features at different heights in the greenhouse,
+we girded the cuboid-shaped greenhouse to limited amount of points and applied the law
+of conservation of energy for passing the velocity and temperature at grid point in the
+greenhouse with Python. To demonstrate the accuracy of our results with Python, we
+further built the 3-dimensional model in a computational fluid dynamics software, called
+ANSYS Fluent. The consistency between the mathematical model built by Python and
+the numerical simulation by ANSYS would then validate the reliability of the parameters
+optimized by our mathematical model.
+III. Models
+The fundamental principles and parameters that govern the velocity and temperature
+fields are consistent in all problems we face, which are presented in this section.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-390-
+
+===== PDF page 5 =====
+Team # apmcm2307379 Page 3 of 44
+Table 1 Descriptions of Symbols
+Symbols Definitions units
+T Temperature ◦C
+t Time s
+u Velocity vector 𝑚/𝑠
+𝛼 Thermal diffusivity
+𝑝 Pressure Pa
+𝜇 Dynamic Viscosity Pa·s
+Δ Variation of certain variable
+𝐷 Euler distance between two spatial points 𝑚
+𝑅𝑒 Reynolds number
+𝜑 Porosity
+𝑘 Permeability 𝑚2
+3 . 1 Terms, Definitions and Symbols
+3 . 2 Assumptions
+(1) The air can be considered as an incompressible fluid, and is evenly mixed in thermal
+equilibrium at any time.
+(2) The heat transfer between greenhouse glass and soil is mainly convection and
+conduction, ignoring thermal radiation in our models.
+(3) There is no additional heat source in the greenhouse, except for the hot, stable and
+uniform air blown in by the fans.
+(4) The turbulence effect of air is ignored.
+(5) The actual volume of crops accounts for 50% of the total volume of crops cuboid.
+(6) The diameter of the grain of the porous media, and here we assume it to be the half
+of the height of crops.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-391-
+
+===== PDF page 6 =====
+Team # apmcm2307379 Page 4 of 44
+3 . 2 . 1 Model for transferring energy
+Based on the law of conservation of energy, a fundamental principle in physics
+that states that the total energy of an isolated system remains constant over time, we
+considered the steady-state flow with Eq. (1) [1]. Since the problems we face are non-
+instantaneous, without the consideration of time, in the stable stage of heat balance, we
+simplified the heat transferred at certain point 𝑁 to Eq. (2), a function of the Euler
+distance between the point𝑁 and the center of the fans. Similarly, in the stable stage of
+velocity field, we simplified the velocity transferred at point𝑁 to Eq. (3).
+Δ𝑈=𝑄−𝑊 (1)
+𝑒−𝑑𝑒𝑐𝑎𝑦 𝑐𝑜𝑛𝑡𝑟𝑜𝑙𝑙𝑒𝑟 𝑇×𝐷 𝑁 =𝑄−𝑊 (2)
+𝑉0𝑒−𝑑𝑒𝑐𝑎𝑦 𝑐𝑜𝑛𝑡𝑟𝑜𝑙𝑙𝑒𝑟 𝑉×𝐷 𝑁 =𝑉 (3)
+where,𝑄−𝑊, the difference of energy between inside and outside, is represented by the
+difference between initial temperature at fans and in the greenhouse. 𝐷𝑁 denotes the
+distance between the center of fans and point𝑁 in the greenhouse. The decay controller
+is a parameter, individually adjusting the decaying effects of the temperature(𝑇) and
+velocity(𝑉) in the greenhouse. V and𝑉0 represents the velocity at point 𝑁 and the
+center of the fans respectively.
+By building the mathematical model at point𝑁, we could further give the temper-
+ature field and velocity field in the whole greenhouse
+3 . 3 Establishment of the CFD model
+To test our mathematical model, we utilized ANSYS Fluent to numerically simulate
+the velocity and temperature field in the greenhouse. First, a 3-dimensional model of
+the same size as the greenhouse was established and meshed in Fig. (1).
+Figure 1 Grids
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-392-
+
+===== PDF page 7 =====
+Team # apmcm2307379 Page 5 of 44
+With the meshed grids and boundary conditions settled down, we could then
+simulate the target fields after the calculation of the Reynolds number in Eq. (4).
+The 𝑅𝑒 at the inlet is 66667, a number much larger than the smallest threshold of
+turbulence, 4000. So, via the finite difference method, we could simulate the realistic
+fields while reaching to the stable and balanced stage under the condition that air flow
+in the greenhouse could be regarded as turbulent motion.
+𝑅𝑒= 𝜌𝑉0𝐿 𝜇 (4)
+where, 𝜌 denotes the fluid density. 𝐿 represents the size of the fans. 𝜇 is the dynamic
+viscosity of the air.
+3 . 4 Evaluation
+To evaluate the simulation accuracy between the mathematical model implemented
+by Python and the numerical model calculated by ANSYS, we devise a indicator, 𝑅,
+shown in Eq. (5).
+𝑅= 𝐴∩𝐵 𝑚𝑎𝑥(𝐴,𝐵) (5)
+where,𝐴 and𝐵 represent the magnitude of simulation results at the same area for Python
+and ANSYS respectively. 𝐴∩𝐵 gives the overlapping interval, while max(A,B) is the
+larger interval. So,𝑅 denotes the similarity of simulation results between the two basic
+models, which means a high value of𝑅 suggests a good simulation accuracy, validated
+by both models.
+IV. Solutions and Results
+4 . 1 Question one
+To realize the mathematical model we built in section 3, we first meshed grids with
+limited spatial points (40× 20× 20), corresponding to sequence of 10𝑚× 3𝑚× 2𝑚.
+The decay controller was applied to the calculation of temperature, velocity and the
+length of the greenhouse. Via Appendix. 1, the temperature and velocity fields in the
+greenhouse were shown in Fig. (2), and the distribution of wind speed and temperature
+at a cross-section of the greenhouse at a height of 0.5 meters were displayed in Fig. (3).
+Meanwhile, the longitudinal results given by ANSYS Fluent, showing the variation
+of temperature and velocity in the direction of the length of the greenhouse were first
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-393-
+
+===== PDF page 8 =====
+Team # apmcm2307379 Page 6 of 44
+Figure 2 Three-dimensional results of the whole greenhouse in Python
+Figure 3 Results of target fields at a height of 0.5 meters in Python
+exhibited in Fig. (4) and (5) respectively. Further, the distribution of wind speed and
+temperature at a cross-section of the greenhouse at a height of 0.5 meters were displayed
+in Fig. (6) and Fig. (7).
+Figure 4 Longitudinal temperature simulated by ANSYS
+The indicator we designed before were calculated here. The magnitude of temper-
+ature in the height of 0.5m ranged from 31.85◦𝐶 to 37.85◦𝐶 in our mathematical model,
+while that of ANSYS Fluent varied from 31.2◦𝐶 to 37.6◦𝐶. So,𝑅 (6)was exemplified
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-394-
+
+===== PDF page 9 =====
+Team # apmcm2307379 Page 7 of 44
+Figure 5 Longitudinal velocity simulated by ANSYS
+Figure 6 Distribution of temperature at a height of 0.5 meters simulated by ANSYS
+Figure 7 Distribution of velocity at a height of 0.5 meters simulated by ANSYS
+in the temperature simulation.
+𝑅= 37.6− 31.2 37.85− 31.85 = 89.84% (6)
+Similarly, we got𝑅 value of velocity, reaching 93.75%, with a range of 0-0.48m/s
+and 0-0.45m/s for the mathematical model and ANSYS respectively, which showed
+that the temperature and wind speed distributions of the two models have overlapping
+intervals at multiple locations. This finding demonstrates that although the mathematical
+model has limited ability to simulate physical details compared to CFD software, it still
+has some accuracy and reliability in predict the temperature and wind speed distribution
+in glass greenhouses. As a result, it could be a tool for quick preliminary analysis, while
+the numerical model via CFD software is suitable for more detailed and precise analysis.
+By combining these two models, it is possible to understand and optimize the climate
+regulation of glass greenhouses more comprehensively.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-395-
+
+===== PDF page 10 =====
+Team # apmcm2307379 Page 8 of 44
+4 . 2 Question two
+4 . 2 . 1 Results
+Models for question two were similar to what we have shown in section 3 and
+section 4.1, however, differences exist and actually lie in the addition of crops[2]. So, we
+regarded the crop as a kind of porous media, and scaled the temperature in Eq. (2) by 0.9
+and velocity in Eq. (3) by 0.5, when points were detected in the area of crops, to show
+the resistance of crops to the hot wind. The whole simulation results (see Appendix.
+(2)) were shown in Fig. (8), and the distribution of wind speed and temperature at two
+cross-sections within the greenhouse were shown in Fig. (9).
+Figure 8 Three-dimensional results of the whole greenhouse with crops in Python
+Figure 9 Results of target fields at the height of 0.5 meters and 0.1 meters in Python
+Likewise, we also established the glass greenhouse with planted crops in ANSYS
+Fluent in Fig. (10). However, the porosity defined in Eq. (7) and permeability defined
+in Eq. (8) of the porous media required prior settings.
+𝜑= 𝑉𝑐𝑟𝑜𝑝𝑠
+𝑉𝑡𝑜𝑡𝑎𝑙 (7)
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-396-
+
+===== PDF page 11 =====
+Team # apmcm2307379 Page 9 of 44
+Figure 10 Three-dimensional model for the greenhouse with crops in ANSYS
+where, the𝑉𝑐𝑟𝑜𝑝𝑠 is hard to accurately assess without realistic conditions, so here in
+accord with the fifth assumption in section 3.2, we assumed the𝑉𝑐𝑟𝑜𝑝𝑠 accounts for 50%
+of𝑉𝑡𝑜𝑡𝑎𝑙, which ensures the value of𝜑 to be 0.5.
+𝑘 =
+𝑑2 𝑝𝜑3
+𝐾(1−𝜑)2 (8)
+Permeability is a physical quantity that measures the flow ability of a fluid through
+a porous medium, typically depending on the size, shape, and distribution of pores.
+For a simplified crop model, we can use the Kozeny-Carman equation to estimate its
+permeability, where𝑑𝑝 is the diameter of the grain of the porous media, and here we
+assume it to be the half of the height of crops as the sixth assumption in this paper. 𝐾
+is the empirical value, ranging from 3 to 5, set as 4 here.
+As a consequence, the porosity and permeability of the porous media are 0.5 and
+0.0078125𝑚2 by calculation, when the crops occupies a space of 0.9*0.8*0.5 in question
+two.
+Thus, the longitudinal results given by ANSYS Fluent, showing the variation of
+temperature and velocity in the direction of the length of the greenhouse was given
+by Fig. (11), and distribution at the height of 0.5 meters and 0.1 meters simulated by
+ANSYS were exhibited in Fig. (12) and Fig. (13).
+To assess the simulation accuracy of our mathematical model, we kept using the
+indicator 𝑅 to show overlapping between the temperature and wind speed distribution
+intervals of the two models at the same location. In the height of 0.5m, the magnitudes
+of mathematical model were 31.2-37.6◦𝐶 and 0-0.64m/s, whereas that of ANSYS were
+31.85-37.85◦𝐶, and 0-0.61m/s. So,𝑅 achieved 89.84% and 95.31% for temperature and
+velocity simulation respectively. In the height of 0.1m, the magnitudes of mathematical
+model were 29-36◦𝐶 and 0-0.8m/s, whereas that of ANSYS were 29.85-36.85◦𝐶, and
+0-0.81m/s, with𝑅 reaching 87.86% and 98.77% individually.
+In summary, the scaled model achieves better simulation of the micro-climatic
+conditions in the porous media region, and the two models showed great consistency,
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-397-
+
+===== PDF page 12 =====
+Team # apmcm2307379 Page 10 of 44
+(a) Temperature fields
+(b) Velocity fields
+Figure 11 Distribution of target fields in the longitudual direction simulated by ANSYS
+(a) Temperature fields
+(b) Velocity fields
+Figure 12 Distribution of target fields at the height of 0.5 meters simulated by ANSYS
+especially in simulating the environmental conditions near crop canopy and roots.
+4 . 2 . 2 Analyses
+From the temperature fields in Fig. (9), the comfortable zone with temperature
+ranging from 23◦𝐶 to 26◦𝐶 mainly exists in the length from 2m to 6m at the canopy of
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-398-
+
+===== PDF page 13 =====
+Team # apmcm2307379 Page 11 of 44
+(a) Temperature fields
+(b) Velocity fields
+Figure 13 Distribution of target fields at the height of 0.1 meters simulated by ANSYS
+crops, while in roots, it mainly appears in the length from 1m to 3m. As for velocity, the
+comfortable velocity at the canopy appears in the length more than 4m, while in roots it
+exists in areas farther than 2m in the length direction.
+In summary, we could conclude that crops in this greenhouse with the fans at
+the height of 1.3m, blowing hot winds at the temperature of 40◦𝐶, actually results in
+an uncomfortable living condition for both canopy and roots of crops, because their
+requirements of temperature and wind velocity could be satisfied.
+4 . 3 Question three
+4 . 3 . 1 Results and comparisons
+Based on the basic models build in question one and crop models established in
+question two, here we individually adjusted the velocity of warm air outlet from 2m/s to
+3m/s, and lower the position of the greenhouse fan by moving it from 1.3 m to 1 m (see
+Appendix. 3)to make comparison with results in question two.
+In scenario one, according to our mathematical model, when fans blew in air at
+the speed of 3m/s at the height of 1.3m, comparison with results in question 2 were
+shown in Fig. (14), where we could see that by increasing inlet velocity, although heat
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-399-
+
+===== PDF page 14 =====
+Team # apmcm2307379 Page 12 of 44
+did not obviously passed farther, velocity near the fans increases dramatically, and near
+fans areas receive more winds than ever.
+(a) 2m/s in question two
+(b) 3m/s in question three
+Figure 14 Three-dimensional results with different inlet velocity
+In scenario two, according to our mathematical model, when fans blew in air at
+the original speed of 2m/s at a lower height of 1m, comparison with results in question
+2 were shown in Fig. (15), where in the height direction, we could observe a more
+uniform distribution, not only in temperature but also in velocity.
+Meanwhile, at the canopy and roots of the crops, we could also observe from Fig.
+(16) and Fig. (17) that increasing wind velocity benefit canopy more than roots, because
+more areas in the height of 0.5m receive heat from hot wind, while roots receive a little.
+However, lower position of the fans could help roots more than canopy, because more
+areas in the height of 0.1m gets warmer and better uniformity.
+In summary, from our observation, lower the position of the fans from 1.3m to
+1m could achieve a more uniform distribution of fields, while increasing the velocity of
+air inlet make little progress in blowing wind deeper, but impairs the living condition
+of crops near the air inlet. In addition, increasing velocity in canopy achieves warmer
+living conditions in the canopy, and lower position of the fans benefits roots from better
+uniformity.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-400-
+
+===== PDF page 15 =====
+Team # apmcm2307379 Page 13 of 44
+(a) 2m/s in question two
+(b) 2m/s in question three
+Figure 15 Three-dimensional results with different inlet position
+(a) question two
+ (b) 3m/s in question three
+ (c) 1m in question three
+Figure 16 Temperature fields in different scenarios
+4 . 3 . 2 Validations
+Individually adjusting the velocity and position of the fans, we obtained target fields
+and made comparisons first with different scenarios and height in the area of temperature
+distribution in Fig. (18) and Fig. (19). It could obviously be observed that compared
+to increasing velocity in the height of 0.1m, lower position of the fans achieves better
+temperature distribution. More heat was transformed to deeper side in length direction.
+Similarly, compared to lower position, increasing velocity at canopy better uniforms the
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-401-
+
+===== PDF page 16 =====
+Team # apmcm2307379 Page 14 of 44
+(a) question two
+ (b) 3m/s in question three
+ (c) 1m in question three
+Figure 17 Velocity fields in different scenarios
+temperature distribution in the whole cuboid, which could also be concluded from the
+velocity field.
+The consistent conclusion between mathematical model and ANSYS simulation
+could be quantified by our indicator 𝑅. In the height of 0.5m, the magnitudes of
+mathematical model were 32-38.4◦𝐶 and 0-1.2m/s, whereas that of ANSYS were 32.85-
+38.85◦𝐶, and 0-1.22m/s. So, 𝑅 achieved 86.72% and 98.36% for temperature and
+velocity simulation respectively. In the height of 0.1m, the magnitudes of mathematical
+model were 28.5-37.5◦𝐶 and 0-1.05m/s, whereas that of ANSYS were 28.85-37.85◦𝐶,
+and 0-1m/s, with 𝑅 reached 96.11% and 95.24% individually. The relatively high
+results, compared to the well-known ANSYS simulation demonstrate the reliability of
+our mathematical model and the deduction we made about the effects of adjustments.
+Overall, by applying the indicator, we showed that although the prediction results
+of the two models differ in some regions, they still show good agreement in most areas.
+This finding highlights the applicability and flexibility of the our model in simulating
+changes in complex environments. The reference provided by ANSYS simulation helped
+us in adjusting mathematical model to be reliable in further optimization, and validated
+our deduction on the direction of optimization, which would be beneficial in question
+four.
+4 . 4 Question 4
+Based on the deficiency above, when it comes to optimizing design of glass green-
+house, among many of them, two main factors could be immediately came up with,
+the selection of crops and the optimization of the amount, location, speed and inlet
+temperature of fans.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-402-
+
+===== PDF page 17 =====
+Team # apmcm2307379 Page 15 of 44
+(a) question two
+(b) 3m/s in question three
+(c) 1m in question three
+Figure 18 Temperature fields in different scenarios at the height of 0.5m
+4 . 4 . 1 Select Crops
+Our goal is to select crops that could fit high temperature and low velocity. Ac-
+cording to our simulation results, for the first three conditions:
+- For situations in question one, it’s better to select crops that can endure temperatures
+within 31.2-37.6◦𝐶, velocity below 0.48m/s at the height of 0.5m.
+- For situations in question two, it’s better to select crops that can endure temperatures
+within 31.2-37.6◦𝐶, velocity below 0.61m/s at the height of 0.5m, and temperatures
+within 29-36◦𝐶, velocity below 0.8m/s at the height of 0.1m.
+- For situations in question three, it’s better to select crops that can endure tem-
+peratures within 32-38.4 ◦𝐶, velocity below 1.2m/s at the height of 0.5m, and
+temperatures within 28.5-37.5◦𝐶, velocity below 1.05m/s at the height of 0.1m.
+]
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-403-
+
+===== PDF page 18 =====
+Team # apmcm2307379 Page 16 of 44
+(a) question two
+(b) 3m/s in question three
+(c) 1m in question three
+Figure 19 Temperature fields in different scenarios at the height of 0.1m
+4 . 4 . 2 Fans optimization by the Genetic Algorithm
+Here, we utilized a more complex but flexible algorithm, Genetic Algorithm (GA),
+with steps as follows.
+(1) Objective function. Minimize the deviation between current conditions and the
+ideal environmental condition (23-26◦𝐶 and 0.3-1m/s)
+(2) Constraints.
+- The number of fans is the integer is below five.
+- Fans could only be equipped on the walls or the roof. The value of x,y,z
+should either 0 or the size of the greehouse.
+(3) Strategy. Each individual represents a full condition, including the number of fans,
+spatial coordinates, inlet velocity and temperature.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-404-
+
+===== PDF page 19 =====
+Team # apmcm2307379 Page 17 of 44
+(4) Mutation. Randomly produce new variants.
+(5) Evaluation and Selection. Make sure the survival of the fittest.
+(6) Initialization. Initialize with a population of 1,000 individuals and iterate 50 times.
+4 . 4 . 2.1 Innovative points
+(1) Length magnification. Considering the direction and magnitude of the fans, we
+devise a factor, length magnification, to strength its power in the specific direction
+of the fans’ head, other than the other vertical directions.
+(2) Convergence of GA. We regarded each generation in the GA algorithm as a state in
+the Markov Chain, which meets the criteria of the dependence to current generation
+and the independence to the last generation. As a consequence, in accord with the
+Markov Chain Convergence Theorem, we will finally achieve convergence of GA,
+under the implementation of Markov Chain.
+4 . 4 . 2.2 Results
+The flexible GA algorithm and the convergence guaranteed by the Markov Chain
+provided us with flexible solutions to the optimization of fans (see Appendix. (4)).
+Under the constraints set before, here, we displayed two solutions that both satisfied the
+temperature and velocity requirement, based on our mathematical models built before.
+The first scheme contained five fans, with information provided in Table. (2). The
+location is clearly shown in Fig. (20. We could validate the feasibility by exhibiting
+target fields in Fig. (21) and Fig. (22). Whereas, The second scheme contained three
+fans, with information provided in Table. (3). Fig. (23 directly exhibited the locations
+of fans. Also, we could validate the feasibility by target fields in Fig. (24).
+V. Pros and Cons
+5 . 1 Pros
+Our models are able to provide an in-depth spatial understanding of the climate
+conditions within the greenhouse, especially the spatial distribution of temperature and
+wind speed. We are able to accurately predict and evaluate the microclimate conditions in
+the greenhouse planting crop growth. Through Python programming and the application
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-405-
+
+===== PDF page 20 =====
+Team # apmcm2307379 Page 18 of 44
+Table 2 Configurations of five-fans scheme
+Speed(m/s) Temperature(◦C) x(m) y(m) z(m)
+0.72603 26.08 2.87667 0 0.00068
+0.79941 26.31 0 0.20255 1.05669
+0.73218 26.70 2.38155 0 0.68965
+0.78105 26.16 1.99720 1.17448 2
+0.79096 26.49 3.74524 0 2
+Figure 20 Locations of the five fans
+of CFD software, ANSYS Fluent, we are able to represent complex three-dimensional
+temperature and wind speed distribution, providing visual aids for greenhouse design
+and optimization of crop growing conditions, at specific heights (e.g., 0.5 m and 0.1
+m). In addition, the application of genetic algorithms in optimizing greenhouse fan
+designs has demonstrated a high degree of flexibility and efficiency. This approach
+takes into account not only the number and location of fans, but also factors such as
+wind speed and temperature, to generate a diverse range of solutions that provide an
+optimal environment for different crops and different greenhouse conditions. Finally,
+the application of these models has a certain degree of universality and scalability that
+may contribute to planning phase of greenhouse design and in the adaptation of existing
+greenhouse environments.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-406-
+
+===== PDF page 21 =====
+Team # apmcm2307379 Page 19 of 44
+Figure 21 Three dimensional fields of the five-fans scheme
+Figure 22 Target fields at two cross-sections of the five-fans scheme
+5 . 2 Cons
+Despite achievements, some deficiency should not be ignored. Firstly, the accuracy
+of the model relies heavily on the veracity of the initial assumptions and input parameters.
+Secondly, simple assumptions about porous media in crop models, may affect the
+accuracy of our results. Thirdly, since the steady-state case is mainly considered in the
+modeling, the energy conservation equation is simplified to a certain extent. Besides,
+when considering the resistance of the canopy and roots of crops to wind, only the
+effect of distance from the fan on energy transfer was considered, and no more detailed
+distinction was made between leaves and roots. Next, although genetic algorithm
+provides an effective optimization method, it is still a trial-and-error method, and its
+convergence and the quality of the final solution depend to some extent on the selection
+of algorithm parameters and the diversity of populations. Finally, the capability of the
+model may be limited by the specific application, e.g., external environmental factors
+such as solar radiation, external air currents, etc.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-407-
+
+===== PDF page 22 =====
+Team # apmcm2307379 Page 20 of 44
+Table 3 Configurations of five-fans scheme
+Speed(m/s) Temperature(◦C) x(m) y(m) z(m)
+0.73980 26.47 2.06455 3 0.22216
+0.77190 26.24 0 0.16405 0.86741
+0.65997 26.49 6.07402 2.80944 2
+Figure 23 Locations of the three fans
+(a) Three dimensional fields
+ (b) Target fields at two cross-sections
+Figure 24 The three-fans scheme
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-408-
+
+===== PDF page 23 =====
+Team # apmcm2307379 Page 21 of 44
+VI. References
+[1] Stanghellini, C., Kubota, C. Greenhouse Technology and Management. CRC Press.
+2010.
+[2] Guo, L., et al. CFD simulation of airflow and temperature distribution in a green-
+house with a heat pump heating system. Biosystems Engineering, 183, 44-57. 2019.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-409-

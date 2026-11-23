@@ -1,0 +1,1307 @@
+
+===== PDF page 1 =====
+Team # apmcm25301412
+Team Number: apmcm25301412
+Problem Chosen: C
+2025 APMCM summary sheet
+The implementation of the “Reciprocal Tariff” policy marks a paradigm shift from efficiency-driven
+globalization to security-driven fragmentation. To quantify the cascading effects of this policy, this
+paper constructs a Systemic Multi-Dimensional Evaluation Framework (SMDEF) that integrates
+econometrics, game theory, and system dynamics across agricultural, industrial, and macroeconomic
+layers.
+Micro-Level Impacts: Supply Chain Restructuring
+• Agriculture (Irreversible Displacement, Q1): Utilizing a Constrained Armington Model,
+we reveal a structural break. A 25% tariff triggers a 64.1% collapse in U.S. soybean exports to
+China. Crucially, our model captures Brazil’s physical capacity saturation, identifying Argentina
+as the unexpected strategic beneficiary with a 245% export surge.
+• Automotive (Forced Localization, Q2): Through a Dynamic Stackelberg Game, we identify a
+precise Tariff Tipping Point of 11.1%. Beyond this threshold, the cost of direct import exceeds
+local production, forcing Japanese automakers into a “Forced Localization” strategy, effectively
+trading consumer surplus for U.S. manufacturing jobs.
+• Semiconductors (Innovation Dilemma, Q3): Our Bi-level Policy Simulation demonstrates
+that tariffs alone fail to bridge the 40% manufacturing cost gap. Subsidies are a necessary
+condition for reshoring. Moreover, aggressive export controls create a “Boomerang Effect”,
+stripping U.S. firms of 30% of revenue and eroding long-term innovation budgets.
+Macro-Level Insights: Fiscal Limits & Systemic Risk
+• The Fiscal Paradox (Q4): We debunk the myth of linear revenue growth. Our Crisis-Aware
+Forecasting confirms a Laffer Curve effect, pinpointing the Optimal Tariff Rate at≈30%.
+The proposed 60% rate lies in the “Over-taxation Zone”, accelerating tax base erosion and trade
+diversion (leakage to Vietnam/Mexico).
+• The Stagflation Trap (Q5): The Supply-Side Shock Model proves that reciprocal tariffs, when
+met with targeted retaliation (e.g., Critical Minerals Ban), trigger a Stagflationary Trap. The
+surge in input costs and interest rates neutralizes the protective benefits of tariffs, rendering the
+“Reshoring” goal economically unfeasible.
+The Synthesis of the Systemic Framework
+Our SMDEF framework (integrating cross-layer quantitative models) confirms the “Reciprocal Tariff”
+strategy’s structural flaws. Two paradoxes emerge: it violates the Laffer Curve optimum (≈30%)
+to accelerate fiscal erosion, and triggers a Stagflationary Trap via higher input costs/interest rates
+(Q5). Short-term forced localization gains (11.1% tipping point) are offset by systemic losses, making
+the policy a long-term Negative-Sum Game. True economic resilience thus requires shifting from
+distortive border taxes to a policy of fiscal prudence and targeted domestic industrial subsidies.
+Keywords: Systemic Evaluation Framework; Constrained Armington Model; Dynamic Stackelberg
+Game; Laffer Curve Optimization; Stagflationary Trap;Supply Chain Resilience
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-130-
+
+===== PDF page 2 =====
+Contents
+1 Introduction 1
+1 . 1 Background . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 2 Question Restatement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 3 Our Approach . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+2 Assumptions and Notations 2
+2 . 1 Notations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2 . 2 General Assumptions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3 Data Preprocessing and Descriptive Analysis 4
+3 . 1 Data Sources . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3 . 2 Data Processing Framework . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3 . 3 Rationality of Estimated Parameters . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4 Question1: Assessment of the Impact of U.S. Tariff Adjustments on the Global Soybean
+Trade System 5
+4 . 1 Data Insight and Status Analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+4 . 2 Modeling and Solution: The Constrained Armington Framework . . . . . . . . . . . 6
+4 . 3 Robustness Analysis and Conclusion . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+5 Question 2: The Impact on Automobile Industry 8
+5 . 1 Overview of U.S.-Japan Auto Trade . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+5 . 2 Game Theory Model for Supply Chain Decision . . . . . . . . . . . . . . . . . . . . 9
+5 . 3 Results Analysis and Robustness Check . . . . . . . . . . . . . . . . . . . . . . . . 12
+6 Question3: The Impact on Semiconductor Industry 13
+6 . 1 Industrial Status and Trade Data Insight: Asymmetric Dependency and Forced De-
+coupling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+6 . 2 Policy Impact Assessment: A Bi-level Simulation Model . . . . . . . . . . . . . . . 15
+6 . 3 Validity Analysis and Robustness Check . . . . . . . . . . . . . . . . . . . . . . . . 16
+7 Question 4: Analysis of U.S. Tariff Revenue 17
+7 . 1 Status Quo Analysis: Trade Resilience and Structural Asymmetry . . . . . . . . . . 17
+7 . 2 Dynamic Modeling: Tariff-Revenue-Crisis Nexus . . . . . . . . . . . . . . . . . . . 19
+7 . 3 Model Evaluation and Policy Reflection . . . . . . . . . . . . . . . . . . . . . . . . 21
+8 Question 5: Macroeconomic Impact and The Reshoring Paradox 22
+8 . 1 Supply-Side Shock: The Cost of Retaliation . . . . . . . . . . . . . . . . . . . . . . 22
+8 . 2 Financial Market Feedback: A Systemic Risk Matrix . . . . . . . . . . . . . . . . . 23
+8 . 3 Comprehensive Evaluation: Is Reshoring Feasible? . . . . . . . . . . . . . . . . . . 23
+9 Conclusion and Policy Recommendations 24
+9 . 1 Main Conclusions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+9 . 2 Policy Recommendations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+9 . 3 Strengths, Weaknesses, and Future Directions . . . . . . . . . . . . . . . . . . . . . 25
+10 References 25
+11 Appendix 26
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-131-
+
+===== PDF page 3 =====
+Team # apmcm25301412 Page 1 of 55
+I. Introduction
+1 . 1 Background
+On April 2, 2025, the U.S. Trump administration launched the “Reciprocal Tariffs” policy, imposing
+a 10% minimum baseline tariff on all trading partners and additional higher tariffs on 60 trade-deficit
+economies (including China). The U.S. claimed this would cut the trade deficit and boost manufactur-
+ing reshoring, but the policy violated WTO “Most-Favored-Nation Treatment” and developing-country
+tariff preferences. By August 2025, the U.S. trade-weighted average tariff surged from 2.44% (early
+2025) to 20.11%—its highest since 1933. While WTO-permitted tariffs can protect domestic in-
+dustries, excessive tariffs disrupt global trade and long-term growth. In the short term, U.S. high
+tariffs increased revenue and narrowed the trade deficit but also caused export declines and domestic
+inflation. GACC data showed U.S. imports from China fell 20% in the policy’s first month (with U.S.
+exports to China down 13% amid Chinese countermeasures), by May 2025, these declines widened
+to 35% and 18%, weighing on U.S. industries.
+1 . 2 Question Restatement
+Using U.S. tariff and global trade data, we analyze the impact of U.S. tariff adjustments on international
+trade and regional economies, addressing:
+Question 1 Analyze China’s soybean trade with the U.S., Brazil, and Argentina (the world’s top
+soybean producers/exporters). Model the impact of U.S. tariff adjustments on their soybean industries
+and estimate post-adjustment export volume/value distribution.
+Question 2 Analyze Japanese automobiles’ position in the U.S. market (where 46% of 2024 car
+sales were imported). Model the impact of U.S. tariff adjustments on U.S.-Japan auto trade, U.S. auto
+import structure, and the U.S. auto industry, incorporating Japan’s non-tariff responses and economic
+transmission effects.
+Question 3 Model the effects of U.S. tariff policies on domestic semiconductor manufacturing
+and high/mid/low-end chip trade, considering economic efficiency and national security (noting the
+U.S. leads in semiconductors but lacks strong manufacturing, and imposed high-end chip export con-
+trols on China).
+Question 4 Model the short/medium-term impact of U.S. tariff adjustments on U.S. tariff revenue
+and predict the net change during Trump’s second term.
+Question 5 Model the short/medium-term impact of U.S. tariff adjustments on the U.S. economy
+(considering trading partners’ countermeasures like China’s reciprocal tariffs and rare earth/lithium
+battery export controls). Evaluate if “reciprocal tariffs” can truly drive manufacturing reshoring.
+1 . 3 Our Approach
+To disentangle the complex transmission mechanisms of U.S. tariff policies across varying tempo-
+ral and sectoral dimensions, we propose a Systemic Multi-Dimensional Evaluation Framework
+(SMDEF). Unlike traditional linear approaches, our framework operates on a hierarchical logic, inte-
+grating micro-level supply chain dynamics with macro-level feedback loops. As illustrated in Figure
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-132-
+
+===== PDF page 4 =====
+Team # apmcm25301412 Page 2 of 55
+Figure 1.1 The Logical Workflow of Our Research Framework (SMDEF).
+1.1, the methodology consists of three interconnected layers:
+1. Data Input Layer: We aggregate high-frequency trade data from UN Comtrade, U.S. Census
+Bureau, and macroeconomic indicators from the Federal Reserve. To ensure data quality, we
+employ STL Decomposition to filter out seasonal noise and isolate structural trends.
+2. Modeling Engine Layer: This is the core of our research, divided into three parallel tracks:
+• Resource-Constrained Track (Q1): Utilizes the Constrained Armington Model to capture
+physical capacity limits in agricultural trade.
+• Strategic Game Track (Q2 & Q3): Applies Dynamic Stackelberg Games and Bi-level
+Optimization to simulate the strategic interactions between governments and multinational
+corporations (Auto & Chips).
+• Macro-Feedback Track (Q4 & Q5): Integrates Supply-Side Shock Models with Crisis-
+Aware Forecasting to quantify systemic risks like stagflation and fiscal deficits.
+3. Policy Output Layer: The quantitative results from the modeling engine are synthesized into
+a multi-criteria assessment matrix (Revenue, Employment, Innovation, Inflation), providing
+actionable policy recommendations.
+II. Assumptions and Notations
+2 . 1 Notations
+The key mathematical notations used in our models are summarized in Table 1.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-133-
+
+===== PDF page 5 =====
+Team # apmcm25301412 Page 3 of 55
+Table 1 Notations and Definitions
+Symbol Definition Unit/Context
+Trade & Tariff Parameters
+𝜏𝑖 Tariff rate imposed on country𝑖 % (e.g., 0.60)
+𝑉𝑖(𝑡) Trade volume from country𝑖 in year𝑡 Million Units/$
+𝑃𝑖 Landed price of goods from country𝑖 USD
+𝑄𝑖 Export volume from country𝑖 to China Million Metric Tons
+ˆ𝑃 Logarithmic price change index Dimensionless
+𝜂 Price elasticity of demand Dimensionless
+𝜎 Armington elasticity of substitution Dimensionless
+Industry-Specific Variables
+𝐶𝑚𝑎𝑥 Maximum physical production capacity Million Metric Tons
+𝑇𝐿𝐶𝑖 Total Landed Cost for vehicle𝑖 USD/Unit
+𝑆(𝑡) Market share of a specific supplier %
+𝛼(𝑡) Supply chain adjustment coefficient (Inertia) 0≤𝛼≤ 1
+𝑅&𝐷 Research and Development Budget Billion USD
+𝑇 Technology Leadership Index Index (0-100)
+Macroeconomic Indicators
+𝑅𝑡𝑜𝑡𝑎𝑙 Total fiscal tariff revenue Billion USD
+𝜋𝑡 Inflation rate (CPI) in year𝑡 %
+𝑔𝐺𝐷𝑃 Natural GDP growth rate %
+𝜆 Trade diversion (substitution) coefficient 0≤𝜆≤ 1
+𝑅𝐹𝐼 Reshoring Feasibility Index Index (100=Neutral)
+2 . 2 General Assumptions
+To ensure the tractability and scientific rigor of our models, we make the following general assumptions,
+which apply throughout the paper unless specified otherwise:
+• Rational Behavior Assumption: All economic agents (governments, firms, consumers) act to
+maximize their utility functions—governments seek to maximize social welfare or employment;
+firms maximize profits; and consumers maximize utility under budget constraints.
+• Partial Equilibrium Stability: When analyzing a specific sector (e.g., soybeans or autos), we
+assume that shocks in this sector do not instantaneously alter the fundamental structure of other
+unrelated sectors (Ceteris Paribus), allowing for isolated impact assessment.
+• Policy Credibility: We assume that announced tariff policies (e.g., 60% on China) are credible
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-134-
+
+===== PDF page 6 =====
+Team # apmcm25301412 Page 4 of 55
+threats perceived by market participants, triggering immediate behavioral adjustments (e.g.,
+front-loading imports) even before implementation.
+• Supply Chain Friction: Unlike ideal trade models, we assume supply chains are “sticky”.
+Production capacity cannot be expanded or relocated instantaneously; there are time lags (e.g.,
+18 months for factory construction) and physical constraints (e.g., arable land limits).
+III. Data Preprocessing and Descriptive Analysis
+3 . 1 Data Sources
+To ensure the empirical validity of our models, we aggregated high-frequency trade and economic
+data from multiple authoritative sources. The dataset covers the period from January 2020 to May
+2025, providing a solid baseline for forecasting.
+3 . 2 Data Processing Framework
+Raw trade data often contains noise, reporting lags, and inconsistencies. We implemented a three-stage
+preprocessing pipeline:
+1. Outlier Detection & Removal: We applied the Interquartile Range (IQR) method to identify
+and filter out anomalous trade spikes caused by one-off events (e.g., port strikes) that do not
+reflect structural trends.
+2. Missing Value Imputation: For minor gaps in monthly data (e.g., late reporting from Argentina),
+we used Linear Interpolation. For longer gaps, we employed Seasonal Decomposition of Time
+Series (STL) to impute values while preserving seasonal patterns (crucial for the soybean model
+in Q1).
+3. Harmonization: Trade flows reported by exporters (e.g., China exports to US) often differ from
+importer reports (e.g., US imports from China) due to “CIF/FOB” differences and transit lags. We
+standardized all values to Landed Cost (CIF) basis to ensure consistency in tariff calculations.
+3 . 3 Rationality of Estimated Parameters
+A key challenge in our modeling is forecasting future parameters (e.g., elasticity shifts, 2026-2028
+prices) under extreme policy shocks. We justify our estimates as follows:
+• Tariff Pass-Through Rate (≈ 100%): We assume tariffs are fully passed on to U.S. consumers.
+This is supported by empirical studies on the 2018-2019 trade war (e.g., Amiti et al., 2019),
+which found that U.S. domestic prices rose 1:1 with tariffs due to the specialized nature of
+Chinese imports.
+• Substitution Elasticity (𝜎): For commodities like soybeans, we set a high𝜎 = 5.0 based on
+GTAP database estimates, reflecting high substitutability. For specialized goods like rare earths,
+we set a low𝜎= 0.5, reflecting supply rigidity.
+• Reaction Lags (18 months): In Q2 (Auto) and Q5 (Reshoring), we assume an 18-month lag for
+capacity expansion. This is consistent with the average construction cycle of a new manufacturing
+plant, preventing our model from predicting unrealistic “instantaneous” reshoring.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-135-
+
+===== PDF page 7 =====
+Team # apmcm25301412 Page 5 of 55
+Table 2 Summary of Primary Data Sources
+Category Source Key Variables
+Global Trade UN Comtrade Database Bilateral trade volume, HS Code 6-digit data
+U.S. Trade U.S. Census Bureau Monthly imports/exports, Tariff revenue
+Agriculture USDA WASDE Reports Soybean production, Global stock-to-use ratio
+Auto Industry MarkLines / OICA Vehicle production by country, Localization rates
+Semiconductor SIA / Boston Consulting Group Wafer capacity by node, CapEx, R&D spend
+Macroeconomy Federal Reserve (FRED) 10Y Treasury Yield, CPI, PPI, Exchange Rates
+IV. Question1: Assessment of the Impact of U.S. Tariff
+Adjustments on the Global Soybean Trade System
+4 . 1 Data Insight and Status Analysis
+To quantify the impact of U.S. tariff adjustments, we analyzed global soybean trade micro-structure
+using monthly bilateral data (Jan 2023-Dec 2024) from UN Comtrade and national customs statistics,
+revealing baseline characteristics of China’s trade with the U.S., Brazil, and Argentina.
+4 . 1 . 1 Seasonal Complementarity in an Oligopolistic Market
+China’s soybean supply features an oligopolistic structure with distinct seasonal complementarity
+driven by biological growth cycles: - Brazil (Q2-Q3): Dominates from April-September (Southern
+Hemisphere harvest), with market share exceeding 80% in peaks (2023-2024). - U.S. (Q4-Q1):
+Replaces Brazil as stocks deplete (October-March), ensuring year-round supply.
+Figure 4.1 Quarterly Seasonal Supply Struc-
+ture of China’s Soybean Imports
+(2023-2024)
+Figure 4.2 Monthly Landed Price Dynamics of Im-
+ported Soybeans (2023-2024)
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-136-
+
+===== PDF page 8 =====
+Team # apmcm25301412 Page 6 of 55
+4 . 1 . 2 Price Synchronization and Cost Benchmarks
+Price is the core driver of trade flow reallocation (Figure 4.2): - High Correlation: Price correlation
+coefficient among the three countries < 0.9, confirming high substitutability. - 2024 Downward
+Trend: Global average price falls to $430/MT, magnifying the relative cost impact of 25% tariffs and
+intensifying trade diversion.
+4 . 2 Modeling and Solution: The Constrained Armington Framework
+We constructed a Constrained Armington Trade Substitution Model, integrating physical capacity
+constraints into the partial equilibrium framework to simulate price-driven substitution and supply-
+side limits.
+4 . 2 . 1 Core Assumptions
+1. Imperfect Substitution: Origin-specific differences (protein content, oil yield, shipping) lead
+importers to adjust procurement proportions via Armington elasticity, not complete abandonment.
+2. Short-term Capacity Rigidity: Arable land and crop cycle constraints limit short-term (1-2
+years) export expansion of Brazil/Argentina, with physical upper limits.
+4 . 2 . 2 Parameter Calibration and Justification
+1. Substitution Elasticity (𝜎= 5.0): Based on GTAP 10 Database’s “Oil Seeds” sector estimates
+[Cite: Hertel et al.]. Academia’s 3.0-8.0 range, combined with soybeans’ high homogeneity and
+price synchronization, justifies this high elasticity.
+2. Brazil’s Capacity Cap (𝐶max = 1.1× Baseline): Set at 110% of 2024 baseline (≈80 MMT),
+grounded in: - Biological limits: USDA WASDE reports short-term agricultural supply elasticity
+< 0.2. - Empirical evidence: Stabilizing Brazilian growth rates; > 10% annual expansion
+contradicts agricultural production laws.
+4 . 2 . 3 Mathematical Formulation
+The model operates via two stages:
+Stage 1: Demand Response to Price Shocks Tariff-induced price changes drive market share
+adjustments:
+ln
+ 
+𝑄𝑛𝑒𝑤 𝑖
+𝑄𝑏𝑎𝑠𝑒 𝑖
+!
+=−𝜂· ˆ𝑃𝑎𝑣𝑔
+|     {z     }
+Scale Effect
+−𝜎·   ˆ𝑃𝑖− ˆ𝑃𝑎𝑣𝑔  |               {z               }
+Substitution Effect
+(1)
+Where ˆ𝑃𝑖 = ln(1+𝜏𝑖) (relative price shock) and ˆ𝑃𝑎𝑣𝑔 (share-weighted average price change).
+Stage 2: Capacity Constraint and Spillover Mechanism When predicted demand exceeds
+supply limits, spillover shifts to alternative suppliers:
+𝑄𝑓𝑖𝑛𝑎𝑙 Brazil= min  𝑄𝑝𝑟𝑒𝑑𝑖𝑐𝑡𝑒𝑑 Brazil ,𝐶max  (2)
+If𝑄𝑝𝑟𝑒𝑑𝑖𝑐𝑡𝑒𝑑 Brazil >𝐶max:
+𝑄𝑓𝑖𝑛𝑎𝑙 Argentina=𝑄𝑝𝑟𝑒𝑑𝑖𝑐𝑡𝑒𝑑 Argentina + max  0,𝑄𝑝𝑟𝑒𝑑𝑖𝑐𝑡𝑒𝑑 Brazil −𝐶max  (3)
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-137-
+
+===== PDF page 9 =====
+Team # apmcm25301412 Page 7 of 55
+4 . 2 . 4 Simulation Results and Analysis
+Using calibrated parameters (𝜎= 5.0,𝐶max= 1.1× Baseline,𝜏US= 0.25), we simulated 2025 export
+pattern changes (Table 3):
+Country 2024
+Baseline
+(MMT)
+2025 Forecast
+(MMT)
+Change
+(%)
+Est. Export
+Value ($B)
+Impact Analysis
+USA 26.32 11.28 -57.1% 5.47 Market Collapse: Price un-
+competitiveness drives sharp
+share decline.
+Brazil 72.56 79.82
+(Capped)
++10.0% 34.65 Capacity Capped: Fills U.S.
+gap but constrained by physi-
+cal limits.
+Argentina 3.92 20.22 +415.9% 8.73 Strategic Windfall: Absorbs
+Brazil’s unmet demand as
+marginal supplier.
+Table 3 Global Soybean Export Simulation Results (2025)
+Figure 4.3 Comparative Forecast of Export Volumes Before and After Tariff Shock
+Key insights from simulation results:
+1. U.S. Export Collapse: A 25% retaliatory tariff induces a substantial price shock ( ˆ𝑃US≈ 0.223),
+triggering a sharp 57.1% decline in U.S. exports due to the substitution effect.
+2. Brazil’s Capacity Constraint: As the primary substitute, Brazil’s export volume hits its short-term
+physical ceiling, which is capped at 110% of the baseline (79.82 MMT), confirming the model’s
+capacity rigidity assumption.
+3. Argentina’s Spillover Dividend: The unmet demand from Brazil spills over, leading to a dramatic
+415.9% surge in Argentina’s exports and validating the model’s spillover mechanism.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-138-
+
+===== PDF page 10 =====
+Team # apmcm25301412 Page 8 of 55
+4 . 3 Robustness Analysis and Conclusion
+We conduct a robustness check on core parameters (substitution elasticity 𝜎 and Brazil’s capacity
+growth𝐶growth) to verify conclusion stability:
+4 . 3 . 1 Sensitivity Analysis Design
+Simulated Argentina’s export growth under parameter combinations: -𝜎: 2.0 (low substitution) →
+8.0 (high substitution) -𝐶growth: +5% (conservative) → +20% (optimistic)
+Figure 4.4 Sensitivity Heatmap of Argentina’s Export Growth Rate
+As shown in Figure 4.4:
+1. Persistent Growth: Argentina’s export growth remains positive across all scenarios; even in the
+conservative case (𝐶growth= 20%,𝜎= 6), growth reaches 16%.
+2. Non-Linearity: Growth accelerates significantly when 𝜎 > 5, magnifying spillover effects in
+highly commoditized markets.
+Conclusion: Argentina’s status as a key beneficiary is robust—a structural outcome of supply
+chain physical constraints, not parameter-dependent.
+V. Question 2: The Impact on Automobile Industry
+5 . 1 Overview of U.S.-Japan Auto Trade
+To model the U.S.-Japan auto trade game, we first analyze two critical features: Tariff Shock Volatility
+and Localization Shield.
+5 . 1 . 1 Trade Volume Dynamics and the 2025 Shock
+U.S. imports of Japanese passenger vehicles showed stable seasonality (2022-2024) but were disrupted
+by 2025 “Reciprocal Tariffs”:
+• Panic Buying (March 2025): Imports surged pre-policy to evade tariffs.
+• Policy Cliff (April-May 2025): Imports plummeted post-policy, with landed prices rising.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-139-
+
+===== PDF page 11 =====
+Team # apmcm25301412 Page 9 of 55
+Figure 5.1 Monthly U.S. Imports of Japanese Cars (2022-2025)
+5 . 1 . 2 Structural Resilience: The Localization Strategy
+Japanese automakers maintain high U.S. localization rates:
+• Toyota: 77% of U.S. sales from North American production.
+• Honda: 60% local production (2021-2024).
+Figure 5.2 Localization Rates of Major Japanese Automakers (2024)
+Model Implication: Tariffs primarily impact Direct Imports, so “Localization Ratio” is a key
+strategic variable in our Game Theory model (Section 5.2).
+5 . 2 Game Theory Model for Supply Chain Decision
+We constructed a Dynamic Stackelberg Game Model integrating logistics friction, non-tariff barriers,
+and investment lags, with a “White-box” Total Landed Cost (TLC) framework.
+5 . 2 . 1 Game Structure and Decision Logic
+- Leader (U.S. Government): Sets tariff 𝜏(𝑡) to balance employment and consumer welfare. -
+Follower (Japanese Automakers): Optimizes supply chain (𝑆∈{𝐽𝑃𝐸𝑥𝑝𝑜𝑟𝑡,𝑈𝑆𝐿𝑜𝑐𝑎𝑙,𝑀𝑋𝑁𝑒𝑎𝑟}) and
+pricing𝑃(𝑡) to maximize NPV, constrained by sunk costs and construction lags.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-140-
+
+===== PDF page 12 =====
+Team # apmcm25301412 Page 10 of 55
+5 . 2 . 2 The “White-Box” Total Landed Cost (TLC) Model
+For a vehicle produced in𝑖∈{𝐽𝑃,𝑈𝑆,𝑀𝑋} and sold in the U.S.:
+𝑇𝐿𝐶𝑖 =(𝐿𝑖·𝑤𝑖+𝐸𝑖·𝑒𝑖+𝑀steel,𝑖·𝑝𝑖+𝑃global) |                                              {z                                              }
+Manufacturing
++(𝐷𝑖·𝑟𝑖+𝐹port) |             {z             }
+Logistics
++(𝐶base·𝜏+𝐶compliance) |                       {z                       }
+Policy
++𝐾amort,𝑖
+(4)
+Parameter Japan (JP) USA (US) Mexico (MX) Source / Rationale
+Labor Wage
+($/h)
+10.6 33.14 4.2 MHLW / BLS / INEGI
+Energy Price
+($/kWh)
+0.111 0.091 0.099 EIA / GlobalPetrolPrices
+Steel Price
+($/Ton)
+750 1025 825 SteelBenchmarker
+Logistics
+Dist (km)
+8800 1500 2000 Geographical Data
+Freight Rate
+($/km)
+0.11 0.47 0.40 Industry Avg
+Amortized
+Capex ($)
+200 1100 800 Model Calibration
+Base Prefer-
+ence
+0 2200 1700 2024 Market Share
+Table 4 Calibrated Model Parameters (2024 Baseline)
+Key Cost Components - Manufacturing: U.S. labor costs are high but offset by energy prices and
+reduced logistics; steel prices reflect protectionist policies. - Logistics: Japan’s ocean path (8,800
+km) costs≈ $1, 200, while Mexico’s rail path (2,000 km) costs≈ $800. - Policy/Investment: U.S.
+greenfield capex is $1, 100/car; Mexico incurs USMCA compliance costs.
+5 . 2 . 3 Market Dynamics: Logit Demand and Supply Chain Inertia
+- Demand: Consumers maximize𝑈𝑖 =(BasePref𝑖+ Brand𝑖)−𝛽·𝑃𝑟𝑒𝑡𝑎𝑖𝑙,𝑖, with a $1,500 “Made in
+Japan” brand premium. - Supply Inertia: Market share adjusts gradually: 𝑆(𝑡) = 𝑆(𝑡− 1)+𝛼(𝑡)·
+[𝑆𝑡𝑎𝑟𝑔𝑒𝑡−𝑆(𝑡− 1)], with𝛼(𝑡)≈ 0.02 during 18-month construction lags.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-141-
+
+===== PDF page 13 =====
+Team # apmcm25301412 Page 11 of 55
+5 . 2 . 4 Economic Transmission Indicators
+- Manufacturing Employment (𝐸𝑢𝑠): 𝐸𝑢𝑠(𝑡)=𝐷𝑡𝑜𝑡𝑎𝑙·𝑆𝑈𝑆(𝑡)·𝜂𝑗𝑜𝑏. - Tariff Revenue (𝑅𝑡𝑎𝑥): Subject
+to the Laffer Curve (excessive tariffs shrink the tax base). - Consumer Inflation (𝐶𝑃𝐼𝑎𝑢𝑡𝑜): Measured
+by weighted average vehicle prices.
+5 . 2 . 5 Simulation Results and Analysis
+Figure 5.3 Retail Price Breakeven (Calibrated)
+Result 1: Price Tipping Point (Figure 5.3) - Tipping Point (10.5%): Tariffs above 10.5% make
+Japanese imports costlier than U.S. local production, triggering supply chain restructuring.
+Figure 5.4 Dynamic Supply Chain Response
+Result 2: Dynamic Reconfiguration (Figure 5.4) - Shock Phase (2025 Q2): Tariffs (27.5%)
+compress Japanese market share. - Construction Lag: Share declines slowly (supply stickiness) until
+new capacity comes online (late 2026).
+Result 3: Economic Trade-offs (Figure 5.5) - Employment rises post-2026, achieving policy goals.
+- Tariff revenue follows an inverted U-shape (Laffer Curve), unsustainable long-term.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-142-
+
+===== PDF page 14 =====
+Team # apmcm25301412 Page 12 of 55
+Figure 5.5 U.S. Manufacturing Employment, Tariff Revenue, and Vehicle Prices
+Figure 5.6 Market Share under Different Tariff Scenarios
+Scenario Analysis (Figure 5.6) Finally, the scenario analysis confirms that a “Neutral” tariff (15%)
+maintains the reshored supply chain; reverting to 5% would undo re-industrialization efforts.
+5 . 3 Results Analysis and Robustness Check
+5 . 3 . 1 Sensitivity Analysis: “JPY Hedge” Effect
+We introduce exchange rate𝐸𝐽𝑃𝑌∈[130, 180] to test robustness:
+- High-Tariff Zones (𝜏≥ 10.5%): Even extreme Yen depreciation (180) cannot prevent market
+share from falling below 10%—localization is mandatory.
+5 . 3 . 2 Comprehensive Assessment: Structural Transformation
+The U.S. auto industry shifts from a “Consumption-led” (efficiency/welfare) to “Production-led”
+(security/employment) model:
+1. Gains: Manufacturing employment and supply chain resilience expand.
+2. Losses: Vehicle affordability and consumer choice contract.
+3. Neutral: Tariff revenue shows no long-term advantage (Laffer Curve).
+5 . 3 . 3 Conclusion for Question 2
+1. Trade shifts from “Product Trade” to “Capital Trade” (FDI replaces direct exports).
+2. Mexico replaces Japan as the core low-end import source, while high-value production reshores to
+the U.S.
+3. Localization is mandatory for Japanese automakers beyond the 10.5% tariff threshold.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-143-
+
+===== PDF page 15 =====
+Team # apmcm25301412 Page 13 of 55
+Figure 5.7 Tariff vs. Exchange Rate Impact on
+Japan’s Market Share
+ Figure 5.8 2024 Baseline vs. 2027 New Equilibrium
+VI. Question3: The Impact on Semiconductor Industry
+6 . 1 Industrial Status and Trade Data Insight: Asymmetric Dependency and
+Forced Decoupling
+By integrating SIA reports and U.S.-China trade data (2020-2025), we reveal the supply chain evolution
+from “deep integration” to “hard decoupling”.
+6 . 1 . 1 Baseline Analysis: Design Dominance vs. Manufacturing Hollowing-out
+The U.S. semiconductor industry exhibits an “asymmetric structure” driving policy actions:
+Figure 6.1 Global Semiconductor Manufacturing Capacity Share (1990-2024)
+As shown in Figure 6.1:
+• U.S. manufacturing capacity shrank from 37% (1990s) to 10% (2024), while East Asia holds 78%.
+• Value Chain Distribution: Design: U.S. holds 45% global market share (NVIDIA, AMD).
+Fabrication: Near-zero advanced node (< 7nm) capacity, reliant on TSMC/Samsung. ATP: U.S.
+holds 3% vs. China’s 38%, leaving supply chains vulnerable.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-144-
+
+===== PDF page 16 =====
+Team # apmcm25301412 Page 14 of 55
+• U.S. fab TCO is 30%-50% higher than Asia, hindering spontaneous reshoring.
+6 . 1 . 2 High-End Chips (HS 8542): Export Controls’ “Shock Therapy”
+Integrated Circuits (HS 8542) are the core target of U.S. tech containment:
+Figure 6.2 US Exports of Integrated Circuits (HS 8542) to China (2020-2024)
+Figure 6.2 shows:
+• Exports plummeted 58% (from $12.26B in 2021 to $5.13B in 2023) post-2022 ban.
+• High-end AI chip trade (A100/H100) entered “Hard Decoupling”, with U.S. firms losing 30% of
+revenue.
+6 . 1 . 3 Upstream Equipment (HS 8486): Undermining the Foundation
+Semiconductor equipment (HS 8486) embargoes aim to lock China’s manufacturing:
+Figure 6.3 US Exports of Semiconductor Equipment (HS 8486) to China (2023-2025 Forecast)
+Figure 6.3 reveals:
+• 2025 exports crash to $3.31B, down from $8B (2023-2024).
+• U.S. equipment giants (Applied Materials) lose the largest incremental market, weakening R&D
+sustainability.
+6 . 1 . 4 Low-End Devices (HS 8541): Tariff-Induced Inflation
+Discrete semiconductors (HS 8541) face tariff-driven supply chain shifts:
+Figure 6.4 shows:
+• 2025 imports shrink to $0.40B (25% of 2024 levels).
+• Tariff costs pass through to U.S. downstream manufacturers, triggering inflation.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-145-
+
+===== PDF page 17 =====
+Team # apmcm25301412 Page 15 of 55
+Figure 6.4 US Imports of Discrete Semiconductors (HS 8541) from China (2023-2025 Forecast)
+Summary Semiconductor trade follows “Dual-Track Decoupling”: high-end via export controls
+(permanent trade loss), low-end via tariffs (supply chain restructuring + inflation).
+6 . 2 Policy Impact Assessment: A Bi-level Simulation Model
+To quantify policy impacts, we constructed a Bi-level Simulation & Evaluation Model focusing on
+High-End (Logic/AI) and Mature (Legacy) sectors.
+6 . 2 . 1 Model Framework and Mechanism
+1. High-End Innovation Loop (R&D Mechanism) Advanced nodes (< 7nm) rely on “Winner-
+Takes-All” R&D:
+• U.S. firms depend on China for 30% of global revenue.
+• R&D intensity = 18% (e.g., NVIDIA, Intel).
+• Decoupling reduces R&D budgets, eroding Tech Leadership (𝑇):
+𝑇 = ln(BaseRevenue×(1− DecouplingRate)× 0.18) (5)
+2. Manufacturing Cost Gap (CapEx Mechanism) U.S. fab CapEx is 40% higher than Asia.
+CHIPS Act subsidies (𝑆) offset this:
+𝐶eff=𝐶Asia× 1.4×(1−𝑆) (6)
+Domestic capacity expands with the gap between𝐶eff and𝐶Asia.
+3. Low-End Transmission (Inflation Mechanism) Tariff rate (𝜏) directly drives downstream
+inflation (ΔCPI) for mature nodes.
+6 . 2 . 2 Evaluation Scenarios
+We simulate three policy scenarios:
+1. Scenario A (Biden): 25% subsidies + 30% decoupling.
+2. Scenario B (Trump Baseline): 25% tariffs + 80% decoupling.
+3. Scenario C (Trump Aggressive): 60% tariffs + 100% decoupling.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-146-
+
+===== PDF page 18 =====
+Team # apmcm25301412 Page 16 of 55
+6 . 2 . 3 Simulation Results and Analysis
+Figure 6.5 TOPSIS Evaluation: Security vs. Efficiency Trade-offs
+Key findings from Figure 6.5:
+• Domestic Capacity: Scenario A (Biden) scores highest—subsidies are critical to bridge the 40%
+cost gap. Tariffs alone (B/C) fail to incentivize high-end fabs.
+• Tech Leadership: Scenario C (Aggressive) crashes—losing 30% revenue shrinks R&D budgets,
+triggering a “Boomerang Effect”: (policy weakens U.S. innovation).
+• Economic Efficiency: Scenario A lags in fiscal efficiency, but B/C suffer inflation from low-end
+tariffs.
+Conclusion: Scenario A (Biden) is Pareto-optimal, balancing capacity expansion and R&D
+sustainability. Trump’s approach prioritizes short-term decoupling at the cost of long-term tech
+leadership.
+6 . 3 Validity Analysis and Robustness Check
+6 . 3 . 1 Sensitivity Analysis: Cost Gap and Policy Boundaries
+We test how U.S.-Asia CapEx Premium (0%-80%) impacts “Investment Incentive” under different
+policies:
+Figure 6.6 Sensitivity of Domestic Investment Incentive to Manufacturing Cost Gap
+Figure 6.6 reveals:
+• Market Failure Point: Trump’s policy (red dashed) fails when cost premium exceeds 40%.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-147-
+
+===== PDF page 19 =====
+Team # apmcm25301412 Page 17 of 55
+• Necessity of Subsidies: Biden’s policy (blue solid) maintains incentives in the 30%-50% gap,
+proving subsidies are a necessary condition for reshoring.
+6 . 3 . 2 Model Validity
+Internal Validity: captures the “Innovation-Revenue” feedback loop, reflecting R&D reliance on
+global markets. External Validity: predicts “equipment export cliffs” and “low-end import contrac-
+tion”, aligning with real-world HS 8486/8542/8541 trade data.
+6 . 3 . 3 Conclusion for Question 3
+1. Impact on U.S. Domestic Manufacturing
+• Reshoring: CHIPS Act subsidies (Biden) are the only viable path to bridge the 40% cost gap.
+Tariffs (Trump) fail to address high-end manufacturing costs.
+• R&D: Aggressive decoupling backfires—losing 30% revenue shrinks R&D, undermining long-term
+tech hegemony.
+2. Impact on Global Chip Trade
+• High-End: Permanent decoupling, with supply chains shifting to “US-Design, Ally-Foundry”
+loops.
+• Equipment: U.S. manufacturers suffer massive revenue losses, narrowing trade surpluses.
+• Low-End: Tariffs divert trade to Southeast Asia, triggering sustained U.S. downstream inflation.
+VII. Question 4: Analysis of U.S. Tariff Revenue
+7 . 1 Status Quo Analysis: Trade Resilience and Structural Asymmetry
+We first analyze U.S. trade volume evolution and structure to identify import demand rigidity— the
+core premise for tariff revenue assessment.
+7 . 1 . 1 Macro Level: Tariffs Do Not Suppress Import Growth
+Figure 7.1 U.S. Import Resilience Analysis (2020-2024)
+As shown in Figure 7.1:
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-148-
+
+===== PDF page 20 =====
+Team # apmcm25301412 Page 18 of 55
+• U.S. imports hit a record $3.27 trillion in 2022 despite lingering tariffs and rising effective rates.
+• Imports stabilized at $3.15 trillion (2023-2024) amid inflation and rate hikes, verifying import
+demand rigidity.
+• Short-term tariff costs convert to revenue/inflation rather than trade collapse, supporting 2025-2028
+revenue forecasts.
+7 . 1 . 2 Structural Level: Volume-Revenue Asymmetry
+Figure 7.2 U.S. Trade Structural Asymmetry: Volume vs. Revenue Contribution (2024)
+Figure 7.2 reveals a dualistic structure:
+• China accounts for only 14.1% ($427B) of U.S. imports, while “Rest of World (ROW)” dominates
+(85.9%).
+• China contributes 51% of tariff revenue—“small volume, huge revenue” driven by high existing
+tariffs.
+7 . 1 . 3 Policy Space: Incremental Gains from ROW
+Figure 7.3 Existing Tariff Rates: China vs. ROW
+Figure 7.3 shows the policy gap:
+• China’s average effective tariff (19.3%) is high, with diminishing marginal revenue from hikes.
+• ROW’s tariff (3.0%) remains low—Trump’s “10% universal baseline” applies to a $2.6T tax base,
+generating more revenue than China-focused hikes.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-149-
+
+===== PDF page 21 =====
+Team # apmcm25301412 Page 19 of 55
+Figure 7.4 Vulnerability Analysis: U.S. Imports from China
+7 . 1 . 4 Vulnerability Assessment: China Import Composition
+Figure 7.4 decomposes imports:
+• High elasticity (∼ 30%): Consumer goods (toys, electronics) risk tax base evaporation under 60%
+tariffs.
+• Rigid demand (∼ 70%): Industrial intermediates/capital goods—supply chain stickiness makes
+them revenue “ballast”.
+7 . 2 Dynamic Modeling: Tariff-Revenue-Crisis Nexus
+We developed a Multi-Scenario Dynamic Forecasting Model to predict 2025-2028 U.S. tariff rev-
+enue, incorporating systemic risk penalties and trade diversion mechanisms (capturing non-linear
+supply chain responses).
+7 . 2 . 1 Mathematical Formulation
+Total tariff revenue𝑅𝑡𝑜𝑡𝑎𝑙(𝑡) for year𝑡 is the sum of three sectors (China-Consumer, China-Industrial,
+ROW):
+𝑅𝑡𝑜𝑡𝑎𝑙(𝑡)=
+∑︁
+𝑖∈{𝐶𝑜𝑛𝑠,𝐼𝑛𝑑,𝑅𝑂𝑊}
+[𝑉𝑖(𝑡)·𝜏𝑖(𝑡)·𝜂(𝜏𝑖)] (7)
+-𝑉𝑖(𝑡): Trade volume of sector𝑖;𝜏𝑖(𝑡): Nominal tariff rate;𝜂(𝜏𝑖): Efficiency factor (collection rate).
+Trade volume dynamics (driven by elasticity, growth, and diversion):
+𝑉𝑖(𝑡)=𝑉𝑖(𝑡− 1)·(1+𝑔𝐺𝐷𝑃−𝛿𝑠ℎ𝑜𝑐𝑘)·
+ 1+𝜏𝑖(𝑡)
+1+𝜏𝑖(𝑡− 1)
+𝜀𝑖(𝑡)
+(8)
+-𝑔𝐺𝐷𝑃: Economic growth;𝛿𝑠ℎ𝑜𝑐𝑘: Trade war penalty;𝜀𝑖(𝑡): Time-varying elasticity.
+7 . 2 . 2 Key Assumptions (Data: BEA/Census Bureau)
+1. Baseline Asymmetry: China-Consumer tariffs (∼ 22%)> China-Industrial (∼ 14%); ROW enjoys
+MFN low tariffs (∼ 2.5%).
+2. Efficiency Decay:𝜂= 0.98 (𝜏< 10%) decays to 0.55 (𝜏≥ 60%) (smuggling/transshipment risks).
+3. Trade Diversion: $0.60 of reduced China imports diverts to ROW (𝜆= 0.6).
+4. Elasticity: Consumer goods elasticity shifts from -1.5 (short-run) to -4.0 (long-run).
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-150-
+
+===== PDF page 22 =====
+Team # apmcm25301412 Page 20 of 55
+7 . 2 . 3 Policy Scenarios
+• A (Aggressive): 60% China tariff + 10% universal baseline; -1.5% GDP penalty (hard decoupling).
+• B (Status Quo): Maintain current policies with inflation adjustments.
+• C (Pragmatic): 35% China tariff + 5% ROW tariff (balance revenue/stability).
+7 . 2 . 4 Result Analysis: Revenue vs. Volume
+Figure 7.5 Projected Tariff Revenue and Trade Volume (2025-2028)
+Figure 7.5 confirms the Laffer Curve effect:
+• Aggressive (Red): “Sugar high”—2025 peak ($318B) reverses to $262B by 2028 (tax base erosion).
+• Pragmatic (Blue): Stable $207B/year—sustainable without systemic risk.
+• Volume Cost: Aggressive scenario cuts imports by 11% ($2.74T→$2.43T), signaling trade sector
+recession.
+7 . 2 . 5 Structural Reshaping: Trade Diversion Effect
+Figure 7.6 Market Share Restructuring (2024 vs. 2028, Aggressive Scenario)
+Figure 7.6 shows supply chain redistribution:
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-151-
+
+===== PDF page 23 =====
+Team # apmcm25301412 Page 21 of 55
+• Consumer Goods: China’s share collapses to 4%—Vietnam (30%) fills the gap.
+• Industrial Goods: Mexico’s share rises to 28% (USMCA tariff avoidance).
+• Implication: Diverted goods are taxed at lower rates, causing revenue leakage.
+7 . 2 . 6 Multi-Dimensional Assessment
+Figure 7.7 Radar Chart: Tariff Policy ”Impossible Trinity”
+Figure 7.7 key findings:
+• Aggressive: High revenue (8.5/10) but near-zero scores in trade volume/stability (unbalanced).
+• Pragmatic: Largest total area—Pareto optimal (balances revenue and economic health).
+Scenario Conclusion: 60% China tariffs yield short-term revenue spikes but medium-term
+declines. Pragmatic 35% caps balance fiscal goals and sustainability.
+7 . 3 Model Evaluation and Policy Reflection
+7 . 3 . 1 Revenue vs. Welfare Optimization
+We optimize “Net Fiscal Benefit” (𝑈(𝜏) = 𝑅(𝜏)−𝛼·𝜏2, where𝛼·𝜏2 = distortion cost): Figure ??
+insights:
+• Fiscal Peak: Net benefit maximizes at𝜏∗≈ 30%—60% is 100% overshoot (irrational for protec-
+tionism).
+• Welfare Gap: 30% is a fiscal maximum, not national welfare maximum (hurts consumer purchasing
+power).
+7 . 3 . 2 Sensitivity Analysis: Trade Diversion Impact
+We test substitution rate𝜆 (0.2=rigid, 0.8=flexible supply chains): Figure ?? confirms robustness:
+• Realistic flexible scenarios (𝜆≥ 0.6) see significant revenue decline over time.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-152-
+
+===== PDF page 24 =====
+Team # apmcm25301412 Page 22 of 55
+Figure 7.8 Optimization: Revenue vs. Welfare
+Divergence
+Figure 7.9 Sensitivity: Supply Chain Flexibility
+vs. Revenue
+• Tariffs cause “leakage”—supply chains divert to third countries, reducing efficiency.
+7 . 3 . 3 Model Limitations
+Partial equilibrium assumptions exclude: 1. Retaliation: Counter-tariffs on U.S. agriculture would
+require subsidies offsetting revenue. 2. Macroeconomic Feedback: Tariff-induced inflation’s impact
+on Fed policy/exchange rates (addressed in Question 5).
+VIII. Question 5: Macroeconomic Impact and The Reshoring
+Paradox
+8 . 1 Supply-Side Shock: The Cost of Retaliation
+While Question 4 focused on fiscal revenue, Question 5 expands the horizon to the broader macroeco-
+nomic feedback loop. A unilateral tariff hike by the U.S. will inevitably trigger retaliatory measures
+from trading partners, creating a “Double Shock” to the supply chain.
+We define the cost-push inflation function as:
+𝜋𝑡 =𝜋𝑏𝑎𝑠𝑒+𝛼·𝜏𝑖𝑚𝑝𝑜𝑟𝑡+𝛽·𝑆𝑠ℎ𝑜𝑐𝑘(𝑡) (9)
+Where𝑆𝑠ℎ𝑜𝑐𝑘(𝑡) represents the supply crunch caused by export controls on critical minerals.
+• The Critical Vulnerability: Data indicates that the U.S. relies on imports for 100% of its
+graphite and nearly 80-100% of rare earth elements, with China controlling 85% of global
+processing capacity.
+• Scenario Simulation: Our model simulates a scenario where China restricts rare earth exports
+(similar to 2010 or 2023 gallium/germanium controls) in response to U.S. tariffs.
+As shown in Figure 8.1, the “Trade War + Retaliation” scenario (Red Line) creates a structural
+break in inflation dynamics:
+• Unlike the simple tariff scenario (Orange Line), which causes a transitory spike, the retaliation
+scenario sustains high inflation (∼5.5%) through 2026.
+• This is driven by a surge in the Producer Price Index (PPI) as U.S. manufacturers face shortages
+of key inputs for electronics, EVs, and defense equipment.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-153-
+
+===== PDF page 25 =====
+Team # apmcm25301412 Page 23 of 55
+Figure 8.1 : Inflationary Impulse Response: The Impact of Retaliation.
+Figure 8.2 Systemic Risk Transmission Matrix: Impact of Tariffs on Financial Markets.
+8 . 2 Financial Market Feedback: A Systemic Risk Matrix
+To quantify the impact on financial markets (USD, Treasuries, and Crypto), we constructed a cross-
+market correlation matrix based on historical volatility during the 2018-2019 trade war.
+Figure 8.2 reveals the transmission mechanism of tariff shocks:
+1. The Debt Spiral (Correlation +0.88): There is a near-perfect correlation between Tariff-Induced
+Inflation and 10Y Treasury Yields. As inflation expectations rise (Figure 8.1), the Federal Reserve
+is forced to hike rates, increasing the cost of U.S. government debt servicing.
+2. The Crypto Hedge (Correlation +0.65): Bitcoin prices show a strong positive correlation
+with Trade Uncertainty (TPU). This suggests that as trade policy becomes erratic, capital flees
+traditional markets into alternative “digital gold” assets, increasing systemic volatility.
+3. The USD Paradox (Correlation +0.55): Tariffs drive the USD Index higher. While politically
+desirable for “strength”, a stronger dollar mathematically erodes the competitiveness of U.S.
+exports, cancelling out the protective benefit of tariffs.
+8 . 3 Comprehensive Evaluation: Is Reshoring Feasible?
+The ultimate goal of the “Reciprocal Tariff” policy is to drive manufacturing back to the U.S. To
+evaluate this, we constructed a Reshoring Feasibility Index (RFI):
+𝑅𝐹𝐼𝑡 =𝐵𝑝𝑟𝑜𝑡𝑒𝑐𝑡𝑖𝑜𝑛(𝑡)−
+
+𝐶𝑖𝑛𝑝𝑢𝑡(𝑡)+𝐶𝑐𝑎𝑝𝑖𝑡𝑎𝑙(𝑡)
+
+(10)
+Where 𝐵𝑝𝑟𝑜𝑡𝑒𝑐𝑡𝑖𝑜𝑛 is the pricing power gained from tariffs, 𝐶𝑖𝑛𝑝𝑢𝑡 is the cost of raw materials
+(inflated by retaliation), and𝐶𝑐𝑎𝑝𝑖𝑡𝑎𝑙 is the cost of financing (inflated by interest rates).
+Figure 8.3 illustrates the failure of the reshoring logic under extreme conditions:
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-154-
+
+===== PDF page 26 =====
+Team # apmcm25301412 Page 24 of 55
+Figure 8.3 : The Reshoring Paradox: Tariff Benefits vs. Systemic Costs.
+• The Tug-of-War: While tariffs (Green Line) provide a shield, the cost of inputs (Red Line) and
+capital (Purple Line) rises faster due to the feedback loops identified in Section 8.2.
+• The “Anti-Reshoring” Zone: The Net Feasibility (Black Line) remains significantly below the
+neutral threshold (100). This indicates that for a typical factory, the burden of expensive raw
+materials and 6%+ interest rates outweighs the benefit of tariff protection.
+• Collateral Damage in Agriculture: Furthermore, historical data (2018) shows that U.S. soybean
+exports to China dropped by 75%. The need to subsidize these losses (CCC payments) diverts
+fiscal resources that could have been used for industrial policy.
+Conclusion for Question 5: Our model indicates that a “Reciprocal Tariff” policy, when met with
+targeted retaliation (Critical Minerals Ban), fails to drive sustainable reshoring. The policy triggers a
+“Stagflationary” trap where high input costs and high interest rates suffocate the very manufacturing
+base the tariffs were meant to protect. True industrial independence requires not just tariffs, but a
+comprehensive strategy to secure upstream critical mineral supplies.
+IX. Conclusion and Policy Recommendations
+9 . 1 Main Conclusions
+Our multi-module evaluation reveals that the “Reciprocal Tariff” policy triggers a fundamental, often
+counter-productive, restructuring of the global economy:
+• Agriculture (Irreversible Displacement): The U.S. loses pricing dominance as trade perma-
+nently shifts to South America, with Argentina emerging as a strategic beneficiary (+245% export
+growth).
+• Automotive (Forced Localization): A tariff tipping point of 11.1% forces foreign automakers
+to shift from exporting to localizing production (FDI), prioritizing U.S. jobs over consumer
+affordability.
+• Semiconductors (Innovation Dilemma): Tariffs fail to bridge the 40% cost gap in manufactur-
+ing; subsidies are essential. Aggressive decoupling creates a “Boomerang Effect”, eroding U.S.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-155-
+
+===== PDF page 27 =====
+Team # apmcm25301412 Page 25 of 55
+R&D revenue.
+• Fiscal & Macro Paradox: Fiscal revenue follows a Laffer Curve, peaking at≈30%. The
+proposed 60% rate is mathematically inefficient. Furthermore, retaliatory supply shocks and
+inflation create a “Stagflationary Trap”, neutralizing the incentives for manufacturing reshoring.
+9 . 2 Policy Recommendations
+For the United States:
+• Optimal Tariff Cap: Limit baseline tariffs to 20%-30% to maximize revenue without triggering
+systemic stagflation.
+• Subsidies over Tariffs: For high-tech sectors, replace blunt tariffs with targeted infrastructure
+subsidies (reducing Cost of Ownership) to spur true reshoring.
+• Upstream Security: Secure critical mineral supply chains (Lithium, Rare Earths) prior to trade
+escalation to immunize against asymmetric retaliation.
+For Trading Partners:
+• Diversification & Localization: Accelerate “China+N” market diversification and establish
+North American production bases to bypass tariff walls.
+9 . 3 Strengths, Weaknesses, and Future Directions
+Strengths: Our framework effectively integrates sector-specific granularity (Armington/Game The-
+ory) with dynamic feedback mechanisms (time lags/inflation loops), calibrated on real-world data
+(2020-2024).
+Weaknesses: The current model relies on partial equilibrium assumptions, potentially overlooking
+cross-sector substitution, and simplifies complex geopolitical motives into rational behaviors.
+Future Work: Future research could integrate these modules into a Computable General Equi-
+librium (CGE) framework to capture economy-wide spillovers, or employ Agent-Based Modeling
+(ABM) to simulate heterogeneous firm-level adaptation strategies.
+X. References
+[1] Alessandria and Choi, The Dynamics of the US Trade Balance and the Real Exchange Rate: The
+J Curve and Trade Costs? Discussion Paper, mimeo, 2018
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-156-

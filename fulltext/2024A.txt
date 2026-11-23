@@ -1,0 +1,1273 @@
+
+===== PDF page 1 =====
+Team # apmcm24200438
+Team Number: apmcm24200438
+Problem Chosen: A
+2024 APMCM summary sheet
+A Multi-compound Model for Underwater Image Enhancement Based
+on Physical Theorem and Machine learning
+Abstract
+The high cost and low tolerance for error in underwater photography have made salvaging degraded underwater
+images a signiﬁcant challenge for marine researchers, underwater tourism enthusiasts, and others. Therefore,
+we leverage physical theorems and machine learning to conduct multidimensional classiﬁcation, cause analysis,
+and enhancement restoration of degraded underwater images.
+For Question 1: Firstly, we observed the causes of degradation in images, resulting in a visibility ranking
+from Low Light to Color Cast, and then to Blur. The categorization priority was thus established. Subse-
+quently, a grayscale histogram analysis model was developed to determine whether an image is underexposed;
+an RGB histogram model combined with Jensen-Shannon divergence was employed to assess color cast;
+and the Laplacian operator was utilized to analyze image blurriness. Ultimately, in Appendix 1, 33 images
+were identiﬁed as blurry, 215 as color-cast, 22 as low-light, and 130 as normal.
+For Question 2: According to the Jaﬀe-McGlamery imaging model, we put forward a simpliﬁed and
+revised underwater image model. Then, we decomposed the formula to cope with single degradation case
+and came up with underwater image degradation models, such as the color cast model, the low-light model,
+and the clarity model. In the end, we preprocessed the attachment 1 dataset with an innovate statistical
+method Noise Adversarial Preprocessing (NAP). Increasingly, we used a algorithm based on methods
+of least square and exponential smoothing to obtain the approximate value of 𝛽𝐷 𝑐 and 𝛽𝐵 𝑐 , analyzed the
+rationality and the outlier data and pointed out the similarities and diﬀerence between these models.
+For Question 3: For blurred images, we propose a strategy of denoising ﬁrst, followed by sharpening,
+and ﬁnally enhancing contrast. For color-cast images, we establish a random forest model and extend the
+dataset using the Forward-backward theory, applying the training results to correct the images. For low-light
+images, we employ a grayscale adjustment method. Subsequently, PSNR, UCIQE, and UIQM validated
+the excellence of the comprehensive strategy and grayscale adjustment. Meanwhile, we analyzed the reasons
+behind the insensitivity of the FbRF model to UCIQE.
+For Question 4 & 5: We analyzed the drawbacks of current methods of underwater image enhancement,
+and shed light upon the need for our improved Multi-compound Model with a Multi-scale 𝑁-fold Fusion
+techniques. After introduce its speciﬁc steps, we applied it to the pictures in attachment 2, which showcases the
+beneﬁts of our model.Additionally, SIFT(Scale-Invariant Feature Transform) is introduced to better judge
+the image quality. Then we put forward feasible suggestions of underwater optical enhancement tailored for
+speciﬁc and complex scenarios.
+Finally, we analyzed the sensitivity of theorem in Question 2 and the robustness of our multi-compound
+model. Then we discussed the limitations of our model and the prospects for future research.
+Keywords: Grayscale RGB&Lab Color Space Laplacian Operator Multi-compound Model Multi-scale
+𝑁-fold Fusion Techniques Randon Forest Model Forward-backward Theory SIFT Keypoint
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-184-
+
+===== PDF page 2 =====
+Team # apmcm24200438
+Contents
+1. Introduction. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 1 Problem Background. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 2 Restatement of the Problem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 3 Our Work. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2. Assumptions and Justiﬁcations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+3. Notations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+4. Model Building and Problem Solving . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4 . 1 Question 1: Classify the Degradation Types of the Attached Image . . . . . . . . . . . . . . . . . . . . . . . . 4
+4 . 1 . 1 Comprehensive Analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4 . 1 . 2 Grayscale-histogram-based Brightness Analysis Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4 . 1 . 3 Jensen-Shannon-divergence-based RGB Histogram Model . . . . . . . . . . . . . . . . . . . . . . . . . 5
+4 . 1 . 4 Laplacian-operator-based Blur Analysis Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+4 . 1 . 5 Result and Analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+4 . 2 Question 2: Establish An Image Degradation Model for Underwater Scenes . . . . . . . . . . . . . . . . . 8
+4 . 2 . 1 A Simpliﬁed and Revised Underwater Image Formation Model . . . . . . . . . . . . . . . . . . . . . . 8
+4 . 2 . 2 Underwater Image Degradation Model. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+4 . 2 . 3 Model testing and rationality analysis. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+4 . 2 . 4 Comparison between diﬀerent degradation models . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+4 . 3 Question 3: Propose Image Enhancement Methods Tailored for A Single Scene . . . . . . . . . . . . . . 14
+4 . 3 . 1 Fusion Enhancement Strategy Tailored for Blurred Scenarios . . . . . . . . . . . . . . . . . . . . . . . 14
+4 . 3 . 2 Forward-backward Random Forest Model Tailored for Color Cast Scene . . . . . . . . . . . . . . 14
+4 . 3 . 3 Grayscale Adjustment Model Tailored for Low-Brightness Scene . . . . . . . . . . . . . . . . . . . . 16
+4 . 3 . 4 Joint Quality Assessment and Enhancement Validation Using PSNR&UCIQE&UIQM . . . . 17
+4 . 4 Question 4: Propose Multi-Compound Underwater Image Enhancement Model . . . . . . . . . . . . . . 19
+4 . 4 . 1 The Need for a Multi-Compound Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4 . 4 . 2 Our Multi-Compound Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4 . 5 Question 5: Propose Feasibility Suggestions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+5. Model Test . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+5 . 1 Sensitivity Validation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+5 . 2 Robustness. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+6. Strengths and Weaknesses . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+6 . 1 Analysis of Strengths. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+6 . 2 Analysis of Weaknesses . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+7. References . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+8. Appendix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-185-
+
+===== PDF page 3 =====
+Team # apmcm24200438 Page 1 of 48
+1 Introduction
+1 . 1 Problem Background
+Images serve as a critical medium for transmitting substantial information through visual representation. In
+contemporary marine scientiﬁc research, particularly in areas such as deep-sea topography surveying and
+seabed resource investigation, underwater imagery plays an indispensable role. Moreover, underwater images
+hold invaluable signiﬁcance as precious memories and mementos for many marine tourism enthusiasts. They
+exhibit a pronounced demand and aspiration for high-quality images.
+However, underwater conditions are complex and dynamic, with the shooting environment often un-
+controllable. Numerous factors can cause catastrophic degradation of image quality. For instance, as depth
+increases, light rapidly attenuates, resulting in dim images. Particles, plankton, and pollutants in the water
+can interfere with light propagation, leading to blurriness or distortion in underwater images. The color of
+underwater scenes can vary depending on depth and water type. Additionally, water currents, waves, or motion
+of objects can induce camera or subject shake, aﬀecting image stability and clarity, among other issues.
+Therefore, the establishment of a model capable of enhancing the quality of underwater images is of
+paramount importance.
+(a) Good Image
+ (b) Low-light Image
+ (c) Color-cast Image
+ (d) Blur Image
+Figure 1 Schematic diagram of diﬀerent underwater images
+1 . 2 Restatement of the Problem
+Considering the background information and restricted conditions identiﬁed in the problem statement, we need
+to solve the following problems:
+1. For the provided set of underwater images, image analysis and statistical techniques should be employed
+to develop a multi-dimensional analytical model, with the images classiﬁed into three categories: color
+cast, low light, and blur, while the reasons behind each classiﬁcation should be elucidated.
+2. For underwater images with diﬀerent types of degradation, an underwater scene image degradation model
+should be established using the given underwater imaging model. Additionally, the similarities and
+diﬀerences in the causes of degradation under diﬀerent scenarios should be analyzed, and the distinctions
+among various degradation models should be compared.
+3. For underwater images with a single degradation cause, a targeted image enhancement solution should
+be proposed. Image quality assessment metrics such as PSNR, UCIQE [9] , and UIQM [5] should be
+used to establish an evaluation model, and a quantitative assessment of the obtained enhancement results
+should be conducted.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-186-
+
+===== PDF page 4 =====
+Team # apmcm24200438 Page 2 of 48
+4. For underwater images with multiple complex degradation causes, a more generalized underwater im-
+age enhancement model should be established. Meanwhile, a quantitative assessment of the obtained
+enhancement results should be performed.
+5. Compare and analyze various enhancement solutions for single-cause degradation and a uniﬁed enhance-
+ment model for multiple-cause degradation, in order to propose feasible solutions and strategies for
+underwater image enhancement technology in practical applications.
+1 . 3 Our Work
+Our main work ﬂow is shown in the following ﬁgure.
+Our Work
+2 Assumptions and Justiﬁcations
+To simplify the problem and make it convenient for us to simulate real-life conditions, we make the following
+basic assumptions, each of which is properly justiﬁed.
+• Degradation Feature Independence Assumption
+The degradation phenomena of underwater images (such as color cast, low light, and blur) can, to some
+extent, be regarded as independent features. This implies that detection and enhancement methods can be
+designed speciﬁcally for each type of degradation in certain scenarios, without excessively considering
+their interactive eﬀects.
+• Physical Model Generalization Assumption
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-187-
+
+===== PDF page 5 =====
+Team # apmcm24200438 Page 3 of 48
+The physical model of underwater image degradation is applicable to most underwater scenarios, such
+as shallow water, deep water, and turbid water. Although the degradation degree may vary across
+diﬀerent environments, the fundamental principles (such as light absorption and scattering eﬀects) can be
+eﬀectively described in the model by adjusting the parameters.
+• Forward scattering Light Removal Assumption
+The assumption of not considering the complete removal of forward scattering light is not applicable
+in high turbidity water with strong scattering eﬀects. However, this kind of situation is not common
+underwater, so when the camera and the object are close enough, the eﬀect of forwarding scattered light
+is reasonable to remove in the Jafe-McGlamery imaging theory.
+• Smoothed Illumination Scene Prior Assumption
+Due to the inﬂuence of non-uniform illumination under complex lighting conditions, underwater images
+have a higher probability of non-uniform color decay and high brightness areas, which is easy to cause
+problems such as over-enhancement of local areas and loss of details. Considering the unpredictability
+and chaos of complex lighting scenes, it is diﬃcult to simulate the underwater imaging problem with
+physical and mathematical models, so we mainly consider the attenuation of natural light in the water
+without occlusion, and also forget the case of artiﬁcial ﬁlling light.
+3 Notations
+Symbols Description
+𝑅,𝐺,𝐵 A structured color system used in digital devices and light-based media
+𝐿 Luminance or Lightness in CIELAB
+𝐴,𝐵 Represent the green-rad & blue-yellow axis in CIELAB
+ℎ𝑖 Probability function of discrete random variable
+𝐼 (𝑥,𝑦) Gray value of a pixel at (𝑥,𝑦)
+𝑐 𝑅,𝐺,𝐵 channel
+𝛽𝐷 𝑐 Direck attenuation coeﬃcients
+𝛽𝐵 𝑐 Backscatter coeﬃcients
+𝑡𝑐 (𝑧) 𝑅,𝐺,𝐵 Light transmission function with respect to distance𝑧
+Where we deﬁne the main parameters while the speciﬁc value of those parameters will be given later.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-188-
+
+===== PDF page 6 =====
+Team # apmcm24200438 Page 4 of 48
+4 Model Building and Problem Solving
+4 . 1 Question 1: Classify the Degradation Types of the Attached Image
+4 . 1 . 1 Comprehensive Analysis
+(a) Low-light & Color-cast &
+Blur Image
+(b) Color-cast & Blur Image
+ (c) Blur Image
+ (d) Perfect Image
+Figure 2 Underwater Image with Overlaid Degradation Types
+According to Figure 2(a), under the combination of low light, color cast, and blur, the visibility(The
+degradation types observable to the naked eye) of low light is the most pronounced. Subsequently, based on
+Figure 2(b) and Figure 2(c), the visibility of color cast is less pronounced than low light but greater than blur.
+Therefore, we will sequentially detect the types of degradation following the process shown in Figure 3.
+Figure 3 The Process of Underwater Degradation Classiﬁcation
+4 . 1 . 2 Grayscale-histogram-based Brightness Analysis Model
+The grayscale histogram helps us understand the brightness distribution of an image by counting the number
+of pixels at each grayscale level (luminance value). Grayscale images typically use 256 grayscale levels, with
+values ranging from 0 (black) to 255 (white). By analyzing the histogram, we can determine whether the image
+has excessive brightness or shadows, insuﬃcient contrast, or if enhancement is needed.
+As shown in Figure 4, if the histogram has a higher pixel count on the left side (low grayscale value range),
+it indicates that the image is darker with insuﬃcient brightness. Conversely, if the histogram has a higher pixel
+count on the right side (high grayscale value range), it indicates that the image is brighter. Therefore, we divide
+the cumulative number of pixels for each grayscale value and below by the total number of pixels in the image
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-189-
+
+===== PDF page 7 =====
+Team # apmcm24200438 Page 5 of 48
+(a) Image with Suﬃcient Brightness
+(b) Image with Insuﬃcient Brightness
+Figure 4 Comparison of Grayscale histograms for Two Images With or Without Suﬃcient Light
+to obtain the normalized CDF value. If the CDF value at a grayscale value of 100 is below the set threshold,
+it indicates that a larger proportion of low-brightness pixels are present, and thus the image is considered too
+dark. After repeated validation, we ﬁnd that setting the threshold to 90 is the most appropriate. Below is the
+normalized cumulative distribution function (CDF).
+𝐻norm,𝑘 =
+/summationtext.1𝑘
+𝑖=0ℎ𝑖
+/summationtext.1𝑛−1
+𝑖=0 ℎ𝑖
+, 𝑘 = 0, 1, 2,...,𝑛 − 1
+4 . 1 . 3 Jensen-Shannon-divergence-based RGB Histogram Model
+In the RGB histogram, the X-axis represents the color intensity of each channel (ranging from 0 to 255), while
+the Y-axis represents the frequency at which each intensity value occurs. It illustrates the distribution of each
+color channel (Red R, Green G, Blue B).
+In Figure 5, we can observe that color cast in the RGB histogram typically manifests as one channel
+deviating from the others. The greater the overlap between this channel and the other channels, the larger the
+portion of the color represented by this channel at a speciﬁc pixel intensity, which results in a higher degree of
+color cast in the image.
+Therefore, we introduce the Jensen-Shannon divergence to quantitatively evaluate the degree of disparity
+between the color channels.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-190-
+
+===== PDF page 8 =====
+Team # apmcm24200438 Page 6 of 48
+(a) Green Color Cast Image
+(b) No Color Cast Image
+Figure 5 Comparison of RGB histograms for Two Images With or Without Color Cast
+The Jensen-Shannon divergence (JSD) between two probability distributions𝑃 and𝑄 is deﬁned as:
+JSD(𝑃||𝑄) = 1 2 ·𝐷KL(𝑃||𝑀) + 1 2 ·𝐷KL(𝑄||𝑀)
+where𝑀 is the average distribution of𝑃 and𝑄, deﬁned as:
+𝑀 = 1 2 (𝑃 +𝑄)
+The terms𝐷KL(𝑃||𝑀) and𝐷KL(𝑄||𝑀) represent the Kullback-Leibler divergence between𝑃 and𝑀, and
+between𝑄 and𝑀, respectively. These are deﬁned as:
+𝐷KL(𝑃||𝑀) =
+∑︁
+𝑥
+𝑃(𝑥) log 𝑃(𝑥) 𝑀 (𝑥) 𝐷KL(𝑄||𝑀) = ∑︁ 𝑥 𝑄(𝑥) log 𝑄(𝑥) 𝑀 (𝑥)
+For the pairwise discrete values between the R, G, and B channels—JSD rg, JSD rb, and JSD gb—after
+sampling analysis of the RGB histogram of the underwater image in Attachment 1 and repeated threshold
+adjustments based on visual comparison, it is concluded that if any of the three discrete values is greater than
+0.35, the image is considered to have a color cast.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-191-
+
+===== PDF page 9 =====
+Team # apmcm24200438 Page 7 of 48
+4 . 1 . 4 Laplacian-operator-based Blur Analysis Model
+We use the Laplacian operator to calculate the rate of luminance change for each pixel in the image to identify
+edges and details. It eﬀectively detects areas of rapid grayscale changes in the image, especially the edges. The
+edges of an image are typically the regions with the most signiﬁcant luminance variation, and the Laplacian
+identiﬁes these changes to detect the edges.
+(a) Clear Image
+(b) Blurred Cast Image
+Figure 6 Comparison of Laplacian Transform for Two Images With or Without Blurriness
+As shown in Figure 6, in the blur analysis, the response value of the Laplacian can be used to quantitatively
+assess the clarity of the image. The clearer the image, the more pronounced the edges, and the stronger the
+Laplacian response; conversely, the more blurred the image, the weaker the Laplacian response. The Laplacian
+response is the second derivative of each pixel in the image, represented by the following formula:
+∇2𝐼 (𝑥,𝑦) = 𝜕2𝐼 𝜕𝑥2 + 𝜕2𝐼 𝜕𝑦2
+In discrete images, the discrete form of the Laplacian operator is:
+∇2𝐼 (𝑥,𝑦) =𝐼 (𝑥 + 1,𝑦) +𝐼 (𝑥 − 1,𝑦) +𝐼 (𝑥,𝑦 + 1) +𝐼 (𝑥,𝑦 − 1) − 4𝐼 (𝑥,𝑦)
+The variance of the Laplacian response is used to measure the clarity of an image. The calculation formula
+is as follows:
+Variance = 1 𝑁 𝑁∑︁ 𝑖=1 (𝐿𝑖 −𝜇)2
+where𝐿𝑖 represents the Laplacian response of each pixel,𝜇 is the mean of the Laplacian response, and𝑁
+is the total number of pixels in the image.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-192-
+
+===== PDF page 10 =====
+Team # apmcm24200438 Page 8 of 48
+We have established that the threshold for determining whether an image is blurry using the Laplacian
+operator is 90 (images with a value below 90 are considered blurry).
+4 . 1 . 5 Result and Analysis
+By analyzing the 400 underwater images in Attachment 1 using the three aforementioned models, the following
+classiﬁcation results were obtained.
+(a) Table Image
+ (b) Pie Chart
+Figure 7 Classiﬁcation Result Statistics
+As shown in Figure 8, we use the UCIQE and UIQM metrics to evaluate the quality of the original images,
+and the results will be compared with the eﬀectiveness of the quality improvement in subsequent steps.
+(a) UCIQE Histogram
+ (b) UIQM Histogram
+Figure 8 Distribution of Quantitative Evaluation Metrics for Original Image Quality
+4 . 2 Question 2: Establish An Image Degradation Model for Underwater Scenes
+4 . 2 . 1 A Simpliﬁed and Revised Underwater Image Formation Model
+There are several factors that can aﬀect the quality of underwater images, such as the depth of camera
+underwater, light attenuation, water turbidity, and even camera shake,to name but a few.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-193-
+
+===== PDF page 11 =====
+Team # apmcm24200438 Page 9 of 48
+When light travels underwater, pure water and impurities in the water will cause the light to scatter, making
+some of the light deviate from the incident direction. Underwater scattering can be divided into two types:
+forward scatter and backward scatter.
+In the famous Jaﬀe-McGlamery imaging mode[6], underwater images are usually represented by the
+superposition of a linear combination of three components, which are direct component, backward scattering
+component and forward scattering component. The forward scattering component mainly causes the loss of
+image details, and the back scattering component mainly causes the lack of image contrast and image blur.
+Compared with backscatter and forward scatter, backscatter usually plays a more important role in underwater
+image imaging. Due to the serious scattering of light underwater, underwater images will present serious
+problems such as low contrast, blurred edge details and signiﬁcant noise as the shooting distance becomes
+longer. Usually, the imaging eﬀect is better when the distance taken underwater is less than 10 meters. The
+illustration of the underwater image formation model is shown in Figure 9.
+Figure 9 Schematic of the Underwater Optical Imaging Model
+Generally, because of closer distance between cameras and objects, a simpliﬁed imaging model used for
+underwater image formation is governed by:
+𝐼𝑐 ≈𝐷𝑐 +𝐵𝑐, 𝑐 = {𝑅,𝐺,𝐵}
+where𝑐 = {𝑅,𝐺,𝐵} represents the three color channels of the image,𝐼𝑐 is the image (with distorted colors)
+captured by the camera, 𝐷𝑐 is the direct signal which contains the information about the attenuated image,
+and𝐵𝑐 is the backscatter component, an additive signal that degrades the image due to additional light that is
+reﬂected from particles in the water.
+Akkaynak et al. [2] experimentally found that the components𝐷𝑐 and 𝐵𝑐 are governed by two distinct
+coeﬃcients𝛽𝐷 𝑐 and𝛽𝐵 𝑐 , which are wideband (RGB) attenuation and backscatter coeﬃcients, respectively.
+Accordingly, the expanded form of above equation is given as [1] :
+𝐼𝑐 =𝐽𝑐𝑒−𝛽𝐷 𝑐 ·𝑧 +𝐵∞ 𝑐 (1 −𝑒−𝛽𝐵 𝑐 ·𝑧)
+where𝑧 is range (distance) between the objects and the camera along the line of sight,𝐵∞ 𝑐 is veiling light, and
+𝐽𝑐 is the unattenuated scene that would be captured at the spot of the camera had there been no attenuation
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-194-
+
+===== PDF page 12 =====
+Team # apmcm24200438 Page 10 of 48
+along 𝑧. In general cases,it was assumed that 𝛽𝐷 𝑐 = 𝛽𝐵 𝑐 . Remarkbly, they found that the 𝛽𝐷 𝑐 and 𝛽𝐵 𝑐 are
+distinct, and furthermore, that they had dependencies on diﬀerent factors, which scientiﬁcally corrected the
+common misunderstanding of the model and is simpliﬁed, compared with the original model, based on the
+actual situation of photography.
+4 . 2 . 2 Underwater Image Degradation Model
+Underwater optical properties can be divided into two types: intrinsic optical properties [4] and expressive
+optical properties, which are only related to the intrinsic properties of the water medium,or related to both the
+intrinsic properties of the water medium and the distribution of the surrounding light ﬁeld, respectively. In
+the universal situation, the distribution and structure of the light ﬁeld are diﬃcult to be measured, so when
+studying the underwater optical characteristics, we only study the intrinsic optical characteristics ,such as the
+depth of objects, and the absorption and scattering eﬀect of the water medium on light.
+On land, light is transmitted through air. But when we shoot underwater, the medium becomes water.
+When light moves underwater, it will be absorbed and scattered by suspended particles in the water. Absorption
+causes attenuation of light energy, and of course, scattering causes changes in the direction of light propagation.
+The attenuation of light under water is mainly caused by the absorption and scattering of light by the medium in
+the water, and the attenuation degree also changes with the change of distance. Figure 10 shows the attenuation
+Figure 10 Schematic Diagram of Underwater Light Attenuation
+process of underwater light. From the ﬁgure, it is obvious that light of diﬀerent wavelengths has diﬀerent
+attenuation rates when propagating underwater. Among them, the red light (with the longest wavelength) in the
+visible light range has the weakest penetration ability, and it completely disappears when it is 5𝑚 underwater;
+while the blue-green light (with a shorter wavelength) can transmits longer in water. In addition, the relationship
+between wavelength and underwater light attenuation rate is not nearly linear. Only the blue-green light with a
+wavelength of about 480𝑛𝑚 ± 30𝑛𝑚 in the visible light range has the smallest attenuation coeﬃcient in water,
+and the strongest penetration ability. Therefore, this band is called the ”underwater window”. These problems
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-195-
+
+===== PDF page 13 =====
+Team # apmcm24200438 Page 11 of 48
+has led to the fact that objects seen underwater vary from those on land to a great extent, and most underwater
+images seem to be covered with a thick blue-green ﬁlter.
+According to the physical properties of photons, the attenuation equation of light is given by:
+𝑃 =𝑃0𝑒−𝜖𝑙
+where𝑃 is the light intensity after attenuation,𝑃0 is the initial light intensity,𝜖 is the attenuation coeﬃcient
+with respect to water, and𝑙 is the distance that light travels in water. Additionally, the attenuation coeﬃcient𝜖
+is deﬁned by the combination of the absorption coeﬃcient𝜖𝑎 and the scattering coeﬃcient𝜖𝑠:
+𝜖 =𝜖𝑎 +𝜖𝑠
+Firstly, based on the above analysis, consider the implications of 𝛽𝐷 𝜆 and 𝛽𝐵 𝜆 , we can establish the
+underwater image degradation model on the color cast as following formula:
+𝑡𝑐 (𝑧) =𝜅𝑒−𝛽𝐷 𝑐 ·𝑧 +𝜇(1 −𝑒−𝛽𝐵 𝑐 ·𝑧)
+where 𝑐 = {𝑅,𝐺,𝐵} represents the color channels of RGB, 𝑡𝑐 (𝑧) is the light intensity of the 𝑐 channel at
+the distance𝑧, 𝜅 and 𝜇 are the linear way of combination of attenuation coeﬃcients, and 𝛽𝐷 𝑐 and 𝛽𝐵 𝑐 are the
+attenuation coeﬃcients of the direct and backscatter components, respectively, respectively. The model can be
+further simpliﬁed as:
+𝑡𝑐 (𝑧) =𝜅𝑒−𝛽𝐷 𝑐 ·𝑧 +𝜇𝑒−𝛽𝐵 𝑐 ·𝑧
+This is the same as the formula above in mathematical form but in another diﬀerent form.
+Secondly, the underwater image degradation model on the low-light case can be established as following
+formula:
+𝐵∞ 𝑐 (𝑑) =
+∫ 𝜆2
+𝜆1
+𝑆𝑐 (𝜆)𝑏(𝜆) ·𝐸 (𝑑,𝜆) 𝛽(𝜆) 𝑑𝜆
+where 𝐵∞ 𝑐 (𝑑) is the veiling light at the distance 𝑑, 𝑆𝑐 (𝜆) is the sensor spectral response, 𝑏(𝜆) is the beam
+scattering coeﬃcient [1] . Notably,𝜆1 and𝜆2 here are the limits of the visible range (400𝑛𝑚, 700𝑛𝑚),𝐸 is the
+spectrum of ambient light at depth𝑑. Light penetrating vertically attenuates based on the diﬀuse downwelling
+attenuation𝐾𝑑 (𝜆), diﬀerent than the beam attenuation coeﬃcient𝛽(𝜆) which is solely a function of the type,
+composition, and density of dissolved substances in the ocean .
+If𝐸 (0,𝜆) is the light on the sea surface, then𝐸 (𝑑,𝜆) at depth𝑑 is
+𝐸 (𝑑,𝜆) =𝐸 (0,𝜆)𝑒−𝐾𝑑 (𝜆)𝑑
+These indicates, due to the complexity of environment underwater,that we can not only get a nearly exact
+value of the coeﬃcient𝐵∞ 𝑐 by the formula, but also we can get a basic understanding of the relationship between
+the veiling light and the distance, that is, the veiling light increases with the distance.
+Additionally, the inﬂuencing factors of image clarity are more subjective because diﬀerent people have
+diﬀerent criteria for classifying clarity. The main factors mainly include water turbidity, water ﬂow velocity,
+camera speed, light concentration degree and so on. However, by using the variance of the Laplacian response
+variance = 1 𝑁 /summationtext.1𝑁 𝑖=1(𝐿𝑖 −𝜇)2 in the Question 1, the degree of clarity can be quantiﬁed in a more scientiﬁc way.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-196-
+
+===== PDF page 14 =====
+Team # apmcm24200438 Page 12 of 48
+4 . 2 . 3 Model testing and rationality analysis
+The model is tested by the data in the training set. We use the low-light case model to predict the depth of
+objects in each picture, and then use an innovate statistical method NAP to divide the sample space into four
+groups. Consequently, we get the intensity of RGB channels in each picture, control the order of magnitudes,
+and ﬁnally, use light transmission function to ﬁt the scatter points, obtaining the coeﬃcients. The concrete
+analysis is as follow.
+Figure 11 Nap-based Data Preprocessing and Regression Function ﬁtting
+To basically control the mapping form the depth underwater to the veiling light, we adopt the result of
+Brightness in Question 1. Assuming that the proportion of the number of unnatural conditions (that is, artiﬁcial
+supplementary light that people often use when using camera below a certain depth) in the training set belongs
+to the degree of noise, we use a statistical techniques NAP, Noise Adversarial Preprocessing, dividing the
+whole sample space into four groups with the criterion of the upper quartile, the median and the lower quartile
+of the set, which oﬀset the inﬂuence of the noise to some extent. Because the noise ruin the simple “linear”
+relationship between the depth and the veiling light, dividing the sample and then using the average value to
+represent the average depth of this set of data are an innovative statistical method to combating the outlier noise
+points. The comparison of images before and after preprocessing is as follow (Figure 11).
+Then we use a algorithm based on methods of least square and exponential smoothing to obtain the
+approximate value of 𝛽𝐷 𝑐 and 𝛽𝐵 𝑐 . The ﬁtted curves obtained with and without the NAP algorithm are above.
+(Figure 11). Akkaynak et al. found that for short ranges,𝛽𝐷 𝑐 (𝑧) can also be modeled as a line [2].
+As we can see, in the ﬁrst picutre without using NAP, it is evident that near the right side of abscissa,
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-197-
+
+===== PDF page 15 =====
+Team # apmcm24200438 Page 13 of 48
+which means in very shallow water, the value of red channel curves up and even go beyond the others. This is
+because the noise points are too much to be ignored. However, in the second picture, the curve is more smooth
+and the value of red channel is more reasonable and conforms to the laws of physics. This is because the NAP
+algorithm has divided the sample space into four groups, and the noise points are oﬀset by the average value
+of the set. This is the rationality of the model.
+Furthermore, let’s take a closer look at the reason why the ﬁtting function of red channel is so weird?
+Extract the top 2 images in the strange depth range (Figure 12), we can see that the images are taken on the
+yellow sand, and the water is very clear. The reason is that in the shallow water area, when the red light has not
+been reduced too much, it just meets the yellow (lighter color) sand, which diﬀusely reﬂects the red light, so
+that the camera abnormally captures a large amount of red light, which leads to the appearance of the abnormal
+situation. In other words, it is the NAP that allows the data set have excellent anti-interference capability so
+that the weird case disappears.
+(a) image 160.png
+ (b) image 212.png
+Figure 12 The Noisy Images in the Strange Depth Range
+4 . 2 . 4 Comparison between diﬀerent degradation models
+From the basic underwater image formation model, we extract and decompose the formula into diﬀerent pieces,
+which correspond to the diﬀerent models in single degradation case. Hence, by analyze these models,we can
+spot that the depth plays a signiﬁcant role in the underwater image degradation process, which is the main
+factor to light attenuation reﬂected in color cast and brightness. Meanwhile, depth acts indirectly on blur in a
+number of ways, such as the water turbidity and water ﬂow velocity.
+What distinct each models is the emphasis of each model. The color cast model focuses on the attenuation
+of light in the water, and the brightness model focuses on the attenuation of light in the water and the inﬂuence
+of the light source. The blur model focuses on the inﬂuence of the image quality that light shine on the objects.
+In shorts, the models are based on the physical viewpoint, and the core is consistent with the traditional
+underwater imaging model. By adjusting the change of the parameters in diﬀerent aspects, the simulation of
+the degradation situation is realized.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-198-
+
+===== PDF page 16 =====
+Team # apmcm24200438 Page 14 of 48
+4 . 3 Question 3: Propose Image Enhancement Methods Tailored for A Single Scene
+4 . 3 . 1 Fusion Enhancement Strategy Tailored for Blurred Scenarios
+For blurry images, we propose a three-step enhancement scheme. As shown in Figure 13, the image is ﬁrst
+denoised, followed by sharpening, and ﬁnally, a comprehensive contrast enhancement is applied. This is the
+optimal sequence derived from repeated experiments.
+• Denois : Gaussian ﬁltering is used to remove noise from the image, making it smoother and preventing
+noise from interfering with sharpening or contrast enhancement. However, denoising may lead to the
+loss of details. As observed in Figure 13, after the denoising process, the Laplacian value of the image
+decreases.
+• Sharpen : The custom sharpening convolution kernel serves as a sharpening ﬁlter, enhancing pixel
+details while reducing the inﬂuence of surrounding pixels on the image. This helps to emphasize the
+edges, making the image appear clearer. Sharpening enhances the edges, but if the image already contains
+signiﬁcant noise, the sharpening process can also amplify the noise. Therefore, the denoising step must
+be performed eﬀectively to ensure that sharpening does not exacerbate the noise issue.
+• Contrast Enhance : CLAHE (Contrast Limited Adaptive Histogram Equalization) is used to improve
+the contrast of the image, enhancing its visual impact by making bright areas brighter and dark areas
+darker, thereby making details more prominent. This method adaptively adjusts the contrast in localized
+regions of the image, ensuring that over-enhancement or excessive noise ampliﬁcation in uniform regions
+is avoided.
+Figure 13 Fusion Enhancement Strategy
+4 . 3 . 2 Forward-backward Random Forest Model Tailored for Color Cast Scene
+The speciﬁc color cast and degree of color cast in underwater images are challenging to precisely determine at
+the pixel level. Therefore, for underwater images with color cast, we ﬁrst performed traditional random forest
+learning on color cast images and their corresponding reference images. However, due to the limited sample
+size, we improved and proposed the FbRF model. We employ the forward-backward random forest model to
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-199-
+
+===== PDF page 17 =====
+Team # apmcm24200438 Page 15 of 48
+perform machine learning on a set of high-quality underwater images(Figure 14). This process generates a
+color gain correction scheme, which is then applied to color-cast images to achieve correction.
+Figure 14 A Fraction of High-Resolution Underwater Image Training Set
+To address various complex color cast situations, for each high-quality image, the FbRF model performs
+random adjustments to contrast(a, b) and brightness(L). The modiﬁcations in the L, a, and b values in the Lab
+color space will inﬂuence the RGB components as a result of the mathematical relationships governing the
+conversion processes.
+The proof is as follows:
+The conversion from RGB to Lab is performed in two steps:
+(1) RGB to XYZ:
+ 𝑋 𝑌 𝑍  =  0.4124564 0.3575761 0.1804375 0.2126729 0.7151522 0.0721750 0.0193339 0.1191920 0.9503041  ·  𝑅 𝐺 𝐵 
+(2) XYZ to Lab:
+𝐿 = 116 · 𝑓 (𝑌𝑛) − 16, 𝑎 = 500 · (𝑓 (𝑋𝑛) − 𝑓 (𝑌𝑛)), 𝑏 = 200 · (𝑓 (𝑌𝑛) − 𝑓 (𝑍𝑛))
+Where 𝑓 (𝑡) is a nonlinear function depending on𝑡.
+2. Lab to RGB Conversion
+(1) Lab to XYZ:
+𝑌𝑛 = 𝐿 + 16 116 , 𝑋𝑛 = 𝑎 500 +𝑌𝑛, 𝑍𝑛 =𝑌𝑛 − 𝑏 200
+(2) XYZ to RGB:
+ 𝑅 𝐺 𝐵  =  3.2404542 −1.5371385 −0.4985314 −0.9692660 1.8760108 0.0415560 0.0556434 −0.2040259 1.0572252  ·  𝑋 𝑌 𝑍 
+Therefore, changes in the L, a, and b components in the Lab space directly inﬂuence the RGB values
+because of the nonlinear transformations in the conversion process. In conclusion, modifying the brightness
+and contrast of an image can result in a color-cast image.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-200-
+
+===== PDF page 18 =====
+Team # apmcm24200438 Page 16 of 48
+This process of converting a normal image to a color cast image is then recorded in reverse, yielding
+an accurate array of color correction parameters for restoring the color-corrected image under those speciﬁc
+conditions. This is known as the Forward-backward process.
+Figure 15 The Process of Training Forward-backward Random Forest Model
+As shown in Figure 15, under the Forward-Backward framework, the Random Forest model completes
+the learning process on both the training and test sets, resulting in a model that predicts the color correction
+features of the color-cast image based on the original image’s color characteristics.
+Figure 16 Comparison of the Image Before and After FbRF Model Processing
+As shown in Figure 16, the FbRF model performs well. A detailed analysis can be found in Section 4.3.4.
+4 . 3 . 3 Grayscale Adjustment Model Tailored for Low-Brightness Scene
+First, the image is converted to grayscale for histogram equalization. Next, CLAHE is applied for brightness
+enhancement, and ﬁnally, the result is merged back into the LAB color space. The core of this process lies in
+CLAHE , which enhances image contrast by dividing the image into smaller blocks and performing histogram
+equalization independently on each block. It limits the contrast enhancement within each block to prevent
+over-enhancement and avoid overexposure.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-201-
+
+===== PDF page 19 =====
+Team # apmcm24200438 Page 17 of 48
+(a) Before Grayscale Adjustment Model Processing
+(b) After Grayscale Adjustment Model Processing
+Figure 17 Comparison of the Image Before and After Grayscale Adjustment Model Processing
+4 . 3 . 4 Joint Quality Assessment and Enhancement Validation Using PSNR&UCIQE&UIQM
+Based on the three parameters provided in the appendix, we perform a before-and-after quality analysis
+comparison of the underwater images in Attachment 1, which have undergone image enhancement. The
+images identiﬁed as high-quality in Problem 1 are excluded from the scope of this analysis.
+(a) Blur Image
+ (b) Low Light Image
+ (c) Color Cast Image
+Figure 18 UIQM Metric Before and After Processing for Diﬀerent Degradation Types of Images
+As shown in Figure 18, all three models improved the image quality based on the UIQM metric. Specif-
+ically, for blurry and low-brightness images, paired sample t-tests indicated that the enhancement eﬀects of
+these two models were statistically signiﬁcant.
+As shown in Figure 19, unfortunately, for the UCIQE metric, the improvements in numerical performance
+across our three models did not align well with the enhancements observed visually. Even for the FbRF model,
+the UCIQE metric showed a mild decline.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-202-
+
+===== PDF page 20 =====
+Team # apmcm24200438 Page 18 of 48
+UCIQE = 0.012 ·𝐿 + 0.021 ·𝐶 + 0.087 ·𝑆
+Where: 𝐶 represents contrast. 𝑆 represents structure, which quantiﬁes the structural details or edge sharpness
+of the image.
+However, the UCIQE metric does not eﬀectively reﬂect the performance of the FbRF model. This
+is because the FbRF model speciﬁcally addresses color cast correction, and the adjustments to the RGB
+parameters during the correction process also impact the Lab values (as demonstrated in Section 4.3.2).
+Consequently, the FbRF model aﬀects the brightness and contrast, leading to a decrease in the UCIQE metric.
+In reality, the color cast of the image has been signiﬁcantly improved. To achieve even higher-quality images,
+the model presented in the next section should be applied.
+(a) Blur Image
+ (b) Low Light Image
+ (c) Color Cast Image
+Figure 19 UCIQE Metric Before and After Processing for Diﬀerent Degradation Types of Images
+As shown in Figure 20, the peak signal-to-noise ratio (PSNR) of the images before and after processing with
+the three models is generally below 30, indicating signiﬁcant diﬀerences between the original and processed
+images. This suggests that the images have undergone noticeable changes.
+(a) Blur Image
+ (b) Low Light Image
+ (c) Color Cast Image
+Figure 20 PSNR Metric Before and After Processing for Diﬀerent Degradation Types of Images
+In conclusion, based on various metrics and visual inspection, the images processed by their respective
+targeted enhancement models can signiﬁcantly correct the degradation of this type.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-203-
+
+===== PDF page 21 =====
+Team # apmcm24200438 Page 19 of 48
+4 . 4 Question 4: Propose Multi-Compound Underwater Image Enhancement Model
+4 . 4 . 1 The Need for a Multi-Compound Model
+Underwater optical image enhancement aims to eliminate the inﬂuence of absorption and scattering, remove
+color cast, improve contrast and enhance image details through some image processing techniques.
+At present, the research on underwater optical image enhancement methods focuses on the above problems,
+including traditional methods based on physical models, traditional methods based on non-physical models,
+and methods based on deep learning. Traditional underwater optical image enhancement methods without
+physical model do not consider the image degradation process, and directly adjust the image pixels, which lacks
+certain theoretical basis and is easy to cause problems such as image color distortion and over-enhancement.
+The traditional underwater optical image enhancement method based on physical model has certain theoretical
+support for mathematical modeling of underwater optical image degradation process, but it is highly dependent
+on the imaging model. The traditional imaging model has the limitation of incomplete description of underwater
+optical image degradation process, resulting in incomplete color deviation correction.
+The underwater optical image enhancement method based on machine learning automatically learns the
+mapping relationship between high-quality underwater images and low-quality ones by using the powerful
+feature learning and nonlinear ﬁtting ability of network to realize underwater image enhancement. Such
+methods can reduce the inﬂuence of complex underwater environment on the results through a large number of
+sample learning, but they are highly dependent on the training data set, and often suﬀer from poor robustness.
+4 . 4 . 2 Our Multi-Compound Model
+For our Multi-Compounded Model, it not only tackles with the issue that traditional methods have estimating
+the imaging physical model parameters, but also the transmission map parameter estimation method in the
+original physical model is improved, and the physical model is combined with the machine learning , so that
+the machine learning method has the principle support of underwater optical imaging, and the dependence of
+the recovery eﬀect of the machine learning method on the training data set is reduced.
+Figure 21 The Process of Our Multi-Compounded Model
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-204-
+
+===== PDF page 22 =====
+Team # apmcm24200438 Page 20 of 48
+To bring the superiority of FbRF model into full play, and to avoid the repetitive restorations due to contrast
+enhancement technology in GAM(Grayscale Adjustment Model) and FES(Fusion Enhancement Strategy), we
+utilize multi-scale 𝑁-fold fusion technical route to balance the pros and cons when combining the physical
+model and machine learning model. Remarkbly, the double-used FbRF in the end is reused due to its excellent
+ability to restoration. Furthermore, we use alpha blending as the image fusion algorithm. The speciﬁc steps
+are as Figure 21:
+Figure 22 Applying Our Model to a Particular Image
+As shown in Figure 23, it demonstrates the process of a complex image being processed by the Multi-
+Compound model.
+With the high-quality test set (some degradated images and their corresponding reference images) used in
+FbRF, the trained Multi-Compounded Model is enable to tackle complex scenarios, and the enhanced results of
+the test images from attachment 2 and their corresponding evaluation metrics, such as PSNR, UCIQE, UIQM,
+are displayed below.
+(a) PSNR
+ (b) UCIQE and UIQM
+Figure 23 Three Evaluation Metrics of the Enhanced Images
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-205-
+
+===== PDF page 23 =====
+Team # apmcm24200438 Page 21 of 48
+Figure 24 Comparison of the Image Before and After Multi-Compounded Model Processing
+Faced with the complex underwater environment, the Multi-Compounded Model can eﬀectively remove
+the color cast, enhance the contrast, and improve the image details, and the evaluation metrics are signiﬁ-
+cantly improved. The quantized results show that the Multi-Compounded Model has a good performance in
+underwater image enhancement, and can eﬀectively improve the quality of underwater images.
+To better evaluate image quality, we introduce the SIFT (Scale-Invariant Feature Transform) algorithm to
+extract keypoints from the image and generate a descriptor for each keypoint. The descriptor represents the
+local image features of that point. Therefore, we believe that the more SIFT feature points there are, the richer
+the image is in details, indicating higher image quality.
+(a) The SIFT keypoints in original image
+ (b) The SIFT keypoints in enhanced image
+(c) The SIFT keypoints Comparision(Numbers represent ratio relationship)
+Figure 25 Scale-Invariant Feature Transform Comparision Result
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-206-
+
+===== PDF page 24 =====
+Team # apmcm24200438 Page 22 of 48
+4 . 5 Question 5: Propose Feasibility Suggestions
+Traditional underwater optical image enhancement methods based on physical principles, although having
+strong reliability, clear theories, and relatively saving computational resources, are basically veriﬁed in labora-
+tory environments, lacking experimental veriﬁcation in real outdoor underwater scenes and thus lacking certain
+practicability. Some methods are highly dependent on parameter estimation and have ill-posed problems in
+complex and changeable water environments. For example, the Low-light Model we used before, the method
+using orthogonal polarization diﬀerence proposed by Wang [7], and the method of backscattered pixel prior
+proposed by Zhou [10].
+The underwater optical image enhancement methods based on deep learning, although able to automat-
+ically learn the mapping relationship between high-quality underwater images and low-quality underwater
+images through a large number of sample learning, are highly dependent on the training data set, have high
+requirements for the quality of the training data set, require large computational power, and small underwater
+cameras or detectors often cannot meet the requirements at present, and often have the problem of poor ro-
+bustness. For example, the Random Forest Model we used before, the method of pyramid network structure,
+LCNet, based on CNN proposed by Jiang [3] , and the method of multi-scale generator and dual discriminator
+structure based on GAN proposed by Yang [8].
+Therefore, we put forward the following suggestions:
+1. In actual underwater scenes, the methods based on physical principles should be combined with those
+based on deep learning according to the actual situation to balance the computational power problem and
+the ability to deal with complex situations.
+2. Use multiple algorithms to improve the model’s ability to deal with diﬀerent image degradation scenarios.
+3. Improve the level of hardware perfection, use multimodal sensors to obtain scene information, explore
+the diﬀerent feature distributions of underwater multimodal information, analyze the correlation and
+complementarity between modalities, and eﬀectively fuse the multimodal information to further improve
+the underwater image quality.
+5 Model Test
+5 . 1 Sensitivity Validation
+In the solution of Problem 2, we mainly apply the formula
+𝑡𝑐 (𝑧) =𝜅𝑒−𝛽𝐷 𝑐 ·𝑧 +𝜇𝑒−𝛽𝐵 𝑐 ·𝑧
+when setting four parameters. Meanwhile, 𝜅 and 𝜇 can be “replaced” when 𝛽 can be substituted to work
+by mathematical transformation. The sensitivity of the model to the parameters is tested by changing the
+parameters in a nuanced range and observing the change of the output value. The results are shown in Figure
+26.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-207-
+
+===== PDF page 25 =====
+Team # apmcm24200438 Page 23 of 48
+Figure 26 Sensitivity Validation of Problem 2
+5 . 2 Robustness
+As is obvious, each sensitivity of parameter is below 5%, in Blue channel the rate even goes down to 2%, which
+indicates that our model is smoothly reasonable when𝜅 and 𝜇 are equal. And in diﬀerent curves, the order
+of variable sensitivity inﬂuence is also diﬀerent, which reﬂects the diﬀerence and similarity of their overall
+properties.
+In order to make our model adaptable to diﬀerent situations, we need to test the robustness of the model.
+Robustness refers to the tolerance of the model to perturbations in the input data, that is, the stability of the
+output results when the input data changes. Therefore, we change the input test set and input pictures that do
+not conform to the underwater environment, such as food on the dining table, humans walking on land, and so
+on. The performance of our model can be partly detected from the ﬁgure below in these cases.
+There are three groups of images, where the ﬁrst column is the graph before augmentation, the second
+column is the graph obtained by training on the biased training set, and the third column is the training
+result of the original training set. By comparison, we can ﬁnd that the contrast of the latter two groups of
+images is improved, and the brightness is also recovered well, which indicates that our model has a certain
+anti-interference ability for biased input data. That is, it has good robustness. However, it is clear that the
+second column is generally green, which is an inevitable result of the overall hue diﬀerence between on-land
+and underwater, and this is also one of the reasons why underwater image enhancement models need a good
+training set.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-208-
+
+===== PDF page 26 =====
+Team # apmcm24200438 Page 24 of 48
+(g) Original Image
+ (h) Biased-set Image
+ (i) High-quality-set Image
+Figure 27 The Comparison Graph of the Robustness Test
+6 Strengths and Weaknesses
+6 . 1 Analysis of Strengths
+1. The algorithm has a good ability for continuous optimization. The color diﬀerence reduction algorithm
+among our three core algorithms is based on the random forest algorithm, and the amount of data in
+the database can be further expanded to improve the code’s performance. Due to time constraints, it is
+diﬃcult to collect more pictures as the training set, so the algorithm cannot be perfect, but it still has great
+potential and can achieve better restoration results.
+2. The algorithm has a wide range of applications. This algorithm not only has a high restoration eﬀect
+on underwater pictures, but also has a good restoration eﬀect on various problems such as external color
+pollution, high blurriness, and low brightness. When solving the problem of underwater image restoration,
+we ﬁrst extracted the main problems existing in the underwater image, then solved the individual problems
+one by one, and ﬁnally solved the multi-problem images through methods such as joint processing and
+image fusion. Such a method enables the algorithm to be widely applied to the restoration of other
+polluted pictures.
+3. The algorithm has good universality. The algorithm only uses the physical model constructed based on
+underwater images and the machine learning method of random forest, and cleverly alternately uses single-
+factor processing and image fusion on the image to repair the image in complex situations. It avoids using
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-209-
+
+===== PDF page 27 =====
+Team # apmcm24200438 Page 25 of 48
+more complex algorithms such as convolutional neural networks and generative adversarial networks, and
+can quickly transplant this algorithm to applications such as image processing in hazy environments and
+image processing in dynamic blur situations, with high portability and strong universality.
+6 . 2 Analysis of Weaknesses
+1. The restoration ability for backgrounds such as seawater is inferior to that for objects. Since the color
+of the seawater and other environments is relatively light and is easily interfered by external colors, it is
+diﬃcult to judge its original color. Therefore, it can only reduce the degree of external color interference,
+but cannot directly restore the original color of the object. In the future, eﬀorts can be made to separate
+the background and object, and better restoration results can be achieved by processing the background
+separately.
+2. Although the degree of image restoration is relatively high, the restoration still starts from the overall pic-
+ture. In actual life, the restoration methods for diﬀerent objects should be slightly diﬀerent. Subsequently,
+the code can be upgraded in this regard. First, the objects in the picture are separated, and each object is
+restored separately and then the overall picture is recombined. In this way, the restoration of each part in
+the picture will be more in place.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-210-
+
+===== PDF page 28 =====
+Team # apmcm24200438 Page 26 of 48
+7 References
+[1] Derya Akkaynak and Tali Treibitz. A revised underwater image formation model. In 2018 IEEE/CVF
+Conference on Computer Vision and Pattern Recognition, pages 6723–6732, 2018.
+[2] Derya Akkaynak and Tali Treibitz. Sea-thru: A method for removing water from underwater images.
+Proceedings / CVPR, IEEE Computer Society Conference on Computer Vision and Pattern Recognition.
+IEEE Computer Society Conference on Computer Vision and Pattern Recognition, 04 2019.
+[3] Nanfeng Jiang, Weiling Chen, Yuting Lin, Tiesong Zhao, and Chia-Wen Lin. Underwater image enhance-
+ment with lightweight cascaded network. IEEE Transactions on Multimedia, 24:4301–4313, 2022.
+[4] Weiguo Jiang, Yundong Zhang, Fuxing Zhu, Ying Guo, and Guo Yi. Regulation of fast and slow light
+characteristics of the add-drop ring-resonator employing an assisted ring. Opt. Express, 29(4):5141–5151,
+Feb 2021.
+[5] Karen Panetta, Chen Gao, and Sos Agaian. Human-visual-system-inspired underwater image quality
+measures. IEEE Journal of Oceanic Engineering, 41(3):541–551, 2016.
+[6] E. Trucco and A.T. Olmos-Antillon. Self-tuning underwater image restoration. IEEE Journal of Oceanic
+Engineering, 31(2):511–519, 2006.
+[7] Hongyuan Wang, Haofeng Hu, Junfeng Jiang, Xiaobo Li, Weihong Zhang, Zhenzhou Cheng, and Tiegen
+Liu. Automatic underwater polarization imaging without background region or any prior. Opt. Express,
+29(20):31283–31295, Sep 2021.
+[8] Miao Yang, Ke Hu, Yixiang Du, Zhiqiang Wei, Zhibin Sheng, and Jintong Hu. Underwater image
+enhancement based on conditional generative adversarial network. Signal Process. Image Commun., 81,
+2020.
+[9] Miao Yang and Arcot Sowmya. An underwater color image quality evaluation metric. IEEE Transactions
+on Image Processing, 24(12):6062–6071, 2015.
+[10] Jingchun Zhou, Tongyu Yang, Weishen Chu, and Wei shi Zhang. Underwater image restoration via
+backscatter pixel prior and color compensation. Eng. Appl. Artif. Intell., 111:104785, 2022.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-211-

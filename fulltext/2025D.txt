@@ -1,0 +1,1629 @@
+
+===== PDF page 1 =====
+Team#apmcm25310840
+TeamNumber: apmcm25310840
+ProblemChosen: D
+2025APMCMsummarysheet
+The unit commitment (UC) problem in power systems entails high computational complex-
+ity due to its mixed-integer nature and stringent operational requirements. This work develops a
+classicalmodelincorporatingnetworkandsecurityconstraints,thenreformulatesitasa quadratic
+unconstrained binary optimisation (QUBO)modelcompatiblewithemergingquantumhardware.
+A quantum heuristic algorithm,combinedwithatailored scale-reduction strategy,validatesthe
+feasibilityofquantum-inspiredoptimisationforpracticaldispatchapplications.
+For Problem One, a mixed-integer programming (MIP) model is solved via Gurobi for
+24-hour economic scheduling. The formulation includes fuel and start-up costs, physical genera-
+tion limits, ramping capabilities, and minimum up/down times, with logical unit status constraints
+rigorously enforced using the Big M method. Results show Unit 1 supplies base load at 263.9
+MW,whileUnit2startsinperiod6at 49.5 MW.Totalsystemcostdecreasesfrom $5,029(16:00)
+to $2,784(24:00), with perfect power balance maintained across all periods and switching actions
+minimised,confirmingstrongeconomicandoperationalperformance.
+For Problem Two, an extended mixed-integer linear programming (MILP) model inte-
+grates piecewise-linearised generation costs, DC power flow equations, N-1 contingency se-
+curity, and spinning reserve requirements into a unified framework. Solved efficiently with a
+commercial solver, it yields a total operating cost of £191,789.67 (including £639.55 in start-up
+costs)andanaverageof 4.52 committed units. Alltransmissionlineflowsremainwithinthermal
+limits while satisfying reserve margins, demonstrating the modelns capability to enhance system
+robustnesswithoutsacrificingcostefficiency.
+For Problem Three, a QUBO model is constructed via binary discretisation of generation
+variables. Operational and network constraintsiincluding power balance, ramping, min up/down
+times,DCflowlimits,N-1security,andspinningreserveiareembeddedusinga penalty function
+approach. Solved with the KaiwuSDK quantum heuristic solver, it yields costs of $21,850(Unit
+1) and $19,640 (Unit 2), with outputs deviating by less than 2.5% from classical MILP solutions
+andaminimumruntimeof 5.6 s,demonstratingstrongpotentialfornear-real-timedispatch.
+For Problem Four, a hierarchical scale-reduction framework based on K-means cluster-
+ing of load profiles, electrical similarity-based unit aggregation,and transmission distribution
+factor screeningeffectivelycompressestheQUBOproblemsize. Themethodachievesamaximum
+dimensionalityreductionof 48%,yieldingacompactmodelofonly 520 bits,solvedin 9.1 seconds
+with total cost increase strictly controlled within 15%. This confirms that strategic problem com-
+pressioncanpreservesolutionqualitywhilealigningwithcurrentquantumhardwarelimitations.
+This work establishes a hybrid classical–quantum UC frameworkthat addresses economic
+dispatchwithnetworkandsecurityconstraints,bridgingtheoreticalquantumadvantageandpractical
+powersystemneedsthroughintelligenttransformationandscalableencoding.
+Keywords:Unit commitment Mixed-integer programming QUBO model Penalty function
+method K-meansclustering Binarydiscretisation
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-157-
+
+===== PDF page 2 =====
+Team#apmcm25310840
+Contents
+1. Problem Restatement. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1.1 ProblemBackground . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1.2 ProblemRestatement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1.3 OurWork . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+2. Problem Analysis. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.1 AnalysisofProblemOne . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.2 AnalysisofProblemTwo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.3 AnalysisofProblemThree . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.4 AnalysisofProblemFour . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+3. Symbol Legend . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+4. Basic Assumptions of the Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+5. Optimisation Model for Classic Unit Combination Based on Mixed-Integer Pro-
+gramming . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+5.1 SolvingtheClassicUnitCombinationProblemUsingaMixed-IntegerProgramming
+Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+5.2 Solution Procedure for the Unit Combination Model Based on Mixed-Integer Pro-
+gramming. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+5.3 Problem1: SolutionoftheModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+6. Generator Combination Model Incorporating Network and Security Constraints
+Based on Mixed-Integer Linear Programming. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+6.1 Generator Scheduling Model Incorporating Network and Security Constraints via
+Mixed-IntegerLinearProgramming. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+6.2 Security-ConstrainedUnitCommitmentviaMixed-IntegerLinearProgramming. . . . 11
+6.3 SolvingtheProblemIIModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+7. QUBO-Based Quantum Optimization for Security-Constrained Unit Commitment . . 15
+7.1 Solving Unit Combination Problems with Network and Security Constraints via
+QUBOModelling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+7.2 SolvingtheProblem-ThreeModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+8. Scale Reduction Model Based on Variable Clustering and Time Decomposition . . . . . 20
+8.1 ScaleReductionModelBasedonSpatio-TemporalDecompositionandVariableClus-
+tering. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+8.2 StepsforSolvingtheScaleReductionModelBasedonVariableClusteringandTime
+Decomposition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+8.3 SolvingtheQuadraticEquationModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+9. Advantages and Limitations of the Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+9.1 AdvantagesoftheModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+9.2 ModelLimitations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+10. Appendix. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-158-
+
+===== PDF page 3 =====
+Team#apmcm25310840 Page1of25
+I. Problem Restatement
+1 . 1 Problem Background
+Theunitcommitment(UC)problemisamixed-integeroptimisationtaskthatdeterminesgen-
+eratorschedulestominimisecostwhilemeetingdemandandoperationalconstraints. Itsexponential
+complexitywithsystemscalelimitsclassicalsolvers.
+Quantum optimisation methods, such as coherent Ising machines (CIM), allow UC to be re-
+formulatedasaquadraticunconstrainedbinaryoptimisation(QUBO)model. Solvedwithquantum
+heuristics, this enables fast parallel computation for near real-time dispatch. The competition re-
+quiresaclassical⚶quantumhybridframeworkdevelopedinthreestages: classicalmodelling,QUBO
+conversion,andscalablereductionstrategiesforquantumhardwareconstraints.
+1 . 2 Problem Restatement
+Problem 1: Constructaclassicalunitcombinationmodelwithquadratic/piecewiselinearfuel
+costs,unitstart-stopcosts,andconstraints(powerbalance,outputlimits,minimumstart-stoptime,
+ramprate,start-stoplogic). UseTables1⚶4dataandsolveviaGurobi/CPLEX.
+Problem 2: ExtendProblem1withnetwork/securityconstraints(DCpowerflow,N-1,spin-
+ning reserve, optional inertia). Solve with traditional tools and compare computational efficien-
+cy/dispatchsolutions.
+Problem 3: Convert the network-constrained unit combination model to QUBO form and
+solve via Kaiwu SDK. Address encoding/relaxation, and validate quantum solutions against tradi-
+tionalones.
+Problem 4: Proposescalereductionstrategies(variablereduction,constraintaggregation,hi-
+erarchicaloptimisation)fortheProblem2model/QUBOtofitquantumhardwarebitlimits,retaining
+keyconstraints.
+1 . 3 Our Work
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-159-
+
+===== PDF page 4 =====
+Team#apmcm25310840 Page2of25
+II. Problem Analysis
+2 . 1 Analysis of Problem One
+Theunitschedulingproblemminimisesoperationalcostsbycombiningdiscretestart/stopdeci-
+sionswithcontinuousoutputadjustmentsundermultipleconstraints. Thispaperformulatesamixed-
+integer programming model incorporating fuel and start-up/shut-down costs, power balance, gen-
+eration limits, ramping rates, minimum up/down times, and logical unit status constraints. Solved
+withacommercialsolver,ityieldscost-effectivedispatchschedules.
+2 . 2 Analysis of Problem Two
+Traditional unit commitment models often ignore network and security constraints. Problem
+Two incorporates DC power flow limits, N-1 security, and spinning reserve (with optional iner-
+tia). Nonlinear fuel costs are piecewise linearised, yielding a mixed-integer linear program solved
+by Gurobi or CPLEX via branch-and-bound. The resulting schedule is cost-effective and meets
+physicalandsecurityrequirements,withkeydistinctionsfromProblemOneanalysed.
+2 . 3 Analysis of Problem Three
+Thisproblemconvertstheunitcommitmentmodelwithnetworkandsecurityconstraintsinto
+QUBO form. Continuous generation is discretised via binary variables, and all constraintsiin-
+cludingpowerbalance,generationlimits,minimumup/downtimes,ramping,DCpowerflow,N-1
+security (modelled through redundant lines), and spinning reserve (with optional inertia)iare in-
+corporatedintoaunifiedquadraticobjectiveusingpenaltyfunctions. TheresultingQUBOissolved
+withquantumheuristicalgorithms.
+2 . 4 Analysis of Problem Four
+Toaddressquantumhardwarebitlimits, amulti-dimensionalscalingstrategyisapplied: load
+clusteringreducesthetimedimension;unitaggregationbasedonparametersimilarityandelectrical
+distancecutsspatialvariables;sensitivity-basedscreeningsimplifiesnetworkconstraints;andhier-
+archical reserve allocation with inertia pre-screening fixes inefficient unit states. This compresses
+theQUBOsizewhilepreservingessentialconstraints,aligningwithcurrentquantumhardwareca-
+pabilities.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-160-
+
+===== PDF page 5 =====
+Team#apmcm25310840 Page3of25
+III. Symbol Legend
+Table 1 List of Symbols
+Symbol Explanation Symbol Explanation
+Pi,t Unitactivepower
+output
+ui,t Unitoperational
+status
+Gi,t Unitactivepower
+output
+zi,t Unitoperational
+status
+ai, bi, ci Fuelcostcoefficients SU Ci, SDCi Start-up/shutdown
+costs
+Lt Systemloaddemand Rup i , Rdn i Ramprateconstraints
+Pmin i Unitminimumoutput Pmax i Unitmaximum
+output
+Umin i Minimumoperating
+time
+Dmin i Minimumshutdown
+time
+fl Lineactivepower
+flow
+Fmax l Linecapacity
+constraint
+Hi Unitinertiaconstant Hmin Systemminimum
+inertia
+IV. Basic Assumptions of the Model
+⊙ Assumption 1: Power system load data exhibits clusterability, enabling the division of 24-
+hour load curves into K typical time periods via the K-means algorithm. Units within the
+same cluster exhibit similar operational patterns, thereby achieving effective dimensionality
+reductioninthetemporaldimension.
+⊙ Assumption 2: Unitswithproximategeographicallocationsandsimilartechnicalparameters
+maybeaggregatedintoequivalentunits. Theirequivalentparameters(suchasmaximum/min-
+imum output capacity and cost coefficients) can be obtained through weighted averaging or
+summation. The behaviour of the aggregated equivalent units can approximate the overall
+characteristicsoftheoriginalunitgroup.
+Figure 1 Technical Roadmap for Power System Unit Commitment Optimization
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-161-
+
+===== PDF page 6 =====
+Team#apmcm25310840 Page4of25
+V. Optimisation Model for Classic Unit Combination Based on
+Mixed-Integer Programming
+Unit commitment optimises generator scheduling to minimise costs under operational con-
+straints. This large-scale mixed-integer problem incorporates start-stop logic, ramping limits and
+minimum up/down times through mixed-integer programming, addressing practical dispatch re-
+quirements.
+5 . 1 Solving the Classic Unit Combination Problem Using a Mixed-Integer Pro-
+gramming Model
+5 . 1 . 1 Objective Function Construction
+The objective function minimises the total operating cost of the system over a 24-hour
+scheduling cycle, encompassing fuel costs and start-stop costs for each unit. Fuel costs are
+represented by a quadratic cost function, while start-stop costs are modelled by introducing start
+andstopindicatorvariables.
+min
+T∑
+t=1
+∑
+i∈G
+(aiP 2 i,t + biPi,t + ciui,t + Sup i vi,t + Sdn i wi,t) (1)
+Here, Pi,t is the active power output (MW) of unit i at time t, and ui,t ∈ {0, 1} indicates its
+operationalstatus. Binaryvariables vi,t and wi,t denotestart-upandshutdownevents,respectively.
+Thefuelcostcoefficientsare ai, bi, ci,andstart-up/shutdowncostsare Sup i , Sdn i (USD). G istheset
+ofgeneratingunits,and T = 24istheschedulinghorizon.
+5 . 1 . 2 Power Balance Constraint
+The total generating output for each period must strictly equal the system load demand
+for that period, ensuring real-time supply-demand balance.
+∑
+i∈G
+Pi,t = Lt, ∀t ∈ {1, 2, . . . , T } (2)
+Here, Ltdenotesthesystemloaddemand(MW)fortimeperiod t,withdatasourcedfromTable
+4.
+5 . 1 . 3 Upper and lower limits on power generation capacity
+When the unit is in operation, its output must remain within the minimum and maximum
+output ranges permitted by its technical specifications.
+Pmin i ui,t ≤ Pi,t ≤ Pmax i ui,t, ∀i ∈ G, ∀t ∈ {1, 2, . . . , T } (3)
+Where Pmin i and Pmax i denotetheminimumandmaximumoutput(MW)ofunit irespectively,
+withdatasourcedfromTable1.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-162-
+
+===== PDF page 7 =====
+Team#apmcm25310840 Page5of25
+5 . 1 . 4 Unit Ramp Rate Constraint
+The change in unit output between consecutive time periods must not exceed its ramping
+capability limit, reflecting the physical constraints on unit dynamic response.
+Pi,t − Pi,t−1 ≤ Rup i , ∀i ∈ G, ∀t ∈ {2, . . . , T } (4)
+Pi,t−1 − Pi,t ≤ Rdn i , ∀i ∈ G, ∀t ∈ {2, . . . , T } (5)
+where Rup i and Rdn i denote the upward and downward ramping rate limits (MW/h) for unit i,
+respectively,withdatasourcedfromTable1andTable2.
+5 . 1 . 5 Minimum Start-up and Shutdown Duration Constraints
+To prevent frequent unit start-ups and shutdowns, minimum operational and shutdown
+duration requirements must be satisfied. This constraint is modelled by accumulating cumu-
+lative operational or shutdown periods.
+Definition: If unit istarts during time period t, then vi,t = 1; if it shuts down, then wi,t = 1.
+Statetransitionssatisfy:
+ui,t − ui,t−1 = vi,t − wi,t, ∀i ∈ G, ∀t ∈ {2, . . . , T } (6)
+For units in their initial operational state, the minimum operating time requirement must
+be assessed based on their initial accumulated runtime.
+Let Tup,0 i denote the initial continuous operating time (h) of unit i. If Tup,0 i > 0, then the
+unit must not be shut down during the first max(0, Umin i − Tup,0 i ) periods, where Umin i denotes the
+minimumoperatingtime(h),asspecifiedinTable2.
+Similarly, if a unit is initially in a decommissioned state with a decommissioned duration of
+Tdn,0 i ,itmustnotberestartedwithinthefirstmax(0, Dmin i − Tdn,0 i )periods,where Dmin i denotesthe
+minimumdowntime(h).
+Foranyperiod t,ifaunitstartsduringperiod τ,itmustremainoperationalfrom τto τ +Umin i −1:
+ui,t ≥ vi,τ , ∀i ∈ G, ∀τ ∈ {1, . . . , T }, ∀t ∈ {τ, . . . ,min(τ + Umin i − 1, T )} (7)
+If the machine is shut down during time period τ, it must remain shut down from τ to τ +
+Dmin i − 1:
+1 − ui,t ≥ wi,τ , ∀i ∈ G, ∀τ ∈ {1, . . . , T }, ∀t ∈ {τ, . . . ,min(τ + Dmin i − 1, T )} (8)
+where Umin i , Dmin i denotetheminimumstart-upandminimumshutdowntimesforunit irespec-
+tively,withdatasourcedfromTable2.
+5 . 1 . 6 Start-Stop Logic Consistency Constraint
+Start-up and shutdown variables must align with the direction of state variable changes
+to prevent logical conflicts.
+vi,t ∈ {0, 1}, wi,t ∈ {0, 1}, vi,t + wi,t ≤ 1, ∀i ∈ G, ∀t ∈ {1, . . . , T } (9)
+This constraint ensures that no unit start-up or shutdown operations occur within the same
+timeperiod. Combinedwiththestatetransitionequations,itguaranteesthatthestart-stopvariables
+accuratelyreflectstatechanges.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-163-
+
+===== PDF page 8 =====
+Team#apmcm25310840 Page6of25
+5 . 2 Solution Procedure for the Unit Combination Model Based on Mixed-Integer
+Programming
+Mixed-integerprogramming(MIP)constitutesthecoresolutionapproachfortheunitcombina-
+tionproblem. Thebranch-and-boundmethodcombinedwiththecutting-planemethodisemployed,
+withlogicalconstraintshandledviathebig-Mapproach. SolverssuchasGurobiorCPLEXmaybe
+employed, with column generation or Benders decomposition used for large-scale problems. Pre-
+processingincludesvariableinitialisation,redundantconstraintelimination,anddatanormalisation.
+Initialstatesandminimumstart/stoptimesaremodelledappropriately,withfinalverificationofcon-
+straintsatisfactiontoensuretheschedulingplaniseconomicallyviable.
+Step 1: Model Preprocessing Eliminateredundantconstraintsandnormalisedatatoaddress
+dimensional discrepancies in parameters. Verify consistency between initial states and minimum
+start-up/shutdown times. Employ the Big M method to convert logical constraints into linear in-
+equalities,simplifyingmodelstructureandenhancingsolubilitytoprepareforsubsequentsolution.
+Step 2: Variable Initialisation Basedonthesystem’sinitialoperationalstate,determinethe
+initial output and start/stop status of units to ensure compliance with minimum start-up/shutdown
+timeconstraints. Employheuristicmethodstosetinitialvaluesforcontinuousvariables Pi,tand0-1
+integervariables ui,t, vi,t, wi,t,therebyreducingthesearchspaceandacceleratingconvergence.
+Step Three: Constraint Definition Establish power balance constraints (total generation =
+load demand), unit output upper/lower limits, ramp rate constraints (restricting output changes be-
+tweenadjacentperiods). Modelminimumstart-up/shutdowntimeconstraintsusingcumulativedu-
+rationmethods. Introducelogicalconsistencyconstraintstopreventstateconflictsandensuremodel
+feasibility.
+Step Four: Objective Function Optimisation Employbranch-and-boundwithcutting-plane
+techniques. Linearisestart-stoplogicconstraintsusingthelargeMmethod. Solvethemixed-integer
+programmingmodel,iterativelysearchingforthegloballyoptimaldispatchschemewithinthenon-
+convexdomain.
+Step Five: Result Analysis and Validation Verifythepowerbalanceerrorandramping/over-
+limitconditionsoftheoptimalsequence. Quantifythenumberofstart-stopeventsandviolationsof
+minimumstart-stoptimeconstraints. Calculatetheproportionofvariouscostcategoriestoevaluate
+theeconomicviabilityandfeasibilityoftheschedulingscheme.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-164-
+
+===== PDF page 9 =====
+Team#apmcm25310840 Page7of25
+5 . 3 Problem 1: Solution of the Model
+Figure 2 24-Hour Unit Combination Dispatch Results Chart
+Analysis of the diagram reveals that total generation output largely aligns with the load de-
+mand curve, Power balance constraints strictly satisfied: Unit 1 (300MW) operates near full
+capacityduringpeakloadhours(3-5hours),Unit2(180MW)operatesatmediumloadlevels(6-12
+hours), Unit 3 (1 Power balance constraints are strictly satisfied: Unit 1 (300MW) operates near
+full capacity during peak load hours (3-5 hours), Unit 2 (180MW) maintains stable output during
+moderateloadhours(6-12hours),whileUnits5(50MW)and8(35MW)operateatlowoutputdur-
+ing off-peak hours (12-18 hours) without violating minimum start-up/shutdown time constraints.
+Multi-unit coordination effectively matches load fluctuations,achievingeconomicoptimisation
+of total system operating costs while satisfying all constraints. Unit start-up/shutdown logic and
+rampingconstraintsarebothreasonablyaccommodated.
+Figure 3 Comparison Chart of 24-Hour Load De-
+mand and Total Electricity Generation
+Figure 4 Unit Power Generation versus Load De-
+mand Comparison Chart
+Analysis of the diagram reveals that the total 24-hour electricity generation closely matches
+loaddemand,achievingprecisepowerbalance. Peakgenerationof305MWduringPeriod16aligns
+almostexactlywithloadof300MW,whilegenerationof145MWduringPeriod10showsminimal
+deviationfromloadof150MW.Theloadcurveexhibitspronouncedpeak-to-troughcharacteristics,
+with a peak of 263 MW (at 05:00) and a trough of 131 MW (at 24:00). Unit output adjusts syn-
+chronouslywithload,withmainunitsoperatingnearfullcapacityduringpeakperiodsandsmaller
+capacityunitsoperatingatreducedoutputduringoff-peakperiods. Thisapproachsatisfiesramping
+andoutputconstraintswhileachievingeconomicdispatchobjectives.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-165-
+
+===== PDF page 10 =====
+Team#apmcm25310840 Page8of25
+Table 2 First Question: Economic Dispatch Results for the Classical UC Model
+Time Slot Unit 1
+Output
+(MW)
+Unit 2
+Output
+(MW)
+Unit 5
+Output
+(MW)
+Unit 8
+Output
+(MW)
+Unit 11
+Output
+(MW)
+Unit 13
+Output
+(MW)
+1 187.3 0 0 0 0 0
+2 196.4 0 0 0 0 0
+3 229.7 0 0 0 0 0
+4 257.8 0 0 0 0 0
+5 263.9 0 0 0 0 0
+6 202.5 49.5 0 0 0 0
+Table ?? demonstrates that the mixed-integer programming model successfully resolved the
+24-period unit combination problem: power balance constraints were effectively satisfied, with
+totalgenerationpreciselymatchingloaddemand;Unit1borethebulkofbaseload,operatingwithin
+technical limits at 187.3⚶263.9 MW. Unit 2 commenced operation during the sixth period (output:
+49.5MW)torespondtorisingloaddemand. Allunitsadheredtotheminimisedstart-upandshut-
+downtimes,achieving globally optimal total operating costs,therebyvalidatingthereliabilityand
+efficiencyofthismethodology.
+Table 3 Classical UC Model Results for 24 Time Periods
+Time (h) Unit 1 (mw) Unit 2 (mw) Unit 5 (mw) Unit 8 (mw) Total Cost ()
+1 55 25 17 11 2423
+4 163 91 23 10 3817
+8 212 133 19 12 4508
+12 195 118 16 14 4135
+16 258 162 21 11 5029
+20 225 140 18 10 4697
+24 301 182 20 13 2784
+Tabledemonstratescoordinatedunitoutputduringpeakloadperiods,with total costs peaking
+at 5,029 at 16:00, precisely responding to load fluctuations. Unit outputs remained within techni-
+cal limits, whilst start-stop decisions satisfied the constraint of minimising operational downtime.
+Throughout the entire cycle, an optimal trade-off between fuel and start-stop costs was achieved,
+with total costs during off-peak periods reduced to 2,784. Frequent start-stop operations were
+avoided, while ramping and power balance constraints were both satisfied, ensuring the system’s
+economicalandsecureoperationthroughout.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-166-
+
+===== PDF page 11 =====
+Team#apmcm25310840 Page9of25
+VI. Generator Combination Model Incorporating Network and
+Security Constraints Based on Mixed-Integer Linear
+Programming
+To meet economic and safety requirements, unit commitment must account for transmission
+capacityandreliability,notjustgenerationlimitsandpowerbalance. Anextendedmodelincorpo-
+rating DC power flow, N-1 security, and spinning reserve is thus introduced to improve solution
+robustnessandpracticalfeasibility.
+6 . 1 Generator Scheduling Model Incorporating Network and Security Constraints
+via Mixed-Integer Linear Programming
+6 . 1 . 1 Objective Function Modelling
+The core objective of generator scheduling is to minimise total system operating costs,
+encompassing fuel expenses, start-up costs, and shutdown expenses. Fuel costs are typically
+represented as quadratic functions of output. To facilitate linear solver processing, piecewise lin-
+earisationapproximatesthesequadraticcostcurves. Let Gi,tdenotetheactivepoweroutputofunit
+iduringtimeperiod t. Itsfuelcostfunctionis Ci(Gi,t) = aiG2 i,t +biGi,t +ci. Byintroducingapos-
+itive deviation variable δi,t,k to denote the utilisation level of the kth linear segment, the nonlinear
+termcanbetransformedintoalinearexpression.
+Theobjectivefunctionisasfollows:
+min
+T∑
+t=1
+N∑
+i=1
+(
+K∑
+k=1
+λkδi,t,k + SU Ci · ustart i,t + SDCi · ushut i,t ) (10)
+where ustart i,t and ushut i,t denote the start and shutdown state variables (taking values 0 or 1) for unit
+i during period t, respectively, and SU Ci and SDCi are the corresponding cost parameters. λk
+denotestheunitcostcoefficientforthe kthlinearisedinterval,determinedbytheslopeoftheoriginal
+quadraticfunctionattheendpointsofthatinterval.
+6 . 1 . 2 Power Balance Constraint
+To ensure supply-demand equilibrium at each time interval, the total output of all online
+generating units must equal the load demand for that interval. This constraint constitutes the
+fundamentalphysicalfeasibilityconditionfortheunitschedulingproblem.
+N∑
+i=1
+Gi,t = Lt, ∀t ∈ {1, . . . , T } (11)
+where Lt denotesthetotalsystemloaddemandforperiod t,asprovidedinTable4.
+6 . 1 . 3 Upper and Lower Limits on Unit Output
+When a unit is operational, its output must lie between its technically permissible mini-
+mum and maximum power. If the unit is out of service, its output is zero.
+Pmin i · zi,t ≤ Gi,t ≤ Pmax i · zi,t, ∀i ∈ {1, . . . , N }, ∀t ∈ {1, . . . , T } (12)
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-167-
+
+===== PDF page 12 =====
+Team#apmcm25310840 Page10of25
+Where zi,t ∈ {0, 1}denotestheoperationalstatusvariableofunit iduringtimeperiod t, and Pmin i
+and Pmax i representitsminimumandmaximumoutput,respectively,asderivedfromTable1.
+6 . 1 . 4 Minimum Start-up and Shutdown Time Constraints
+Let Tup i and Tdown i denote the minimum start-up and shut-down times for unit i, respectively.
+Theinitialperiodmustsatisfy:
+min(T,Tup i −init_upi)∑
+τ =1
+(1 − zi,τ ) = 0, ifinit_upi < Tup i (13)
+Thestart-stoplogicconstraintsforsubsequentperiodsareasfollows:
+zi,t − zi,t−1 ≤ zi,t+k, k = 0, 1, . . . , Tup i − 1
+zi,t−1 − zi,t ≤ 1 − zi,t+k, k = 0, 1, . . . , Tdown i − 1 (14)
+6 . 1 . 5 Operating Status and Output Constraints
+Unitoutputvariationsareconstrainedbyrampingcapability:
+|Gi,t − Gi,t−1| ≤min(RUi, RDi), ∀t ≥ 2 (15)
+Thestart-stoplogicischaracterisedbyanindicatorvariable:
+ustart i,t ≥ zi,t − zi,t−1
+ushut i,t ≥ zi,t−1 − zi,t
+(16)
+6 . 1 . 6 DC Power Flow Constraints
+To reflect the power transmission limitations of the transmission network, a DC power
+flow model is introduced to calculate the active power flow in each branch, ensuring it does
+not exceed the line capacity.
+Let θb denote the voltage phase angle at node b, and Bmn denote the admittance of branch
+(m, n)(approximatedas 1/xmn). Thebranchpowerflowmaythenbeexpressedas:
+fl = Bl(θm − θn), ∀l ∈ L (17)
+Where fl denotestheactivepowerflowofbranch l, Bl = 1/xl,and xl istakenfromTable3.
+Thenodeactivepowerinjectionsatisfies:
+∑
+i∈Gb
+Gi,t − Lb,t =
+∑
+l∈F (b)
+fl,t −
+∑
+l∈T (b)
+fl,t, ∀b ∈ B, ∀t (18)
+Here, Gb denotes the set of units connected at node b, Lb,t represents the node load (distributed
+proportionallyfromTable4),while F(b)and T (b)denotethesetsofbranchesoriginatingfromand
+terminatingat b,respectively.
+Theabsolutevalueofbranchcurrentsshallnotexceedtheirmaximumtransmissioncapacity:
+|fl,t| ≤ Fmax l , ∀l ∈ L, ∀t (19)
+where Fmax l isderivedfromTable3.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-168-
+
+===== PDF page 13 =====
+Team#apmcm25310840 Page11of25
+6 . 1 . 7 N-1 Safety Constraint
+Considering all single-fault scenarios s ∈ S, ensure the system remains operational after any
+elementwithdrawal:
+Faultscenariostateconstraints:
+zs i,t ≤ zi,t, f s l,t = 0 čFaultedelementforcedoutofserviceordisconnectedĎ (20)
+Post-faultpowerbalanceandpowerflowconstraints:
+N∑
+i=1
+Gs i,t = Lt, |f s l,t| ≤ Fmax l ∀t, s (21)
+Nodepowerbalanceconstraints:
+∑
+i∈Gb
+Gs i,t − Lb,t = ∑
+l∈F (b)
+f s l,t − ∑
+l∈T (b)
+f s l,t ∀b, t, s (22)
+6 . 1 . 8 Rotating Reserve Constraints
+To address load fluctuations or sudden equipment failures, the system must reserve suffi-
+cient rotating reserve capacity during each time period, provided by online generating units.
+N∑
+i=1
+(Pmax i · zi,t − Gi,t) ≥ Rup t , ∀t (23)
+N∑
+i=1
+(Gi,t − Pmin i · zi,t) ≥ Rdown t , ∀t (24)
+where Rup t and Rdown t denotetherequiredupwardanddownwardspinningreservecapacitiesforthe
+systemduringtimeperiod t,typicallysetasafixedproportionofload(e.g.,5
+6 . 2 Security-Constrained Unit Commitment via Mixed-Integer Linear Program-
+ming
+EmployingtheMILPmethodforsolution,thequadraticfuelcosttermispiecewiselinearised.
+Initialiseunitandnetworkparameterstoconstructaconstraintsystemincorporatingpowerbalance,
+unit operational limitations, minimum start-stop time, ramping constraints, DC power flow, N-1
+security criteria, and spinning reserve. Utilise commercial solvers such as Gurobi/CPLEX to ad-
+dress integer variables via branch-and-bound methods, verifying result feasibility while analysing
+economicviabilityandrobustness.
+Step 1: Model Construction and Parameter Configuration Standardise unit parameters,
+network topology, and load data whilst verifying completeness; implement piecewise linearisation
+of secondary fuel costs; establish power balance, unit operation, network power flow, and safety
+constraintsystemstoformacomprehensivemixed-integerlinearprogrammingmodel.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-169-
+
+===== PDF page 14 =====
+Team#apmcm25310840 Page12of25
+Table 4 Mixed-Integer Linear Programming Solution Parameters
+Parameter Symbol Unit Description
+MaximumIterations Nmax – Maximumiterations
+forbranch-and-bound
+method
+Toleranceerror ϵ – Toleranceerrorfor
+integerfeasibility
+Solutiontime
+constraint
+Tlim s Maximumruntimefor
+solver
+Step Two: Model Solution and Scheme GenerationEmployingthe Branch and Boundary
+Method to solve the MILP model, relaxing integer constraints to form linear subproblems, and
+achievinggradualconvergencethroughbranch pruning; utilisingcommercial solversto efficiently
+obtainunitstart-stopandoutputschemessatisfyingallconstraints.
+Step Three: Result Verification and Performance EvaluationOutput unit outputs, branch
+power flows, and start/stop statuses. Calculate total cost, reserve margin, and N-1 overload rate.
+Evaluatetheeconomicviabilityandrobustnessofthesolutionbasedonthesemetrics. Wherenec-
+essary,performbacktrackingcorrectionstoensuresystemsafety.
+Table 5 Economic Robustness Indicators
+Indicator Unit Value Limit Pass/Fail
+TotalCost 104 457.3 i i
+UpsideReserve % 5.1 ≥5 Yes
+N-1Overload
+Rate
+% 0 0 Yes
+6 . 3 Solving the Problem II Model
+Figure 5 Optimised Unit Combination Dispatch Results Diagram
+Analysisofthematchingrelationshipbetweenunitoutputandloadcurves: Within a 24-hour
+period, the combined unit output strictly tracks the load, achieving precise power balance,ver-
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-170-
+
+===== PDF page 15 =====
+Team#apmcm25310840 Page13of25
+ifyingthemodel’seffectivenessinsatisfyingfundamentalphysicalconstraints. Unit1,theprimary
+unit,exhibitsthegreatestoutputfluctuationsandshouldersthemainpeak-shavingresponsibilities,
+whileauxiliaryunitssuchasUnits2,5,8,11,and13provideflexiblestart-stopregulation. During
+low-loadperiodssuchas07:00⚶09:00and19:00⚶21:00,partialunitoutagesarescheduledtoreduce
+start-stop costs, reflecting economic optimisation. No unit output exceeded technical limits, with
+theschedulingschemeachievingminimaloperationalcostswhilesatisfyingsafetyconstraints.
+Figure 6 Quantum Optimisation of Power System Unit Combination Operation Indicator Diagram
+Four-chartintegratedanalysis: 24-hourloadandgenerationpreciselymatched,totaloperating
+costs≤RMB4.573million,rotatingreserveratestable≥5.1%,meetingsafetymarginrequirements;
+lineloadfactorsremainedwithinlimits,zeroN-1securityconstraintviolations,systeminertia3.7⚶
+7.0 (exceeding safety thresholds). Dispatch plan balances economic efficiency and safety with ro-
+bustperformance.
+Figure 7 Combination Results Diagram for Units Subject to Network and Security Constraints
+Analysis of the diagram indicates that the unit combination model satisfies network and se-
+curity constraints, with total generation closely matching the load curve and responding promptly
+to demand fluctuations. Network flow remains within reasonable limits, while reserve capacity is
+amplewithslightincreasesduringpeakperiods(6:00and18:00)toaddresspotentialfluctuationsor
+faults. Themodelenhancessystemrobustnessandsecuritywhilstmaintainingeconomicefficiency.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-171-
+
+===== PDF page 16 =====
+Team#apmcm25310840 Page14of25
+Table 6 Comparison of Optimisation Results for Problem 1 and Problem 2
+Metric Problem 1 Result Problem 2 Result
+Total Operating Cost () 185,345.23 191,789.67
+Fuel Cost () 184,800.55 191,150.12
+Start-Stop Cost () 544.68 639.55
+Total Electricity Generation
+(MW)
+4,983.15 4,983.28
+Average Number of
+Committed Units
+4.35 4.52
+Calculation Time (s) 0.123 0.876
+Table 6 demonstrates that the total operating cost for Problem 2 exceeds that of Problem 1,
+this cost increase being a necessary investment to safeguard network security. By increasing
+theaveragenumberofcommittedunits,themodelachievesabalancebetweeneconomicefficiency
+and security, satisfying both the N-1 security criterion and rotating reserve requirements, thereby
+derivingapracticaldispatchscheme.
+Although the additional network power flow and security constraints in Problem 2 increased
+computationalcomplexity,thesolverrapidlyobtainedoptimalsolutions,validatingthemodel’sef-
+fectiveness. Thedispatchschemecombineseconomicefficiencywithrobustresilience,effectively
+mitigating the risk of widespread blackouts triggered by single-element failures, highlighting the
+practicalvalueofincorporatingnetworkandsecurityconstraints.
+Table 7 Optimised Unit Combination Results Considering Network and Security Constraints
+Time
+Period (h)
+Unit ID Start/Stop
+Status
+Output
+(MW)
+Line
+Transmis-
+sion
+(MW)
+Rotating
+Reserve
+(MW)
+Safety
+Clearance
+(y/n)
+6 1 1 282 610 15.3 Y
+12 2 0 0 305 8.7 Y
+18 5 1 45 322 5.9 Y
+24 13 1 38 157 2.1 Y
+Thetabledemonstratesthatthemodelbalanceseconomicefficiencyandreliability: unitstart-
+up/shutdownandoutputadheretominimumoperatingtimeandrampingconstraints,achieving op-
+timal total operating costs; DC power flow constraints ensure no line overloads, validating the
+feasibilityofthedispatchscheme.
+The N-1 security principle and rotating reserve enhance system robustness, with power bal-
+ance and power flow constraints satisfied under all fault scenarios. Reservecapacitymeetsre-
+quirements, effectively addressing sudden faults and load fluctuations, ensuring real-time secure
+and stable system operation.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-172-
+
+===== PDF page 17 =====
+Team#apmcm25310840 Page15of25
+VII. QUBO-Based Quantum Optimization for
+Security-Constrained Unit Commitment
+Quantum computing offers novel solutions for power system optimisation. The high com-
+plexity of unit scheduling problems renders them suitable for quantum heuristic algorithms. By
+convertingunitschedulingmodelswithnetworkandsecurityconstraintsintoQUBOformandem-
+ployingquantumplatformssuchasKaiwuSDKforefficientcomputation, quantumcomputingcan
+beeffectivelyappliedtoreal-timepowerdispatch.
+7 . 1 Solving Unit Combination Problems with Network and Security Constraints
+via QUBO Modelling
+7 . 1 . 1 Objective Function Construction and Discretisation
+The core objective of the unit scheduling problem is to minimise the total system operating
+cost, encompassing fuel expenditure and start-stop expenses,necessitatingitstransformationinto
+aquadraticbinaryformsuitablefortheQUBOframework. Ascontinuousoutputvariablesrequire
+discretisation into binary expansion to meet quantum hardware input constraints, the output pi,t of
+unit iduringperiod tisrepresentedbyasetofbinaryvariables:
+pi,t =
+K−1∑
+k=0
+2kδi,t,k, δi,t,k ∈ {0, 1} (25)
+Where K denotesthebinaryexpansionindex,balancingcontrolprecisionwiththenumberofvari-
+ables. Fuelcostsemploythequadraticfunction Ci(pi,t) = ai + bipi,t + cip2 i,t asspecifiedinTable
+2. Substitutingintothediscreteexpressionyields:
+Ci(pi,t) = aiui,t + bi(
+K−1∑
+k=0
+2kδi,t,k) + ci(
+K−1∑
+k=0
+2kδi,t,k)2 (26)
+Intheequation, ui,t ∈ {0, 1}denotesthestart/stopstatusofunit iduringtimeperiod t. Thestart/stop
+costcomponentincorporatesastartindicatorvariablestarti,t ∈ {0, 1},whoselogicalrelationshipis
+determinedbythedifferenceinstatusbeforeandafterthetimeperiod:
+starti,t = ui,t − ui,t−1, t ≥ 2 (27)
+Initial period start-up costs are treated separately. The overall objective function combines fuel
+costs and start-stop costs through weighting, uniformly converted into a quadratic expression
+concerning binary variables.
+7 . 1 . 2 Transformation of Penalty Functions for Power Balance Constraints
+To embed equality constraints within the QUBO framework, the penalty function ap-
+proach must be employed to transform them into penalty terms within the objective function.
+Ateachtimeinterval t,thesystemmustsatisfytheconditionthattotalpowergenerationequalsload
+demand,namely: ∑
+i∈G
+pi,t = Lt (28)
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-173-
+
+===== PDF page 18 =====
+Team#apmcm25310840 Page16of25
+Convertitintoaquadraticpenaltyterm:
+P1 = λ1
+T∑
+t=1
+(
+∑
+i∈G
+K−1∑
+k=0
+2kδi,t,k − Lt)2 (29)
+Here, λ1 is the penalty coefficient, which must be sufficiently large to ensure the constraints are
+satisfiedwithpriority,yetshouldnotbeexcessivelylargetoavoidcompromisingnumericalstability.
+Thisexpressioniscomposedentirelyofbinaryvariables,conformingtotheQUBOstructure.
+7 . 1 . 3 Coupled Constraints on Power Generation Limits and Start-Stop Status
+A unit must operate within its minimum and maximum power output ranges, and may
+only generate electricity when commissioned. This constraint is implemented through coupling
+withthestart-stopvariable ui,t:
+pmin i,t ui,t ≤ pi,t ≤ pmax i,t ui,t (30)
+Aftersubstitutingthediscretisedoutput,thistransformsintotwoinequalities:
+pmin i,t ui,t ≤
+K−1∑
+k=0
+2kδi,t,k ≤ pmax i,t ui,t (31)
+Thenconvertedintoapenaltyfunctionterm:
+P2 = λ2
+∑
+i,t
+[
+max(0, pmin i,t ui,t − ∑
+k
+2kδi,t,k)2 +max(0, ∑
+k
+2kδi,t,k − pmax i,t ui,t)2
+]
+(32)
+As QUBO only accepts quadratic polynomial forms, the maximisation function must be ap-
+proximatedeitherbysuperimposingquadratictermsorbyintroducingauxiliarybinaryvariablesfor
+modelling.
+7 . 1 . 4 Modelling the Minimum Start-Stop Time Constraint
+Minimum operating and shutdown duration constraints require that once a unit is started,
+it must continue operating for at least τ up i hours, and after shutdown, it must remain off for
+at least τ down i hours. Takingtheminimumoperatingtimeconstraintasanexample: ifaunitcom-
+mencesoperationattime s, thenforall t ∈ [s,min(s + τup i − 1, T )], itmustsatisfy ui,t = 1. This
+logicalrelationshipcanbeexpressedas:
+ui,t − ui,t−1 ≤ ui,t, ∀t ∈ [t,min(t + τup i − 1, T )] (33)
+This linear inequality is converted into a QUBO term by introducing slack variables or directly
+constructingapenaltyfunction:
+P3 = λ3
+∑
+i,t
+min(t+τup i −1,T )∑
+t=t
+(max(0, ui,t − ui,t−1 − ui,t))2 (34)
+Similarly, the minimum downtime constraint can be formulated by constructing a penalty term P4
+forsubsequenttimeperiods t ∈ [t, t + τdown i − 1]viatheinequality ui,t−1 − ui,t ≤ 1 − ui,t.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-174-
+
+===== PDF page 19 =====
+Team#apmcm25310840 Page17of25
+7 . 1 . 5 Discretisation of the Climb Rate Constraint
+The variation in unit output between adjacent time periods shall not exceed its ramping
+capability,i.e. satisfying:
+−RDi ≤ pi,t − pi,t−1 ≤RUi (35)
+Substitutingthediscretisedoutputyields:
+−RDi ≤
+∑
+k
+2k(δi,t,k − δi,t−1,k) ≤RUi (36)
+Thisconstraintisalsoembeddedintotheobjectivefunctionviaapenaltyterm:
+P5 = λ5
+∑
+i,t
+[
+max(0, pi,t − pi,t−1 −RUi)2 +max(0, pi,t−1 − pi,t −RDi)2] (37)
+where pi,t, pi,t−1arebothlinearcombinationsofbinaryvariables,andtheirsquaresremainquadratic
+forms.
+7 . 1 . 6 Linearisation and Embedding of Network DC Power Flow Constraints
+To prevent transmission line overload, a DC power flow model must be introduced with
+branch power limits applied. TheDCpowerflowequationis:
+fl =
+∑
+i∈Gl
+pi,tBl,i +
+∑
+j∈Ll
+Lj,tBload l,j (38)
+where fldenotestheactivepowerofline l,and Bl,irepresentsthetransmissioncapacitycoefficient
+ofthegeneratortotheline,obtainablethroughtopologyandreactancecalculations. Theconstraint
+requires:
+|fl| ≤ Fmax l (39)
+ThislinearconstraintisembeddedintoQUBOviapiecewiselinearisationordirectapplicationofa
+bilateralpenaltyfunction:
+P6 = λ6
+∑
+l,t
+(max(0, |fl| − Fmax l ))2 (40)
+All variables in this expression are linear combinations of the original binary variables, thus the
+entiresystemcanbetransformedintoaquadraticform.
+7 . 1 . 7 Modelling Redundant Channels for the N-1 Security Criterion
+To satisfy the N-1 security criterion, the system must maintain power flow within limits
+following the failure of any single component (e.g., line or unit). Assuming faults are concen-
+trated within the critical line set F, for each fault scenario f ∈ F, recalculate the modified power
+flowdistribution f (f ) l andapplythesamelimitconstraints:
+|f (f ) l | ≤ Fmax l , ∀l, f (41)
+Each fault scenario introduces a set of additional binary variables and power flow equations, with
+thecorrespondingpenaltyfunctiontermbeing:
+P7 = λ7
+∑
+f ∈F
+∑
+l,t
+(max(0, |f (f ) l | − Fmax l ))2 (42)
+Whilst this approach increases the number of variables, it enables parallel processing of multiple
+faultscenarios,renderingitsuitableforquantumheuristicsolutions.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-175-
+
+===== PDF page 20 =====
+Team#apmcm25310840 Page18of25
+7 . 1 . 8 Robust Modelling of Spinning Reserve Constraints
+To address load fluctuations and random unit outages, the system must maintain a pro-
+portion of total demand as adjustable capacity during each time period. The spinning reserve
+constraintisexpressedas: ∑
+i∈G
+(pmax i,t ui,t − pi,t) ≥ Rt (43)
+where Rt = αLt,and αdenotesthereservemarginrate(typicallysetat5%⚶10%). Convertingthis
+intoapenaltyfunction:
+P8 = λ8
+∑
+t
+(max(0, Rt −
+∑
+i
+(pmax i,t ui,t − pi,t)))2 (44)
+All terms in the equation can be represented by binary variables, maintaining consistency with the
+QUBOstructure.
+7 . 1 . 9 Integration and Standardisation of the Full QUBO Form
+Combine all cost terms and penalty functions into a single unconstrained quadratic bi-
+nary objective function. Thus,theQUBOmodelbecomes:
+min
+x
+xT Qx (45)
+where xisthevectorcomprisingallbinaryvariables(including ui,t, δi,t,k, starti,t etc.), and Qisa
+symmetricmatrixobtainedbyexpandingandrearrangingthetermsoftheobjectivefunction:
+xT Qx = ∑
+i,t
+(Ci(pi,t) + Si ·starti,t) +
+9∑
+m=1
+Pm (46)
+Alltermshavebeenconvertedintoquadraticpolynomialswithbinaryvariables,ensuringtheycan
+beencodedandsolvedonquantumplatformssuchasKaiwuSDK.
+The QUBO model employs a penalty function approach to embed complex constraintsiin-
+cluding power balance, output limits, start-stop timing, power flow, and safetyiinto the objective
+function, maintaining structural consistency. Continuous variables undergo binary discretisation,
+withefficientquantumheuristicsolutionsachievedviatheKaiwuSDK.
+Step 1: Objective Function Construction
+Theobjectivefunctionminimisesfuelandstart-stopcostsbydiscretisingunitoutputintobinary
+expansions. These are substituted into a quadratic cost function, combined with start-stop state
+variables, to form a quadratic polynomial expression over binary variables, ensuring compliance
+withQUBOstructuralrequirements.
+Step 2: Power Balance Constraint Transformation
+This step enforces power balance by converting it into quadratic penalty terms in the QUBO
+objective,ensuringtotalgenerationmeetsloaddemand. Withsufficientlylargepenaltycoefficients,
+theequalityconstraintisembeddedwithoutnewvariables,preservingfeasibilityandcompatibility
+withquantumoptimisersacrossalltimeperiods.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-176-
+
+===== PDF page 21 =====
+Team#apmcm25310840 Page19of25
+Table 8 Parameters Related to Power Balance Constraints
+Parameter Symbol Definition Unit Range
+NumberofTime
+Slots
+T Totalnumberof
+optimisationtime
+slots
+- Positiveinteger
+LoadDemand Lt Loadvaluefortime
+period t
+MW [0, ∞)
+PenaltyCoefficient λ1 Weightingfactor - (0, ∞)
+Step Three: Handling Generation Upper and Lower Limit Constraints
+Couple generation upper and lower limit constraints with unit start-stop states, representing
+output ranges via binary variables. Introduce a discretised output expression, construct upper and
+lower deviation penalty terms for binary variables, and embed these as squared penalty functions
+within the objective function. This ensures operational output remains within permissible ranges
+andpowerisgeneratedonlyduringactiveoperation.
+Step Four: Modelling Minimum Start-up and Shutdown Durations
+Minimum up/down time constraints are enforced by detecting start-up and shutdown events
+fromchangesinunitstatusvariablesandapplyingforcedholdconditionsoversubsequentperiods.
+Theseinequality constraints areconverted into quadraticpenalty terms in theQUBO objective via
+thepenaltyfunctionmethod,ensuringcompliancewithminimumdurationrequirements.
+Step Five: Gradient Rate Constraint Discretisation
+Explicitly express the output difference between adjacent time periods using a binary linear
+combination. Apply direct squared penalties to out-of-bound quantities, preserving the quadratic
+structurewhileavoidingtheintroductionofadditionalintegervariables.
+Step Six: Network and Security Constraint Embedding
+DC power flows and N-1 security constraints are converted into quadratic penalty functions.
+Branch power is calculated using transmission rights coefficients, with power limit penalties ap-
+plied to each line and fault scenario to prevent flow violations. All terms are composed of linear
+combinationsofbinaryvariables,enablingunifiedincorporationintotheQUBOobjectivefunction.
+7 . 2 Solving the Problem-Three Model
+Figure 8 Comparison Chart of Unit Combination
+Costs for Classical and Quantum QUBO
+Optimisation
+Figure 9 Generation Costs versus Load Demand
+Comparison Chart
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-177-
+
+===== PDF page 22 =====
+Team#apmcm25310840 Page20of25
+Cost comparison shows the quantum QUBO and classical UC solutions exhibit highly con-
+sistent trends. Quantum costs are slightly higher on average but remain within a 2.5% deviation;
+notably,theyoutperformclassicalresultsinlow-loadperiodsie.g.,$204.50vs. $206.00athour24
+iandduringrapidloadchanges,suchashour10($150vs. $152).
+Generationcloselytracksload,satisfyingpowerbalanceexactly. Fuelcostspeaknear$1,800
+duringhighdemandanddroptoabout$800off-peak,reflectingeffectivestart-stopandoutputop-
+timisationthatachievesbotheconomicefficiencyandoperationalreliability.
+Table 9 Quantum QUBO vs Classical Optimization Results
+Unit (bus) Avg.
+Output
+(MW)
+Startups Shutdowns Total Cost Comp.
+Time (s)
+Gap (%)
+1 213 1 0 21850 4.3 1.2
+2 148 2 1 19640 5.1 2.4
+5 38 1 1 7230 3.8 0.8
+8 29 0 1 5840 4.7 1.5
+11 24 1 0 6120 5.6 1.1
+13 33 0 0 6950 4.9 0.7
+Table9showsthatquantumheuristicoptimisationachieveshighaccuracyandefficiency: total
+costdeviatesbylessthan2.5%fromtheclassicaloptimum,confirmingfaithfulQUBOconversion.
+Unit13attainsthefastestsolutiontime(5.6s)withnostart-stopcycles,highlightingreducedsearch
+complexityfrombinarydiscretisationandpenaltyfunctions. Alloperationalconstraintsaresatisfied
+ie.g.,Unit2meetsthe8-hourminimumruntime,Unit5nsoutput(38MW)lieswithinits15⚶50
+MW range, and ramping stays within RU/RD limitsidemonstrating model stability and effective
+constrainthandling.
+VIII. Scale Reduction Model Based on Variable Clustering and
+Time Decomposition
+Quantumhardwarebitlimitsrestrictlarge-scaleunitcommitmentQUBOmodelswithnetwork
+and security constraints (e.g., N-1, DC power flow), as variable counts exceed CIM capacity. To
+balancefidelityandscalability,thispaperproposesahybridreductionframeworkbasedonspatio-
+temporal decomposition and variable clustering, leveraging temporal correlations and spatial cou-
+plinginunitoutputstoapproximatehigh-dimensionaldecisionsinalow-dimensionalspace.
+8 . 1 Scale Reduction Model Based on Spatio-Temporal Decomposition and Vari-
+able Clustering
+8 . 1 . 1 Problem Structure Analysis and Reduction Objective Definition
+ToreducethescaleoftheProblem2expandedunitcombinationmodel,itisnecessarytoiden-
+tifythecausesofhighdimensionality: unitstart-up/shutdownandoutputvariables,networkpower
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-178-
+
+===== PDF page 23 =====
+Team#apmcm25310840 Page21of25
+flowvariables,andredundancyconstraintsinN-1faultscenarios(41lines+6units). The24-period
+start/stop variables for 6 units reach 144 dimensions, with dimensionality further increasing after
+outputdiscretisation. Thereductionobjectiveis: whilstmaintainingsystemsecurityandeconomic
+performance, compress the QUBO model variable count to a manageable range for the CIM (e.g.,
+<1000bits).
+8 . 1 . 2 Time-Dimensional Cluster Decomposition
+Compressing the time dimension through load sequence clustering: Employing the K-means
+algorithm to cluster load data (where K denotes the number of clusters), we represent typical load
+levels with K cluster centres and establish a period-cluster centre mapping function. Assuming
+similar operating patterns within the same cluster, the original 24-period optimisation problem is
+approximatedasoptimisationacrossKrepresentativeperiods,therebyreducingredundantcalcula-
+tions.
+Thisclusteringoutcomeisutilisedtoconstructatime-equivalentmodel:
+min
+NG∑
+g=1
+K∑
+k=1
+wk(agP 2 gk + bgPgk + cgugk + Sup g vup gk + Sdn g vdn gk) (47)
+Where Pgk denotes the output of unit g within cluster k, ugk ∈ {0, 1} represents its operational
+status, vup gk, vdn gk arestart/stopindicatorvariables,and wk isthetimeweightingforcluster k (i.e. the
+proportionoftotalperiodstowhichitbelongs).
+8 . 1 . 3 Spatial Dimension Unit Aggregation
+To reduce the number of variables, units with similar electrical distances and parameters are
+aggregated based on grid topology and unit characteristics. Hierarchical clustering is employed,
+incorporatingparameterssuchasbusbarlocation,electricaldistancecalculatedfromtheimpedance
+matrix,maximumunitoutput,andcostcoefficients. Themaximumoutputofaggregatedunitsisthe
+sum of member outputs, while the minimum output is the lower bound of the total sum. The cost
+functionutilisesaweightedaverage.
+Letthesetofunits Gm begroupedintothe mthequivalentunitset,thenitsequivalentparam-
+etersare:
+Pmax m = ∑
+g∈Gm
+Pmax g → Pmin m = ∑
+g∈Gm
+Pmin g (48)
+→ am =
+∑
+g∈Gm agPmax g∑
+g∈Gm Pmax g → bm =
+∑
+g∈Gm bgPmax g∑
+g∈Gm Pmax g (49)
+→ cm =
+∑
+g∈Gm cg
+|Gm| (50)
+Accordingly, the start-stop variables of the original units are consolidated into a single aggregated
+unitstatevariable umk,therebysubstantiallyreducingthetotalnumberofbinaryvariables.
+8 . 1 . 4 Simplification of Network Constraint Sensitivity
+EmployingaPTDFsensitivityscreeningmechanismtomitigatethehigh-dimensionalcoupling
+effects between DC power flows and N-1 constraints: Calculate the PTDF matrix for each line to
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-179-
+
+===== PDF page 24 =====
+Team#apmcm25310840 Page22of25
+characterisetheimpactofunitoutputvariationsonlinepowerflows. Setathresholdτtodisregard
+unit-lineinteractiontermswhere|Dₗ₉|<τ(indicatingnegligibleunitinfluenceontheline),retaining
+onlycriticalinteractions.
+Thus,theoriginalcomprehensiveN-1securityconstraint:
+|
+NG∑
+g=1
+D(f ) lg Pgt| ≤ Pmax l , ∀f, t (51)
+Reducedtoconsideringonlythesubsetofgenerators G(f ) l forwhich |D(f ) lg | ≥ τ,namely:
+|
+∑
+g∈G(f ) l
+D(f ) lg Pgt| ≤ Pmax l , ∀f, t (52)
+Here, D(f ) lg denotesthemodifiedPTDFfollowingfault f,while Pmax l representstheline’smaximum
+transmissioncapacity. Thissimplificationsubstantiallyreducesboththenumberofconstraintsand
+thecouplingdensityofvariables.
+8 . 1 . 5 Rotational backup layered modelling
+Toavoidvariableexpansionresultingfromallunitsparticipatinginreservecalculationsthrough-
+out all time periods, a tiered reserve configuration strategy is adopted: only high-flexibility units
+shall bear the primary responsibility for spinning reserve. Based on the ramp rates and minimum
+technicaloutputsoftheunitslistedinTable1,flexibilityindicatorsaredefinedasfollows:
+Fg = Rup g
+Pmax g − Pmin g (53)
+Where Rup g denotestheupwardrampingcapability(MW/h)ofunit g. Unitswith Fg exceedingthe
+threshold η form the primary reserve unit set Gres, with the remaining units excluded from reserve
+allocation. Therotatingreserveconstraintisthussimplifiedto:
+∑
+g∈Gres
+(Pmax g ugt − Pgt) ≥ Rreq t , ∀t (54)
+Where Rreq t = α · dt denotes the reserve capacity required for time period t, and α represents the
+reservecoefficient(typicallysetat5%⚶10%). Thisapproachreducestheredundantreservevariables
+introducedbylow-flexibilityunits.
+8 . 1 . 6 Inertia-constrained online unit selection
+Fortheoptionalminimuminertiaconstraint,onlythesumoftheinertiaconstants Hofcurrently
+operating units is counted, with a pre-screening mechanism preventing all units from participating
+ininertiacalculations. AccordingtoTable2,theinertiaconstants Hg foreachunitareknown. The
+totalsysteminertiasatisfies:
+NG∑
+g=1
+Hgugt ≥ Hmin (55)
+Where Hmin iscalculatedfromtheROCOFandloadstepinTable5:
+Hmin = F · ∆f 2 ·ROCOF = 2.118 × 600 2 × 0.5 = 1270.8MWcs (56)
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-180-
+
+===== PDF page 25 =====
+Team#apmcm25310840 Page23of25
+However,consideringthatonlyaportionofunitsareoperationalduringactualoperation, an initial
+feasible solution screening mechanism may be implemented to retain only those units with
+significant inertia contributions within the optimisation variable set, while designating the
+remainder as fixed shutdown units. Thisapproachreducesthescaleofvariables.
+8 . 2 Steps for Solving the Scale Reduction Model Based on Variable Clustering
+and Time Decomposition
+Performing Load Data Clustering AnalysisemploystheK-meansalgorithmtoclusterload
+curves, compressing the temporal dimension. Generating aggregated units based on electrical dis-
+tance reduces spatial complexity. Through PTDF screening, safety constraints are simplified; ro-
+tating reserve units are selected according to flexibility metrics. Combined with inertia demand
+pre-screeningofonlineunits,thissignificantlyreducesthescaleoftheQUBOmodel,adaptingitto
+theprocessingcapabilitiesoftheCIM.
+Step One: Time Dimension Compression and Unit AggregationTheK-meansalgorithmis
+employedtoclusterthe24-hourloadcurve,generatingatypicaltimeperiodmappingfunction κ(t)
+and weights wk to achieve time dimension compression. Hierarchical clustering of units based on
+electrical distance and operational parameters forms equivalent units, reducing the scale of binary
+variables.
+Step Two: Network Constraint Simplification and Security Verification A power trans-
+fer distribution factor (PTDF) screening mechanism sets threshold τ to eliminate minor unit-line
+associations, reducing N-1 security constraint complexity. Combined with unit flexibility metrics,
+rotating reserve units are filtered, retaining only high-response units for reserve constraints. This
+compressesvariablecountswhilemaintainingreliability.
+Step Three: Physical Constraint Preselection and Variable ReductionUnits are sorted in
+descending order by inertia constant Hg. Preselect the first m units meeting the minimum system
+inertia requirement Hmin, with non-selected units forcibly decommissioned. Integrating outcomes
+fromprecedingsteps,constructastreamlinedoptimisationmodeltosubstantiallyreducecomputa-
+tionalcomplexity.
+8 . 3 Solving the Quadratic Equation Model
+Figure 10 Scaling Reduction Strategy Diagram for Solving Power System Unit Combination Problems via
+Quantum Optimisation
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-181-
+
+===== PDF page 26 =====
+Team#apmcm25310840 Page24of25
+Analysisoftheproblemscalediagramshowsthatthevariableclusteringandtemporaldecomposition-
+based scale-reduction model significantly cuts the QUBO model’s qubit count from over 300 to
+around 200, effectively meeting quantum hardware processing constraints. The hardware feasi-
+bility diagram indicates that this qubit reduction boosts the successful solution rate to over 85%
+for counts below 1000, enhancing computational efficiency and reliability. In the cost comparison
+diagram, despite a slight cost increase, the reduced model remains economicaliwith the original
+modelcosting 216millionandthereducedonearound210million.
+Figure 11 Load Demand versus Total Generation Comparison Chart
+Analysisofthegraphindicatesthat the total power generation over the 24-hour period (red
+curve) fully meets the load demand (black curve)throughout,satisfyingthepowerbalancecon-
+straint; rotating reserve (green area) is ample, with significant reserves during peak periods
+(1, 12, and 18 o’clock) ensuring system reliability. Through a scale-reduction strategy combin-
+ing temporal clustering and unit aggregation, the variable scale is compressed to a manageable
+range for CIM (e.g., <1000 bits), balancing security and economic efficiency, thereby validating
+thefeasibilityofthequantumoptimisationframeworkinpowerdispatch.
+Table 10 Comparison of Problem Scaling Reduction Strategies
+Method Reduction
+Rate(%)
+Qubo Size Solve time(s) Cost
+Increase(%)
+Feasibility
+Variable
+Selection
+35 650 8.2 7 Yes
+Constraint
+Relaxation
+42 580 6.5 12 Yes
+Hierarchical
+Optimization
+48 520 9.1 15 No
+Analysis of Table 10 reveals that the scale reduction strategy proposed herein significantly
+reducesthenumberofqubitsintheQUBOmodel. Thehierarchicaloptimisationstrategyachieves
+a 48% reduction rate, scaling the model down to 520 qubits and satisfying the CIM capacity
+constraint. The variable selection and constraint relaxation strategies achieve 35% and 42% scale
+reductions respectively, whilst ensuring solution feasibility, with manageable computational cost
+increases. Results demonstrate the proposed method’s outstanding efficacy in balancing problem
+complexityandsolutionperformance.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-182-
+
+===== PDF page 27 =====
+Team#apmcm25310840 Page25of25
+IX. Advantages and Limitations of the Model
+9 . 1 Advantages of the Model
+⊙ Themodelpreciselycapturesunitstart-up/shutdownlogicandoutputconstraintsthroughmixed-
+integer programming, effectively handling both discrete and continuous decision variables to
+ensure dispatch schemes align with operational requirements. Segmented linearisation tech-
+niques are employed to address non-linear cost functions, enhancing solution efficiency and
+computationalstability.
+⊙ TheincorporationofDCpowerflowandN-1securityconstraintsenhancesthemodel’sadapt-
+ability to transmission bottlenecks and fault scenarios within the grid. Key line coupling re-
+lationships are identified through power transfer distribution factors, significantly reducing
+computationalcomplexitywhilemaintainingsecurity.
+9 . 2 Model Limitations
+The model exhibits high sensitivity to initial parameters, with improper data preprocessing
+readily yielding infeasible or suboptimal solutions. The increased complexity of constraints ex-
+acerbates computational demands, particularly in high-dimensional fault scenarios where solution
+timesescalatesignificantly. Whilstquantumreductionstrategiesdiminishvariablescale,theymay
+compromiseeconomicprecision,therebyaffectingpracticalapplicability.
+References
+[1] LiuXiaofeng,YangJianwei,HeJinghan.ResearchonUnitCombinationOptimisationModel
+for Power Systems Based on Mixed-Integer Programming[J]. Automation of Electric Power
+Systems,2018,42(5): 65-72.
+[2] AiXin,SuoJidong,WangShuai.Decomposition-CoordinationAlgorithmforUnitCombina-
+tion Problem Considering N-1 Security[J]. Automatisation of Electric Power Systems, 2012,
+36(15): 39-44.
+[3] JiaHongjie,MuYunfei,YuXiaodan.AReviewofDynamicEquivalenceandModelReduction
+MethodsinPowerSystemOperationOptimisation[J].TransactionsoftheChineseSocietyfor
+ElectricalEngineering,2017,37(1): 45-56.
+[4] Fu,Y.,Shahidehpour,M.,&Li,Z.Security-constrainedunitcommitmentwithAC/DCtrans-
+missionsystems[J].IEEETransactionsonPowerSystems,2005,20(4): 1895-1905.
+[5] Streif,M.,Yarkoni,S.,&Leib,M.Solvingtheunit-commitmentproblemonaD-Wavequan-
+tumannealer[J].arXivpreprintarXiv:2001.00285,2020.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-183-

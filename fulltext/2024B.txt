@@ -1,0 +1,2055 @@
+
+===== PDF page 1 =====
+Team # apmcm24200636                                                       Page 1 of 72 
+ 
+ 
+Team Number: apmcm24200636 
+Problem Chosen: B 
+ 
+ 
+2024APMCM summary sheet 
+This problem pertains to optimization planning, where single-objective and multi-
+objective programming models were established to determine the optimal shape and size 
+parameters of the equipment using various suitable optimization algorithms. 
+For Problem 1, a high-performance air-conditioner optimization model was developed, 
+simulating temperature variations in summer and winter under different influencing factors, 
+and designing the optimal shape and size. Initially, the Navier-Stokes equation was used to 
+describe airflow. Subsequently, a single-objective programming model was established with 
+objectives of temperature uniformity, energy efficiency, and noise control, with volume as a 
+constraint. The model was solved using a combination of random search and finite difference 
+methods, identifying wind speed, quantity, and spatial position as key factors, with the optimal 
+shape and size being a cube of 0.5m. Simulations of temperature regulation in summer and 
+winter showed better performance in summer. 
+For Problem 2, a high-performance air purifier optimization model was established to 
+design the optimal shape and size. The Advection-Diffusion equation was used to simulate 
+molecular diffusion. A single-objective programming model was then established with 
+maximum purification efficiency as the objective and purifier volume as the constraint, solved 
+using the gradient descent algorithm. The optimal shape and size were determined as a 
+rectangular prism of 0.82m×0.92m×1.18m. Robustness testing showed minimal impact on 
+purification under uneven pollutant distribution, indicating high model robustness. 
+For Problem 3, a high-performance humidifier optimization model was developed to 
+determine the optimal shape and size. Fick's law was introduced to establish a water vapor 
+diffusion equation. A single-objective programming model was then established with optimal 
+humidification effect as the objective and volume limitation as the constraint, solved using the 
+BFGS optimization algorithm. The optimal shape and size were found to be a rectangular prism 
+of 1.26m×0.2m×0.5m. Sensitivity analysis showed minimal change in maximum 
+humidification efficiency with increasing power, indicating good model stability. 
+For Problem 4, a Pareto optimization model was established to determine the optimal 
+shape and size of a three-in-one device. Building on the previous models, this model 
+comprehensively considered energy efficiency, human comfort, purification effect, and 
+humidification effect maximization as objectives, establishing a multi-objective programming 
+model. The model was solved using the SLSQP algorithm, yielding an optimal shape and size 
+for the three-in-one device as a rectangular prism of 1.24m×1.24m×2.15m, with defined height 
+ranges for each functional module within the device. 
+Keywords: Navier-Stokes equation; Adveaux-diffusion equation; Fick's law; various 
+optimization algorithms 
+  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-212-
+
+===== PDF page 2 =====
+Team # apmcm24200636                                                       Page 2 of 72 
+ 
+Directory 
+1 Introduction ...................................................................................................... 3 
+1.1 Problem Background ............................................................................. 3 
+1.2 Question Restatement ............................................................................ 3 
+2 problem analysis .............................................................................................. 4 
+2.1 analysis of problem 1 ............................................................................ 4 
+2.2 analysis of problem 2 ............................................................................ 4 
+2.3 analysis of problem 3 ............................................................................ 5 
+2.4 analysis of problem 4 ............................................................................ 5 
+3 Model assumptions .......................................................................................... 5 
+4 Symbol Description ......................................................................................... 6 
+5 Our Work .......................................................................................................... 6 
+6 establishment and solution of the model .......................................................... 7 
+6.1 Model establishment and solution of problem 1 ................................... 7 
+6.2 Model establishment and solution of problem 2 ................................. 16 
+6.3 Model establishment and solution of problem 3 ................................. 20 
+6.4 Model establishment and solution of problem 4 ................................. 24 
+7 evaluation and generalization of the model ................................................... 26 
+7.1 evaluation of the model ....................................................................... 26 
+7.2 generalization of the model ................................................................. 27 
+References ............................................................................................................ 28 
+Appendix .............................................................................................................. 29 
+ 
+  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-213-
+
+===== PDF page 3 =====
+Team # apmcm24200636                                                       Page 3 of 72 
+ 
+1 Introduction 
+1.1 Problem Background 
+At present, as economic development enters a high-quality stage, people's demand 
+for quality of life is also increasing. As far as environmental electrical equipment is 
+concerned, environmental conditioning devices combining air conditioners, 
+humidifiers and air purifiers are gradually emerging. The device fully integrates the 
+three devices and replenishes each other. The air conditioner will dry the indoor air 
+while adjusting the temperature, and the humidifier can replenish moisture in time to 
+properly adjust the indoor temperature. And when the indoor air circulation caused by 
+the operation of the air conditioner, the air purifier can filter harmful pollutants in the 
+air, purify the circulating air, and improve the indoor air quality. In addition, the three-
+in-one device is equipped with electrical appliances that control 3 devices at the same 
+time, reducing the power supply and connecting wires of multiple devices, and reducing 
+the potential safety hazards of excessive lines.  
+Through variable refrigerant flow, the air conditioner integrates the compressor, 
+condenser and evaporator to form an artificial entity system with the function of 
+providing a comfortable indoor environment. The working principle of the air purifier 
+is to use high-voltage electricity to convert air molecules into positive ions and free 
+electrons, so that they are adsorbed and deposited on the deposition plate. When the air 
+enters the photocatalyst catalytic decomposition area, the harmful substances in the air 
+are decomposed into negative oxygen ions and water. At this point, the air purification 
+work is completed. The original reason of the humidifier is that alternating current is 
+transformed into direct current through transformer step-down rectification, and then 
+the direct current is transformed into high-frequency alternating current through an 
+oscillation circuit and added to ultrasonic atomization. If external force is applied to it 
+to deform, it will output corresponding voltage and current. On the contrary, applying 
+alternating voltage to it will produce corresponding deformation, that is, vibration. In 
+this way, the ceramic oscillator is driven by the high frequency voltage to produce 
+ultrasonic oscillation, so that the water is atomized, and then the water mist is sent out 
+by the fan to achieve the effect of humidifying the air.  
+1.2 Question Restatement 
+Access to relevant information shows that the design of integrated air conditioners, 
+humidifiers and air purifiers is closely related to aerodynamics. The overall shape, 
+position, quantity, direction, angle, wind speed and air volume of the air inlet and outlet 
+will affect the effectiveness of the three integrated environmental equipment.  
+As the manager of the air conditioner appearance optimization team, the 
+mathematical model of the three-in-one air conditioner appearance optimization is 
+established according to the specific topic, and the air conditioner appearance is 
+designed for a room with an approximate cuboid space area of 5m × 8m × 3m and is 
+about to be renovated.  
+For the problem 1, considering the different shapes of air conditioning, the 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-214-
+
+===== PDF page 4 =====
+Team # apmcm24200636                                                       Page 4 of 72 
+ 
+influence factors of air conditioning position, air inlet position, quantity, wind direction, 
+angle, wind speed and air volume on air conditioning efficiency are analyzed, and the 
+relationship between indoor temperature and space-time change in summer and winter 
+is simulated. At the same time, the shape optimization model of the air conditioner is 
+determined, and the best shape and size of the air conditioner are designed to achieve 
+the best temperature adjustment effect.  
+For the problem 2, in order to maximize the purification effect, according to the 
+different shapes of the air purifier, the optimization model of the shape of the air purifier 
+is established, the influence of the shape of the air purification on the purification effect 
+is analyzed, and the best size and shape of the purifier is designed, and the best shape 
+and size parameters are drawn.  
+For the 3 of the problem, in order to maximize the humidification effect, based on 
+the different shapes of the air humidifier, the influence of the shape of the air humidifier 
+on the humidification effect is analyzed, the air humidification shape optimization 
+model is established, the best shape of the humidifier is designed, and the best shape 
+and size parameters are drawn.  
+For the problem 4, in order to maximize the energy efficiency, human comfort and 
+purification and humidification effect, based on the first three questions model, the 
+optimization design model is established, the best appearance of the 3 equipment is 
+designed, and the shape and size of the best appearance are drawn.  
+2 problem analysis 
+2.1 analysis of problem 1 
+This question requires the establishment of a model to simulate the change of 
+indoor temperature with time and space in different seasons, establish an optimization 
+model, and design the best shape and size of the air conditioner when the air conditioner 
+reaches the maximum adjustment effect. Considering that the air flow generated by the 
+air-conditioning gas in the flow process belongs to the compressible Newtonian fluid, 
+the Navier-Stokes equation is established here to describe the air flow and then, with 
+the uniformity of temperature, the efficiency of energy, the high control of noise as the 
+target function, and the volume as the constraint to establish a single-target planning 
+model. Then, the random search algorithm solves the above model, and determines the 
+best shape and size of the air conditioner under the change of room temperature with 
+time and space in summer and winter, as well as the best temperature regulation effect.  
+2.2 analysis of problem 2 
+This topic requires considering different shapes of air purifiers, maximizing the 
+purification effect, designing the best shape and best parameters of the air humidifier, 
+and visualizing them. Considering that the essence of an air purifier is to absorb tiny 
+substances in the air, the diffusion of tiny substances can be described by the Adwex-
+diffusion equation. Then, the single-objective planning model is established with the 
+optimal air purification effect as the target function and the volume limit as the 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-215-
+
+===== PDF page 5 =====
+Team # apmcm24200636                                                       Page 5 of 72 
+ 
+constraint. Then, the model is solved by using the gradient descent algorithm that makes 
+the target function drop to the minimum value along the fastest path, and the best shape 
+and size of the air purifier when the purification effect is optimal are calculated, and the 
+visual description is made. This paper uses robustness analysis to further analyze the 
+purification effect of air purifiers by changing the distribution of pollutants and 
+changing the distribution from random distribution to normal distribution.  
+2.3 analysis of problem 3 
+This topic requires considering different shapes of air humidifiers, maximizing the 
+humidification effect, designing the best shape and best parameters of the air humidifier, 
+and visualizing them. The effect of air humidifier is mainly measured by humidity. The 
+shape and size of air purification affect the release mode and distribution of water vapor. 
+Then the water vapor diffusion equation is introduced here. Fick's law is introduced 
+here to establish the water vapor diffusion equation to describe the water vapor 
+concentration. Then, with the maximization of air humidification effect as the target 
+function and the volume limit as the constraint, a single-goal planning model is 
+established. And then,  
+The BFGS optimization algorithm of Newton method is used to solve the single-target 
+planning model, and the best shape and size when the humidification effect is optimal 
+are calculated. Finally, this paper uses sensitivity analysis to test the model and change 
+the maximum power to calculate the degree of change in the purification effect.  
+2.4 analysis of problem 4 
+This question requires optimizing the appearance design of the 3 device on the 
+basis of the 3 of the problem 1. 2., establishing an optimization model, designing the 
+best appearance, and drawing the shape and size parameters of the best appearance. In 
+this paper, the Pareto model is used to integrate the above-mentioned single-goal 
+planning model, and the multi-objective planning model is established with the 
+objective function of energy efficiency, human comfort, purification effect and 
+humidification effect. Then, the machine learning-SLSQP algorithm is used to solve the 
+above model, determine the best appearance shape and size parameters, and draw the 
+best appearance shape.  
+3 Model assumptions 
+ Assuming that the air in the room is an incompressible ideal gas, the 
+thermophysical properties of the air (such as specific heat capacity, thermal 
+conductivity, etc.) are constant.  
+ Ignore the heat capacity of the wall and think that the wall temperature remains 
+constant 
+ Assuming that the air flow blown by the air conditioner is evenly mixed in the 
+room 
+ Assuming uniform temperature distribution in the initial time space 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-216-
+
+===== PDF page 6 =====
+Team # apmcm24200636                                                       Page 6 of 72 
+ 
+ Assuming that the air conditioner, air purifier and air humidifier will not affect 
+each other when they work together 
+ Assuming that the temperature in the room is only affected by the air 
+conditioning 
+4 Symbol Description 
+Symbol Description Unit 
+u air circulation speed Meters per second (m/s) 
+p Air pressure Pa (Pa) 
+
+ aerodynamic viscosity Pa·s 
+argt etT
+ Target temperature Degrees Celsius (°C) 
+t Time interval Second (s) 
+wC
+ 
+Volume concentration of 
+water vapor Molar concentration (mol/m³) 
+hV
+ Volume of air humidifier Cubic Meters (m³) 
+a Step size of learning rate Unit value (1) 
+S Surface area of humidifier Square meters (square meters) 
+Q Air volume Cubic meters per second (m³/s) 
+5 Our Work 
+ 
+Figure 1Our Wrok 
+The above figure shows the overall idea of solving the problem in the form of a 
+flowchart, and determines the best solution to the problem by using the goal planning 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-217-
+
+===== PDF page 7 =====
+Team # apmcm24200636                                                       Page 7 of 72 
+ 
+model. The overall idea is from data processing to model construction to target planning 
+model construction, and finally to determine the best solution and use the corresponding 
+algorithm or directly use Matlab software to calculate, to get the answer. The specific 
+process is shown below.  
+6 establishment and solution of the model 
+6.1 Model establishment and solution of problem 1 
+6.1.1 Establishment of air circulation equation 
+Air flow belongs to compressible Newtonian fluid, then the Navier-Stokes 
+equation [1]is established here to describe the airflow, which is essentially momentum 
+conservation and can be expressed: 
+ 
+2( ) ( ( ( ) ) ( ) )3 Tu u u p u u u I Ft   +  =− +  +  −  +
+  
+(1) 
+u
+Indicates the air circulation velocity, 
+p the air pressure, 
+ the air density, and 
+
+the aerodynamic viscosity.  
+This equation is solved simultaneously with the continuity equation, I .e., mass 
+conservation, expressed: 
+ 
+( ) 0ut   + =
+  
+(2) 
+To relate the Navier-Stokes equation to temperature, heat is introduced based on
+Q R T=
+. For any object, the law of conservation of energy is satisfied. The length, 
+width and height of the 
+5 8 3mmm room are taken as the base, a spatial rectangular 
+coordinate system is established, and the microelements in the given fixed volume room 
+are taken to meet the
+inf sTQ Q Q+= . 
+infQ is the inflow heat, 
+sQ is the heat source heat, 
+and 
+TQ  is the heat that increases the temperature. Taking into account the derived 
+Q k u=− 
+ from Fourier's law of heat conduction, that is, heat flows from high 
+temperature to low temperature, the amount of heat flowing in a certain direction is 
+proportional to the reduction rate of temperature in that direction, and it is substituted 
+into heat conservation, that is, the heat transfer equation is derived: 
+ 
+2 ( , )u u F t xt  =  +
+  
+(3) 
+Where
+c
+ = ,
+( , )( , ) g t xF t x c=
+ , substituting (3), the heat transfer equation can 
+be simplified: 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-218-
+
+===== PDF page 8 =====
+Team # apmcm24200636                                                       Page 8 of 72 
+ 
+ 
+( , ) 1 ( ( , ))u g t xu u g t xt c c c      =  + =  +
+  
+(4) 
+The 
+  in the formula is the thermal diffusion coefficient, the 
+( , , , )g x y z t
+represents the heat production rate of the internal heat source per unit volume, and the 
+c
+is the specific heat capacity of the air.  
+Finally, the equation of (1)(2)(4) can describe the air flow and temperature change 
+is obtained. 
+ 
+2() s Tc c u T T Qt   +  =  +
+  
+(5) 
+This equation establishes a connection between air density, specific heat capacity, 
+temperature, flow velocity and heat source, which can be used as a theoretical basis for 
+the design of air conditioning outlet configuration and air conditioning shape.  
+6.1.2 The establishment of high-performance air-conditioning optimization model. 
+Question given the relevant factors will be on the air conditioning working state 
+to make a certain degree of adjustment, thus affecting the air conditioning refrigeration 
+effect, this part will be 6.1.1 section of the establishment of the flow temperature 
+differential equation [2]based on, respectively, on the air conditioning design to discuss. 
+The relevant factors given can be divided into five categories. The 1 category is the 
+position of the air conditioner and the position of the air inlet. The different positions 
+will determine the flow path of the air flow, thus affecting the uniformity of the 
+temperature in a given room. The second category is the number of air inlets. The 
+increase in the number of air inlets will improve the air circulation, but too many air 
+inlets will also increase the difficulty of air conditioning design, so the advantages and 
+disadvantages need to be considered in a balanced manner. The third category is the 
+direction and angle of air inlets, it can determine the range that the air flow can cover, 
+and a better angle can further improve the use effectiveness of the air conditioner. The 
+fourth category is air volume, which determines the speed of air replacement, thus 
+affecting the working efficiency of the air conditioner. The last category is wind speed, 
+which should be moderate. If the wind speed is too high, it will lead to uncomfortable 
+reaction of users, and noise will be generated when the wind speed is higher, which will 
+affect the user's use feeling.  
+In order to simplify the model, the simplified design objectives are initially divided 
+into two parts: 
+(1) air conditioning design 
+Shape and size of air conditioner 
+(2) Air outlet configuration design 
+Air conditioning position, air inlet position, quantity, wind direction, angle, wind 
+speed and air volume 
+First of all, assume that the air outlet configuration is the same, only change the 
+shape and size of the air conditioner, and based on market research, the shape of the air 
+conditioner is mainly cylindrical and cuboid, then the shape will be discussed in these 
+two shapes, so as to determine the most air conditioner shape and size, as shown in the 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-219-
+
+===== PDF page 9 =====
+Team # apmcm24200636                                                       Page 9 of 72 
+ 
+figure: 
+  
+Fig. 2Design Drawing of Left (Cylinder) and Right (Cuboid) Tuyere 
+After determining the optimal shape and size of the air conditioner, the sealing 
+configuration is designed to determine the optimal air conditioner position, air inlet and 
+outlet position, quantity, wind direction, angle, wind speed and air volume.  
+6.1.2.1 objective function 
+Optimizing the performance of air conditioning is carried out from the 3 aspects, 
+the 1 is the uniformity of temperature, the 2 is the efficiency of energy, and the last is 
+the high control of noise 
+(1) temperature uniformity 
+The temperature distribution of high-performance air conditioners in the 
+temperature field should tend to be uniform, then the first goal is to construct: 
+temperature uniformity, which can be expressed: 
+ 
+2
+arg
+1_ ( , , ) t etTempreture uniformity T x y z T dVV=−  
+(6) 
+The 
+( , , )T x y z represents the temperature of each coordinate in the temperature 
+field [3]of the three-dimensional coordinate system of the room based on the air 
+circulation model, and the 
+argt etT represents the target temperature set by the user for the 
+air conditioner. The temperature uniformity of the air conditioner is expressed by the 
+sum of the temperature differences in the temperature field of the whole room. The sum 
+shows that the air conditioner as a whole minimizes the difference between the set 
+temperature and the actual temperature at each position in the room, that is, the 
+temperature uniformity is well performed.  
+The first 1, second, and third categories in the indicator will have a greater impact 
+on the uniformity of temperature.  
+(2) Energy efficiency: 
+The second goal is the highest energy efficiency. The energy efficiency of air 
+conditioning refrigeration and heating can be expressed in terms of cooling energy 
+efficiency ratio (EER) and heating energy efficiency ratio (COP). Here it can be 
+summarized as efficiency can be expressed: 
+ 
+/sQt
+P =  
+(7) 
+sQ
+ For the heat source, the cooling capacity is the cooling capacity, while the 
+heating is the heating capacity, the 
+t is the heat source action time, and the 
+P is the 
+air conditioning electric power. The fourth category of indicators will have a greater 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-220-
+
+===== PDF page 10 =====
+Team # apmcm24200636                                                       Page 10 of 72 
+ 
+impact on energy efficiency.  
+(3) High noise control 
+According to the data, the noise between wind speed and noise increases 
+with the increase of wind speed and produces specific noise under specific 
+wind speed. The shape of the air conditioner also affects its noise, 
+considering that the design of the air conditioner in this paper is based on the 
+existing air conditioner on the market to improve, then only consider the 
+impact of wind speed at this time, in order to simplify the model, build the 
+noise function and set up a coefficient based on this, expressed: 
+ 
+noise u=+  (8) 
+Among them
+0   , this formula reflects the wind speed and noise size is 
+positively correlated.  
+Taking the 3 characteristics as the target function, the multi-objective planning 
+model is constructed, and in order to simplify the calculation difficulty of the model, 
+the utility function of air conditioning is constructed here, and the multi-objective 
+planning is transformed into a single-target planning model.  
+The utility function for air conditioning is expressed: 
+ 
+1 2 3_utility Tempreture uniformity noise  = − −  (9) 
+Among them,
+1 ,
+2 , and 
+3 are their weighting coefficients, and their Sanskrit 3 
+the priority of one indicator.  
+6.1.2.2 constraint condition 
+If the volume of the air conditioner is
+aV , if it is a cuboid, its length, width and 
+height are
+a , 
+b and 
+c respectively, it is
+abcaV = . If it is a cylinder, the diameter is
+d , 
+and it is
+2
+a
+1
+4V d c= . If it is known that the maximum volume of the air conditioner is 
+0.1 cubic meters, it can be expressed as follows: 
+ 
+0.1aV   (10) 
+The power should be less than the rated power, and the wind speed should be less 
+than the maximum wind speed, which is expressed: 
+ 
+1800ePP=  (11) 
+The wind speed shall be less than the maximum outlet speed: 
+ 
+8u  (12) 
+Based on
+inf inf
+t
+QQc m T V T==  , where 
+tV  is the airflow volume of unit tuyere, 
+assuming that each tuyere is equal in size, the number of seals is
+n , and the maximum 
+inlet and outlet flow rate is 600 cubic meters, which can be expressed: 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-221-
+
+===== PDF page 11 =====
+Team # apmcm24200636                                                       Page 11 of 72 
+ 
+ 
+inf 600t QnV cT=  
+(13) 
+6.1.2.3 establishment of optimization model 
+Based on the objective function and constraints, the goal is to maximize the 
+efficiency of user use, while the decision variables are different in the two design steps 
+and will be described separately. When designing the shape and size of the air 
+conditioner, the 
+aV is used as the decision variable when changing the size and shape 
+of the air conditioner, while the air inlet and outlet design will take the wind speed
+u , 
+the air volume 
+tV of the unit air inlet and outlet, and the number of air outlets as the
+n , 
+and the single-target planning model will be organized as follows: 
+ 
+inf
+t
+1 2 3
+2
+arg
+2
+inf
+min( )
+0.1
+1800
+u8
+0.6
+/
+..
+_
+1_ ( , , )
+()
+a
+s
+t et
+s
+sT
+utility
+V
+P
+QnV cT
+Qt
+Pst
+utility Tempreture uniformity noise
+noise u
+Tempreture uniformity T x y z T dVV
+Tc c u T T Qt
+Q Q Q
+
+
+  
+
+  
+−
+
+ 
+ 
+
+  
+  = = − −
+=+
+=−
+ +  =  +
++=
+
+
+
+
+
+
+
+
+
+  
+(14) 
+6.1.3 The solution of the optimization model of high-performance air conditioning. 
+The above target planning model is solved by random search algorithm, and the 
+basic principle of the algorithm is to randomly sample the 1 group parameters in a given 
+parameter space and calculate the target function value of the parameter combination. 
+Through continuous random sampling and evaluation, the best parameter combination 
+that makes the target function reach the minimum or maximum value is finally found.  
+Because the model contains differential equations, this paper uses the finite 
+difference method [4]to optimize the solution of the model on the basis of random search 
+algorithm. The finite differential method is the numerical solution of the 1 differential 
+equation, which is one of the most basic and most extensive numerical methods for time 
+dispersion and space dispersion, and is widely used in the fields of computational fluid 
+mechanics, computational heat transfer, computational electromagnetics and so on.  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-222-
+
+===== PDF page 12 =====
+Team # apmcm24200636                                                       Page 12 of 72 
+ 
+Taking a one-dimensional problem as an example, suppose there is a function f(x) 
+about x, using Taylor expansion: 
+ 
+22
+3
+2( ) ( ) ( )1! 2! x f x ff x x f x O xxx 
+  
+(15) 
+The 1-order derivative that ignores the remainder can be expressed: 
+ 
+( ) ( )f f x x f x
+xx
+
+
+  
+(16) 
+This format is called Euler forward difference, and because of the 1 order function 
+of the ignored term x, it has 1 order accuracy and is expected to be truncated error.  
+Similarly, Euler backward difference is; 
+ 
+( ) ( )f f x f x x
+xx
+
+
+  
+(17) 
+Euler's backward difference also has the 1-order accuracy, in order to build the 
+second-order accuracy, first, the above two sets of equations are expanded with Taylor: 
+ 
+2 2 3 3
+4
+23
+2 2 3 3
+4
+23
+( ) ( ) ( )1! 2! 3!
+( ) ( ) ( )1! 2! 3!
+x f x f x ff x x f x O xx x x
+x f x f x ff x x f x O xx x x
+  
+  
+  
+(18) 
+Subtract the two, ignoring the remainder, and get: 
+ 
+( ) ( )
+2
+f f x x f x x
+xx
+
+
+  
+(19) 
+The above formula is the central differential format of second-order accuracy.  
+6.1.4 Seasonal simulation 
+In order to further simulate the air-conditioning gas fluid process in summer and 
+winter, this paper uses Lagrangian CFD [5]to describe the fluid motion state. The 
+Lagrangian method focuses on the study of the motion of each fluid particle, describing 
+the process of motion of the fluid particle from beginning to end, and the law of change 
+of physical quantities with time t.  
+ 
+( , , ) i j kx y z x y z
+  
+(20) 
+Velocity gradient: 
+ 
+( , , )
+yx zuu uV x y z
+  
+(21) 
+divergence: 
+ 
+( , , ) ( , , )
+yx z
+x y z
+uu uV u u ux y z x y z
+  
+(22) 
+Rotary: 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-223-
+
+===== PDF page 13 =====
+Team # apmcm24200636                                                       Page 13 of 72 
+ 
+ 
+(( ) ,( ) ,( ) )
+yyxxzz
+x y z
+i j k
+uuuuuuV i j kx x x y z z x x y
+u u u
+ 
+(23) 
+Acceleration: 
+The local acceleration caused by the unsteady flow and the displacement 
+acceleration caused by the non-uniform flow are composed of two parts.  
+ 
+()
+yua V Vt
+  
+(24) 
+The optimal volume of the air conditioner and the temperature setting conditions 
+of the air conditioner in summer and winter are determined by the above random search 
+algorithm. The following table shows the temperature setting in summer and winter, as 
+shown in Figure 3 and Figure 4.  
+ 
+Fig. 3Air conditioning temperature setting in summer 
+ 
+Fig. 4Air conditioning temperature setting in winter 
+This article shows the optimal volume setting of the air conditioner and the 
+temperature utility here: 
+Table 1 1Best state of air conditioning 
+Status Winter Summer 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-224-
+
+===== PDF page 14 =====
+Team # apmcm24200636                                                       Page 14 of 72 
+ 
+Long 0.5 0.5 
+Wide 0.5 0.5 
+High 0.5 0.5 
+utility 7.84 7.93 
+The air conditioner shown above is in the best state, and the best shape of the air 
+conditioner is cuboid. At this time, the best volume of the air conditioner in winter and 
+summer is 3 0.75m. Among them, the summer air conditioning design is more effective 
+and the temperature adjustment effect is better.  
+Taking into account the air conditioning is affected by the location, air inlet 
+location, quantity, wind direction, angle, wind speed and air volume and other factors, 
+the indoor temperature changes with time and space under different conditions in 
+summer and winter are simulated. This paper analyzes the change of indoor temperature 
+from 3 angles of air outlet, wind speed, number of air conditioners and placement 
+position. The specific change is shown in the following figure: 
+  
+Fig. 5Influence of air output on temperature in summer (left) and winter (right) 
+In this paper, summer and winter as the sub-point, the air volume in accordance 
+with 1-5m 3 /s respectively to simulate the temperature changes, the results show that 
+in the two seasons of summer and winter, the air volume and temperature changes, the 
+basic coincidence, indicating that the air volume on the air conditioning temperature 
+effect is small.  
+Figure 6Influence of wind speed on temperature in summer (left) and winter (right) 
+In this paper, summer and winter are used as sub-points, the air output is 1 m/s as 
+the initial speed, 0.2 m/s as the step size, and the temperature change is simulated 
+  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-225-
+
+===== PDF page 15 =====
+Team # apmcm24200636                                                       Page 15 of 72 
+ 
+respectively. The results show that in the two seasons of summer and winter, the change 
+of wind speed and temperature can be clearly seen that the change trend is different, 
+indicating that the air output has obvious influence on the temperature effect of air 
+conditioning.  
+  
+Fig. 7Change of air conditioning quantity on temperature in summer (left) and winter (right) 
+In this paper, the summer and winter points, respectively, the number of air 
+conditioning 1-5 as the research object, the temperature change simulation, the results 
+show that in the summer and winter two seasons, the number of air conditioning and 
+temperature changes, it can be clearly seen that there is a big difference in the trend, 
+indicating that the number of air conditioning on the temperature effect of air 
+conditioning.  
+  
+Figure 8Summer (left) and winter (right) air conditioning position on the diagonal changes in 
+temperature 
+In this paper, summer and winter are taken as sub-points, and the time span of 1-
+10 minutes of the number of air conditioners is taken as the research object to simulate 
+the temperature change. The results show that in the two seasons of summer and winter, 
+the position and temperature change of each air conditioner on the diagonal of the room 
+can be clearly seen that there are obvious differences in the change trend, which shows 
+that the temperature effect produced by the air conditioner is greater when the position 
+on the diagonal.  
+In this paper, summer and winter as the points, respectively, 1-10 time span as the 
+research object, the temperature change simulation, the results show that in the summer 
+and winter two seasons, each air conditioning position in the middle and the 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-226-
+
+===== PDF page 16 =====
+Team # apmcm24200636                                                       Page 16 of 72 
+ 
+temperature change, it can be clearly seen that there are obvious differences in the trend 
+of change, indicating that the number of air conditioning on the temperature effect of 
+air conditioning is more obvious. 
+  
+Fig. 9Change of temperature affected by air conditioning position in the middle of summer (left) 
+and winter (right) 
+To sum up, the relevant factors that have a greater impact on the change of the air 
+conditioner temperature are the wind speed, quantity and spatial location of the air 
+conditioner.  
+6.1.5 Summary 
+This paper considers the air flow generated during the operation of the air 
+conditioner and establishes the air circulation equation. On this basis, the optimization 
+model of high performance air conditioning is established. On the basis of the random 
+search algorithm, the model is optimized by using the finite difference method, and the 
+best shape of the air conditioner is determined to be a cuboid, and the best size is 0.5m 
+x 0.5m x 0.5m. Then, the Lagrange algorithm is used to solve the best temperature 
+adjustment effect of air conditioning in summer and winter, and the air conditioning 
+adjustment effect in summer is better than that in winter.  
+6.2 Model establishment and solution of problem 2 
+6.2.1 Establishment of air purification model 
+The essence of an air purifier [6]is to absorb tiny substances in the air, and the 
+diffusion of tiny substances can be described by the transmission diffusion equation. 
+The Adwex-diffusion equation considers the transmission of molecular diffusion 
+caused by fluid motion and concentration gradient, and can more comprehensively 
+describe the transmission and diffusion process of substances in multi-dimensional 
+space, which can be expressed as follows: 
+ 
+2 2 2
+2 2 2x y z x y z
+C C C C C C Cu u u D D Dt x y z x y z       + + + = + +        
+(25) 
+Among them,
+xD  , 
+yD  and 
+zD  are the diffusion coefficients in the 3 coordinate 
+system, C is the substance concentration, and
+xu , 
+yu and 
+zu are the air velocity in the 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-227-
+
+===== PDF page 17 =====
+Team # apmcm24200636                                                       Page 17 of 72 
+ 
+3 coordinate system.  
+For the solution of the diffusion coefficient, this question will use the mean square 
+displacement method, which can be expressed: 
+ 
+2
+2 2 2
+()
+6
+rt
+D t
+r x y z
+
+ =
+
+ = + +  
+(26) 
+Where 
+2()rt represents the mean square displacement and 
+t is the time interval, 
+the diffusion coefficient is estimated by fitting the slope of the leading part.  
+This partial differential equation establishes a three-dimensional coordinate 
+system in a room 
+5 8 3mmm  by reference to problem 1. Different positions 
+correspond to different substance concentration
+( , , )C x y z  , and all coordinates 
+constitute a substance concentration field. In order to simplify the model, combined 
+with energy conservation, it is transformed into a differential equation, expressed: 
+ 
+pdC CV dt SQdt=−  (27) 
+Among them, 
+S is the surface area, 
+Q is the air volume, and 
+pV is the volume of 
+the air purifier. Similar to the air conditioner, the existing air purifiers in the market are 
+mostly cuboid, cylindrical, and spherical, which will be discussed separately here. For 
+cuboids,
+pV abc=  ,
+2( )S ab ac bc= + +  , where
+a  ,
+b  , and 
+c  are the length, width and 
+height of the air purifier respectively; for cylinders,
+21
+4
+pV d c=  ,
+21
+2S d dc=+  , 
+where 
+d is the diameter of the cylinder, and 
+c is the height of the cylinder; for spheres,
+34
+3
+pVr=
+,
+24Sr= . 
+SQdt is the minimum value of pollutant concentration per unit 
+time.  
+simultaneous (15), (17), available 
+ 
+2 2 2
+2 2 2()p x y z x y z
+C C C C C CCV SQ u u u D D Dx y z x y z      − + + + = + +       
+(28) 
+At this time, the partial differential equation (18) links the time dimension factor 
+with the spatial dimension, which can describe the material concentration state of each 
+volume element in a given space, and provide a theoretical basis for the subsequent 
+model establishment.  
+6.2.2 Establishment of Optimization Model for High Performance Air Purification 
+6.2.2.1 objective function 
+This topic is mainly based on the optimization of air purifiers, and the shape and 
+size of air purifiers are designed to make them high-performance air purifiers.  
+According to relevant data, the high-performance air purifier is mainly reflected 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-228-
+
+===== PDF page 18 =====
+Team # apmcm24200636                                                       Page 18 of 72 
+ 
+[7]by the concentration of substances in the space, then the model here is based on the 
+diffusion equation to construct the relationship between different coordinates and 
+concentrations in the space field, and ultimately to ensure that the total concentration 
+of substances in a given size is the smallest in the 
+5 8 3mmm space, at this time the 
+air purifier effect is optimal. Then sum the concentrations of substances in space, 
+expressed: 
+ 
+V
+C dC=  (29) 
+The microelement form of the substance concentration is shown in (17).  
+6.2.2.2 constraint condition 
+The volume of the air purifier cannot exceed the size of a given space, which can 
+be expressed: 
+ 
+120pV   (30) 
+Among them 
+pV is the volume of the air purifier, and the mention of different 
+shapes needs to be discussed separately.  
+6.2.2.3 establishment of optimization model 
+In summary, with the minimum concentration of space material as the target 
+function, the volume of air purifier as the decision variable, the establishment of a 
+single-goal planning model, can be expressed: 
+ 
+2 2 2
+2 2 2
+2
+22
+32
+min
+()
+()
+6
+. . , 2( ), cuboid
+11, , cylinder42
+4 , 4 , sphere3
+120
+V
+p x y z x y z
+pi i
+pi
+pi
+p
+C
+C dC
+C C C C C CCV SQ u u u D D Dx y z x y z
+rt
+D t
+s t V abc S ab ac bc i
+V d c S d dc i
+V r S r i
+V
+  
+
+ =
+      − + + + = + +      
+
+ =
+ = = + + 
+
+ = = + 
+
+= = 
+
+ 
+
+
+(31) 
+6.2.3 Solution of high performance air purification optimization model 
+To solve the above model, this question is calculated using the gradient descent 
+algorithm[8]. The gradient descent algorithm is aimed at the lowest optimization 
+problem, the goal is to make the objective function along the fastest path down to the 
+minimum.  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-229-
+
+===== PDF page 19 =====
+Team # apmcm24200636                                                       Page 19 of 72 
+ 
+First, the cost function of the mean square error is added to the formula of the least 
+squares, and it is linked to eliminate the effect of the number of samples on the 
+parameter solution, then the partial derivative of the function is: 
+ 
+1
+( ( )) 1 [( ( ) ) ]() n i i ij ij J h x y xn   
+  
+(32) 
+Next, using the gradient descent rule described earlier, we obtain: 
+ 
+( 1) 0
+1
+1 [ ( ) ) ] n j j i i i
+i
+a h x y xn 
+  
+(33) 
+where n denotes the number of samples, a denotes the step size of the learning rate, 
+and h(x) denotes the cost function.  
+By using the gradient descent algorithm to solve the high-performance air 
+purification optimization model, it is determined that the best shape of the air purifier 
+is cuboid, the best parameters are length = 0.82 meters, width = 0.92 meters, height = 
+1.18 meters, at this time, the purification effect of the air purifier is visualized, as shown 
+in the following figure: 
+ 
+Fig. 10Visualization of purification effect 
+As can be seen from the above figure, the air purifier has a high degree of 
+purification, and most of the room space is in a blue state, indicating that the cleanliness 
+is high. Therefore, the above figure is the state analysis diagram with the highest degree 
+of purification in this topic.  
+6.2.4 inspection and analysis 
+This paper uses robustness analysis to test the model. The following figure 
+shows the distribution state of pollutant concentration. It can be seen from the figure 
+that the pollutant concentration shows a random distribution state at this time. In this 
+regard, this paper further analyzes the purification effect of air purifiers by changing 
+the distribution of pollutants and changing the distribution from random distribution 
+to normal distribution. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-230-
+
+===== PDF page 20 =====
+Team # apmcm24200636                                                       Page 20 of 72 
+ 
+ 
+ 
+Figure 11 Distribution of initial pollutant concentration(left) Purification effect of normal 
+distribution initial concentration of the best air purifier design(right) 
+The above figure shows the purification effect of the air purifier after changing the 
+distribution state. It can be seen from the figure that the air purification effect is the 
+same as the initial state at this time, and the purification effect is better.  
+6.2.5 Summary 
+Considering that the essence of air purifiers is to absorb tiny substances in the air, 
+this question selects the Adwex-diffusion equation to comprehensively describe the 
+transmission and diffusion process of substances in multidimensional space. On this 
+basis, this topic takes the best purification effect as the target function and establishes 
+the target planning model. Then, using the gradient descent algorithm, the above-
+mentioned objective function is solved, and the best shape of the air purifier in this 
+question is the cuboid, the best size is the best parameter for the length of 0.82 meters, 
+the width of 0.92 meters, the height of 1.18 meters, at this time the air purification effect 
+is the best. Finally, the model is tested by robustness analysis, and the concentration 
+distribution of pollutants is changed, and the purification effect is still very good, which 
+shows that the accuracy of the model is high.  
+6.3 Model establishment and solution of problem 3 
+6.3.1 Establishment of Water Vapor Diffusion Model 
+The effect of air humidifier [9]is mainly measured by humidity. The shape and size 
+of air purification affect the release mode and distribution of water vapor. The water 
+vapor diffusion equation is introduced here. Fick's law is introduced here to establish 
+the water vapor diffusion equation to describe the water vapor concentration.  
+First of all, based on Fick's first law to establish the water vapor concentration 
+vector field, the first law draws the conclusion that the diffusion material flow per unit 
+time through the unit cross-sectional area perpendicular to the diffusion direction 
+(called the diffusion flux
+j ) is proportional to the concentration gradient at the cross-
+section, which can be expressed: 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-231-
+
+===== PDF page 21 =====
+Team # apmcm24200636                                                       Page 21 of 72 
+ 
+ 
+wdCjDdx=−  
+(34) 
+The 
+D is the diffusion coefficient, the 
+wC is the volume concentration of water 
+vapor, the 
+wdC
+dx represents the concentration gradient, and the negative sign indicates 
+that the diffusion direction is opposite to the concentration gradient, that is, the diffusion 
+element flows from high concentration to low concentration. It is then extended to a 
+given three-dimensional space, which forms a humidity vector field, which can be 
+expressed: 
+ 
+wj D C=−   (35) 
+where 
+j is the diffusion flux and 
+ is the gradient operator.  
+Considering non-steady diffusion, Fick's second law is introduced. At distance
+x , 
+the rate of change of concentration with time is equal to the negative value of the rate 
+of change of diffusion flux with distance, which can be expressed: 
+ 
+()wwCCDt x x =    
+(36) 
+where the diffusion coefficient 
+D  is constant and can be expressed in three-
+dimensional space after simplification as follows: 
+ 
+2w
+w
+C DCt  =  
+(37) 
+Among them
+2 , the Laplace operator, 2 the estimation of the diffusion coefficient 
+is consistent with the solution of the problem 2, using the mean square displacement 
+method to estimate, (17) and (25) joint, then the water vapor concentration equation can 
+be obtained, expressed: 
+ 
+2 2 2
+2 2 2
+w w w
+x y z
+C C CSQ D D Dx y z   = + +    
+(38) 
+Where 
+S represents the surface area of the humidifier, 
+Q represents the discharge 
+amount of the humidifier, and 
+SQ  is the humidification humidity reduction value. 
+Based on the market survey, still in the market mainstream air humidifier as a reference, 
+respectively, the cuboid, cylinder, sphere shape to discuss. For the surface area of a 
+cuboid,
+2( )S ab ac bc= + +  , where
+a  ,
+b  , and 
+c  each represent the length, width and 
+height of the cuboid; for a cylinder,
+21
+2S d dc=+ , where 
+d is the diameter of the 
+cylinder and 
+c  is the height of the cylinder; for a sphere,
+24rS =  , where 
+r  is the 
+radius of the sphere.  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-232-
+
+===== PDF page 22 =====
+Team # apmcm24200636                                                       Page 22 of 72 
+ 
+6.3.2 Establishment of Optimization Model for High Performance Humidifier 
+6.3.2.1 objective function 
+Here, only from the size and size of the air moisture device to adjust, the highest 
+concentration of water vapor in the air, that is, the performance of the air purifier is 
+better, then the room who vapor concentration can be expressed; 
+ 
+wwV C dC=  (39) 
+6.3.2.2 constraint condition 
+The constraint here is only that its volume cannot exceed the volume of the room, 
+which can be expressed: 
+ 
+120hV   (40) 
+Among them
+hV , the volume of the air humidifier, different collision air humidifier 
+needs to be discussed separately.  
+6.3.2.3 establishment of optimization model 
+The high-performance air humidifier takes the maximum water vapor 
+concentration in the field as the target function, takes the humidifier surface area 
+S as 
+the decision variable, and establishes a single-target planning model, which can be 
+expressed: 
+ 
+2 2 2
+2 2 2
+2
+22
+32
+min( )
+()
+6
+. . , 2( ), cuboid
+11, , cylinder42
+4 , 4 , sphere3
+120
+w
+wwV
+w w w
+x y z
+hi i
+hi
+hi
+h
+C
+C dC
+C C CSQ D D Dx y z
+rt
+D t
+s t V abc S ab ac bc i
+V d c S d dc i
+V r S r i
+V
+  
+
+−
+ =
+
+   = + +   
+
+ =
+ = = + + 
+
+ = = + 
+
+
+= = 
+
+ 
+
+  
+(41) 
+6.3.3 Solution of Optimization Model of High Performance Humidifier 
+6.3.3.1 BFGS Optimization Algorithm of Quasi-Newton Method 
+For the above-mentioned single-target optimization model, the BFGS 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-233-
+
+===== PDF page 23 =====
+Team # apmcm24200636                                                       Page 23 of 72 
+ 
+optimization algorithm of Newton method is used to solve the model. The working 
+principle of the BFGS optimization algorithm of the Newton method is to calculate the 
+optimal result by iterating the algorithm, but the approximate matrix is always positive, 
+so the algorithm is always searching in the direction of optimization, with global 
+convergence and super-linear convergence speed. The BFGS algorithm uses more 
+quasi-Newton methods, so it is called BFGS correction.  
+Correction on the basis of the quasi-Newton method: 
+Let
+TT
+k k k k kE au v u v
+ , where u k ,v k are all vectors of n * 1.  
+It can be resolved: 
+ 
+1k k kB s y
+  (42) 
+Substituting the 
+TT
+k k k k kE au v u v
+ into the above formula: 
+ 
+TT
+k k k k k k kB au v u v s y
+  (43) 
+The final BFGS correction formula is: 
+ 
+1
+TT
+k k k k k k
+kkTT
+k k k k k
+B s s B y yBBs B s y s
+  
+(44) 
+Through the of BFGS optimization algorithm [10]using quasi-Newton method, the 
+single-objective planning model established for the above-mentioned high-
+performance air humidifier is solved by taking the maximum water vapor concentration 
+in the field strength as the objective function and the humidifier surface area S as the 
+decision variable, and the optimal shape of the air humidifier is rectangular, the size 
+parameter length is 1.26m, the width is 0.2m, and the height is 0.5m. At this time, the 
+humidification time can reach 20 hours and the humidification effect is maximized. The 
+humidification status of the air humidifier is shown in the figure below. It can be seen 
+from the figure that the closer the distance from the air purifier in the room, the better 
+the air purification effect. Overall, the purification effect of this topic is better overall.  
+ 
+Figure 12Air humidifier effect drawing 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-234-
+
+===== PDF page 24 =====
+Team # apmcm24200636                                                       Page 24 of 72 
+ 
+6.3.4 inspection and analysis 
+In order to further verify the accuracy of the model, this paper uses sensitivity 
+analysis to test this question. In this paper, the parameters such as the shape, size, 
+airflow speed and humidification time of the air humidifier are fixed, and the 
+corresponding maximum humidification efficiency is calculated by changing the value 
+of the maximum power. 
+ 
+Figure 13Sensitivity 
+With the maximum power of 100W as the initial value, with 1 as the step, to the 
+end of 300W, calculate the best humidification efficiency, as shown in the figure, with 
+the increase of power, the humidification rate is almost no change, indicating that the 
+model is more stable.  
+6.3.5 Summary 
+Since the effect of air humidifier is mainly measured by humidity, Fick's law is 
+introduced here to establish the water vapor diffusion equation to describe water vapor. 
+Then, the single-objective planning model is established with the maximization of 
+steam concentration as the target function and the volume condition as the constraint. 
+In this paper, the BFGS optimization algorithm of Newton method is used to solve the 
+above single-target planning model, and the best shape of the humidifier is rectangular, 
+the size parameter length is 1.26m, the width is 0.2m, and the height is 0.5m. Finally, 
+the model is tested by sensitivity analysis, and the results show that with the increase 
+of power, the humidification rate has no change, indicating that the model has a high 
+degree of stability.  
+6.4 Model establishment and solution of problem 4 
+6.4.1 The establishment of the Pareto optimization model. 
+It is necessary to establish a high-performance three-in-one equipment based on 
+the problem 1. 2. three, and a new equipment with 3 functions of air conditioner, air 
+purifier, air humidifier, and meet the optimal solution of the 3 optimization model at 
+the same time. Considering that non-dominant individuals can be excluded in the Pareto 
+optimization process to obtain a more convergent solution, that is, the optimal solution, 
+the Pareto optimization model is introduced here.  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-235-
+
+===== PDF page 25 =====
+Team # apmcm24200636                                                       Page 25 of 72 
+ 
+Firstly, the above model is 1 to the model 3 objective function for classification, 
+which is divided into positive function indicators and negative function indicators. For 
+air conditioners, the higher the utility value, the better the performance, which is a 
+positive function index, then it is
+utility+  . For air purifiers, the lower the sum of 
+substance content and concentration in the room, the better the performance, that is, the 
+negative function index, which is
+C− . For air humidifier, the greater the sum of water 
+vapor content and concentration in the room, the better its performance, that is,
+wC + .  
+Here to maximize the performance of the three-and-one sense regulator as the goal, 
+to air conditioning volume
+aV , air purifier volume
+pV , air humidifier volume
+hV , wind 
+speed
+u , unit air inlet air outlet air volume
+tV , the number of air outlets for the 
+n as the 
+decision variable, multi-objective optimization model can be written: 
+inf
+t
+2 2 2
+2 2 2
+2 2 2
+2 2 2
+2
+min [ , , ]
+0.1
+1800
+u8
+0.6
+120
+120
+()
+()
+.. 6
+w
+a
+p
+h
+V
+wwV
+w w w
+x y z
+p x y z x y z
+pi
+F utility C C
+V
+P
+QnV cT
+V
+V
+dC
+C C dC
+C C CSQ D D Dx y z
+C C C C C CC V SQ u u u D D Dx y z x y z
+rt
+s t D t
+V
+
++ − +
+−
+−
+++
++ + +
+− − − − − −
+−
+= − −
+
+
+
+
+
+
+= =
+  = + +  
+     − + + + = + +     
+=
+ 
+、hi
+22
+32
+1 2 3
+2
+arg
+, 2( ), cuboid
+11, , cylinder42
+4 , 4 , sphere3
+/
+_
+1_ ( , , )
+i
+pi hi
+pi hi
+s
+t et
+abc S ab ac bc i
+V d c S d dc i
+V r S r i
+Qt
+P
+utility Tempreture uniformity noise
+noise u
+Tempreture uniformity T x y z T dVV
+  
+
+
+  
+
+
+= = + + 
+= = + 
+= = 
+=
+= − −
+=+
+=−
+、
+、
+2
+inf
+() s
+sT
+Tc c u T T Qt
+Q Q Q
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  +  =  + 
++=
+
+(45) 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-236-
+
+===== PDF page 26 =====
+Team # apmcm24200636                                                       Page 26 of 72 
+ 
+6.4.2 solution of the model 
+In this paper, the SLSQP algorithm [11]is used to solve the above multi-objective 
+planning model. Sequential least squares is the 1 numerical method to solve 
+unconstrained nonlinear optimization problems[12]. Based on the idea of serialization, it 
+decomposes the problem into a series of sub-problems to solve. In each subproblem, it 
+is solved by minimizing a quadratic function.  
+By using machine learning-SLSQP algorithm to solve the above multi-objective 
+planning model, the best three-in-one equipment is determined. Its best size is air 
+conditioner: width = 1.24m, depth = 1.24m, and height range of air conditioner: 
+1.5~2.15m; Air purifier: width = 1.24m, depth = 1.24m, height range of humidifier: 
+0.85~1.5m; Humidifier: width = 1.24m, depth = 1.24m, height range of air purifier: 
+0~0.85m; According to this, the best appearance shape of the equipment can be drawn 
+in this paper, as shown in the following figure: 
+ 
+Fig. 14Best Design 
+6.4.3 Summary 
+Based on the single-goal planning model established by the problem 1. 2. problem 
+3, this question adds energy efficiency, human comfort, purification effect and 
+humidification effect maximization as the target function, and establishes a multi-
+objective planning model. Then, the machine learning-SLSQP algorithm is used to 
+solve the multi-objective planning model, and the optimal parameters for the integration 
+of 3 and equipment are obtained as follows: width = 1.24m, depth = 1.24m, and height 
+range of air conditioner: 1.5~2.15m; Air purifier: width = 1.24m, depth = 1.24m, height 
+range of humidifier: 0.85~1.5m; Humidifier: width = 1.24m, depth = 1.24m, the height 
+range of air purifier: 0~0.85m, and draw the best appearance design.  
+7 evaluation and generalization of the model 
+7.1 evaluation of the model 
+7.1.1 Advantages of the model 
+ In designing and optimizing air conditioners, air purifiers, and humidifiers, this 
+paper adopts a multi-objective planning model encompassing temperature uniformity, 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-237-
+
+===== PDF page 27 =====
+Team # apmcm24200636                                                       Page 27 of 72 
+ 
+energy efficiency, and noise control. This multi-objective design meets diverse usage 
+scenarios and enhances overall equipment performance. 
+ Mathematical models such as Navier-Stokes and Advection-Diffusion equations 
+are established to detail airflow and material diffusion processes, based on physical 
+laws, ensuring high accuracy and reliability in simulating device operations in real-
+world environments. 
+ Various numerical methods, including random search, finite difference, gradient 
+descent, and BFGS quasi-Newton optimization, are utilized to solve complex 
+problems, leveraging their strong computational power and convergence for rapid 
+optimal solution discovery. 
+ Robustness and sensitivity analyses validate model stability and accuracy under 
+different conditions, exemplified by testing air purifier efficacy through varying 
+pollutant concentrations and humidifier performance stability through altering 
+maximum power values. 
+7.1.2 Disadvantages of the model 
+ The model assumes room air as incompressible ideal gas, neglecting practical 
+factors like wall thermal capacity, which simplifies calculations but may lead to 
+discrepancies with reality. It focuses on parameters like temperature, humidity, and air 
+quality, with limited consideration for other environmental factors (e.g., lighting, wind 
+speed variations) that could significantly impact device performance in real-world 
+settings. To enhance model accuracy and practicability, more practical factors such as 
+wall thermal capacity and indoor lighting changes can be incorporated. 
+ Device size and shape designs presented in the article are based primarily on 
+theoretical calculations and simulations, potentially limited by practical constraints like 
+installation space and power supply. Furthermore, device durability and long-term 
+operational stability require further validation. Advanced optimization algorithms (e.g., 
+Particle Swarm Optimization) can be employed to address conflicts in multi-objective 
+optimization, seeking better trade-off solutions. Additionally, more constraints can be 
+introduced to ensure design feasibility in real-world environments.  
+7.2 generalization of the model 
+ The model in this paper can be applied to the smart home system to realize the 
+automatic adjustment and management of indoor air environment by integrating the 
+functional modules such as air conditioner, air purifier and humidifier. This will 
+improve the user's living comfort and health level.  
+ In the industrial environment, similar multi-objective optimization design can also 
+be used for the design and optimization of the workshop air conditioning system to 
+improve the comfort and safety of the working environment. For example, in high 
+temperature, high humidity or polluted environments, the design of air conditioners, 
+dehumidifiers and air purification equipment is optimized to ensure that the air quality 
+in the work area meets the standard requirements.  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-238-
+
+===== PDF page 28 =====
+Team # apmcm24200636                                                       Page 28 of 72 
+ 
+References 
+[1] Wang C ,Zhao Z ,Wang B , et al.Optimal fresh-air utilization strategy based on 
+isocost Line: Adaptability analysis for constant temperature and humidity air-
+conditioning system[J]. Sustainable Energy Technologies and 
+Assessments,2024,72104064-104064. 
+[2] Mustufa A ,Anwar M ,Khan I T. Energy optimization of an institutional building 
+to reduce the energy and air conditioning demand[J]. Journal of Building 
+Engineering,2024,98111309-111309. 
+[3] Zhang Y ,Zhao D ,Wu L , et al.Multi-objective optimization under the mixed 
+utilization strategy of heat pump and electric drive waste heat of electric vehicles[J]. 
+Applied Thermal Engineering,2025,259124900-124900. 
+[4] Kim M ,Kwon S. Application of supervised and unsupervised learning for 
+enhancing energy efficiency and thermal comfort in air conditioning scheduling 
+under uncertain and dynamic environments[J]. Energy & 
+Buildings,2024,325115028-115028. 
+[5] Chen D ,Liu M ,Guo W , et al.Energy-efficient operation of portable air cleaners 
+based on real-time prediction of non-uniform concentrations of indoor air 
+pollutants in open offices[J]. Building and Environment,2024,256111478 -. 
+[6] Yao C ,Lee S ,이승재 , et al.A Numerical Study for Optimization of Air Purifier 
+Placement and Operation in School Classrooms[J]. The 2024, 
+[7] Liu J ,Zhao L ,Hu K , et al.Optimization study of a closed-cycle low-temperature 
+evaporation system based on mathematical model and CFD.[J]. Environmental 
+research,2024,251(P2):118762-118762. 
+[8] Hui Y ,Chengcheng W ,Yelong Z , et al.Experimental investigation of a 
+thermochemical energy storage system based on MgSO4-silica gel for building 
+heating: adsorption/desorption performance testing and system optimization[J]. 
+Energy Conversion and Management,2024,301118000 -. 
+[9] Sankhyan S ,Clements N ,Heckman A , et al.Optimization of a Do-It-Yourself Air 
+Cleaner Design to Reduce Residential Air Pollution Exposure for a Community 
+Experiencing Environmental Injustices[J]. Atmosphere,2023,14(12): 
+[10] Hooseung N ,Haneul C ,Haseong K , et al.Optimizing indoor air quality and noise 
+levels in old school classrooms with air purifiers and HRV: A CONTAM simulation 
+study[J]. Journal of Building Engineering,2023,73 
+[11] Yongchao L ,Hao C ,Chihua L , et al.Multi-objective optimization design of a 
+planar membrane humidifier based on NSGA-II and entropy weight TOPSIS[J]. 
+Journal of Thermal Analysis and Calorimetry,2023,148(14):7147-7161. 
+[12] Amit B ,Balaram K. Exergoeconomic assessment and optimization of a double 
+effect absorption chiller integrated with a humidification-dehumidification 
+desalination system[J]. Energy Conversion and Management,2021,247   
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-239-

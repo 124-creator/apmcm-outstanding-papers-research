@@ -1,0 +1,3007 @@
+{
+  "2025A": {
+    "file": "2025A_apmcm25302425.pdf",
+    "team": "apmcm25302425",
+    "n_pages": 29,
+    "word_count": 7538,
+    "n_sentences": 304,
+    "words_per_page": 260.0,
+    "sent_len_mean": 24.2,
+    "sent_len_median": 19.5,
+    "sent_len_max": 106,
+    "sent_len_stdev": 17.5,
+    "pct_short_lt12": 21.4,
+    "pct_mid_12_25": 42.4,
+    "pct_long_gt25": 36.2,
+    "passive_per_1000w": 10.5,
+    "present_is_are": 123,
+    "past_was_were": 8,
+    "first_person_we_our_us": 13,
+    "first_person_per_1000w": 1.7,
+    "flesch_reading_ease": 3.0,
+    "flesch_kincaid_grade": 19.0,
+    "ttr": 0.229,
+    "img_xobject_count": 17,
+    "img_filters": {
+      "['/FlateDecode', '/JPXDecode']": 14,
+      "/DCTDecode": 1,
+      "/JPXDecode": 2
+    },
+    "img_large_over_600px": 9,
+    "img_small_under_200px": 3,
+    "vector_heavy_pages": 0,
+    "n_fig_captions": 15,
+    "fig_captions": [
+      [
+        4,
+        "Figure 1 Our Work"
+      ],
+      [
+        8,
+        "Figure 2 Manipulator Motion Analysis"
+      ],
+      [
+        9,
+        "Figure 3 Left Arm End-Effector Motion Analysis"
+      ],
+      [
+        12,
+        "Figure 4 Motion Phase Analysis Diagram"
+      ],
+      [
+        12,
+        "Figure 5 Comprehensive Joint Angle Variation Diagram"
+      ],
+      [
+        13,
+        "Figure 6 safety Constraints"
+      ],
+      [
+        16,
+        "Figure 7 Robot Multi-joint Coordinated Motion Planning Results"
+      ],
+      [
+        17,
+        "Figure 8 Collaborative Optimization Control Verification Results"
+      ],
+      [
+        17,
+        "Figure 9 Handspeed Profile"
+      ],
+      [
+        18,
+        "Figure 10 Hand 3D Trajectories and Key Joint Angles"
+      ],
+      [
+        18,
+        "Figure 4's leg heatmap shows angles near zero, with hot zones only when COM"
+      ],
+      [
+        19,
+        "Figure 11 Hand Velocity Vectors (projected)"
+      ],
+      [
+        23,
+        "Figure 12 Left Arm Motion"
+      ],
+      [
+        24,
+        "Figure 13 Walking Trajectory"
+      ],
+      [
+        25,
+        "Figure 14 Multi-Joint Coordination"
+      ]
+    ],
+    "n_tab_captions": 3,
+    "tab_captions": [
+      [
+        6,
+        "Table 1 Motion Analysis"
+      ],
+      [
+        9,
+        "Table 2 Motorsafety Inspection Results"
+      ],
+      [
+        23,
+        "Table 3 Model Parameter Value Results"
+      ]
+    ],
+    "fig_mentions_total": 22,
+    "tab_mentions_total": 5,
+    "eq_numbered_max": 27,
+    "n_reference_entries": 0,
+    "ref_year_min": null,
+    "ref_year_max": null,
+    "code_token_hits": 1,
+    "structure_pages": {
+      "summary": [],
+      "keywords": [
+        1
+      ],
+      "contents": [
+        2
+      ],
+      "restatement": [
+        2,
+        3
+      ],
+      "assumptions": [
+        2,
+        5,
+        10,
+        13,
+        19,
+        20
+      ],
+      "notation": [
+        29
+      ],
+      "sensitivity": [],
+      "validation": [
+        1,
+        2,
+        4,
+        7,
+        8,
+        12
+      ],
+      "strengths": [
+        2,
+        9,
+        26,
+        28
+      ],
+      "conclusion": [
+        29
+      ],
+      "references": [
+        2,
+        27
+      ],
+      "appendix": [
+        2
+      ],
+      "promotion": [
+        2,
+        4,
+        5,
+        7,
+        26
+      ],
+      "letter": []
+    },
+    "ai_marker_total": 27,
+    "ai_per_1000w": 3.58,
+    "ai_markers": {
+      "comprehensive": 15,
+      "overall": 5,
+      "robust": 4,
+      "facilitate": 2,
+      "furthermore": 1
+    },
+    "abstract_page1_words": 352,
+    "headings": [
+      [
+        1,
+        "2025",
+        "APMCMsummarysheet"
+      ],
+      [
+        3,
+        "1.1",
+        "Background"
+      ],
+      [
+        3,
+        "1.2",
+        "Problem Restatement"
+      ],
+      [
+        4,
+        "1.3",
+        "Our works"
+      ],
+      [
+        4,
+        "2.1",
+        "Analysis ofspecific Issues"
+      ],
+      [
+        5,
+        "4.1",
+        "Symbols"
+      ],
+      [
+        6,
+        "5.1",
+        "Analysis andsolving of Question One"
+      ],
+      [
+        6,
+        "5.1.1",
+        "Model Preparation"
+      ],
+      [
+        6,
+        "5.1.2",
+        "Prediction Model for Endpoint Coordinates Based on the DH Model"
+      ],
+      [
+        7,
+        "5.1.3",
+        "Motorsafety Validation Model"
+      ],
+      [
+        8,
+        "5.1.4",
+        "Analysis of the Result"
+      ],
+      [
+        10,
+        "5.2",
+        "Analysis andsolving of Question Two"
+      ],
+      [
+        10,
+        "5.2.1",
+        "Model Preparation"
+      ],
+      [
+        10,
+        "5.2.3",
+        "Model of Kinematic"
+      ],
+      [
+        11,
+        "5.2.4",
+        "Analysis of the Result"
+      ],
+      [
+        13,
+        "5.3",
+        "Analysis andsolving of Question Three"
+      ],
+      [
+        13,
+        "5.3.1",
+        "Model Preparation"
+      ],
+      [
+        14,
+        "5.3.2",
+        "Establishment of Body Rotation and Dual-Arm Circular"
+      ],
+      [
+        15,
+        "5.3.3",
+        "Analysis of the Result"
+      ],
+      [
+        19,
+        "5.4",
+        "Analysis andsolving of Question Four"
+      ],
+      [
+        19,
+        "5.4.1",
+        "Model Preparation"
+      ],
+      [
+        19,
+        "1",
+        "Motor Model Assumptions"
+      ],
+      [
+        20,
+        "2",
+        "Optimization Assumptions"
+      ],
+      [
+        20,
+        "3",
+        "Energy Consumption Calculation Assumptions"
+      ],
+      [
+        21,
+        "5.4.2",
+        "The establishment of the energy optimization model"
+      ],
+      [
+        22,
+        "5.4.3",
+        "Results"
+      ],
+      [
+        23,
+        "5.4.4",
+        "Analysis of the Result"
+      ],
+      [
+        26,
+        "6.1",
+        "Strength And Weakness"
+      ],
+      [
+        26,
+        "6.1.1",
+        "Strength"
+      ]
+    ]
+  },
+  "2025B": {
+    "file": "2025B_apmcm25304268.pdf",
+    "team": "apmcm25304268",
+    "n_pages": 36,
+    "word_count": 8210,
+    "n_sentences": 372,
+    "words_per_page": 228.0,
+    "sent_len_mean": 21.7,
+    "sent_len_median": 20.0,
+    "sent_len_max": 95,
+    "sent_len_stdev": 14.3,
+    "pct_short_lt12": 22.0,
+    "pct_mid_12_25": 46.8,
+    "pct_long_gt25": 31.2,
+    "passive_per_1000w": 17.4,
+    "present_is_are": 157,
+    "past_was_were": 38,
+    "first_person_we_our_us": 29,
+    "first_person_per_1000w": 3.5,
+    "flesch_reading_ease": 12.3,
+    "flesch_kincaid_grade": 17.0,
+    "ttr": 0.208,
+    "img_xobject_count": 12,
+    "img_filters": {
+      "['/FlateDecode', '/JPXDecode']": 12
+    },
+    "img_large_over_600px": 0,
+    "img_small_under_200px": 0,
+    "vector_heavy_pages": 0,
+    "n_fig_captions": 15,
+    "fig_captions": [
+      [
+        12,
+        "Figure 2 presents a two-dimensional colormap of emissivity across the parame-"
+      ],
+      [
+        12,
+        "Figure 3 shows a three-dimensional surface plot of emissivity as a function of"
+      ],
+      [
+        13,
+        "Figure 1 Spectral emissivity of the PDMS/Ag system at selected film thicknesses."
+      ],
+      [
+        13,
+        "Figure 2 Two-dimensional colormap of emissivity as a function of wavelength and PDMS"
+      ],
+      [
+        14,
+        "Figure 3 Three-dimensional surface plot of emissivity versus wavelength and film thickness"
+      ],
+      [
+        19,
+        "Figure 4 Spectral response and radiative cooling power as a function of PDMS film thick-"
+      ],
+      [
+        21,
+        "Figure 5 Variation of the composite evaluation score (0–100) as a function of PDMS film"
+      ],
+      [
+        27,
+        "Figure 6 Optimized spectral emissivity of the PDMS/SiO2/Ag trilayer structure."
+      ],
+      [
+        28,
+        "Figure 7 Pareto frontier showing the trade-off between performance score and total cost."
+      ],
+      [
+        28,
+        "Figure 8 Relationship among PDMS thickness, performance score, and total cost."
+      ],
+      [
+        29,
+        "Figure 9 Marginal performance efficiency versus cost weight."
+      ],
+      [
+        32,
+        "Figure 10, the spectral emissivity profile reveals the underlying optical mechanism."
+      ],
+      [
+        33,
+        "Figure 10 Spectral emissivity of the optimized porous structure, demonstrating high selec-"
+      ],
+      [
+        33,
+        "Figure 11 Lifecycle cost breakdown showing the strategic trade-off between upfront process"
+      ],
+      [
+        34,
+        "Figure 12 Sensitivity analysis of GRA score versus PDMS thickness. The optimal point"
+      ]
+    ],
+    "n_tab_captions": 6,
+    "tab_captions": [
+      [
+        15,
+        "Table 1 Calculated Validation Metrics for Model Rationality"
+      ],
+      [
+        20,
+        "Table 2 Comparison of Optimization Results: Single-Objective (Max 𝑃net) vs. Multi-"
+      ],
+      [
+        22,
+        "Table 3 Unit thickness cost (USD/𝜇m) of materials used in the model."
+      ],
+      [
+        27,
+        "Table 4 Optimal layer thicknesses and performance metrics."
+      ],
+      [
+        29,
+        "Table 5 Pareto-optimal solutions under varying cost weights."
+      ],
+      [
+        32,
+        "Table 6 Optimal Design Parameters and Performance Metrics"
+      ]
+    ],
+    "fig_mentions_total": 23,
+    "tab_mentions_total": 9,
+    "eq_numbered_max": 43,
+    "n_reference_entries": 0,
+    "ref_year_min": null,
+    "ref_year_max": null,
+    "code_token_hits": 18,
+    "structure_pages": {
+      "summary": [
+        1
+      ],
+      "keywords": [
+        1
+      ],
+      "contents": [
+        2
+      ],
+      "restatement": [
+        2,
+        4,
+        32,
+        36
+      ],
+      "assumptions": [
+        2,
+        3,
+        7,
+        35
+      ],
+      "notation": [],
+      "sensitivity": [
+        5,
+        6,
+        32,
+        34
+      ],
+      "validation": [
+        1,
+        2,
+        5,
+        6,
+        14,
+        15
+      ],
+      "strengths": [
+        3,
+        6,
+        21,
+        24,
+        30,
+        34
+      ],
+      "conclusion": [],
+      "references": [
+        3,
+        17,
+        35
+      ],
+      "appendix": [
+        3
+      ],
+      "promotion": [
+        19,
+        27
+      ],
+      "letter": [
+        1,
+        2,
+        21,
+        36
+      ]
+    },
+    "ai_marker_total": 47,
+    "ai_per_1000w": 5.72,
+    "ai_markers": {
+      "comprehensive": 17,
+      "robust": 10,
+      "overall": 5,
+      "holistic": 3,
+      "furthermore": 2,
+      "crucial": 2,
+      "facilitate": 2,
+      "seamless": 2,
+      "leverage": 1,
+      "underscore": 1,
+      "notably": 1,
+      "elevate": 1
+    },
+    "abstract_page1_words": 337,
+    "headings": [
+      [
+        1,
+        "2025",
+        "APMCM summary sheet"
+      ]
+    ]
+  },
+  "2025C": {
+    "file": "2025C_apmcm25301412.pdf",
+    "team": "apmcm25301412",
+    "n_pages": 27,
+    "word_count": 5604,
+    "n_sentences": 238,
+    "words_per_page": 208.0,
+    "sent_len_mean": 22.2,
+    "sent_len_median": 19.0,
+    "sent_len_max": 128,
+    "sent_len_stdev": 17.8,
+    "pct_short_lt12": 33.6,
+    "pct_mid_12_25": 32.4,
+    "pct_long_gt25": 34.0,
+    "passive_per_1000w": 2.7,
+    "present_is_are": 43,
+    "past_was_were": 3,
+    "first_person_we_our_us": 68,
+    "first_person_per_1000w": 12.1,
+    "flesch_reading_ease": 10.4,
+    "flesch_kincaid_grade": 17.7,
+    "ttr": 0.273,
+    "img_xobject_count": 37,
+    "img_filters": {
+      "['/FlateDecode', '/JPXDecode']": 37
+    },
+    "img_large_over_600px": 0,
+    "img_small_under_200px": 0,
+    "vector_heavy_pages": 0,
+    "n_fig_captions": 43,
+    "fig_captions": [
+      [
+        4,
+        "Figure 1.1 The Logical Workflow of Our Research Framework (SMDEF)."
+      ],
+      [
+        7,
+        "Figure 4.1 Quarterly Seasonal Supply Struc-"
+      ],
+      [
+        7,
+        "Figure 4.2 Monthly Landed Price Dynamics of Im-"
+      ],
+      [
+        9,
+        "Figure 4.3 Comparative Forecast of Export Volumes Before and After Tariff Shock"
+      ],
+      [
+        10,
+        "Figure 4.4 Sensitivity Heatmap of Argentina’s Export Growth Rate"
+      ],
+      [
+        11,
+        "Figure 5.1 Monthly U.S. Imports of Japanese Cars (2022-2025)"
+      ],
+      [
+        11,
+        "Figure 5.2 Localization Rates of Major Japanese Automakers (2024)"
+      ],
+      [
+        13,
+        "Figure 5.3 Retail Price Breakeven (Calibrated)"
+      ],
+      [
+        13,
+        "Figure 5.4 Dynamic Supply Chain Response"
+      ],
+      [
+        14,
+        "Figure 5.5 U.S. Manufacturing Employment, Tariff Revenue, and Vehicle Prices"
+      ],
+      [
+        14,
+        "Figure 5.6 Market Share under Different Tariff Scenarios"
+      ],
+      [
+        15,
+        "Figure 5.7 Tariff vs. Exchange Rate Impact on"
+      ],
+      [
+        15,
+        "Figure 5.8 2024 Baseline vs. 2027 New Equilibrium"
+      ],
+      [
+        15,
+        "Figure 6.1 Global Semiconductor Manufacturing Capacity Share (1990-2024)"
+      ],
+      [
+        16,
+        "Figure 6.2 US Exports of Integrated Circuits (HS 8542) to China (2020-2024)"
+      ],
+      [
+        16,
+        "Figure 6.2 shows:"
+      ],
+      [
+        16,
+        "Figure 6.3 US Exports of Semiconductor Equipment (HS 8486) to China (2023-2025 Forecast)"
+      ],
+      [
+        16,
+        "Figure 6.3 reveals:"
+      ],
+      [
+        16,
+        "Figure 6.4 shows:"
+      ],
+      [
+        17,
+        "Figure 6.4 US Imports of Discrete Semiconductors (HS 8541) from China (2023-2025 Forecast)"
+      ],
+      [
+        18,
+        "Figure 6.5 TOPSIS Evaluation: Security vs. Efficiency Trade-offs"
+      ],
+      [
+        18,
+        "Figure 6.6 Sensitivity of Domestic Investment Incentive to Manufacturing Cost Gap"
+      ],
+      [
+        18,
+        "Figure 6.6 reveals:"
+      ],
+      [
+        19,
+        "Figure 7.1 U.S. Import Resilience Analysis (2020-2024)"
+      ],
+      [
+        20,
+        "Figure 7.2 U.S. Trade Structural Asymmetry: Volume vs. Revenue Contribution (2024)"
+      ],
+      [
+        20,
+        "Figure 7.2 reveals a dualistic structure:"
+      ],
+      [
+        20,
+        "Figure 7.3 Existing Tariff Rates: China vs. ROW"
+      ],
+      [
+        20,
+        "Figure 7.3 shows the policy gap:"
+      ],
+      [
+        21,
+        "Figure 7.4 Vulnerability Analysis: U.S. Imports from China"
+      ],
+      [
+        21,
+        "Figure 7.4 decomposes imports:"
+      ],
+      [
+        22,
+        "Figure 7.5 Projected Tariff Revenue and Trade Volume (2025-2028)"
+      ],
+      [
+        22,
+        "Figure 7.5 confirms the Laffer Curve effect:"
+      ],
+      [
+        22,
+        "Figure 7.6 Market Share Restructuring (2024 vs. 2028, Aggressive Scenario)"
+      ],
+      [
+        22,
+        "Figure 7.6 shows supply chain redistribution:"
+      ],
+      [
+        23,
+        "Figure 7.7 Radar Chart: Tariff Policy ”Impossible Trinity”"
+      ],
+      [
+        23,
+        "Figure 7.7 key findings:"
+      ],
+      [
+        24,
+        "Figure 7.8 Optimization: Revenue vs. Welfare"
+      ],
+      [
+        24,
+        "Figure 7.9 Sensitivity: Supply Chain Flexibility"
+      ],
+      [
+        25,
+        "Figure 8.1 : Inflationary Impulse Response: The Impact of Retaliation."
+      ],
+      [
+        25,
+        "Figure 8.2 Systemic Risk Transmission Matrix: Impact of Tariffs on Financial Markets."
+      ],
+      [
+        25,
+        "Figure 8.2 reveals the transmission mechanism of tariff shocks:"
+      ],
+      [
+        25,
+        "Figure 8.3 illustrates the failure of the reshoring logic under extreme conditions:"
+      ],
+      [
+        26,
+        "Figure 8.3 : The Reshoring Paradox: Tariff Benefits vs. Systemic Costs."
+      ]
+    ],
+    "n_tab_captions": 4,
+    "tab_captions": [
+      [
+        5,
+        "Table 1 Notations and Definitions"
+      ],
+      [
+        7,
+        "Table 2 Summary of Primary Data Sources"
+      ],
+      [
+        9,
+        "Table 3 Global Soybean Export Simulation Results (2025)"
+      ],
+      [
+        12,
+        "Table 4 Calibrated Model Parameters (2024 Baseline)"
+      ]
+    ],
+    "fig_mentions_total": 54,
+    "tab_mentions_total": 6,
+    "eq_numbered_max": 10,
+    "n_reference_entries": 0,
+    "ref_year_min": null,
+    "ref_year_max": null,
+    "code_token_hits": 7,
+    "structure_pages": {
+      "summary": [
+        1
+      ],
+      "keywords": [
+        1
+      ],
+      "contents": [
+        2
+      ],
+      "restatement": [
+        2,
+        3
+      ],
+      "assumptions": [
+        2,
+        4,
+        5,
+        8,
+        9,
+        21
+      ],
+      "notation": [
+        2,
+        4,
+        5
+      ],
+      "sensitivity": [
+        10,
+        14,
+        18,
+        23,
+        24
+      ],
+      "validation": [
+        2,
+        10,
+        14,
+        18,
+        23
+      ],
+      "strengths": [
+        2,
+        14,
+        23,
+        25,
+        27
+      ],
+      "conclusion": [
+        2,
+        10,
+        14,
+        18,
+        19,
+        23
+      ],
+      "references": [
+        2,
+        3,
+        27
+      ],
+      "appendix": [
+        2
+      ],
+      "promotion": [
+        27
+      ],
+      "letter": [
+        2,
+        4,
+        26,
+        27
+      ]
+    },
+    "ai_marker_total": 21,
+    "ai_per_1000w": 3.75,
+    "ai_markers": {
+      "robust": 10,
+      "comprehensive": 4,
+      "furthermore": 2,
+      "in conclusion": 2,
+      "crucial": 2,
+      "moreover": 1
+    },
+    "abstract_page1_words": 401,
+    "headings": [
+      [
+        1,
+        "2025",
+        "APMCM summary sheet"
+      ],
+      [
+        9,
+        "2025",
+        "Forecast"
+      ],
+      [
+        19,
+        "2",
+        "Impact on Global Chip Trade"
+      ]
+    ]
+  },
+  "2025D": {
+    "file": "2025D_apmcm25310840.pdf",
+    "team": "apmcm25310840",
+    "n_pages": 27,
+    "word_count": 5786,
+    "n_sentences": 261,
+    "words_per_page": 214.0,
+    "sent_len_mean": 21.6,
+    "sent_len_median": 17,
+    "sent_len_max": 87,
+    "sent_len_stdev": 15.5,
+    "pct_short_lt12": 29.5,
+    "pct_mid_12_25": 40.2,
+    "pct_long_gt25": 30.3,
+    "passive_per_1000w": 7.3,
+    "present_is_are": 52,
+    "past_was_were": 4,
+    "first_person_we_our_us": 2,
+    "first_person_per_1000w": 0.3,
+    "flesch_reading_ease": -48.3,
+    "flesch_kincaid_grade": 25.5,
+    "ttr": 0.296,
+    "img_xobject_count": 12,
+    "img_filters": {
+      "['/FlateDecode', '/JPXDecode']": 12
+    },
+    "img_large_over_600px": 0,
+    "img_small_under_200px": 0,
+    "vector_heavy_pages": 0,
+    "n_fig_captions": 11,
+    "fig_captions": [
+      [
+        5,
+        "Figure 1 Technical Roadmap for Power System Unit Commitment Optimization"
+      ],
+      [
+        9,
+        "Figure 2 24-Hour Unit Combination Dispatch Results Chart"
+      ],
+      [
+        9,
+        "Figure 3 Comparison Chart of 24-Hour Load De-"
+      ],
+      [
+        9,
+        "Figure 4 Unit Power Generation versus Load De-"
+      ],
+      [
+        14,
+        "Figure 5 Optimised Unit Combination Dispatch Results Diagram"
+      ],
+      [
+        15,
+        "Figure 6 Quantum Optimisation of Power System Unit Combination Operation Indicator Diagram"
+      ],
+      [
+        15,
+        "Figure 7 Combination Results Diagram for Units Subject to Network and Security Constraints"
+      ],
+      [
+        21,
+        "Figure 8 Comparison Chart of Unit Combination"
+      ],
+      [
+        21,
+        "Figure 9 Generation Costs versus Load Demand"
+      ],
+      [
+        25,
+        "Figure 10 Scaling Reduction Strategy Diagram for Solving Power System Unit Combination Pro"
+      ],
+      [
+        26,
+        "Figure 11 Load Demand versus Total Generation Comparison Chart"
+      ]
+    ],
+    "n_tab_captions": 12,
+    "tab_captions": [
+      [
+        5,
+        "Table 1 List of Symbols"
+      ],
+      [
+        10,
+        "Table 2 First Question: Economic Dispatch Results for the Classical UC Model"
+      ],
+      [
+        10,
+        "Table 3 Classical UC Model Results for 24 Time Periods"
+      ],
+      [
+        14,
+        "Table 4 Mixed-Integer Linear Programming Solution Parameters"
+      ],
+      [
+        14,
+        "Table 5 Economic Robustness Indicators"
+      ],
+      [
+        16,
+        "Table 6 Comparison of Optimisation Results for Problem 1 and Problem 2"
+      ],
+      [
+        16,
+        "Table 6 demonstrates that the total operating cost for Problem 2 exceeds that of Problem 1"
+      ],
+      [
+        16,
+        "Table 7 Optimised Unit Combination Results Considering Network and Security Constraints"
+      ],
+      [
+        21,
+        "Table 8 Parameters Related to Power Balance Constraints"
+      ],
+      [
+        22,
+        "Table 9 Quantum QUBO vs Classical Optimization Results"
+      ],
+      [
+        22,
+        "Table9showsthatquantumheuristicoptimisationachieveshighaccuracyandefficiency: total"
+      ],
+      [
+        26,
+        "Table 10 Comparison of Problem Scaling Reduction Strategies"
+      ]
+    ],
+    "fig_mentions_total": 11,
+    "tab_mentions_total": 13,
+    "eq_numbered_max": 56,
+    "n_reference_entries": 5,
+    "ref_year_min": "2001",
+    "ref_year_max": "2020",
+    "code_token_hits": 7,
+    "structure_pages": {
+      "summary": [],
+      "keywords": [
+        1
+      ],
+      "contents": [
+        2
+      ],
+      "restatement": [
+        2,
+        3,
+        21
+      ],
+      "assumptions": [
+        2,
+        5
+      ],
+      "notation": [
+        5
+      ],
+      "sensitivity": [
+        4,
+        23,
+        27
+      ],
+      "validation": [
+        1,
+        8,
+        11,
+        13,
+        14,
+        15
+      ],
+      "strengths": [
+        1,
+        2,
+        27
+      ],
+      "conclusion": [],
+      "references": [
+        27
+      ],
+      "appendix": [
+        2
+      ],
+      "promotion": [],
+      "letter": []
+    },
+    "ai_marker_total": 15,
+    "ai_per_1000w": 2.59,
+    "ai_markers": {
+      "robust": 9,
+      "comprehensive": 2,
+      "overall": 2,
+      "facilitate": 1,
+      "notably": 1
+    },
+    "abstract_page1_words": 317,
+    "headings": [
+      [
+        2,
+        "5.1",
+        "SolvingtheClassicUnitCombinationProblemUsingaMixed-IntegerProgramming"
+      ],
+      [
+        2,
+        "8.1",
+        "ScaleReductionModelBasedonSpatio-TemporalDecompositionandVariableClus-"
+      ],
+      [
+        2,
+        "8.2",
+        "StepsforSolvingtheScaleReductionModelBasedonVariableClusteringandTime"
+      ]
+    ]
+  },
+  "2024A": {
+    "file": "2024A_apmcm24200438.pdf",
+    "team": "apmcm24200438",
+    "n_pages": 28,
+    "word_count": 7564,
+    "n_sentences": 300,
+    "words_per_page": 270.0,
+    "sent_len_mean": 25.1,
+    "sent_len_median": 20.5,
+    "sent_len_max": 90,
+    "sent_len_stdev": 18.0,
+    "pct_short_lt12": 24.0,
+    "pct_mid_12_25": 35.3,
+    "pct_long_gt25": 40.7,
+    "passive_per_1000w": 12.8,
+    "present_is_are": 174,
+    "past_was_were": 8,
+    "first_person_we_our_us": 80,
+    "first_person_per_1000w": 10.6,
+    "flesch_reading_ease": 25.4,
+    "flesch_kincaid_grade": 16.0,
+    "ttr": 0.194,
+    "img_xobject_count": 63,
+    "img_filters": {
+      "['/FlateDecode', '/JPXDecode']": 61,
+      "['/FlateDecode', '/DCTDecode']": 2
+    },
+    "img_large_over_600px": 11,
+    "img_small_under_200px": 10,
+    "vector_heavy_pages": 0,
+    "n_fig_captions": 28,
+    "fig_captions": [
+      [
+        3,
+        "Figure 1 Schematic diagram of diﬀerent underwater images"
+      ],
+      [
+        6,
+        "Figure 2 Underwater Image with Overlaid Degradation Types"
+      ],
+      [
+        6,
+        "Figure 2(b) and Figure 2(c), the visibility of color cast is less pronounced than low ligh"
+      ],
+      [
+        6,
+        "Figure 3 The Process of Underwater Degradation Classiﬁcation"
+      ],
+      [
+        7,
+        "Figure 4 Comparison of Grayscale histograms for Two Images With or Without Suﬃcient Light"
+      ],
+      [
+        8,
+        "Figure 5 Comparison of RGB histograms for Two Images With or Without Color Cast"
+      ],
+      [
+        9,
+        "Figure 6 Comparison of Laplacian Transform for Two Images With or Without Blurriness"
+      ],
+      [
+        10,
+        "Figure 7 Classiﬁcation Result Statistics"
+      ],
+      [
+        10,
+        "Figure 8 Distribution of Quantitative Evaluation Metrics for Original Image Quality"
+      ],
+      [
+        11,
+        "Figure 9 Schematic of the Underwater Optical Imaging Model"
+      ],
+      [
+        12,
+        "Figure 10 Schematic Diagram of Underwater Light Attenuation"
+      ],
+      [
+        14,
+        "Figure 11 Nap-based Data Preprocessing and Regression Function ﬁtting"
+      ],
+      [
+        15,
+        "Figure 12 The Noisy Images in the Strange Depth Range"
+      ],
+      [
+        16,
+        "Figure 13 Fusion Enhancement Strategy"
+      ],
+      [
+        17,
+        "Figure 14 A Fraction of High-Resolution Underwater Image Training Set"
+      ],
+      [
+        18,
+        "Figure 15 The Process of Training Forward-backward Random Forest Model"
+      ],
+      [
+        18,
+        "Figure 16 Comparison of the Image Before and After FbRF Model Processing"
+      ],
+      [
+        19,
+        "Figure 17 Comparison of the Image Before and After Grayscale Adjustment Model Processing"
+      ],
+      [
+        19,
+        "Figure 18 UIQM Metric Before and After Processing for Diﬀerent Degradation Types of Images"
+      ],
+      [
+        20,
+        "Figure 19 UCIQE Metric Before and After Processing for Diﬀerent Degradation Types of Image"
+      ],
+      [
+        20,
+        "Figure 20 PSNR Metric Before and After Processing for Diﬀerent Degradation Types of Images"
+      ],
+      [
+        21,
+        "Figure 21 The Process of Our Multi-Compounded Model"
+      ],
+      [
+        22,
+        "Figure 22 Applying Our Model to a Particular Image"
+      ],
+      [
+        22,
+        "Figure 23 Three Evaluation Metrics of the Enhanced Images"
+      ],
+      [
+        23,
+        "Figure 24 Comparison of the Image Before and After Multi-Compounded Model Processing"
+      ],
+      [
+        23,
+        "Figure 25 Scale-Invariant Feature Transform Comparision Result"
+      ],
+      [
+        25,
+        "Figure 26 Sensitivity Validation of Problem 2"
+      ],
+      [
+        26,
+        "Figure 27 The Comparison Graph of the Robustness Test"
+      ]
+    ],
+    "n_tab_captions": 0,
+    "tab_captions": [],
+    "fig_mentions_total": 51,
+    "tab_mentions_total": 0,
+    "eq_numbered_max": 0,
+    "n_reference_entries": 0,
+    "ref_year_min": null,
+    "ref_year_max": null,
+    "code_token_hits": 6,
+    "structure_pages": {
+      "summary": [
+        1
+      ],
+      "keywords": [
+        1
+      ],
+      "contents": [
+        2
+      ],
+      "restatement": [
+        2,
+        3
+      ],
+      "assumptions": [
+        2,
+        4,
+        5
+      ],
+      "notation": [
+        2,
+        5
+      ],
+      "sensitivity": [
+        1,
+        2,
+        24,
+        25
+      ],
+      "validation": [
+        1,
+        2,
+        7,
+        14,
+        19,
+        21
+      ],
+      "strengths": [
+        2,
+        26,
+        27
+      ],
+      "conclusion": [
+        17,
+        20
+      ],
+      "references": [
+        2,
+        28
+      ],
+      "appendix": [
+        1,
+        2,
+        19
+      ],
+      "promotion": [
+        4,
+        10,
+        19
+      ],
+      "letter": [
+        3
+      ]
+    },
+    "ai_marker_total": 35,
+    "ai_per_1000w": 4.63,
+    "ai_markers": {
+      "robust": 8,
+      "additionally": 5,
+      "comprehensive": 4,
+      "overall": 4,
+      "furthermore": 3,
+      "in conclusion": 2,
+      "firstly": 2,
+      "moreover": 1,
+      "leverage": 1,
+      "notably": 1,
+      "showcase": 1,
+      "paramount": 1,
+      "nuanced": 1,
+      "secondly": 1
+    },
+    "abstract_page1_words": 488,
+    "headings": [
+      [
+        1,
+        "2024",
+        "APMCM summary sheet"
+      ],
+      [
+        3,
+        "1",
+        "Introduction"
+      ],
+      [
+        5,
+        "3",
+        "Notations"
+      ],
+      [
+        6,
+        "4",
+        "Model Building and Problem Solving"
+      ],
+      [
+        17,
+        "2",
+        "Lab to RGB Conversion"
+      ],
+      [
+        24,
+        "5",
+        "Model Test"
+      ],
+      [
+        26,
+        "6",
+        "Strengths and Weaknesses"
+      ],
+      [
+        28,
+        "7",
+        "References"
+      ]
+    ]
+  },
+  "2024B": {
+    "file": "2024B_apmcm24200636.pdf",
+    "team": "apmcm24200636",
+    "n_pages": 28,
+    "word_count": 8772,
+    "n_sentences": 230,
+    "words_per_page": 313.0,
+    "sent_len_mean": 34.5,
+    "sent_len_median": 27.0,
+    "sent_len_max": 149,
+    "sent_len_stdev": 27.6,
+    "pct_short_lt12": 15.2,
+    "pct_mid_12_25": 30.4,
+    "pct_long_gt25": 54.3,
+    "passive_per_1000w": 23.0,
+    "present_is_are": 284,
+    "past_was_were": 15,
+    "first_person_we_our_us": 3,
+    "first_person_per_1000w": 0.3,
+    "flesch_reading_ease": 17.9,
+    "flesch_kincaid_grade": 20.2,
+    "ttr": 0.142,
+    "img_xobject_count": 21,
+    "img_filters": {
+      "['/FlateDecode', '/JPXDecode']": 20,
+      "['/FlateDecode', '/DCTDecode']": 1
+    },
+    "img_large_over_600px": 0,
+    "img_small_under_200px": 2,
+    "vector_heavy_pages": 0,
+    "n_fig_captions": 14,
+    "fig_captions": [
+      [
+        6,
+        "Figure 1Our Wrok"
+      ],
+      [
+        9,
+        "Fig. 2Design Drawing of Left (Cylinder) and Right (Cuboid) Tuyere"
+      ],
+      [
+        13,
+        "Fig. 3Air conditioning temperature setting in summer"
+      ],
+      [
+        13,
+        "Fig. 4Air conditioning temperature setting in winter"
+      ],
+      [
+        14,
+        "Fig. 5Influence of air output on temperature in summer (left) and winter (right)"
+      ],
+      [
+        14,
+        "Figure 6Influence of wind speed on temperature in summer (left) and winter (right)"
+      ],
+      [
+        15,
+        "Fig. 7Change of air conditioning quantity on temperature in summer (left) and winter (righ"
+      ],
+      [
+        15,
+        "Figure 8Summer (left) and winter (right) air conditioning position on the diagonal changes"
+      ],
+      [
+        16,
+        "Fig. 9Change of temperature affected by air conditioning position in the middle of summer "
+      ],
+      [
+        19,
+        "Fig. 10Visualization of purification effect"
+      ],
+      [
+        20,
+        "Figure 11 Distribution of initial pollutant concentration(left) Purification effect of nor"
+      ],
+      [
+        23,
+        "Figure 12Air humidifier effect drawing"
+      ],
+      [
+        24,
+        "Figure 13Sensitivity"
+      ],
+      [
+        26,
+        "Fig. 14Best Design"
+      ]
+    ],
+    "n_tab_captions": 1,
+    "tab_captions": [
+      [
+        13,
+        "Table 1 1Best state of air conditioning"
+      ]
+    ],
+    "fig_mentions_total": 16,
+    "tab_mentions_total": 1,
+    "eq_numbered_max": 45,
+    "n_reference_entries": 12,
+    "ref_year_min": "2021",
+    "ref_year_max": "2025",
+    "code_token_hits": 28,
+    "structure_pages": {
+      "summary": [
+        1
+      ],
+      "keywords": [
+        1
+      ],
+      "contents": [],
+      "restatement": [
+        2,
+        3
+      ],
+      "assumptions": [
+        2,
+        5
+      ],
+      "notation": [
+        2,
+        6
+      ],
+      "sensitivity": [
+        1,
+        5,
+        24,
+        27
+      ],
+      "validation": [
+        1,
+        5,
+        19,
+        20,
+        27,
+        28
+      ],
+      "strengths": [
+        2,
+        8,
+        23,
+        26,
+        27
+      ],
+      "conclusion": [
+        20
+      ],
+      "references": [
+        2,
+        28
+      ],
+      "appendix": [
+        2
+      ],
+      "promotion": [
+        2,
+        26,
+        27
+      ],
+      "letter": []
+    },
+    "ai_marker_total": 19,
+    "ai_per_1000w": 2.17,
+    "ai_markers": {
+      "robust": 6,
+      "overall": 6,
+      "comprehensive": 3,
+      "furthermore": 1,
+      "in summary": 1,
+      "additionally": 1,
+      "firstly": 1
+    },
+    "abstract_page1_words": 409,
+    "headings": [
+      [
+        3,
+        "1",
+        "Introduction"
+      ],
+      [
+        3,
+        "1.1",
+        "Problem Background"
+      ],
+      [
+        3,
+        "1.2",
+        "Question Restatement"
+      ],
+      [
+        5,
+        "3",
+        "Model assumptions"
+      ],
+      [
+        6,
+        "4",
+        "Symbol Description"
+      ],
+      [
+        6,
+        "5",
+        "Our Work"
+      ],
+      [
+        7,
+        "6.1.1",
+        "Establishment of air circulation equation"
+      ],
+      [
+        12,
+        "6.1.4",
+        "Seasonal simulation"
+      ],
+      [
+        16,
+        "6.1.5",
+        "Summary"
+      ],
+      [
+        16,
+        "6.2.1",
+        "Establishment of air purification model"
+      ],
+      [
+        18,
+        "6.2.3",
+        "Solution of high performance air purification optimization model"
+      ],
+      [
+        20,
+        "6.2.5",
+        "Summary"
+      ],
+      [
+        20,
+        "6.3.1",
+        "Establishment of Water Vapor Diffusion Model"
+      ],
+      [
+        22,
+        "6.3.2",
+        "Establishment of Optimization Model for High Performance Humidifier"
+      ],
+      [
+        22,
+        "6.3.3",
+        "Solution of Optimization Model of High Performance Humidifier"
+      ],
+      [
+        24,
+        "6.3.5",
+        "Summary"
+      ],
+      [
+        26,
+        "6.4.3",
+        "Summary"
+      ],
+      [
+        26,
+        "7.1.1",
+        "Advantages of the model"
+      ],
+      [
+        27,
+        "7.1.2",
+        "Disadvantages of the model"
+      ]
+    ]
+  },
+  "2024C": {
+    "file": "2024C_apmcm24200658.pdf",
+    "team": "apmcm24200658",
+    "n_pages": 31,
+    "word_count": 7735,
+    "n_sentences": 291,
+    "words_per_page": 250.0,
+    "sent_len_mean": 26.5,
+    "sent_len_median": 23,
+    "sent_len_max": 142,
+    "sent_len_stdev": 20.2,
+    "pct_short_lt12": 17.9,
+    "pct_mid_12_25": 41.6,
+    "pct_long_gt25": 40.5,
+    "passive_per_1000w": 8.9,
+    "present_is_are": 120,
+    "past_was_were": 13,
+    "first_person_we_our_us": 54,
+    "first_person_per_1000w": 7.0,
+    "flesch_reading_ease": 28.4,
+    "flesch_kincaid_grade": 15.9,
+    "ttr": 0.179,
+    "img_xobject_count": 26,
+    "img_filters": {
+      "['/FlateDecode', '/JPXDecode']": 18,
+      "/FlateDecode": 3,
+      "['/FlateDecode', '/DCTDecode']": 5
+    },
+    "img_large_over_600px": 3,
+    "img_small_under_200px": 0,
+    "vector_heavy_pages": 0,
+    "n_fig_captions": 29,
+    "fig_captions": [
+      [
+        8,
+        "Fig.2 The number of pet cats and dogs changes over time"
+      ],
+      [
+        9,
+        "Fig. 3 Growth rate of pet cats and dogs over time"
+      ],
+      [
+        9,
+        "Figure 4 Indicator chart"
+      ],
+      [
+        11,
+        "Fig.5 Correlation between each trait and the number of cats"
+      ],
+      [
+        12,
+        "Fig.6 Correlation between each feature and the number of dogs"
+      ],
+      [
+        12,
+        "Fig.7 Regression coefficients of each trait and the number of cats"
+      ],
+      [
+        12,
+        "Fig.8 Regression coefficients of each trait and the number of dogs"
+      ],
+      [
+        14,
+        "Fig.9 Schematic diagram of decision tree and random forest"
+      ],
+      [
+        15,
+        "Fig.10 Prediction of cat population"
+      ],
+      [
+        15,
+        "Fig.11 Prediction of dog population"
+      ],
+      [
+        17,
+        "Fig. 12 Trends in cat populations by country"
+      ],
+      [
+        17,
+        "Fig. 13 Trends in the growth rate of cat populations by country"
+      ],
+      [
+        17,
+        "Fig. 14 Trends in dog populations by country"
+      ],
+      [
+        18,
+        "Figure 15 Trends in the growth rate of dog populations by country"
+      ],
+      [
+        19,
+        "Fig.16 Correlation analysis results"
+      ],
+      [
+        21,
+        "Figure 17 illustrates that the projected market size in the United States is anticipated t"
+      ],
+      [
+        21,
+        "Figure 17 Market size forecast and comparison by country"
+      ],
+      [
+        22,
+        "Figure 18 China's total output value of pet food (RMB, 100 million)"
+      ],
+      [
+        22,
+        "Figure 19 China's total pet food exports (US$, 100 million)."
+      ],
+      [
+        23,
+        "Figure 20 shows the relevance of each feature to China's pet food industry. It is not diff"
+      ],
+      [
+        24,
+        "Fig.20 Heat map of the correlation between features and target variables"
+      ],
+      [
+        25,
+        "Figure 21 illustrates the time-series trend of China's real pet food production fitting to"
+      ],
+      [
+        25,
+        "Fig.21 Time series trend of GDP (RMB, 100 million)"
+      ],
+      [
+        25,
+        "Fig. 22 Time series trend of total export value (US$, 100 million)"
+      ],
+      [
+        26,
+        "Fig. 23 Comparison of actual and forecasted GDP (RMB, 100 million yuan)"
+      ],
+      [
+        26,
+        "Figure 24 Comparison of actual and forecasted total exports (US$, 100 million)"
+      ],
+      [
+        29,
+        "Figure 25 China's revenue matrix"
+      ],
+      [
+        29,
+        "Figure 26 U.S. earnings matrix"
+      ],
+      [
+        30,
+        "Fig.27 Dynamic game results"
+      ]
+    ],
+    "n_tab_captions": 1,
+    "tab_captions": [
+      [
+        7,
+        "Table 1 Changes in the number of cats and dogs in China in different years"
+      ]
+    ],
+    "fig_mentions_total": 39,
+    "tab_mentions_total": 1,
+    "eq_numbered_max": 34,
+    "n_reference_entries": 0,
+    "ref_year_min": null,
+    "ref_year_max": null,
+    "code_token_hits": 8,
+    "structure_pages": {
+      "summary": [
+        1
+      ],
+      "keywords": [
+        1
+      ],
+      "contents": [],
+      "restatement": [
+        2,
+        4
+      ],
+      "assumptions": [
+        2,
+        3,
+        6,
+        27
+      ],
+      "notation": [],
+      "sensitivity": [
+        27,
+        28
+      ],
+      "validation": [],
+      "strengths": [
+        1,
+        3,
+        6,
+        9,
+        13,
+        30
+      ],
+      "conclusion": [],
+      "references": [
+        3,
+        31
+      ],
+      "appendix": [
+        3
+      ],
+      "promotion": [
+        10
+      ],
+      "letter": [
+        4,
+        6,
+        10
+      ]
+    },
+    "ai_marker_total": 28,
+    "ai_per_1000w": 3.62,
+    "ai_markers": {
+      "overall": 16,
+      "comprehensive": 5,
+      "furthermore": 4,
+      "robust": 1,
+      "facilitate": 1,
+      "landscape": 1
+    },
+    "abstract_page1_words": 400,
+    "headings": [
+      [
+        1,
+        "2024",
+        "APMCM summary sheet"
+      ],
+      [
+        4,
+        "1.1",
+        "Background"
+      ],
+      [
+        4,
+        "1.2",
+        "Question Restatement"
+      ],
+      [
+        7,
+        "5.1",
+        "Data analysis"
+      ],
+      [
+        9,
+        "5.2.1",
+        "Data Collection"
+      ],
+      [
+        9,
+        "5.2.2",
+        "Analysis of controlling factors"
+      ],
+      [
+        12,
+        "5.3.1",
+        "Time series forecasting"
+      ],
+      [
+        13,
+        "5.3.2",
+        "Random forest regression prediction"
+      ],
+      [
+        14,
+        "5.3.3",
+        "Hybrid predictive models"
+      ],
+      [
+        16,
+        "6.1",
+        "Data analysis"
+      ],
+      [
+        18,
+        "6.2",
+        "Forecast of pet food demand in other countries"
+      ],
+      [
+        18,
+        "6.2.1",
+        "Data Collection"
+      ],
+      [
+        18,
+        "6.2.2",
+        "Feature construction, selection, and correlation analysis"
+      ],
+      [
+        20,
+        "6.2.3",
+        "Model construction and solving"
+      ],
+      [
+        22,
+        "7.2.1",
+        "Data Collection"
+      ],
+      [
+        23,
+        "7.2.2",
+        "Data processing"
+      ],
+      [
+        24,
+        "7.2.3",
+        "Model building and solving"
+      ],
+      [
+        27,
+        "8.1",
+        "Assumptions and variable definitions"
+      ],
+      [
+        27,
+        "8.2",
+        "Static game model"
+      ],
+      [
+        27,
+        "8.2.1",
+        "Gain function definition"
+      ],
+      [
+        27,
+        "8.2.2",
+        "Policy space"
+      ],
+      [
+        27,
+        "8.2.3",
+        "Earnings matrix"
+      ],
+      [
+        28,
+        "8.2.4",
+        "Dynamic game model"
+      ],
+      [
+        28,
+        "8.3",
+        "Solving process and results"
+      ],
+      [
+        30,
+        "9.1",
+        "Advantages of the model"
+      ],
+      [
+        31,
+        "9.2",
+        "Disadvantages of the model"
+      ]
+    ]
+  },
+  "2024D": {
+    "file": "2024D_apmcm24207218.pdf",
+    "team": "apmcm24207218",
+    "n_pages": 76,
+    "word_count": 10794,
+    "n_sentences": 394,
+    "words_per_page": 142.0,
+    "sent_len_mean": 22.9,
+    "sent_len_median": 19.0,
+    "sent_len_max": 116,
+    "sent_len_stdev": 17.8,
+    "pct_short_lt12": 25.1,
+    "pct_mid_12_25": 42.4,
+    "pct_long_gt25": 32.5,
+    "passive_per_1000w": 10.1,
+    "present_is_are": 192,
+    "past_was_were": 13,
+    "first_person_we_our_us": 91,
+    "first_person_per_1000w": 8.4,
+    "flesch_reading_ease": -0.2,
+    "flesch_kincaid_grade": 20.1,
+    "ttr": 0.162,
+    "img_xobject_count": 26,
+    "img_filters": {
+      "['/FlateDecode', '/JPXDecode']": 21,
+      "['/FlateDecode', '/DCTDecode']": 5
+    },
+    "img_large_over_600px": 12,
+    "img_small_under_200px": 0,
+    "vector_heavy_pages": 1,
+    "n_fig_captions": 0,
+    "fig_captions": [],
+    "n_tab_captions": 21,
+    "tab_captions": [
+      [
+        25,
+        "Table 1: Model Parameter Statistics"
+      ],
+      [
+        28,
+        "Table 2: Prediction Results Details"
+      ],
+      [
+        30,
+        "Table 3: October Demand Prediction"
+      ],
+      [
+        33,
+        "Table 1: Iris-setosa Statistical Features"
+      ],
+      [
+        33,
+        "Table 2: Iris-versicolor Statistical"
+      ],
+      [
+        33,
+        "Table 3: Iris-virginica Statistical Features"
+      ],
+      [
+        34,
+        "Table 4: Feature Correlation Matrix"
+      ],
+      [
+        36,
+        "Table 5: Feature Overlap Analysis"
+      ],
+      [
+        36,
+        "Table 6: Data Quality Metrics"
+      ],
+      [
+        37,
+        "Table 7: Preprocessing Steps and Rationale"
+      ],
+      [
+        38,
+        "Table 8: Classification Strategy"
+      ],
+      [
+        45,
+        "Table1.Matrix Characteristics"
+      ],
+      [
+        45,
+        "Table2.Parameter Configuration"
+      ],
+      [
+        46,
+        "Table1.Basic SVM Parameters:"
+      ],
+      [
+        46,
+        "Table2.QUBO-specific Parameters:"
+      ],
+      [
+        47,
+        "Table3.Main statistical results"
+      ],
+      [
+        48,
+        "Table4.Single Run Performance"
+      ],
+      [
+        48,
+        "Table5.Multiple Runs Performance:"
+      ],
+      [
+        65,
+        "Table1. Core Performance Metrics Comparison"
+      ],
+      [
+        65,
+        "Table2 Performance at Different Data Scales"
+      ],
+      [
+        66,
+        "Table3. Model Convergence Analysis"
+      ]
+    ],
+    "fig_mentions_total": 0,
+    "tab_mentions_total": 21,
+    "eq_numbered_max": 0,
+    "n_reference_entries": 0,
+    "ref_year_min": null,
+    "ref_year_max": null,
+    "code_token_hits": 19,
+    "structure_pages": {
+      "summary": [
+        1
+      ],
+      "keywords": [
+        1
+      ],
+      "contents": [
+        2
+      ],
+      "restatement": [
+        2,
+        4,
+        75
+      ],
+      "assumptions": [
+        2,
+        8,
+        9,
+        10,
+        11,
+        15
+      ],
+      "notation": [
+        2,
+        11
+      ],
+      "sensitivity": [
+        3,
+        66,
+        67,
+        68
+      ],
+      "validation": [
+        2,
+        3,
+        40,
+        43,
+        46,
+        54
+      ],
+      "strengths": [
+        3,
+        4,
+        5,
+        37,
+        45,
+        52
+      ],
+      "conclusion": [
+        1
+      ],
+      "references": [
+        3,
+        10,
+        75
+      ],
+      "appendix": [
+        3
+      ],
+      "promotion": [
+        1,
+        3,
+        4,
+        10,
+        20,
+        26
+      ],
+      "letter": [
+        1,
+        5,
+        51,
+        54,
+        56,
+        57
+      ]
+    },
+    "ai_marker_total": 38,
+    "ai_per_1000w": 3.52,
+    "ai_markers": {
+      "comprehensive": 8,
+      "robust": 7,
+      "crucial": 6,
+      "overall": 6,
+      "leverage": 5,
+      "facilitate": 2,
+      "in conclusion": 1,
+      "seamless": 1,
+      "intricate": 1,
+      "landscape": 1
+    },
+    "abstract_page1_words": 256,
+    "headings": [
+      [
+        1,
+        "2024",
+        "APMCM summary sheet"
+      ],
+      [
+        27,
+        "2",
+        "Use different random initial solutions for each run"
+      ],
+      [
+        37,
+        "2",
+        "Class Encoding"
+      ],
+      [
+        37,
+        "3",
+        "Class Encoding"
+      ],
+      [
+        39,
+        "2",
+        "Two-Stage Classification Strategy"
+      ],
+      [
+        63,
+        "0.01",
+        "Temperature threshold for termination"
+      ],
+      [
+        66,
+        "1",
+        "Sensitivity Analysis"
+      ],
+      [
+        68,
+        "2",
+        "Error Analysis"
+      ],
+      [
+        69,
+        "1",
+        "AR Model Stability Testing"
+      ],
+      [
+        70,
+        "2",
+        "SVM Model Stability Testing"
+      ],
+      [
+        70,
+        "3",
+        "NCF Model Stability Testing"
+      ],
+      [
+        71,
+        "1",
+        "Algorithmic Advantages"
+      ],
+      [
+        71,
+        "2",
+        "Application Advantages"
+      ],
+      [
+        72,
+        "1",
+        "Technical Limitations"
+      ],
+      [
+        72,
+        "2",
+        "Application Limitations"
+      ],
+      [
+        73,
+        "1",
+        "Technical Improvements"
+      ],
+      [
+        73,
+        "2",
+        "Application Extensions"
+      ],
+      [
+        74,
+        "3",
+        "Future Research Directions"
+      ]
+    ]
+  },
+  "2023A": {
+    "file": "2023A_apmcm2309364.pdf",
+    "team": "apmcm2309364",
+    "n_pages": 40,
+    "word_count": 6697,
+    "n_sentences": 363,
+    "words_per_page": 167.0,
+    "sent_len_mean": 16.2,
+    "sent_len_median": 13,
+    "sent_len_max": 146,
+    "sent_len_stdev": 15.2,
+    "pct_short_lt12": 46.6,
+    "pct_mid_12_25": 37.2,
+    "pct_long_gt25": 16.3,
+    "passive_per_1000w": 6.7,
+    "present_is_are": 102,
+    "past_was_were": 3,
+    "first_person_we_our_us": 99,
+    "first_person_per_1000w": 14.8,
+    "flesch_reading_ease": -44.8,
+    "flesch_kincaid_grade": 24.1,
+    "ttr": 0.284,
+    "img_xobject_count": 41,
+    "img_filters": {
+      "['/FlateDecode', '/JPXDecode']": 41
+    },
+    "img_large_over_600px": 4,
+    "img_small_under_200px": 17,
+    "vector_heavy_pages": 0,
+    "n_fig_captions": 35,
+    "fig_captions": [
+      [
+        9,
+        "Figure 1 Comparison of original image and RGB grayscale image"
+      ],
+      [
+        11,
+        "Figure 2 The channel image"
+      ],
+      [
+        12,
+        "Figure 3 Comparison chart before and after Gaussian filtering"
+      ],
+      [
+        13,
+        "Figure 4 Hough Circle Transform diagram (Image Sourced from the internet)."
+      ],
+      [
+        14,
+        "Figure 5 Flowchart of the Apple Recognition Algorithm."
+      ],
+      [
+        15,
+        "Figure 6 Flowchart of the Optimization Model for Eliminating Duplicate Circles."
+      ],
+      [
+        16,
+        "Figure 7 Schematic diagram of two circles overlapping"
+      ],
+      [
+        16,
+        "Figure 8 The bigger"
+      ],
+      [
+        16,
+        "Figure 9 The smaller"
+      ],
+      [
+        16,
+        "Figure 10 Overlap area i estimation diagram"
+      ],
+      [
+        17,
+        "Figure 11 The comparison of effects before and after correction"
+      ],
+      [
+        17,
+        "Figure 12 The histogram of the distribution of all apples in Attachment 1"
+      ],
+      [
+        18,
+        "Figure 13 The composition of YOLOv4."
+      ],
+      [
+        19,
+        "Figure 14 YOLOv4 Network Algorithm Flowchart."
+      ],
+      [
+        20,
+        "Figure 15 Examples of selected sample images"
+      ],
+      [
+        20,
+        "Figure 16 Results with bounding boxes added"
+      ],
+      [
+        21,
+        "Figure 17 Data preprocessing flowchart of Problem 2"
+      ],
+      [
+        21,
+        "Figure 18 Convolutional Layer Structure Diagram (Image Sourced from the Internet)"
+      ],
+      [
+        22,
+        "Figure 19 Pooling Layer Structure Diagram (Image Sourced from the Internet)"
+      ],
+      [
+        22,
+        "Figure 20 Flowchart of model training(part)"
+      ],
+      [
+        23,
+        "Figure 21 2D Scatter Plot of Geometric Coordinates"
+      ],
+      [
+        24,
+        "Figure 22 Schematic flow diagram of this process"
+      ],
+      [
+        24,
+        "Figure 23 Schematic diagram of maturity identification results"
+      ],
+      [
+        26,
+        "Figure 24 Histogram of ripeness distribution of unripe apples"
+      ],
+      [
+        26,
+        "Figure 25 Ripeness distribution histogram of ripe and semi-ripe apples"
+      ],
+      [
+        27,
+        "Figure 26 The segmented image"
+      ],
+      [
+        28,
+        "Fig.27"
+      ],
+      [
+        28,
+        "Figure 27 Mass distribution histogram of apples"
+      ],
+      [
+        33,
+        "Figure 28 Mass distribution histogram of apples"
+      ],
+      [
+        33,
+        "Figure 29 Mass distribution histogram of apples"
+      ],
+      [
+        34,
+        "Figure 30 Partial structural diagram of VGG19(Image Sourced from the internet)"
+      ],
+      [
+        35,
+        "Figure 31 Three-dimensional feature map transformation (Image Sourced from the internet)"
+      ],
+      [
+        36,
+        "Figure 32 Apple recognition result window after VGG19 training"
+      ],
+      [
+        37,
+        "Figure 33 Histogram for all Apple image ID numbers"
+      ],
+      [
+        38,
+        "Figure 34 Histograms for other fruits’ image ID numbers"
+      ]
+    ],
+    "n_tab_captions": 0,
+    "tab_captions": [],
+    "fig_mentions_total": 38,
+    "tab_mentions_total": 0,
+    "eq_numbered_max": 12,
+    "n_reference_entries": 0,
+    "ref_year_min": null,
+    "ref_year_max": null,
+    "code_token_hits": 3,
+    "structure_pages": {
+      "summary": [
+        35
+      ],
+      "keywords": [
+        1
+      ],
+      "contents": [
+        2
+      ],
+      "restatement": [
+        2,
+        4,
+        11,
+        15,
+        18
+      ],
+      "assumptions": [
+        2,
+        6,
+        7
+      ],
+      "notation": [
+        2,
+        8,
+        20
+      ],
+      "sensitivity": [
+        2,
+        5,
+        23,
+        39
+      ],
+      "validation": [
+        20,
+        22,
+        25
+      ],
+      "strengths": [
+        1,
+        3,
+        38
+      ],
+      "conclusion": [],
+      "references": [
+        3,
+        18,
+        39
+      ],
+      "appendix": [
+        1,
+        3,
+        6,
+        36
+      ],
+      "promotion": [
+        2,
+        3,
+        12,
+        14,
+        39
+      ],
+      "letter": [
+        38
+      ]
+    },
+    "ai_marker_total": 6,
+    "ai_per_1000w": 0.9,
+    "ai_markers": {
+      "additionally": 4,
+      "facilitate": 1,
+      "overall": 1
+    },
+    "abstract_page1_words": 252,
+    "headings": []
+  },
+  "2023B": {
+    "file": "2023B_apmcm2307379.pdf",
+    "team": "apmcm2307379",
+    "n_pages": 23,
+    "word_count": 4357,
+    "n_sentences": 151,
+    "words_per_page": 189.0,
+    "sent_len_mean": 28.5,
+    "sent_len_median": 25,
+    "sent_len_max": 140,
+    "sent_len_stdev": 21.2,
+    "pct_short_lt12": 22.5,
+    "pct_mid_12_25": 31.1,
+    "pct_long_gt25": 46.4,
+    "passive_per_1000w": 9.6,
+    "present_is_are": 35,
+    "past_was_were": 30,
+    "first_person_we_our_us": 70,
+    "first_person_per_1000w": 16.1,
+    "flesch_reading_ease": 28.1,
+    "flesch_kincaid_grade": 16.5,
+    "ttr": 0.189,
+    "img_xobject_count": 38,
+    "img_filters": {
+      "['/FlateDecode', '/JPXDecode']": 37,
+      "/JPXDecode": 1
+    },
+    "img_large_over_600px": 0,
+    "img_small_under_200px": 7,
+    "vector_heavy_pages": 0,
+    "n_fig_captions": 24,
+    "fig_captions": [
+      [
+        6,
+        "Figure 1 Grids"
+      ],
+      [
+        8,
+        "Figure 2 Three-dimensional results of the whole greenhouse in Python"
+      ],
+      [
+        8,
+        "Figure 3 Results of target fields at a height of 0.5 meters in Python"
+      ],
+      [
+        8,
+        "Figure 4 Longitudinal temperature simulated by ANSYS"
+      ],
+      [
+        9,
+        "Figure 5 Longitudinal velocity simulated by ANSYS"
+      ],
+      [
+        9,
+        "Figure 6 Distribution of temperature at a height of 0.5 meters simulated by ANSYS"
+      ],
+      [
+        9,
+        "Figure 7 Distribution of velocity at a height of 0.5 meters simulated by ANSYS"
+      ],
+      [
+        10,
+        "Figure 8 Three-dimensional results of the whole greenhouse with crops in Python"
+      ],
+      [
+        10,
+        "Figure 9 Results of target fields at the height of 0.5 meters and 0.1 meters in Python"
+      ],
+      [
+        11,
+        "Figure 10 Three-dimensional model for the greenhouse with crops in ANSYS"
+      ],
+      [
+        12,
+        "Figure 11 Distribution of target fields in the longitudual direction simulated by ANSYS"
+      ],
+      [
+        12,
+        "Figure 12 Distribution of target fields at the height of 0.5 meters simulated by ANSYS"
+      ],
+      [
+        13,
+        "Figure 13 Distribution of target fields at the height of 0.1 meters simulated by ANSYS"
+      ],
+      [
+        14,
+        "Figure 14 Three-dimensional results with different inlet velocity"
+      ],
+      [
+        15,
+        "Figure 15 Three-dimensional results with different inlet position"
+      ],
+      [
+        15,
+        "Figure 16 Temperature fields in different scenarios"
+      ],
+      [
+        16,
+        "Figure 17 Velocity fields in different scenarios"
+      ],
+      [
+        17,
+        "Figure 18 Temperature fields in different scenarios at the height of 0.5m"
+      ],
+      [
+        18,
+        "Figure 19 Temperature fields in different scenarios at the height of 0.1m"
+      ],
+      [
+        20,
+        "Figure 20 Locations of the five fans"
+      ],
+      [
+        21,
+        "Figure 21 Three dimensional fields of the five-fans scheme"
+      ],
+      [
+        21,
+        "Figure 22 Target fields at two cross-sections of the five-fans scheme"
+      ],
+      [
+        22,
+        "Figure 23 Locations of the three fans"
+      ],
+      [
+        22,
+        "Figure 24 The three-fans scheme"
+      ]
+    ],
+    "n_tab_captions": 3,
+    "tab_captions": [
+      [
+        5,
+        "Table 1 Descriptions of Symbols"
+      ],
+      [
+        20,
+        "Table 2 Configurations of five-fans scheme"
+      ],
+      [
+        22,
+        "Table 3 Configurations of five-fans scheme"
+      ]
+    ],
+    "fig_mentions_total": 24,
+    "tab_mentions_total": 3,
+    "eq_numbered_max": 8,
+    "n_reference_entries": 0,
+    "ref_year_min": null,
+    "ref_year_max": null,
+    "code_token_hits": 1,
+    "structure_pages": {
+      "summary": [
+        1
+      ],
+      "keywords": [
+        1
+      ],
+      "contents": [
+        2
+      ],
+      "restatement": [
+        2,
+        3
+      ],
+      "assumptions": [
+        2,
+        5,
+        11,
+        21
+      ],
+      "notation": [],
+      "sensitivity": [],
+      "validation": [
+        2,
+        15
+      ],
+      "strengths": [
+        19
+      ],
+      "conclusion": [
+        16
+      ],
+      "references": [
+        2,
+        23
+      ],
+      "appendix": [
+        2,
+        7,
+        10,
+        13,
+        19
+      ],
+      "promotion": [
+        3
+      ],
+      "letter": []
+    },
+    "ai_marker_total": 8,
+    "ai_per_1000w": 1.84,
+    "ai_markers": {
+      "in summary": 4,
+      "comprehensive": 1,
+      "overall": 1,
+      "firstly": 1,
+      "secondly": 1
+    },
+    "abstract_page1_words": 344,
+    "headings": [
+      [
+        1,
+        "2023",
+        "APMCM summary sheet"
+      ]
+    ]
+  },
+  "2023C": {
+    "file": "2023C_apmcm2303763.pdf",
+    "team": "apmcm2303763",
+    "n_pages": 27,
+    "word_count": 5914,
+    "n_sentences": 220,
+    "words_per_page": 219.0,
+    "sent_len_mean": 24.3,
+    "sent_len_median": 20.0,
+    "sent_len_max": 138,
+    "sent_len_stdev": 18.9,
+    "pct_short_lt12": 23.2,
+    "pct_mid_12_25": 43.2,
+    "pct_long_gt25": 33.6,
+    "passive_per_1000w": 9.6,
+    "present_is_are": 110,
+    "past_was_were": 1,
+    "first_person_we_our_us": 42,
+    "first_person_per_1000w": 7.1,
+    "flesch_reading_ease": 16.9,
+    "flesch_kincaid_grade": 17.6,
+    "ttr": 0.222,
+    "img_xobject_count": 3,
+    "img_filters": {
+      "['/FlateDecode', '/JPXDecode']": 3
+    },
+    "img_large_over_600px": 0,
+    "img_small_under_200px": 0,
+    "vector_heavy_pages": 0,
+    "n_fig_captions": 15,
+    "fig_captions": [
+      [
+        9,
+        "Figure 1 Multiple linear regression fitting plot and residual plot"
+      ],
+      [
+        10,
+        "Figure 2 Sales time series plot and the plot with Log Transformation"
+      ],
+      [
+        10,
+        "Figure 3 Market penetration rate time series plot and the plot with Log Transformation"
+      ],
+      [
+        11,
+        "Figure 4 Step flow chart"
+      ],
+      [
+        11,
+        "Figure 5 Correlation matrix between feature variables"
+      ],
+      [
+        12,
+        "Figure 6 First order difference of logarithmic time series"
+      ],
+      [
+        13,
+        "Figure 7 Second order difference of logarithmic time series of sales volume"
+      ],
+      [
+        15,
+        "Figure 8 Sales forecast result of p=0,q=1(left) and p=3,q=1(right)"
+      ],
+      [
+        15,
+        "Figure 9 Market penetration rate forecast result of p=3,q=0(left) and p=3,q=1(right)"
+      ],
+      [
+        18,
+        "Figure 10 Competition results of ownership(left) and sales(right)"
+      ],
+      [
+        19,
+        "Figure 11 Global new energy electric vehicle market share in 2022"
+      ],
+      [
+        21,
+        "Figure 12 Export volume-policy diagram"
+      ],
+      [
+        23,
+        "Figure 13 The Urban Population’s Relationship with Total Public Buses and Cars"
+      ],
+      [
+        24,
+        "Figure 14 The Fitted Model for Carbon Emissions and Vehicle Numbers"
+      ],
+      [
+        26,
+        "Figure 15 1"
+      ]
+    ],
+    "n_tab_captions": 6,
+    "tab_captions": [
+      [
+        7,
+        "Table 1 Data source"
+      ],
+      [
+        8,
+        "Table 2 Model Summary"
+      ],
+      [
+        13,
+        "Table 3 ADF statistics and p-value"
+      ],
+      [
+        14,
+        "Table 4 Forecast of the development of NEEVs in China in the next 10 years"
+      ],
+      [
+        18,
+        "Table 5 Forecast for the development of NEEVs and TEVs in the next ten years"
+      ],
+      [
+        21,
+        "Table 6 Model Summary"
+      ]
+    ],
+    "fig_mentions_total": 16,
+    "tab_mentions_total": 7,
+    "eq_numbered_max": 9,
+    "n_reference_entries": 0,
+    "ref_year_min": null,
+    "ref_year_max": null,
+    "code_token_hits": 3,
+    "structure_pages": {
+      "summary": [
+        1
+      ],
+      "keywords": [
+        1
+      ],
+      "contents": [
+        2
+      ],
+      "restatement": [
+        2,
+        4
+      ],
+      "assumptions": [
+        2,
+        5
+      ],
+      "notation": [
+        2,
+        6
+      ],
+      "sensitivity": [
+        3,
+        25,
+        26
+      ],
+      "validation": [
+        3,
+        16,
+        21,
+        25,
+        26
+      ],
+      "strengths": [
+        3,
+        25,
+        26,
+        27
+      ],
+      "conclusion": [
+        5,
+        26
+      ],
+      "references": [
+        3,
+        27
+      ],
+      "appendix": [
+        3
+      ],
+      "promotion": [
+        3,
+        7,
+        24,
+        27
+      ],
+      "letter": [
+        3,
+        5,
+        24,
+        27
+      ]
+    },
+    "ai_marker_total": 27,
+    "ai_per_1000w": 4.57,
+    "ai_markers": {
+      "robust": 4,
+      "overall": 4,
+      "crucial": 3,
+      "comprehensive": 3,
+      "moreover": 2,
+      "pivotal": 2,
+      "additionally": 2,
+      "furthermore": 1,
+      "facilitate": 1,
+      "holistic": 1,
+      "intricate": 1,
+      "multifaceted": 1,
+      "navigate": 1,
+      "with the development of": 1
+    },
+    "abstract_page1_words": 306,
+    "headings": [
+      [
+        1,
+        "2023",
+        "APMCM summary sheet"
+      ],
+      [
+        18,
+        "104",
+        "Changes in the number of two groups"
+      ]
+    ]
+  }
+}

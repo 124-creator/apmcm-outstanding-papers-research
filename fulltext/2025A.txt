@@ -1,0 +1,1791 @@
+
+===== PDF page 1 =====
+Team # apmcm25302425                                                                           
+                                           
+ 
+ 
+ 
+ 
+ 
+2025 APMCMsummarysheet 
+A Multi-Objective Motion Planning and Energy Optimization 
+Framework for Humanoid Robots in Highly Dynamic Scenarios 
+summary 
+The consumer-levelservicescenarios of robotics technology are rapidly expanding, and the 
+motion performance, operationalstability, andsystem energy efficiency of humanoid robots in 
+highly dynamic environments have become core challenges constraining their widespread 
+deployment. Through establishing aseries of mathematical models, the core problems of 
+motion planning,stability control, and energy optimization are addressed. 
+Problem 1: Thisstudy established a kinematic model based on Denavit-Hartenberg 
+parameters. Through forward kinematics calculation, the final coordinates of the arm end 
+point were determined as (146.4, 84.5, 292.7) mm. Analysis demonstrates that the motion 
+trajectory issmooth and continuous, and all motor parameters are withinsafe operating 
+ranges, meeting the core requirements of robotstability and reliability. 
+Problem 2: Asingle-leg joint kinematic model based on quintic polynomial 
+trajectories was constructed for the robot'sstraight-line non-uniform velocity motion task. 
+The motion process adopts a three-stage velocity curve with total time T=5.0s. The 
+maximum knee joint angular velocity (0.4924 rad/s) occurs at t=0.611s and t=4.389s, 
+which is far belowsystemsafety limits, ensuringsmooth motor operation. 
+Problem 3: A multi-model fusion framework of "analytical motion planning + 
+coordinated optimization control" was designed for the Unitree G1 humanoid robot's 
+complex combined motion. Dual-arm joint trajectories were generated through inverse 
+kinematics, and a waist-lower limb coordination optimizer was constructed tostabilize the 
+center of mass projection within thesupport polygon, achieving modeling and verification of 
+29 joint angle functions within the 0–4s time interval. 
+Problem 4: Thisstudy established an energy consumption calculation model and 
+constrained optimization model based on motor dynamics. By defining timescale factor and 
+amplitudescale factors as optimization variables, thesequential Quadratic Programming 
+(SQP) algorithm was adopted forsolving. Optimization resultsshow that all three problems 
+achieved a 33.3% energy reduction with optimal timescale factors of 1.500. Comprehensive 
+analysis visualization charts were generated, including energy comparison, joint energy 
+breakdown, power-time curves, and optimization parameters, verifying the model's 
+effectiveness and robustness acrosssystems of different complexity (from 2 joints to 21 joints), 
+confirming that this optimization methodsignificantly reduces energy consumption without 
+changing motion patterns. 
+Key words:  Denavit-Hartenberg Model 、 Non-Uniform Velocity Model 、Multi-joint 
+Cooperative Control 、 3D Trajectory Visualization、Constrained Optimization 、sequential 
+Quadratic Programming 
+Team Number : apmcm25302425 
+Problem Chosen : A 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-65-
+
+===== PDF page 2 =====
+Team # apmcm25302425                                                                           
+                                           
+Contents 
+I. Introduction ............................................................................................................................................................. 1 
+1.1 Background ................................................................................................................................. 1 
+1.2 Problem Restatement ................................................................................................................... 1 
+1.3 Our works .................................................................................................................................... 2 
+II. The Description of the Proble ............................................................................................................................... 2 
+2.1 Analysis ofspecific Issues ........................................................................................................... 2 
+2.1.1 Analysis of Problem 1 .................................................................................................................................. 2 
+2.1.2 Analysis of Problem 2 .................................................................................................................................. 2 
+2.1.3 Analysis of Problem 3 .................................................................................................................................. 2 
+2.1.4 Analysis of Problem 4 .................................................................................................................................. 2 
+III. Basic assumption .................................................................................................................................................. 3 
+IV. Symbol ................................................................................................................................................................... 3 
+4.1 Symbols ....................................................................................................................................... 3 
+V. Models ..................................................................................................................................................................... 4 
+5.1 Analysis andsolving of Question One ......................................................................................... 4 
+5.1.1 Model Preparation ........................................................................................................................................ 4 
+5.1.2 Prediction Model for Endpoint Coordinates Based on the DH Model ......................................................... 4 
+5.1.3 Motorsafety Validation Model ...................................................................................................................... 5 
+5.1.4 Analysis of the Result ................................................................................................................................... 6 
+5.2 Analysis andsolving of Question Two ........................................................................................ 8 
+5.2.1 Model Preparation .................................................................................................................................... 8 
+5.2.2 Model of the Body's Non-Uniform Velocity Curve .................................................................................. 8 
+5.2.3 Model of Kinematic .................................................................................................................................. 8 
+5.2.4 Analysis of the Result ............................................................................................................................... 9 
+5.3 Analysis andsolving of Question Three .................................................................................... 11 
+5.3.1 Model Preparation .................................................................................................................................. 11 
+5.3.2 Establishment of Body Rotation and Dual-Arm Circular Motion Model............................................... 12 
+5.3.3 Analysis of the Result ............................................................................................................................. 13 
+5.4 Analysis andsolving of Question Four ...................................................................................... 17 
+5.4.1 Model Preparation .................................................................................................................................. 17 
+5.4.2 The establishment of the energy optimization model ............................................................................. 19 
+5.4.3 Results .................................................................................................................................................... 20 
+5.4.4 Analysis of the Result ............................................................................................................................. 21 
+VII. Evaluation and Promotion of Model ............................................................................................................... 24 
+6.1  Strength And Weakness .............................................................................................................. 24 
+6.1.1 Strength ...................................................................................................................................................... 24 
+6.1.2Weakness ..................................................................................................................................................... 24 
+VIII. References ........................................................................................................................................................ 25 
+Report on Use of AI Tools ........................................................................................................................................ 26 
+Appendix ................................................................................................................................................................... 28 
+Appendix One ...................................................................................................................................... 28 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-66-
+
+===== PDF page 3 =====
+Team # apmcm25302425                                                         Page 1 of 46 
+                                           
+I. Introduction 
+1.1  Background 
+With the advancement of advanced technologies, robotics has become a frontier field. 
+As robotic applications expand fromstructured industrialsettings to open, 
+non-structured consumerservicescenarios, humanoid robots face core challenges in 
+maintaining excellent motion performance,stability, and energy efficiency in highly 
+dynamic environments. The Unitree G1 humanoid robot, developed by Hangzhou 
+Unitree Robotics, integrates a multi-degree-of-freedom motionsystem with 
+high-precision visual perception modules, providing an ideal platform forstudying 
+comprehensive robot performance in complex tasks. 
+However, during complex task execution, robotsstill confrontsignificant 
+technical bottlenecks in the coordinated optimization of motorsafety control,stability 
+management, and multi-joint coordinated planning. For example,sudden motor torque 
+changes or load imbalances can easily lead to loss of control; improper weight 
+distribution or trajectory planning can disrupt dynamic balance, causing falls; while 
+highly complex motionsequences createsignificant energy consumption pressures, 
+directly limiting the robot's operational duration and reliability. 
+Therefore, thisstudy aims to establish precise mathematical models 
+tosystematically optimize the robot's joint motion, trajectory planning, multi-body 
+coordination, and energy consumption management, thereby enhancing thesafe and 
+controllable operation and energy efficiency maximization of humanoid robots. 
+1.2 Problem Restatement 
+Based on the interpretation and analysis of robot performance optimization, the 
+following problems need to be addressed: 
+1.For thespecified motion of the robot's left arm, it is necessary to establish its 
+kinematic model to calculate thespatial coordinates of the arm endpoint and verify 
+whether this motion remains within thesafety operating limits of the joint motors. 
+2.For the robot's non-uniform linear movement task, it is necessary to develop a 
+kinematic model ofsingle-leg joint angles over time based on gait planning, calculate 
+the time instant when the knee joint's angular velocity reaches its maximum, and 
+determine the total time required to complete the movement. 
+3.For the complex coordinated motion involving body rotation and circular arm 
+movements, it is necessary to establish a multi-joint collaborative motion model that 
+integrates upper-limb trajectory planning with lower-limb balance compensation, 
+describing the angular variations of each joint throughout the complete motion cycle. 
+4.Considering all the aforementioned performance actions collectively, it is 
+necessary to construct an energy consumption assessment model based on joint torque 
+and velocity to calculate the total energy consumption,subsequently propose an action 
+optimization model targeting energy efficiency, and compare the energy consumption 
+results before and after optimization. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-67-
+
+===== PDF page 4 =====
+Team # apmcm25302425                                                         Page 2 of 46 
+                                           
+1.3  Our works 
+ 
+Figure 1 Our Work 
+II. The Description of the Proble 
+2.1  Analysis ofspecific Issues  
+2.1.1 Analysis of Problem 1 
+Solve the forward kinematics for YuShu humanoid’s left arm:starting from the joint 
+zero position, perform two motions—60° forward extension and 30° left 
+rotation—with theshoulder as the origin. Using the DH model based on actual 
+jointstructure, link parameters, and motorsafety limits, compute the final Cartesian 
+coordinates of the arm endpoint and verify motorsafety. 
+2.1.2 Analysis of Problem 2 
+Develop a mathematical model for robot walking from (0,0,0) to (10,0,0) with 
+non-uniform velocity. Model joint angles (hip, knee, ankle) over time. Find when 
+knee angle changes most rapidly. Calculate total travel time. 
+2.1.3 Analysis of Problem 3 
+Problem Three: Unitree robot performs complex motion (0-4s): 45° torso rotation, 
+dual arms drawing opposite circles, legs balancing. Challenges: multi-joint coupling, 
+center of mass disturbance, waist-hip optimization. Model ensures precise timing, 
+dynamic consistency, constraint feasibility, and 'rotate body first, then trigger legs' 
+verification. 
+2.1.4 Analysis of Problem 4 
+Problem 4: Optimize energy via trajectoryscaling (time/amplitude) using Problems 
+1-3 data. Challenges: 1) Accurate energy model linking joint kinematics (angle, vel, 
+acc) to motor energy (torque, power). 2) Definescale factors, constrained optimization 
+for feasible/safe motion. 3)solve withsQP for optimal parameters. 4) Visualize results 
+(energy breakdown, power-time curves) for validation. Requires full pipeline 
+(preprocessing, modeling, optimization, analysis) robust across 3-21 joints. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-68-
+
+===== PDF page 5 =====
+Team # apmcm25302425                                                         Page 3 of 46 
+                                           
+III. Basic assumption 
+Assumptions are core to robot optimization modeling, transforming complex 
+engineering problems intosolvable mathematical models. 
+➢ Linkstructure Assumption: The left arm issimplified to 2 rigid links (upper arm 
++ forearm), ignoring flexiblestructuressuch as arm muscles andskin, retaining only 
+geometric dimensions with upper arm length of 170 mm and forearm length of 168 
+mm. 
+➢ Independence Assumption: Theshoulder joint is responsible for forward lifting 
+of 60° and left rotation of 30°, while the elbow joint is only responsible for forearm 
+flexion and extension. Joint motions have no coupling interference. 
+➢ Joint Trajectorysmoothness Assumption: Polynomial interpolation is used to 
+generate joint angle-time curves, ensuring continuity of angle, velocity, and 
+acceleration to avoid motorstart-stop impacts. 
+➢ Motor Model Assumptions: Motor torque is proportional to joint angular 
+acceleration. Motor power consists of dynamic power and base power. Moment of 
+inertia and base power remain constant during motion. 
+➢ Motion Assumptions: Joint angle trajectories can bescaled in both time and 
+amplitude dimensions. Optimized trajectories maintain thesame motion pattern as 
+original trajectories. 
+➢ Optimization Assumptions: Timescale factor and amplitudescale factors have 
+value ranges of [0.5, 1.5]. The optimization algorithm can converge to the global 
+optimalsolution or asolution close to the global optimum. 
+IV. Symbol 
+4.1  Symbols 
+Here we define the main parameters, and theirspecific values will be given later. 
+Symbols Definition Units 
+q
+ Vector of coordinated optimization variables 4D vector (rad) 
+,( ) ( )COM COMx t y t
+ Center of mass projection Millimeters (mm) 
+J
+ Cost function for coordinated optimization Dimensionless 
+totalE
+ Total energy consumption J 
+baseP
+ Base power W 
+
+ Energy reduction rate % 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-69-
+
+===== PDF page 6 =====
+Team # apmcm25302425                                                         Page 4 of 46 
+                                           
+V. Models 
+5.1  Analysis andsolving of Question One 
+5.1.1 Model Preparation 
+To calculate the endpoint coordinates of the humanoid robot's left arm in Problem 1, 
+the Denavit– Hartenberg (DH) model is employed tosystematically represent 
+multi-joint coordinate transformations. Combined with the Yushu G1sDK Guide, this 
+approach transforms joint motions into matrix operations for accurate coordinate 
+computation and validates motionsafety using hardware parameters, thereby laying 
+the groundwork for trajectory planning and multi-joint control insubsequent 
+problems. 
+(1)  Constraints Analysis   
+This analysis defines the necessary constraints and motion parameters for the 
+precise calculation of the endpoint coordinates for the Yushu humanoid robot's left 
+arm. It begins with the robot's initial posture (all joints at zero degrees), following the 
+problem requirements and establishing the physical andsafety guidelines of the Yushu 
+G1 platform. 
+Table 1 Motion Analysis 
+Parameter Type Specific Value 
+Arm Length 338 mm (rigid body length, elbow extended) 
+Joint Rotation Angle Pitch θ₁=60° (1.047 rad), Roll θ₂=30° (0.523 rad) 
+Jointsafety Limits Pitch: ±177°/153°, Roll: ±91°/129° 
+Coordinatesystem Origin (shoulder joint), x-axis forward, y-axis left, z-axis up 
+5.1.2 Prediction Model for Endpoint Coordinates Based on the DH Model 
+Based on the left arm'sstructure and the motion requirements of the problem, the arm 
+is divided into 2 links (upper arm and forearm) with lengths of 170mm and 168mm, 
+respectively, and 2 key joints (shoulder joint and elbow joint). 
+The model is astandard method widely used for robot kinematic modeling. 
+Itsystematically describes the relative position and orientation between adjacent links 
+in a multi-joint chain using four parameters. For theserialstructure of the G1's left arm 
+(shoulder joint → upper arm → elbow joint → forearm → left-hand endpoint), the 
+relative pose and position between adjacent links are defined by four parameters. The 
+core of this method lies in the homogeneous transformation matrix, which 
+cansimultaneously represent rotation and translation. The formula is as follows: 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-70-
+
+===== PDF page 7 =====
+Team # apmcm25302425                                                         Page 5 of 46 
+                                           
+1
+cos sin cos sin sin cos
+sin cos cos cos sin sin
+0 sin cos
+0 0 0 1
+i i i i i i i
+i i i i i i ii
+i
+i i i
+a
+aT d
+     
+     
+
+−
+−
+−=
+
+
+   (1) 
+1i
+iT −
+:transformation matrix of link i relative to link i-1; 
+i
+:Joint Angle Rotation about the
+1zi− axis, determining the orientation of link i; 
+ia
+:Link length the distance between the
+1zi−   and 
+zi  axes along the 
+ix axis; 
+i
+:the rotation around the
+ix  axis, determining the  
+zi axis direction relative to 
+1zi− ; 
+id
+:the distance along the 
+1zi−  axis. Zero if no translation exists; 
+Coordinates in the Base Coordinatesystem: 
+A robot has no joints, the overall transformation matrix of the end link relative to 
+the base frame (shoulder joint) is given by: 
+ 
+0 0 1 1
+12
+n
+nnT T T T −=  
+  (2) 
+The endpoint is expressed in homogeneous coordinates within the end-link 
+coordinate frame: 
+ 
+[0,0,0,1] ,T nP =   (3) 
+5.1.3 Motorsafety Validation Model 
+To ensure thesafe andstable operation of the Yushu humanoid robot during 
+performances, we have established quantifiedsafetystandards based on official 
+documentation. Thesestandards focus on two core areas: motorstatus monitoring and 
+overallstability assessment. 
+Step1: Joint Anglesafety Verification 
+ 
+max,i|| ,=i  (4) 
+ 
+i :actual joint angle,
+max,i :Maximum allowable joint angle of the motor 
+(Flexion/Extension: 
+90+
+  ,Abduction/Adduction:
+45
+  ) 
+Step2: Angular Velocitysafety Verification 
+Since the motion in Problem 1 has no time constraints, assuming uniform motion 
+over duration t, the angular velocity is: 
+ 
+i ,i
+t
+ =  (5) 
+Thesafety condition is:
+i max 180 (5.236 / )rad s=
+ . 
+Step3: Torquesafety Verification 
+Motor torque is related to joint load and acceleration.simplified model 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-71-
+
+===== PDF page 8 =====
+Team # apmcm25302425                                                         Page 6 of 46 
+                                           
+(acceleration is 0 during uniform motion): 
+ 
+i i i ii J F L= +  ，  (6) 
+iJ
+ : Moment of inertia, 
+iF : Gravitational load. 
+5.1.4 Analysis of the Result 
+(1) Analysis of End-Effector Coordinates 
+Step1: End-Effector Coordinate Accuracy Verification  
+Trajectory Continuity Check:in the "DH Model Frame Overlay Visualization", 
+trajectories from early, mid, and current frames form asmooth, fan-shaped coverage 
+without breaks or jumps. The "End-Effector Trajectory (X-Z Plane)"shows a 
+continuous andsmooth curve fromstart to end point, confirming the high continuity of 
+the DH model in representing the robotic arm motion. 
+ 
+Figure 2 Manipulator Motion Analysis 
+Step2: Command-Coordinate Consistency Check 
+Validation of Coordinate Reasonableness Based on Motion Design Parameters 
+and Visualization Results: 
+Body Angle Verification: The calculated final position of the end point is (146.4, 
+84.5, 292.7) mm
+2 2 2146.4 84.5 292.7 338mm+ +  . Its distance from theshoulder 
+joint is 338 mm, exactly matching the arm length. Its angle relative to the body (z-axis) 
+also meets the movement requirement. 
+Rotation Check: In the x-y plane, the end point's angle is calculated 
+as
+arctan( ) 30y x= =
+   . This perfectly matches the "rotate left 30°" command, 
+confirming correct horizontal positioning. 
+Visual Check: The chartsshow the end point's projected position in the X-Z plane 
+is (146.4, 292.7)mm, matching our calculation. The arm's movement path is also clear 
+andsmooth, confirming the result is reliable. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-72-
+
+===== PDF page 9 =====
+Team # apmcm25302425                                                         Page 7 of 46 
+                                           
+(2) Motorsafety Inspection Results Analysis 
+Step1: Comprehensive Evaluation of Inspection Items 
+Based on thesafety thresholds provided in the Yushu Humanoid Robot Developer 
+Documentation and the actual motion parameters, thesafety inspection results 
+aresummarized in the table below. All items meet thesafety requirements, 
+indicatingstable and reliable motor operation: 
+Table 2 Motorsafety Inspection Results 
+Inspection Item Actual Value Safety Threshold Result 
+Shoulder Flexion 
+Angle 60° ±90° Safe 
+Shoulder Abduction 
+Angle 30° ±45° Safe 
+Joint Angular 
+Velocity (Shoulder 
+Flexion) 
+60°/s ≤180°/s Safe 
+Joint Angular 
+Velocity (Shoulder 
+Abduction) 
+30°/s ≤180°/s Safe 
+Motor Torque ≈6.61 N·m ≤15 N·m Safe 
+Step2:safety Margin And Risk Prevention 
+All tested parameters maintainsufficientsafety margins: Joint angles: 
+30°(shoulder flexion), 15°(shoulder abduction)Angular velocity: >120°/s, Torque: 
+≈6.61 NM, These adequate margins help mitigate risks from mechanical errors, 
+environmental interference, or control inaccuracies. The "Joint Angle Variation" 
+chartshowssmooth transitions between positions with no abrupt changes or 
+oscillations, ensuringstable andsafe motor operation. 
+ 
+Figure 3 Left Arm End-Effector Motion Analysis 
+The calculated coordinates of the robot's left arm end-effector accurately 
+match the motion design requirements, with numerical results highly consistent 
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-73-
+
+===== PDF page 10 =====
+Team # apmcm25302425                                                         Page 8 of 46 
+                                           
+with visualizations, validating thescientific rigor of the DH model and the preci
+sion of the computational process. In terms ofsafety, all core metrics—joint an
+gles, angular velocity, and motor torque—arestrictly withinsafe thresholds and 
+maintainsufficientsafety margins, fully complying with thesafetyspecifications for
+ the Yushu Humanoid Robot's motor operation. Overall, this motion achieves t
+he intendedspatial posture while ensuring operationalstability andsafety, laying a
+solid foundation for executing more complex movements in the future. 
+5.2  Analysis andsolving of Question Two 
+5.2.1 Model Preparation 
+(1) Core Theoretical Foundations 
+Forward Kinematics: Calculates the foot-end position from joint angles to verify 
+if the trajectory follows astraight line along the x-axis (y=0, z=0). 
+Polynomial Interpolation: Ensures continuity in joint angle, angular velocity, and 
+angular acceleration to prevent motorshock. 
+Gait Cycle Phasing: The typical gait for a bipedal robot alternates between 
+"Support Phase" and "Swing Phase." The Yushu Humanoid Robot'sstep frequency is 
+controlled within 1–2 Hz . 
+(2) Reasonable Assumptions 
+Motion Pattern: Joint angles are assumed to change over time as continuous and 
+differentiable functions, avoidingsudden changes in velocity or acceleration. 
+Velocity Profile: A "trapezoidal acceleration" (non-uniform velocity) pattern is 
+adopted. This aligns with the natural walkingsequence of "startup – constant velocity 
+– deceleration" and facilitates the calculation of averagespeed. 
+5.2.2 Model of the Body's Non-Uniform Velocity Curve 
+Step1: Total Time Calculation 
+Based on the definition of average velocity, with a total displacement ofs=10m 
+and an average velocity of
+2/avgv m s= : 
+ 
+5s,
+avg
+ST v==  (7) 
+step2: Trapezoidal Deceleration Model 
+To avoidsuddenshocks duringstart/stop, the velocity profile is divided into three 
+phases under the "total displacement = 10 m" constraint: 
+Acceleration Phase:
+1t [0, t ] ,Velocity increases linearly from 0 to
+maxv ; 
+Constant Velocity Phase
+12t [t , t ] ,Velocity remains at
+maxv ; 
+Deceleration Phase
+2t [t ,5] ,Velocity decreases linearly from
+maxv to 0. 
+Parameters aresolved by displacementsuperposition: 
+ 
+22
+1 1 max 2 1 max 2 2 2
+11(t t ) (T t ) (T t )22S a t v v a= + − + − + −  (8) 
+5.2.3 Model of Kinematic 
+The hip jointserves as the local coordinate origin, maintaining constant height while 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-74-
+
+===== PDF page 11 =====
+Team # apmcm25302425                                                         Page 9 of 46 
+                                           
+moving with the robot. The knee angle
+()kneet t  is geometrically correlated with the 
+displacement
+()xt . 
+Step1: Geometric Constraints 
+Given thigh length 
+1l =0.3 m andshank length 
+2l =0.3 m: 
+During thesupport phase, the foot (end-effector) maintains ground contact (z=0), 
+with its x-coordinate aligned to the contact point. 
+The hip pitch angle 
+hip adjusts according tostride length during forward motion, 
+while the knee angle 
+kneet flexes tosupportstepping. 
+ 
+1 2 0cos ( ) cos( ( ) ( )) (h )hip hip kneetl t l t t  + − =  (9) 
+ 
+12sin ( ) sin( ( ) ( )) ( ) (t)hip hip kneet hipl t l t t x t x  + − = −  (10) 
+Where 
+()hip t denotes the hip pitch angle and
+()kneet t represents the knee joint angle. 
+Step2:Knee Joint Trajectory Planning 
+A quintic polynomial describes the knee angle trajectory during theswing phase, 
+ensuring continuity in position, velocity, and acceleration under the following 
+boundary conditions: 
+ 
+5 4 3
+5 4 3 1 0()kneet t a t a t a t a t a = + + + +  (11) 
+Step3:Model Optimization 
+    Motor dynamics constraints—based on the developer documentation—limit the 
+maximum joint angular velocity and acceleration: 
+ 
+max max| | ,| |ii   
+  (12) 
+5.2.4 Analysis of the Result 
+Step1:Phase Division Logic 
+A three-phase "acceleration–constant velocity–deceleration" profile is imple
+mented with 1.2s acceleration, 2.6s constant velocity, and 1.2s deceleration. Thi
+ssymmetric design reduces motionshock and improvesstability. With a total trav
+el of 10 m and average velocity of 2 m/s, the total time is validated as 5s. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-75-
+
+===== PDF page 12 =====
+Team # apmcm25302425                                                         Page 10 of 46 
+                                           
+ 
+Figure 4 Motion Phase Analysis Diagram 
+Step2: Analysis of Knee Joint Angle and Motion Characteristics  
+Angle Range Compliance: Operational range (12°-35°) remains well within
+safety limits (-5°-165°), providingsufficientsafety margin. 
+Extrema Distribution: Four velocity peaks identified. Maximum magnitude:
+ 0.4924 rad/s at 0.611s/4.389s; other peaks: 0.4731 rad/s at 1.862s/3.138s, dem
+onstratingsmooth motion. 
+Safety Verification: Maximum angular velocity (0.4924 rad/s) issignificantly
+ below 5 rad/s limit, ensuringsafe operation. 
+Acceleration Metrics: Maximum acceleration 1.609 rad/s², minimum -1.541 
+rad/s², both within ±10 rad/s² range, meetingsmooth power output requirements. 
+ 
+Figure 5 Comprehensive Joint Angle Variation Diagram 
+Step3: Joint Coordination and Constraint Verification 
+Single-Leg Jointsynchronization: The hip pitch, knee, and ankle pitch joints 
+demonstrate excellentsynchronization, with coordinated angle variation trends. This 
+ensures balanced posture duringstraight-line walking and prevents center-of-mass 
+displacement caused by asynchronous joint movements. 
+Full Constraint Compliance: All joint angles, angular velocities, and angular 
+accelerations remain within the limitsspecified in the documentation, verifying 
+thesafety and feasibility of the motion model. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-76-
+
+===== PDF page 13 =====
+Team # apmcm25302425                                                         Page 11 of 46 
+                                           
+ 
+Figure 6 safety Constraints 
+Temporal Planning Rationale: The total time T=5.0s is appropriate. Thesy
+mmetrical phase division meets the average velocity requirement, balancing mo
+vement efficiency andstability. Controlled Knee Motionsafety: The knee joint m
+otion remainssafe and controllable. The time of maximum angular velocity is c
+learly identified (t=0.6106s), and all dynamic indicators are withinspecified limi
+ts, ensuringsafe motor operation. Quintic polynomial trajectories outperform cub
+ic ones, reducing mechanicalshock and energy consumption while enabling futu
+re complex motions.
+ 
+5.3  Analysis andsolving of Question Three 
+5.3.1  Model Preparation 
+(1) Assumptions 
+Each robot link is modeled as a rigid body, with joint transmissions assumed to 
+be free of backlash and elastic deformation,satisfyingstructuralstiffness requirements 
+overshort-to-medium timescales. 
+Thesupport polygon formed by the feet remainsstatically grounded from 0 to 
+4seconds, withsufficient friction to preventslipping or lift-off. 
+Small adjustments in waist pitch/roll and hip pitch/roll have a near-linear effect 
+on the center-of-mass (COM) displacement, allowing linearized approximation that 
+facilitates coordinated optimization. 
+(2) The Foundation of Model 
+Centered on the task from Problem 3 — "trunk first rotates 45° to the left, while 
+both armssimultaneously draw circles in opposite directions" — we establish a 
+dual-arm circular trajectory generation and 2D inverse kinematics framework based 
+onstructural parameters, enabling the derivation of time-analyticalshoulder and elbow 
+joint angle functions. 
+By integrating a distributed mass model with real-timesupport polygon boundary 
+determination, we compute the center-of-mass coordinates
+()COMxt , 
+(t)COMy in real 
+time and trigger a coordinated waist-leg optimizationstrategy to ensure that the 
+projection of the center of mass remainsstably within thesupport polygon. 
+A mutually validating closed-loop is formed through MATLAB dynamicsi
+mulation and Python-based extended visualization, providing a complete academ
+ic modeling foundation for "multi-joint coordinated motion + collaborative opti
+mization + model verification" under the context of the given problem. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-77-
+
+===== PDF page 14 =====
+Team # apmcm25302425                                                         Page 12 of 46 
+                                           
+5.3.2  Establishment of Body Rotation and Dual-Arm Circular 
+Motion Model 
+This question establishes a "multi-joint coordinated motion planning" model for
+ the Unitree G1, with the core purpose of enabling the robot to complete the 
+compositestage action of "torso first rotating 45° left, both arms drawing circle
+s in opposite directions, and legs maintaining balance when necessary" within 
+0–4s. The overall method follows thesequence of "end-effector trajectory plann
+ing → COM modeling → waist-leg coordination → feasibility guarantee". 
+Step1: Dual-Arm Trajectory Generation 
+End-effector trajectory (shoulder local coordinatesystem): In theshoulder local 
+coordinatesystem, the desired end-effector trajectories are first given: both left and 
+right hands perform circular motion around theshoulder with a radius of 0.30 m and a 
+period of 4s, but with opposite angular velocitysigns, making the two arms have a 
+180° phase difference. At each moment, theshoulder local coordinates are first 
+calculated, then multiplied by the torso yaw rotation matrix to obtain global 
+coordinates. 
+Left hand: 
+ 
+/2 ( ), ( )LLx d Rcos t y Rsin t= + =  (13) 
+Right hand: 
+ 
+/ 2 , ( ( ) )RRx d Rcos t y Rsin t=− + − = −  (14) 
+Subsequently, theshoulder pitch and elbow angles are determined using a 2R 
+analytical inverse kinematics (IK) approach.specifically, the planar 
+distance
+22d x y=+ is first computed from the end-effector coordinates
+(),xy . 
+Applying the law of cosines to the two-link arm geometry yields the elbow angle
+elb  . 
+Once
+elb  is known, theshoulder pitch angle is obtained by resolving the angular 
+relationship between the base frame and the line connecting theshoulder joint to the 
+end-effector. This analytical procedure ensuressmooth, continuous, and reproducible 
+joint angle trajectories as functions of time or task-space position. 
+Where, 
+ 
+0.1672 ,? 0.3 , / 2 /d m R m rad s= = =  (15) 
+IK analyticalsolution (2R mechanism): 
+ 
+2 2 2 2 2 2
+1 2 1 2
+1 2 1
+( ), ( ) ( )222,elb shparccos arctan y x arcL L d L d L L cL o Lds+ − + −= = −  (16) 
+And
+12  0.2 , 0.138L m L m== . 
+Step2: COM Modeling andsupport Constraints 
+To analyzestability, the robot issimplified into 5 rigid bodies: torso 20 kg, both 
+arms 3 kg each, both legs 5 kg each. The COM projection is calculated in real time 
+through weighted averaging, and thesupport domain isset. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-78-
+
+===== PDF page 15 =====
+Team # apmcm25302425                                                         Page 13 of 46 
+                                           
+Support domain: 
+ 
+80 , 60COM COMx mm y mm  (17) 
+In the model, compensation is only triggered when the COM exceeds this rectangle, 
+keeping the legsstationary most of the time, meeting thestage requirement of 
+"avoiding excessiveswaying". 
+Step3: Waist-Leg Cooperative Optimization 
+Once the COM exceeds the boundary, the waist Pitch/Roll and left hip Pit
+ch/Roll are combined into optimization variables. Under thesmall angle assumpt
+ion, a linear mapping between the COM offset and the optimization variables 
+can be written, where 
+A  is determined by geometric parameterssuch as torso h
+eight, leg length, and hip distance. With 
+TJ q Wq=  as the cost (
+W  increases th
+e waist weight and limits the action amplitude), the optimal 
+q  is analyticallyso
+lved.subsequently, the right leg isset to mirrorsymmetry, making the entire leg 
+motion coherent. Thisstep ensures that "waist and legs only intervene when nec
+essary at minimum cost" and quickly pulls the center of mass back to thesafe 
+domain. The parameters are as follows: 
+Optimization variables: 
+ 
+,,, ],[ ,L L T wp wr hip p hip rq    =  (18) 
+Linear mapping (small angle approximation):   
+ 
+0 0.5 0[ ] [ ]0 0 0.5, COM COM tl th hxAq Ay L hW=− =  (19) 
+ 
+0.75 ,? 0.6 , 0.15t l hh m L m W m= = =  (20) 
+Cost function: 
+ 
+, 15,15,8,()8J q Wq W diag==
+  (21) 
+Analytical optimalsolution: 
+ 
+1 1 1( ) [ , ]COM COMq W A AW A x y− − −=−
+   (22) 
+Leg linkage:set  
+ 
+,0.6 , , 0.4knee hip ankle hip pp   = =−  (23) 
+for right leg mirrorsymmetry. 
+Step4: Feasibility Guarantee 
+All angles are clipped by joint limits (e.g., 
+ _   150 ,150WAIST YAW  −   ), 
+then lightlysmoothed (Savitzky-Golay filtering) to ensure continuity. 
+5.3.3  Analysis of the Result 
+(1) Methodology Overview 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-79-
+
+===== PDF page 16 =====
+Team # apmcm25302425                                                         Page 14 of 46 
+                                           
+ 
+Figure 7 Robot Multi-joint Coordinated Motion Planning Results 
+For the stage configuration in Problem Three, we implement a structured 
+hierarchical strategy: "posture orientation → end-effector trajectory → center of
+ mass correction." Initially, based on the requirement of "body rotating 45° left,
+" a cosine-accelerated waist trajectory is designed to smoothly achieve the targ
+et orientation within 0.8 seconds. This proactive postural adjustment establishes
+ a unified coordinate reference frame, significantly simplifying subsequent arm 
+motion planning. 
+Following posture stabilization, dual-arm circular trajectories with a radius 
+of 0.30 m and a period of 4 seconds are generated in the shoulder-local coord
+inate system. The trajectories are programmed with opposite rotational direction
+s to maintain dynamic balance. Through analytical inverse kinematics, we deriv
+e corresponding shoulder-elbow angle sequences that accurately execute these tr
+ajectories while satisfying joint limit constraints. This hierarchical decompositio
+n effectively coordinates multiple degrees of freedom, ensuring motion feasibilit
+y and providing a solid foundation for potential COM correction in future impl
+ementations. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-80-
+
+===== PDF page 17 =====
+Team # apmcm25302425                                                         Page 15 of 46 
+                                           
+ 
+Figure 8 Collaborative Optimization Control Verification Results 
+For Problem Three, we adopt a hierarchical approach: posture orientation, 
+end-effector trajectory, then COM correction. First, a cosine-accelerated waist curve 
+rotates the body 45° left within 0.8s. Then, dual-arm circular trajectories (radius 
+0.30m, period 4s, opposite directions) are generated in shoulder coordinates, and 
+shoulder-elbow angles are obtained via analytical inverse kinematics. 
+ 
+Figure 9 Handspeed Profile 
+(2) Discussion 
+The proposed modelsuccessfully achieves thesequence of "first turning, the
+n drawing circles, finally balancing": the waistsmoothly reaches 45° within 0.8s,
+ dualshoulder/elbow trajectoriesstrictlysatisfy the requirements of radius 300 mm,
+ period 4s, and opposite motion; COM offset is reduced from 95 mm to 78 m
+m, waist-hip compensation peaks are only ±3°, intervening only when exceedin
+g boundaries. The dual-arm 3D trajectoriesshow a mirror "∞"shape, waist-leg c
+ompensation triggers are few and amplitudes aresmall, balancingstage posture a
+ndsafety, fully meeting Problem Three's requirements for trajectory,stability, and
+ restrained leg motion. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-81-
+
+===== PDF page 18 =====
+Team # apmcm25302425                                                         Page 16 of 46 
+                                           
+ 
+Figure 10 Hand 3D Trajectories and Key Joint Angles 
+Five figures demonstrate the cooperative planning model. Figure 1 shows the 
+time sequence: waist yaw reaches 45° in 0.8s, arm angles follow 4s periodic solutions, 
+trajectories form mirror "∞" shape, and leg adjustments are ±3° in COM 
+disturbance regions. Figure 2 shows cooperative optimization pulling COM 
+from 95mm to 78mm safe range, with low-amplitude cost oscillations. Figure 3 
+verifies 3D trajectories and velocity vectors showing precise opposite circular motion. 
+Figure 4's leg heatmap shows angles near zero, with hot zones only when COM 
+exceeds boundaries. Figure 5 provides speed and energy curves for Problem Four. 
+For Problem Three, we have completed work in the following three aspects: 
+①A complete mathematical framework covering "torso orientation — dual-arm 
+analytical inversesolution — real-time COM monitoring — waist-leg cooperative 
+optimization" has been constructed, generating time functions for 29 joints within 
+0–4s,supplemented by mutual verification on MATLAB and Python dual platforms. 
+②All kinematic andstability constraints proposed in the problem aresatisfied: 
+dual-arm trajectoriesstrictly follow the requirements of radius 300 mm, period 4s, and 
+opposite directions; waist left rotation precisely reaches 45°; cooperative optimization 
+constrains COM within thesupport polygon for extended periods while keeping leg 
+motion minimized. 
+③Feasible data and verification output have been completed: all joint angles 
+pass limit checks andstandardized data files are generated, providing input 
+forsubsequent energy consumption analysis, thereby empirically demonstrating the 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-82-
+
+===== PDF page 19 =====
+Team # apmcm25302425                                                         Page 17 of 46 
+                                           
+model's closure and usability at both theoretical andsimulation levels. 
+ 
+Figure 11 Hand Velocity Vectors (projected) 
+5.4  Analysis andsolving of Question Four 
+5.4.1 Model Preparation 
+(1) Data Processing  
+Problem 4 energy optimization uses trajectory data from Problems 1-3. Problem 
+1: 2 left arm joints over 2.0 seconds (100 points), recording shoulder flexion and 
+abduction. Problem 2: 3 leg joints over 5.0 seconds (1000 points), recording hip, knee, 
+and ankle angles with walking velocity variations. Problem 3: 21 body joints over 
+10.0 seconds (1000 points), recording coordinated motion of waist, shoulders, elbows, 
+hips, knees, and ankles. 
+Preprocessing: angles to radians, uniform interpolation, limit validation, stru
+ctured matrices. Converts trajectory data into standardized inputs for energy opt
+imization. 
+(2) Assumptions 
+The establishment of the energy optimization model is based on assumptions in 
+four aspects, providing necessary theoretical foundations and constraint conditions for 
+the mathematical expression and optimizationsolving of the model. 
+1. Motor Model Assumptions 
+In motor dynamics modeling, thisstudy assumes that motor torque is propo
+rtional to joint angular acceleration, i.e.,
+ (  )  ) (t J t=
+  ,where J is the momen
+t of inertia of the joint and 
+()t is the angular acceleration. This assumption is
+ based on asimplified model of motor drivesystems and is applicable to the dy
+namic characteristics of mostservo motors within their normal operating range. 
+Motor power consists of dynamic power 
+( ) ( )  tt
+  and base power
+baseP .
+Dynamic power reflects the work done by the motor to overcome inertial load
+s, while base power represents the basic power consumption required for the 
+motor to maintain operation, including energy consumption generated by control
+ circuits,sensors, and mechanical friction. Furthermore, thisstudy assumes that f
+or each joint type, its moment of inertia 
+J  and base power 
+baseP  remain const
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-83-
+
+===== PDF page 20 =====
+Team # apmcm25302425                                                         Page 18 of 46 
+                                           
+ant throughout the motion process. This assumptionsimplifies the model comple
+xity, making the optimization problemsolvable. 
+2. Optimization Assumptions 
+Thisstudysets optimization variable ranges: timescale factor tscale ∈ [0.5, 1.5]
+, allowing motionspeed variation between 50% and 150% of originalspeed. Am
+plitudescale factor ai ∈ [0.5, 1.5] for each joint, allowing amplitude adjustment
+ between 50% and 150% of original amplitude. These ranges ensuresufficientse
+archspace while avoiding unreasonable results from excessive deviation. The op
+timization algorithm is assumed to converge to global optimal or near-global o
+ptimalsolutions, based on the good convergence performance ofsequential Quadr
+atic Programming (SQP) algorithm in constrained optimization problems. 
+3. Energy Consumption Calculation Assumptions 
+Thisstudy adopts power integration to calculate total energy consumption, i.
+e.,
+()E P t dt= ,obtaining energy consumption through integration of power over
+time. This method is based on energy conservation principles and accurately re
+flects motor energy consumption throughout the motion cycle. Power is assume
+d always positive, i.e., energy recovery mechanisms during regenerative braking
+are not considered. Thissimplifies the calculation model. Althoughsome motors 
+may recover partial energy through regenerative braking, ignoring energy recov
+ery does not affect optimizationstrategy effectiveness. Base power 
+baseP  remains
+constant throughout motion, consistent with motor model assumptions,simplifyin
+g model complexity and improving problemsolvability. 
+(3) Model Foundation 
+The establishment of the energy optimization model is based on the fundamental 
+principles of classical mechanics and motor dynamics, providing a theoretical 
+foundation for the optimization problem by establishing mathematical relationships 
+between joint motion and energy consumption. 
+1.Motor Dynamics Principles 
+According to the application of Newton'ssecond law in rotational motion, the 
+torque 
+()t  generated by the motor is proportional to joint angular acceleration 
+()t
+ , i.e.,
+( )    ( )t J t=
+  , where 
+J  is the moment of inertia（
+· ²kg m ）,reflecting 
+the inertial resistance of the joint and its load to rotation. Motor power 
+()Pt  consists 
+of dynamic power 
+( )  ( )tt
+  and base power 
+baseP  . Dynamic power represents the 
+work done by the motor to overcome inertial loads, while base power represents the 
+basic power consumption required for the motor to maintain operation, including 
+constant energy consumption generated by control circuits,sensors, mechanical 
+friction, etc. 
+2.Energy Consumption Calculation Principles 
+Energy consumption calculation is based on the principle of energy conser
+vation, obtaining the energy consumption of the entire motion process through 
+integration of power over time. The energy consumption of asingle joint 
+1
+0
+()
+t
+joint tE P t dt=
+,reflects the total work done by the motor throughout the en
+tire motion cycle. For multi-jointsystems, total energy consumption 
+total jointEE=
+,is the linearsuperposition of energy consumption of all joints. T
+hissuperposition relationship is based on the principle of energy conservation, a
+ssuming that energy consumption between joints is mutually independent. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-84-
+
+===== PDF page 21 =====
+Team # apmcm25302425                                                         Page 19 of 46 
+                                           
+3.Motor Parameter Configuration 
+Moment of inertia 
+J and base power
+baseP are configured according to joint type 
+and physical characteristics. 
+In Problem1, both theshoulder flexion joint andshoulder abduction joint have a 
+moment of inertia of 
+J = 0.05 kg·m², and both have a base power of 
+baseP = 1.0 W. 
+In Problem2, the hip joint, knee joint, and ankle joint have moments of inertia of 
+0.08 kg·m², 0.05 kg·m², and 0.02 kg·m², respectively, and base powers of 1.2 W, 1.0 
+W, and 0.6 W, respectively. 
+In Problem3, motor parameters are uniformly configured according to joint type:  
+waist/body joints 
+J = 0.10
+· ²kg m 、
+baseP  = 1.5 W; 
+shoulder joints   
+J = 0.05
+· ²kg m 、
+baseP = 1.0 W; 
+elbow joints     
+J = 0.02
+· ²kg m 、
+baseP = 0.5 W; 
+hip joints       
+J = 0.08 kg·m²、
+baseP = 1.2 W; 
+knee joints      
+J = 0.05 kg·m²、
+baseP  = 1.0 W; 
+ankle joints     
+J = 0.02 kg·m²、
+baseP = 0.6 W. 
+These parameter configurations are based on the physical characteristics of 
+typical robot joints, providing a reasonable numerical foundation for energy 
+consumption calculation. 
+5.4.2 The establishment of the energy optimization model 
+The establishment of the energy optimization model includes keystepssuch as 
+data preprocessing, initial energy consumption calculation, optimization problem 
+construction andsolving, transforming the energy consumption optimization problem 
+into a constrained optimization problem through mathematical modeling. 
+Step1: Optimization Variables and Trajectory Transformation 
+Define the optimization variable vector 
+scale 1 2[ , , , , ]nx t a a a= , where 
+scalet  
+is the timescale factor, 
+ia  is the amplitudescale factor of joint i, and n is the total 
+number of joints.  
+Transform the original trajectory through optimization variables, with time 
+transformation as 
+ 
+   new scale originalt t t=
+  , (24) 
+and angle transformation as  
+ 
+new , new original, original( ) ( )i i it a t=  . (25) 
+This transformation allows the optimization algorithm to explore different 
+motionspeeds and amplitudes while maintaining the original motion pattern, 
+therebysearching for motion trajectories with better energy consumption. 
+Step2: Objective Function and Constraint Conditions 
+The objective of the optimization problem is to minimize the total energy 
+consumption of the transformed trajectory, i.e.: 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-85-
+
+===== PDF page 22 =====
+Team # apmcm25302425                                                         Page 20 of 46 
+                                           
+ 
+1
+total 01 min ( ) min ( , )
+n t
+jtj E x P x t dt = =   (26) 
+where 
+( , )jP x t dt  represents the power of joint j under optimization variable x. 
+The constraint conditions for optimization variables are: 
+Timescale factor constraint:
+0.5 1.5scalet  
+Amplitudescale factor constraint: 
+(0.5 1.5 1, 2 , ),ia i n  =   
+These constraint conditions ensure that the optimized motion remains within a 
+reasonable range, neither excessively deviating from the original motion trajectory 
+nor providingsufficientsearchspace for the optimization algorithm. 
+Step3: Optimization Algorithm andsolving 
+Thesequential Quadratic Programming (SQP) algorithm in the MATLAB 
+optimization toolbox is adopted tosolve the constrained optimization problem. 
+ThesQP algorithm approximates the optimalsolution of the original problem by 
+iterativelysolving quadratic programmingsubproblems, with good convergence 
+performance and computational efficiency. The optimization algorithm parameters 
+areset as: maximum iteration count 50, convergence tolerance 1e-6, initial guess x₀ = 
+[1, 1, ..., 1]（indicating no initialscaling). The optimization algorithm is executed 
+through the fmincon function, obtaining the optimal variable 
+optx  and the 
+corresponding optimized energy consumption 
+opt total opt()E E x=  The energy 
+reduction rate is calculated by: 
+ 
+orig opt
+orig
+100%
+EE
+E
+−
+=  (27) 
+5.4.3 Results 
+Through the energy optimization model, the motion trajectories of the three problems 
+were optimized, achievingsignificant energy consumption reduction effects. The 
+optimization results aresummarized in Table 4,showing the original energy 
+consumption, optimized energy consumption, energy reduction percentage, 
+andspecific values of optimization parameters for each problem. 
+As can be seen from Table 2, the optimization results of the three problems 
+exhibit significant consistency characteristics. All problems achieved a 33.3% energy 
+reduction, and this consistent result verifies the effectiveness and robustness of the 
+optimization method. The optimal time scale factors for all three problems are 1.500, 
+indicating that reducing motion speed is a universal energy-saving strategy. For 
+Problems 1 and 2, the amplitude scale factors of all joints are 1.000, indicating that 
+maintaining the original motion amplitude is optimal. For Problem 3, the amplitude 
+scale factors range from [0.500, 1.500] with an average value of 1.000, indicating that 
+for complex systems, amplitude adjustment provides additional optimization space. 
+The energy reduction rate  is calculated by the formula 
+  , where 
+  is the 
+original energy consumption and 
+  is the optimized energy consumption. A 
+33.3% energy reduction means that under the same power conditions, the robot's 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-86-
+
+===== PDF page 23 =====
+Team # apmcm25302425                                                         Page 21 of 46 
+                                           
+operating time can be increased by approximately 50%, which is of great significance 
+for battery-powered robot systems. 
+Table 3 Model Parameter Value Results 
+Problem Original Energy Optimized Energy Energy Reduction Timescale Factor Amplitudescal e Factors 
+Problem 1 4.00 J 2.67 J 33.3% 1.50 [1.000, 1.000] 
+Problem 2 14.00 J 9.33 J 33.3% 1.50 [1.000, 1.000] 
+Problem 3 86.80 J 57.86 J 33.3% 1.50 [0.500, 1.500] 
+5.4.4 Analysis of the Result 
+To comprehensively demonstrate optimization results and conduct in-depth analysis 
+of optimization effectiveness, thisstudy generated comprehensive analysis charts for 
+each problem. Each comprehensive analysis chart contains foursubplots, 
+demonstrating comparison results before and after optimization and optimization 
+parameters from different perspectives. 
+ 
+Figure 12 Left Arm Motion 
+According to the comprehensive chart of Problem 1 (asshown in Figure 11), the 
+chart demonstrates the optimization results of left arm motion.subplot (a) Energy 
+Optimization Comparison compares the total energy consumption through bar charts: 
+original plan 4.00 J, optimized plan 2.67 J, with 33.3% energy reduction displayed 
+above the chart. Thissubplot verifies the optimization model effectiveness, 
+achievingsignificant energy reduction through reducing motionspeed 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-87-
+
+===== PDF page 24 =====
+Team # apmcm25302425                                                         Page 22 of 46 
+                                           
+Subplot (b) Joint Energy Breakdown Comparisonshows energy consumption of 
+two joints (shoulder flexion,shoulder abduction) through grouped bar charts. In the 
+original plan, both joints consume approximately 2.0 J each; in the optimized plan, 
+both are reduced to approximately 1.3 J. Thesimilar reduction magnitudes reflect 
+uniform timescaling influence andsimilar energy consumption characteristics between 
+the two joints. 
+Subplot (c) Power-Time Curve Comparisonshows total power variation over 
+time through line charts. The original plan (solid line) and optimized plan (dashed line) 
+fluctuate within 1.8-2.2 W. The optimized curve isstretched to 1.5 times the original 
+time (timescale factor 1.500) withsmaller fluctuation amplitude. Although motion 
+time is extended, power reduction results in decreased total energy consumption. 
+Power curves remain relativelystable throughout the 2.0-second cycle, reflecting 
+uniform power demand. 
+Subplot (d) Optimization Parameters & Results lists key information: timescale 
+factor 1.500, amplitudescale factors (J1 and J2 both 1.000), original energy 4.00 J, 
+optimized energy 2.67 J, energy reduction 33.3%, and alias descriptions mapping 
+J1/J2 toshoulder flexion/abduction. Optimization is mainly achieved through 
+timescaling, with original amplitudes maintained as optimal. 
+ 
+Figure 13 Walking Trajectory 
+The comprehensive chart of Problem 2 (asshown in Figure 12) demonstrates 
+walking trajectory optimization results.subplot (a)shows original plan 14.00 J, 
+optimized plan 9.33 J, with 33.3% energy reduction, clearly demonstrating 
+optimization effectiveness. 
+Subplot (b)shows energy consumption comparison of three joints (hip pitch, 
+knee, ankle pitch). Original plan: hip pitch 6.00 J, knee 5.00 J, ankle pitch 3.00 J. 
+Optimized planshows reduced consumption for all joints, with knee joint reduction 
+mostsignificant, consistent with its primary driving role in walking. 
+Subplot (c)shows power variation over time during walking. The optimized 
+power curve isstretched in time with more uniform distribution and reduced peak 
+power, reflecting timescaling influence on power distribution. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-88-
+
+===== PDF page 25 =====
+Team # apmcm25302425                                                         Page 23 of 46 
+                                           
+Subplot (d)shows timescale factor 1.500, all amplitudescale factors 1.000, 
+original energy 14.00 J, optimized energy 9.33 J, energy reduction 33.3%, and alias 
+descriptions mapping J1/J2/J3 to hip pitch/knee/ankle pitch. Optimizationstrategy is 
+thesame as Problem 1, mainly through timescaling. 
+ The comprehensive chart of Problem 3 (asshown in Figure 13) demonstrates 
+multi-joint coordinated motion optimization results.subplot (a)shows original plan 
+86.80 J, optimized plan 57.86 J, with 33.3% energy reduction. Despite larger 
+energyscale, optimization effectiveness remains consistent, verifying method 
+effectiveness for complexsystems. 
+Subplot (b)shows energy consumption comparison of 21 joints.simplified aliases 
+(J1-J21) are used on X-axis to avoid label overlap. All jointsshow reduced 
+consumption after optimization, with varying reduction magnitudes.some joints 
+(left/rightshoulder yaw, waist pitch/roll/yaw) have higher original consumption (6.00 
+J) with relativelysignificant reduction. 
+ 
+ 
+Figure 14 Multi-Joint Coordination 
+Subplot (c)shows power variation during multi-joint coordinated motion. The 
+optimized power curve isstretched in time with reduced peak power and fluctuation 
+amplitude. Power curve variation is more complex due to 21-joint coordination, but 
+overall trend issimilar to Problems 1 and 2, reflecting timescaling influence on 
+multi-jointsystems. 
+Subplot (d) lists key information: timescale factor 1.500, amplitudescale factors 
+range [0.500, 1.500] (average 1.000) for 21 joints, original energy 86.80 J, optimized 
+energy 57.86 J, energy reduction 33.3%, and complete alias descriptions mapping 
+J1-J21 to all joint names. Optimization combines timescaling with amplitude 
+adjustment, with varying amplitudescale factors reflecting different energy 
+consumption characteristics in multi-jointsystems. 
+The comprehensive analysis charts demonstrate optimization results from 
+multiple dimensions (total energy, joint breakdown, power curves, optimization 
+parameters). All three problems achieved 33.3% energy reduction. Optimization is 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-89-
+
+===== PDF page 26 =====
+Team # apmcm25302425                                                         Page 24 of 46 
+                                           
+mainly achieved through timescaling, with amplitude adjustment added for 
+complexsystems (Problem 3). The charts verify optimization model effectiveness and 
+provide intuitive visualization basis for understanding optimization mechanisms and 
+guiding practical applications. 
+VII. Evaluation and Promotion of Model 
+6.1  Strength And Weakness 
+6.1.1 Strength 
+(1) High computational efficiency andstrong verifiability: The model utilizes the 
+established Denavit–Hartenberg (DH) parameter method, requiring no complex 
+iterative computation. Coordinates are derived through directsubstitution of joint 
+angles and link lengths, and results can be verified via geometric back-calculation. 
+(2)Quantifiable non-uniform motion aligned with gait characteristics: Moving beyond 
+asimplistic constant-velocity model, the motion is decomposed into acceleration, 
+constant-speed, and deceleration phases, accurately described using a piecewise-defined 
+function. 
+(3)High computational efficiency: The analytical inverse kinematics method avoids iterative 
+optimization, providing excellent real-time performance and enabling rapid generation of 
+continuous time functions for all 29 joints, meeting real-time control requirements. 
+6.1.2Weakness 
+(1)Insufficient motionsmoothness: Due to joint limit clipping and the consideration of only 
+2D planar motion, elbow joint angles exhibitsudden jumps at certain moments, resulting in 
+discontinuous joint velocities that may affect the actual robot's motionsmoothness. 
+(2)Local Optimal Risk:sQP algorithm may converge to local optimalsolutions rather than 
+global optimalsolutions, and optimization results may not be theoretically optimal. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-90-
+
+===== PDF page 27 =====
+Team # apmcm25302425                                                         Page 25 of 46 
+                                           
+VIII. References 
+[1] Peng Guangyu, Dong Hongbo, Ma Bin.Comparativestudy on robot kinemati
+cs modeling of two DH models [ J ].Mechanical research and application, 201
+9,32 ( 6 ) : 62-65. DOI: 10.16576 / j.cnki.1007-4414.2019.06.019.  
+[2] Wu Haotian. Multi-objective trajectory planning of industrial robots based o
+n continuity constraints [ D ]. Hubei : Huazhong University ofscience and Tec
+hnology, 2022.  
+[3] Zhang Bin. Research on the end vibration of mobile manipulator based ons
+peed control [D].shandong :shandong University ofscience and Technology, 202
+2. 
+[4] Rieder R, Lünenburger L, Jezerniks, et al. Patient-cooperativestrategies for r
+obot-aided treadmill training: first experimental results[J]. IEEE Transactions on
+ Neuralsystems and Rehabilitation Engineering, 2005, 13(3): 380–384. DOI: 10.
+1109/TNSRE.2005.848628. 
+[5] Hidler J, Nichols D, Pelliccio M, et al. Multicenter randomized clinical tria
+l evaluating the effectiveness of the Lokomat insubacutestroke[J]. Neurorehabilit
+ation and Neural Repair, 2009, 23(1): 5–13. DOI: 10.1177/1545968308326632. 
+[6] Hesses,schmidt H, Werner C, et al. Upper and lower extremity robotic devi
+ces for rehabilitation and forstudying motor control[J]. Current Opinion in Neur
+ology, 2003, 16(6): 705–710. DOI: 10.1097/01.wco.0000102630.16692.38. 
+[7] Colombo G, Joerg M,schreier R, et al. Treadmill training of paraplegic pati
+ents using a robotic orthosis[J]. Journal of Rehabilitation Research and Develop
+ment, 2000, 37(6): 693–700. DOI: 10.1682/JRRD.2000.11.0693. 
+[8]shin, K. G., McKay, N. D., Energy-Optimal Trajectory Planning for Robot 
+Manipulators[J], IEEE Transactions on Automatic Control, 1985, 30(1), 42-53. 
+[8] Nocedal, J., Wright,s. J., Numerical Optimization[M], New York:springer, 2
+006, 1-664. 
+[9] Paryanto, Brossog, M., Bornschlegl, M., Franke, J., Energy Consumption M
+odeling and Optimization for Multi-Joint Roboticsystems[J], IEEE Transactions 
+on Automationscience and Engineering, 2015, 12(4), 1242-1254. 
+[10] Bobrow, J. E., Dubowsky,s., Gibson, J.s., Time-Optimal and Energy-Efficie
+nt Trajectory Planning for Robot Manipulators[J], IEEE Transactions on Roboti
+cs and Automation, 1985, 1(1), 3-13. 
+[11] Verscheure, D., Demeulenaere, B.,swevers, J., Deschutter, J., Diehl, M., Co
+nstrained Optimization Approaches for Robotic Motion Planning[J], IEEE Trans
+actions on Robotics, 2009, 25(3), 609-620. 
+[12]DeepSeek,DeepSeek-R1-0528, DeepSeek, 2025-11-24. 
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-91-
+
+===== PDF page 28 =====
+Team # apmcm25302425                                                         Page 26 of 46 
+                                           
+Report on Use of AI Tools 
+Auto-completions for code used in preparing our models. 
+Cursor AI Assistant (Auto) (Current Version) 
+1.Query1: "What model is appropriate for Problem 1? Need to calculate the 
+coordinate position of the left arm endpoint and verify motor safety." 
+Output1:  
+It is recommended to use the Denavit-Hartenberg (DH) parameter method to establish 
+the robotic arm kinematic model. Through forward kinematics calculation, the 
+coordinates of the left arm endpoint in the coordinate system with the shoulder joint 
+as the origin can be determined. Motor safety verification requires checking whether 
+parameters such as joint angles, angular velocities, and angular accelerations are 
+within safe limits. 
+ 
+2.Query2: "How to understand the specific requirements of 'non-uniform motion' and 
+'maximum rotation angle change'?" 
+Output2:  
+Non-uniform motion is recommended to adopt a trapezoidal velocity curve, including 
+acceleration, constant velocity, and deceleration phases. "Maximum rotation angle 
+change" corresponds to the extreme points of knee joint angular velocity. It is 
+necessary to establish a functional relationship between time and joint angles, 
+calculate angular velocity through numerical differentiation, and find the maximum 
+value of angular velocity and the corresponding time point. 
+ 
+3. Query3:"For the humanoid robot dual-arm circular motion planning problem, it is 
+necessary to solve the angles of shoulder and elbow joints. Given upper arm length 
+200 mm, forearm length 138 mm, and the end needs to draw a circle with radius 300 
+mm. Should numerical inverse kinematics or analytical inverse kinematics be used? 
+Please compare advantages and disadvantages." 
+Output3: 
+For 2R planar mechanisms, analytical inverse kinematics is recommended. Analytical 
+inverse kinematics: can provide explicit analytical solutions, high computational 
+efficiency, good real-time performance, and physical interpretability. For 2R 
+mechanisms, analytical methods can directly use cosine theorem and arctangent 
+functions to solve. Numerical inverse kinematics: applicable to complex 
+configurations, but requires large computational effort, iterative solving, and poor 
+real-time performance. 
+ 
+4. Query4: "I ran @update_problem12_data.m and got 1000 data points for Problem 2, 
+which is normal, but then running @test_energy_calculation.m still only got 251 data 
+points. Check the code error." 
+Output4:** 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-92-
+
+===== PDF page 29 =====
+Team # apmcm25302425                                                         Page 27 of 46 
+                                           
+Diagnosis found that `load_problem_data.m` uses relative path `../data`, which is 
+affected by the current working directory. Fix: Use `fileparts(mfilename('fullpath'))` 
+to dynamically obtain the script directory, ensuring robust path resolution. After the 
+fix, data loading is normal, and Problem 2 data points recovered from 251 to 1000. 
+ 
+5.Query5: "The output chart colors are ugly, use the Morandi color scheme according 
+to the image I gave you" and "Output a comprehensive chart for each problem." 
+Output5: 
+Created `getMorandiColors.m` function, providing 25 Morandi color scheme RGB 
+color values. Updated all plotting functions to use the new color scheme. Created 
+`plotComprehensive.m` function, generating 2×2 subplot comprehensive analysis 
+charts, including (a) energy optimization comparison, (b) joint energy breakdown 
+comparison, (c) power-time curve comparison, (d) optimization parameters and 
+results. All charts adopt unified Morandi color scheme, significantly improving visual 
+effects. 
+ 
+6.Query6: "All annotations on the visualization charts of the three problems should be 
+in English" and "Translate, maintain academic and professional tone." 
+Output6: 
+Updated all plotting functions: Changed all Chinese labels to English, changed font to 
+`'Arial'`, all titles, axis labels, legends, and text annotations use English. Translated 
+Chinese paper content into professional academic English, including data processing, 
+assumptions, model foundation, model establishment, results, and result analysis 
+sections. According to requirements, condensed translation content while retaining all 
+core data and key conclusions, maintaining academic tone and terminology accuracy. 
+ 
+Adoption and Manual Modification 
+All AI-provided suggestions have been comprehensively reviewed and modified by 
+the author, with final content confirmed by the author: 
+1. Content Accuracy: All paper content is based on research work independently 
+completed by the author. AI only assisted with language expression optimization, 
+code debugging, and visualization design. 
+2. Academic Standards: Language expression meets academic paper requirements, 
+with clear logic and accurate expression. All technical content has been verified by 
+the author. 
+3. Originality Guarantee: Core ideas, model design, and algorithm implementation are 
+all original to the author. AI only provided writing assistance and technical support. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-93-

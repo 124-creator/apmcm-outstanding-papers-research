@@ -1,0 +1,3901 @@
+
+===== PDF page 1 =====
+Team # apmcm24207218  P1 of 101 
+ 
+ 
+ 
+ 
+2024 APMCM summary sheet 
+The integration of quantum computing and artificial intelligence represents a crucial 
+direction in technological advancement. This paper applies quantum annealing 
+optimization methods to construct three QUBO based models, targeting cloud computing 
+resource demand prediction, Iris dataset classification, and deep learning 
+recommendation systems, achieving effective transformation from traditional machine 
+learning algorithms to quantum computing. 
+For cloud computing resource demand prediction, using monthly resource demand 
+data (9000-10588) from January to September, we constructed an AR(2) model and 
+transformed it to QUBO through binary encoding and quantum annealing optimization, 
+achieving October's demand prediction of 10598.776 with 95% confidence interval 
+[10004.46, 11193.10]. 
+For the Iris dataset classification problem, based on 150 samples with 4 features and 
+3 classes, we implemented a two-stage SVM model (linear+RBF kernel) converted to 
+QUBO via binary variable encoding and penalty terms, reaching 93.80% classification 
+accuracy, a 5% improvement over traditional methods. 
+For the deep learning recommendation system, utilizing MovieLens dataset 
+(100,000 ratings, 1,000 users, 1,700 movies), we developed an NCF model transformed 
+to QUBO through discrete embedding optimization and quantum annealing, resulting in 
+74.24% MSE reduction and 49.25% RMSE improvement. 
+In conclusion, this paper conducted in-depth research on quantum computing 
+acceleration of artificial intelligence, designed three QUBO-based optimization models, 
+and achieved effective transformation from traditional machine learning algorithms to 
+quantum computing. These models can be extended to related fields such as financial 
+forecasting, intelligent manufacturing, and supply chain optimization, providing valuable 
+reference for practical applications of quantum computing in artificial intelligence. 
+Keywords: Autoregressive Model, Support Vector Machine, Neural Collaborative 
+Filtering, Quadratic Unconstrained Binary Optimization, MovieLens Dataset  
+Team Number : apmcm24207218 
+Problem Chosen : D 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-271-
+
+===== PDF page 2 =====
+Team # apmcm24207218  P2 of 101 
+ 
+ 
+Contents 
+Ⅰ. Problem Description .................................................................................................................... 4 
+A. Problem Background ........................................................................................................ 4 
+B. Problem Requirements ..................................................................................................... 5 
+Ⅱ. Problem Analysis ......................................................................................................................... 5 
+A. First Model Analysis .......................................................................................................... 5 
+B. Second Model Analysis ..................................................................................................... 6 
+C. Third Model Analysis ........................................................................................................ 7 
+Ⅲ. Model Assumptions ................................................................................................................... 8 
+A. First Model Assumptions ................................................................................................. 8 
+1.Data Correlation Assumptions ................................................................................ 8 
+2.AR Model Related Assumptions ............................................................................. 9 
+3.Prediction Environment Assumptions .................................................................. 9 
+B. Second Model Assumptions ............................................................................................. 9 
+1.Data Correlation Assumptions ................................................................................ 9 
+2.SVM Model Related Assumptions ....................................................................... 10 
+3.Computation Environment Assumptions .......................................................... 10 
+C. Third Model Assumptions ............................................................................................. 10 
+1.Data Correlation Assumptions .............................................................................. 10 
+2.Deep Learning Model Related Assumptions..................................................... 11 
+3.Training Process Assumptions .............................................................................. 11 
+Ⅳ. Symbol Description ................................................................................................................. 11 
+Ⅴ. Model Establishment and Solution ...................................................................................... 13 
+A. First Problem Model Establishment and Solution................................................. 13 
+1.Model Preparation .................................................................................................... 13 
+2.Model Establishment ................................................................................................ 17 
+3.Model Solution ........................................................................................................... 24 
+B. Second Problem Model Establishment and Solution ............................................ 30 
+1.Model Preparation .................................................................................................... 30 
+2.Model Establishment ................................................................................................ 39 
+3.Model Solution ........................................................................................................... 44 
+C. Third Problem Model Establishment and Solution ............................................... 51 
+1.Model Preparation .................................................................................................... 51 
+2.Model Establishment ................................................................................................ 57 
+3.Model Solution ........................................................................................................... 60 
+Ⅵ. Model Analysis and Testing .................................................................................................. 66 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-272-
+
+===== PDF page 3 =====
+Team # apmcm24207218  P3 of 101 
+ 
+ 
+A. Model Analysis .................................................................................................................. 66 
+1. Sensitivity Analysis .................................................................................................. 66 
+2. Error Analysis ........................................................................................................... 68 
+B. Model Testing ..................................................................................................................... 69 
+1. AR Model Stability Testing ................................................................................... 69 
+2. SVM Model Stability Testing ............................................................................... 70 
+3. NCF Model Stability Testing ................................................................................ 70 
+Ⅶ. Model Evaluation and Promotion .................................................................................... 71 
+A. Model Advantages ............................................................................................................ 71 
+1. Algorithmic Advantages ......................................................................................... 71 
+2. Application Advantages .......................................................................................... 71 
+B. Model Limitations ............................................................................................................ 72 
+1. Technical Limitations .............................................................................................. 72 
+2. Application Limitations .......................................................................................... 72 
+C. Model Promotion and Improvement .......................................................................... 73 
+1. Technical Improvements ........................................................................................ 73 
+2. Application Extensions ........................................................................................... 73 
+3. Future Research Directions .................................................................................. 74 
+Ⅷ. References ............................................................................................................................... 75 
+Ⅸ. Appendices ................................................................................................................................. 77 
+ 
+ 
+ 
+  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-273-
+
+===== PDF page 4 =====
+Team # apmcm24207218  P4 of 101 
+ 
+ 
+Ⅰ. Problem Description 
+A. Problem Background 
+The unique characteristics of quantum superposition and entanglement in quantum 
+computing enable it to achieve ultra - large - scale parallel computing. Its processing 
+power far exceeds that of traditional computers, providing a brand - new approach to 
+solving complex problems and processing large - scale data sets. 
+When quantum computing is combined with artificial intelligence, this advantage 
+becomes particularly prominent. The efficient parallel - processing ability of quantum 
+computing can accelerate the operation of complex artificial intelligence algorithms, 
+significantly shortening the training and inference time. Meanwhile, quantum algorithms 
+perform excellently in solving optimization problems and are suitable for tasks such as 
+parameter optimization in deep - learning networks. 
+This revolutionary breakthrough is not only reflected in the improvement of 
+computing speed, but more importantly, it provides new optimization ideas and solutions 
+for artificial intelligence algorithms. Quantum computing can help overcome the 
+bottlenecks of traditional computing when dealing with high - dimensional data and 
+complex models, opening up new possibilities for the development of artificial 
+intelligence. This combination will completely reshape the way we solve complex 
+problems and promote artificial intelligence technology to a new level. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-274-
+
+===== PDF page 5 =====
+Team # apmcm24207218  P5 of 101 
+ 
+ 
+B. Problem Requirements 
+Based on the above - mentioned background and the obtained data, it is necessary to 
+establish a mathematical model to solve the following problems: 
+(1) Problem of cloud computing resource demand prediction. Based on the given 
+resource demand data from January to September, it is required to use the autoregressive 
+(AR) model for analysis and predict the demand in October. 
+(2) Machine learning classification problem. Use the classic Iris data set, transform 
+the training process of the support vector machine (SVM) into a QUBO model, and 
+solve it using quantum computing methods. 
+(3) The combination of quantum computing and deep learning. Select a specific 
+application scenario (such as image classification or recommendation system), design a 
+deep - learning model, and transform its optimization problem into the QUBO form for 
+solution. 
+ 
+Ⅱ. Problem Analysis 
+This competition topic revolves around the combination of quantum computing and 
+artificial intelligence, focusing on exploring how to utilize the advantages of quantum 
+computing to solve traditional artificial intelligence problems. The topic requires that all 
+tasks need to be transformed into QUBO (Quadratic Unconstrained Binary 
+Optimization) models and solved using the simulated annealing algorithm provided by 
+Kaiwu SDK. 
+A. First Model Analysis 
+The first task focuses on the prediction of cloud computing resource requirements. 
+The problem provides nine - month historical data and requires the establishment of an 
+autoregressive (AR) model for prediction. This is a typical time - series analysis 
+problem, and the difficulty lies in how to transform the continuous time - series 
+prediction problem into a discrete QUBO (Quadratic Unconstrained Binary 
+Optimization) form. The parameter estimation process in the AR model needs to be 
+reconstructed as a binary optimization problem. While maintaining the prediction ability 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-275-
+
+===== PDF page 6 =====
+Team # apmcm24207218  P6 of 101 
+ 
+ 
+of the model, we need to design a reasonable binary encoding scheme. At the same time, 
+it is necessary to consider how to ensure the prediction accuracy under the constraint of a 
+limited number of bits (600 bits). 
+ 
+B. Second Model Analysis 
+The second task focuses on the classification problem in machine learning. The 
+problem selects the classic Support Vector Machine (SVM) method and the Iris data set. 
+The main difficulties lie in the need to transform the maximum - margin optimization 
+problem of SVM into the QUBO form. Traditional SVM solving involves convex 
+quadratic programming, and transforming it into QUBO requires considering how to 
+handle the binarization of continuous variables, the encoding scheme for multi - class 
+classification, and how to simplify the problem scale while maintaining the classification 
+effect. In addition, it is also necessary to balance the relationship between the choice of 
+kernel function and the complexity of the QUBO model.  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-276-
+
+===== PDF page 7 =====
+Team # apmcm24207218  P7 of 101 
+ 
+ 
+C. Third Model Analysis 
+The third task focuses on the optimization problems in deep learning. For this task, 
+the application scenarios and network structures can be independently selected, with a 
+relatively high degree of freedom. The main difficulty lies in how to transform the 
+training process of neural networks, especially continuous optimization processes such 
+as back - propagation and gradient descent, into discrete optimization problems suitable 
+for quantum computing. It is necessary to consider the simplification of network 
+structures, the discrete representation of parameters, and how to achieve equivalent 
+optimization effects under the QUBO (Quadratic Unconstrained Binary Optimization) 
+framework. 
+ 
+These three problems demonstrate a clear progression in complexity: The first task 
+focuses on predicting cloud computing resource requirements through time series 
+analysis, requiring transformation into a discrete QUBO form. The second task escalates 
+to a classification problem using SVM on the Iris dataset, involving binarization and 
+multi-class encoding challenges. The third task extends into optimization problems in 
+deep learning, requiring the transformation of continuous neural network training 
+processes into discrete optimization problems suitable for quantum computing.  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-277-
+
+===== PDF page 8 =====
+Team # apmcm24207218  P8 of 101 
+ 
+ 
+ 
+Ⅲ. Model Assumptions 
+A. First Model Assumptions 
+1.Data Correlation Assumptions 
+It is assumed that the historical data are representative and can reflect the basic 
+changing rules of resource requirements. 
+It is assumed that there are no significant outliers and systematic errors in the data. 
+It is assumed that the changes in resource requirements between months are 
+continuous and there are no abrupt change points. 
+It is assumed that the external factors affecting resource requirements (such as 
+holidays, etc.) remain relatively stable in the short term. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-278-
+
+===== PDF page 9 =====
+Team # apmcm24207218  P9 of 101 
+ 
+ 
+2.AR Model Related Assumptions 
+It is assumed that the time series is stationary, that is, its statistical properties do not 
+change over time. 
+It is assumed that the error term εₜ follows a normal distribution N(0, σ²) and is 
+mutually independent. 
+It is assumed that the order p of the AR model is small (usually not exceeding 4) 
+and can fully capture the temporal correlation of the data. 
+It is assumed that the model parameters remain unchanged during the prediction 
+period. 
+3.Prediction Environment Assumptions 
+It is assumed that no major technological upgrades or system architecture changes 
+will occur during the prediction period (October). 
+It is assumed that the infrastructure capacity of the cloud - computing platform is 
+sufficient to support the predicted demand growth. 
+It is assumed that the impacts of sudden system failures or network outages are not 
+considered. 
+It is assumed that the resource allocation and scheduling strategies remain 
+consistent in the short term. 
+ 
+B. Second Model Assumptions 
+1.Data Correlation Assumptions 
+It is assumed that the samples in the Iris data set are independently and identically 
+distributed. 
+It is assumed that there is no perfect collinearity between features. 
+It is assumed that the noise in the data follows a Gaussian distribution. 
+It is assumed that the number of samples in each category is basically balanced and 
+there is no serious class - imbalance problem. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-279-
+
+===== PDF page 10 =====
+Team # apmcm24207218  P10 of 101 
+ 
+ 
+2.SVM Model Related Assumptions 
+It is assumed that there is a suitable kernel function that can map the data to a 
+linearly separable high - dimensional space. 
+It is assumed that the samples are linearly separable or approximately linearly 
+separable in the feature space. 
+It is assumed that the number of support vectors is much smaller than the total 
+number of samples to ensure the generalization ability of the model. 
+It is assumed that the model parameters can converge to near the global optimal 
+solution during the optimization process. 
+3.Computation Environment Assumptions 
+It is assumed that the computing resources are sufficient to support the solution of 
+the QUBO model. 
+It is assumed that the data pre - processing process will not introduce systematic 
+biases. 
+It is assumed that feature normalization can effectively improve the model 
+performance. 
+It is assumed that the model training time is within an acceptable range. 
+ 
+C. Third Model Assumptions 
+1.Data Correlation Assumptions 
+It is assumed that the users' historical interaction behaviors can reflect their real 
+interest preferences. 
+It is assumed that the users' interests are relatively stable in the short term and will 
+not change drastically. 
+It is assumed that the attribute characteristics of items are complete and accurate. 
+It is assumed that the user - item interaction matrix is sparse, which conforms to the 
+actual scenario. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-280-
+
+===== PDF page 11 =====
+Team # apmcm24207218  P11 of 101 
+ 
+ 
+It is assumed that the proportion of the cold - start problem (new users / new items) 
+is within an acceptable range. 
+2.Deep Learning Model Related Assumptions 
+It is assumed that users and items can be mapped to the same implicit feature space. 
+It is assumed that the multi - layer neural network can effectively capture the non - 
+linear relationships of user - item interactions. 
+It is assumed that the attention mechanism can identify the dynamic changes of 
+users' interests. 
+It is assumed that the model can handle both explicit feedback (ratings) and implicit 
+feedback (clicks, views) simultaneously. 
+It is assumed that the embedding layer can learn effective feature representations. 
+3.Training Process Assumptions 
+It is assumed that the negative sampling strategy can provide effective contrastive 
+learning samples. 
+It is assumed that the sample distribution in batch training is consistent with the 
+overall distribution. 
+It is assumed that the model parameters can obtain a better solution through QUBO 
+optimization. 
+It is assumed that the computing resources are sufficient to support the processing 
+of large - scale user - item interactions. 
+ 
+Ⅳ. Symbol Description 
+Symbol Meaning Unit/Range 
+𝑦(𝑡) Resource demand in month t - 
+𝑥𝑖 Feature vector of the i - th sample - 
+𝑈 Set of users - 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-281-
+
+===== PDF page 12 =====
+Team # apmcm24207218  P12 of 101 
+ 
+ 
+𝐼 Set of items - 
+𝑅 User - item interaction matrix - 
+𝑟𝑢𝑖 Rating of item i by user u [1;5] 
+𝑁𝑢 Number of interacting items of user u >=0 
+𝑁𝑖 Number of interacting users of item i >=0 
+𝑒𝑢 User embedding vector R^d 
+𝑒𝑖 Item embedding vector R^d 
+𝑥𝑢 User feature vector - 
+𝑥𝑖 Item feature vector - 
+𝑑 Embedding dimension >0 
+𝑦ℎ𝑎𝑡(𝑡) Predicted demand in month t - 
+𝑦𝑖 Category label of the sample {1;2;3} 
+𝑐 Constant term in AR model - 
+𝑝ℎ𝑖𝑖 The i - th order coefficient of AR model - 
+𝑝 Order of AR model - 
+𝑤 SVM weight vector - 
+𝑏 SVM bias term - 
+𝑎𝑙𝑝ℎ𝑎𝑖 Lagrange multiplier >=0 
+𝑥𝑖𝑖 Slack variable >=0 
+𝐶 SVM penalty parameter >0 
+𝑊𝑙 Weight matrix of the l - th layer in deep learning - 
+𝑏𝑙 Bias vector of the l - th layer in deep learning - 
+𝐴 Attention weight matrix - 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-282-
+
+===== PDF page 13 =====
+Team # apmcm24207218  P13 of 101 
+ 
+ 
+𝑎𝑙𝑝ℎ𝑎_𝑖𝑗 Attention score [0;1] 
+𝑒𝑝𝑠𝑖𝑙𝑜𝑛𝑡 Time - series random error term - 
+𝑠𝑖𝑔𝑚𝑎2 Variance of error term - 
+𝑒𝑡𝑎 Learning rate (0;1) 
+𝐵 Batch size >0 
+𝐸 Number of training rounds >0 
+𝑙𝑎𝑚𝑏𝑑𝑎 Regularization coefficient >0 
+𝐾 Number of negative samples >0 
+ 
+Ⅴ. Model Establishment and Solution 
+A. First Problem Model Establishment and Solution 
+1.Model Preparation 
+a. Modeling Principles and Approach 
+Cloud computing resource demand forecasting faces four core challenges. 
+The first challenge is the time - correlation problem. It is manifested as a significant 
+correlation in resource demands in adjacent periods, but this correlation gradually 
+weakens as the time interval increases. This requires us to accurately quantify the impact 
+of different time lags on the demand. 
+The second challenge is the trend characteristics of data. It can be seen from the 
+original data that the overall demand shows an obvious upward trend, increasing from 
+9,000 in January to 10,588 in September. However, this growth is not linear, and there 
+are significant fluctuations in the monthly growth rate. Therefore, the model needs to be 
+able to capture both the long - term trend and short - term fluctuation characteristics of 
+the data simultaneously. 
+The third challenge comes from the strict requirements for prediction accuracy. In 
+practical applications, the deviation of the predicted value will directly affect the 
+efficiency of resource scheduling: if the prediction is too high, it will lead to idle and 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-283-
+
+===== PDF page 14 =====
+Team # apmcm24207218  P14 of 101 
+ 
+ 
+waste of resources; if the prediction is too low, it may affect the service quality. 
+Therefore, the model must strike a reasonable balance between cost and reliability. 
+The fourth challenge stems from the special technical requirements brought by 
+quantum - computing - based solutions: the prediction model must be able to be 
+transformed into the QUBO (Quadratic Unconstrained Binary Optimization) form, all 
+decision variables need to be binary - encoded, and at the same time, the constraint 
+conditions of the model must also be realized through penalty terms. 
+In response to these challenges, we have developed a systematic modeling strategy. 
+In terms of model selection, we choose the AR (Autoregressive) model as the basic 
+framework. This choice is based on the following considerations: the AR model can not 
+only adaptively capture the correlation of time series, but also has a simple structure, is 
+easy to understand and implement, and has good interpretability. Most importantly, it is 
+suitable for transformation into the QUBO form required for quantum computing. 
+ 
+b. Data Analysis and Processing 
+The original data is: 
+Month January February March April May June July August September 
+demand 9000 9400 9594 9859 9958 10043 10309 10512 10588 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-284-
+
+===== PDF page 15 =====
+Team # apmcm24207218  P15 of 101 
+ 
+ 
+Perform basic statistical analysis on these data to obtain the following characteristic 
+values: 
+⚫ The mean is 9918.11, the standard deviation is 524.76, the minimum value is 
+9000, the maximum value is 10588, and the data range spans 1588. 
+⚫ In terms of growth characteristics: 
+The overall growth in nine months reaches 1588 (accounting for 17.64%), with an 
+average monthly growth of 198.5 (2.21%). The change sequence of the monthly growth 
+rate is: 4.44% in February, 2.06% in March, 2.76% in April, 1.00% in May, 0.85% in 
+June, 2.65% in July, 1.97% in August, and 0.72% in September, showing a fluctuating 
+downward trend. 
+⚫ In terms of distribution characteristics: 
+The data shows a slight left - skew (skewness - 0.287) and a relatively flat 
+distribution (kurtosis 1.842). The p - value of the Shapiro - Wilk normality test is 0.412, 
+which is greater than the significance level of 0.05, indicating that the data basically 
+conforms to the normal distribution assumption.  
+ 
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-285-
+
+===== PDF page 16 =====
+Team # apmcm24207218  P16 of 101 
+ 
+ 
+ 
+Through the first - order difference Δ𝑦𝑡 = 𝑦𝑡 − 𝑦𝑡−1, the difference sequence is 
+obtained, and at the same time, the chain - growth rate 𝑟𝑡=(𝑦𝑡 − 𝑦𝑡−1)/𝑦𝑡−1 is 
+calculated. 
+difference 
+sequence 
+400 194 265 99 85 266 203 76 
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-286-
+
+===== PDF page 17 =====
+Team # apmcm24207218  P17 of 101 
+ 
+ 
+⚫ For autocorrelation analysis, calculate it using the ACF function: 
+ρ𝑘 = ∑ (𝑦𝑡 − 𝑦̅)(𝑦𝑡−𝑘 − 𝑦̅)𝑇 𝑡=𝑘+1 ∑ (𝑦𝑡 − 𝑦̅)2𝑇 𝑡=1  
+It is calculated that: when k = 1, ρ₁ = 0.745; when k = 2, ρ₂ = 0.621; when k = 3, ρ₃ 
+= 0.482. The Ljung - Box test obtains the Q - statistic of 8.923, and the p - value of 0.032 
+< 0.05, which confirms that there is a significant autocorrelation in the sequence.  
+⚫ For partial autocorrelation analysis, calculate it using the PACF function: 
+ϕ𝑘𝑘 = 𝑐𝑜𝑟𝑟(𝑦𝑡 − 𝑃𝑡|𝑡−1,…,𝑡−𝑘+1, 𝑦𝑡−𝑘 − 𝑃𝑡−𝑘|𝑡−1,…,𝑡−𝑘+1) 
+It is calculated that: φ₁₁ = 0.745, φ₂₂ = 0.155, φ₃₃ = 0.083. Under the 95% 
+confidence interval (±2/√n = ±0.667), φ₁₁ and φ₂₂ significantly exceed the confidence 
+interval, while φ₃₃ is within the confidence interval. In terms of the unit root test, the 
+ADF test statistic is - 3.245, and the p - value of 0.018 < 0.05, indicating that the 
+sequence is stationary.  
+ 
+2.Model Establishment 
+a. AR Model Construction 
+When constructing an AR model, we first need to determine the optimal order of 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-287-
+
+===== PDF page 18 =====
+Team # apmcm24207218  P18 of 101 
+ 
+ 
+the model, then establish a detailed model expression, and finally perform parameter 
+estimation. This section will elaborate on this process in detail. 
+ 
+(1) Model Order Determination 
+ 
+When determining the order of the AR model, we use multiple criteria for 
+comprehensive evaluation, including quantitative criteria and statistical tests. 
+⚫ Quantitative criteria: 
+Quantitative criteria are mainly based on information criteria, among which the 
+most important are AIC (Akaike Information Criterion) and BIC (Bayesian Information 
+Criterion). The calculation formulas of these criteria are as follows: 
+{ 𝐴𝐼𝐶 = 2𝑘 − 2ln𝐿 𝐵𝐼𝐶 = 𝑘 ln(𝑛) − 2 ln(𝐿) 
+Among them, k represents the number of model parameters, n represents the sample 
+size, and L represents the value of the likelihood function. These criteria play a crucial 
+role in model selection because they take into account both the goodness - of - fit of the 
+model and its complexity. 
+Through the comparative analysis of models with different orders, we obtain the 
+following specific data: 
+Order AIC BIC RMSE R² 
+1 156.32 157.89 68.45 0.892 
+2 152.18 154.43 42.31 0.967 
+3 149.76 152.68 35.24 0.981 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-288-
+
+===== PDF page 19 =====
+Team # apmcm24207218  P19 of 101 
+ 
+ 
+ 
+⚫ Statistical Test: 
+In the analysis of PACF (Partial Autocorrelation Function), we observe the 
+following statistical characteristics: 
+Lag Order Partial 
+Autocorrelation 
+Coefficient 
+t - Statistic p - value Significance (compared with 
+0.05) 
+1 0.745 4.523 0.002 Significantly less than the 
+0.05 significance level 
+2 0.155 2.234 0.041 Significantly less than the 
+0.05 significance level 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-289-
+
+===== PDF page 20 =====
+Team # apmcm24207218  P20 of 101 
+ 
+ 
+3 0.083 1.123 0.283 Greater than the 0.05 
+significance level 
+Based on the above analysis results, we select the AR(2) model as the final model 
+for the following reasons: 
+Reason1:The AR(2) model has the smallest AIC and BIC values. 
+Reason2:The PACF analysis shows a significant truncation phenomenon after the second order. 
+Reason3:The improvement of the prediction error (RMSE) is not obvious after the second order. 
+Reason4:The best balance between model complexity and prediction performance is achieved. 
+ 
+(2) Model Detailed Expression 
+ 
+The basic mathematical expression of the AR_2 model is: 
+𝑦𝑡 = 𝑐 + ϕ1𝑦𝑡−1 + ϕ2𝑦𝑡−2 + ϵ𝑡 
+Among them,𝑦𝑡 represents the standardized resource demand at time t;c is a 
+constant term, representing the basic demand level; 𝜙1 is the first - order autoregressive 
+coefficient, reflecting the short - term influence; 𝜙2 is the second - order autoregressive 
+coefficient, reflecting the medium - term influence; ϵ𝑡 is a random error term, which 
+follows a normal distribution 𝑁(0, 𝜎²). 
+The stability condition requirements of the model: 
+{
+ϕ1 + ϕ2 < 1
+ϕ2 − ϕ1 < 1
+|ϕ2| < 1
+ 
+The prediction formula of the model is: 
+𝑦𝑡̂ = 𝑐 + ϕ1𝑦𝑡−1 + ϕ2𝑦𝑡−2 
+The calculation formula for the prediction interval is: 
+[
+ 
+ 
+ 
+𝑦𝑡 ± 𝑧α/2√𝜎2 (1 + ∑ 𝜙𝑖 2
+2
+𝑖=1
+)
+]
+ 
+ 
+ 
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-290-
+
+===== PDF page 21 =====
+Team # apmcm24207218  P21 of 101 
+ 
+ 
+(3) Parameter Estimation Method 
+ 
+In parameter estimation, we mainly adopt two methods: Least Squares Estimation 
+(LSE) and Maximum Likelihood Estimation (MLE). 
+The objective function of the Least Squares Estimation is: 
+min
+θ
+∑(𝑦𝑡 − (𝑐 + ϕ1𝑦𝑡−1 + ϕ2𝑦𝑡−2))
+2
+𝑇
+𝑡=3
+ 
+Its normal equations can be expressed as: 
+[
+𝑇 − 2 ∑ 𝑦𝑡−1 ∑ 𝑦𝑡−2
+∑ 𝑦𝑡−1 ∑ 𝑦𝑡−1 2 ∑ 𝑦𝑡−1 𝑦𝑡−2
+∑ 𝑦𝑡−2 ∑ 𝑦𝑡−1 𝑦𝑡−2 ∑ 𝑦𝑡−2 2
+] [
+𝑐
+𝜙1
+𝜙2
+] = [
+∑ 𝑦𝑡
+∑ 𝑦𝑡 𝑦𝑡−1
+∑ 𝑦𝑡 𝑦𝑡−2
+] 
+The likelihood function of the Maximum Likelihood Estimation is: 
+L(θ)  =   ∏   1
+√2𝜋𝜎2   exp (− (𝑦𝑡  −  (𝑐  +  𝜙1 𝑦𝑡−1  +  𝜙2 𝑦𝑡−2))
+2
+2𝜎2 )
+T
+t=3
+ 
+The log - likelihood function is: 
+ln 𝐿 (θ) = − 𝑇 − 2 2 ln(2πσ2) − 1 2σ2 ∑(𝑦𝑡 − (𝑐 + ϕ1𝑦𝑡−1 + ϕ2𝑦𝑡−2)) 2
+𝑇
+𝑡=3
+ 
+ 
+b. QUBO Model Transformation 
+ 
+(1) Parameter Range and Encoding Analysis 
+ 
+Value range and required precision of parameters: 
+Parameter Theoretical Value Range Actual Use Range Required Precision 
+Constant term c [0, 2000] [1100, 1300] 0.5 
+First - order 
+autoregressive 
+coefficient 𝜙1 
+[-1, 1] [0.6, 0.9] 0.01 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-291-
+
+===== PDF page 22 =====
+Team # apmcm24207218  P22 of 101 
+ 
+ 
+Second - order 
+autoregressive 
+coefficient 𝜙2 
+[-1, 1] [0.1, 0.2] 0.01 
+Encoding bit number of parameters: 
+𝑛𝑐 = ⌈log2 (2000 − 0 0.5 )⌉ = 12 
+𝑛ϕ = ⌈log2 ( 2 0.01)⌉ = 8 
+ 
+(2) Objective Function Construction 
+ 
+The sum of squared prediction errors of the original AR(2) model: 
+𝐽(𝜃) = ∑(𝑦𝑡 − (𝑐 + 𝜙1𝑦𝑡−1 + 𝜙2𝑦𝑡−2))
+2
+𝑇
+𝑡=3
+ 
+Expanding it, we get: 
+𝐽(𝜃) = ∑[𝑦𝑡 2 + 𝑐2 + 𝜙1 2𝑦𝑡−1 2 + 𝜙2 2𝑦𝑡−2 2 + 2𝑐𝜙1𝑦𝑡−1 + 2𝑐𝜙2𝑦𝑡−2 + 2𝜙1𝜙2𝑦𝑡−1𝑦𝑡−2
+𝑇
+𝑡=3
+− 2𝑦𝑡(𝑐 + 𝜙1𝑦𝑡−1 + 𝜙2𝑦𝑡−2)] 
+ 
+(3) Encoding Functions 
+ 
+The encoding adopts a linear mapping function: 
+ 
+Encoding of the constant term c: 
+𝑥 = 𝑎 + 𝑏 − 𝑎 2𝑛 − 1 ∑ 2𝑖−1
+𝑛
+𝑖=1
+𝑞𝑖 
+Encoding of the autoregressive coefficient 𝜙1: 
+ϕ1 = −1 + ∑ 2𝑖−12𝑞𝑖
+19
+𝑖=12
+⋅ 2 28 − 1 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-292-
+
+===== PDF page 23 =====
+Team # apmcm24207218  P23 of 101 
+ 
+ 
+Encoding of the autoregressive coefficient 𝜙2: 
+ϕ2 = −1 + ∑ 2𝑖−20𝑞𝑖
+27
+𝑖=20
+⋅ 2 28 − 1 
+Results of encoding precision analysis: 
+ 
+Parameter Value 
+Resolution of the constant term c 0.488 
+Number of states that the constant term c can represent 4096 
+Relative error of the constant term c No more than 0.024% 
+ 
+(4) QUBO Matrix Calculation 
+ 
+Coefficient of the linear term (diagonal elements)—— 
+For 𝑄𝑖𝑖 0≤i≤11（constant term）： 
+𝑄𝑖𝑖 = ∑ (2𝑖 ⋅ 2000 212 − 1) 2𝑇
+𝑡=3
+ 
+For 𝑄𝑖𝑖 12≤i≤19（var φ₁）： 
+𝑄𝑖𝑖 = ∑ (2𝑖−12 ⋅ 2 28 − 1 ⋅ 𝑦𝑡−1) 2𝑇
+𝑡=3
+ 
+For 𝑄𝑖𝑖 20≤i≤27（var φ2）： 
+𝑄𝑖𝑖 = ∑ (2𝑖−20 ⋅ 2 28 − 1 ⋅ 𝑦𝑡−2) 2𝑇
+𝑡=3
+ 
+Coefficient of the cross - term (non - diagonal elements)—— 
+Cross - term within the constant terms (0≤i,j≤11)： 
+𝑄𝑖𝑗 = 2 ∑ (2𝑖 ⋅ 2000 212 − 1) (2𝑗 ⋅ 2000 212 − 1)
+𝑇
+𝑡=3
+ 
+Cross - term within φ₁(12≤i,j≤19)： 
+𝑄𝑖𝑗 = 2 ∑ (2𝑖−12 ⋅ 2 28 − 1) (2𝑗−12 ⋅ 2 28 − 1) 𝑦𝑡−1 2
+𝑇
+𝑡=3
+ 
+Cross - term within φ2 (20≤i,j≤27)： 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-293-
+
+===== PDF page 24 =====
+Team # apmcm24207218  P24 of 101 
+ 
+ 
+𝑄𝑖𝑗 = 2 ∑ (2𝑖−20 ⋅ 2 28 − 1) (2𝑗−20 ⋅ 2 28 − 1) 𝑦𝑡−2 2
+𝑇
+𝑡=3
+ 
+Cross - term between the constant term and φ₁ (0≤i≤11, 12≤j≤19)： 
+𝑄𝑖𝑗 = 2 ∑ (2𝑖 ⋅ 2000 212 − 1) (2𝑗−12 ⋅ 2 28 − 1) 𝑦𝑡−1
+𝑇
+𝑡=3
+ 
+Cross - term between the constant term and φ2 (0≤i≤11, 20≤j≤27)： 
+𝑄𝑖𝑗 = 2 ∑ (2𝑖 ⋅ 2000 212 − 1) (2𝑗−20 ⋅ 2 28 − 1) 𝑦𝑡−2
+𝑇
+𝑡=3
+ 
+Cross - term between φ₁ and φ₂(12≤i≤19, 20≤j≤27)： 
+𝑄𝑖𝑗 = 2 ∑ (2𝑖−12 ⋅ 2 28 − 1) (2𝑗−20 ⋅ 2 28 − 1) 𝑦𝑡−1
+𝑇
+𝑡=3
+𝑦𝑡−2 
+ 
+(5) Constraint Implementation 
+ 
+Stability Constraints —— 
+The stability of the AR(2) model requires that the modulus of all characteristic roots 
+be less than 1, which is transformed into constraints: 
+{
+𝜑1 + 𝜑2 < 1
+𝜑2−< 1
+|𝜑2| < 1
+1
+ 
+These constraints are added to the objective function through penalty terms: 
+𝑃1(ϕ1, ϕ2) = λ1 max(0, ϕ1 + ϕ2 − 1)2 
+𝑃2(ϕ1, ϕ2) = λ2 max(0, ϕ2 − ϕ1 − 1)2 
+𝑃3(ϕ2) = λ3 max(0, |ϕ2| − 1)2 
+Constraint - Penalty Integration—— 
+Total Penalty Term: 
+𝑃𝑡𝑜𝑡𝑎𝑙 = 𝑃1 + 𝑃2 + 𝑃3 
+Constraint - Penalty Integration： 
+(−λ1 = 1000)(𝑀𝑎𝑖𝑛𝑆𝑡𝑎𝑏𝑖𝑙𝑖𝑡𝑦𝐶𝑜𝑛𝑠𝑡𝑟𝑎𝑖𝑛𝑡) 
+(−λ2 = 1000)(𝑀𝑎𝑖𝑛𝑆𝑡𝑎𝑏𝑖𝑙𝑖𝑡𝑦𝐶𝑜𝑛𝑠𝑡𝑟𝑎𝑖𝑛𝑡) 
+(−λ3 = 500)(𝑀𝑖𝑛𝑜𝑟𝑆𝑡𝑎𝑏𝑖𝑙𝑖𝑡𝑦𝐶𝑜𝑛𝑠𝑡𝑟𝑎𝑖𝑛𝑡) 
+ 
+3.Model Solution 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-294-
+
+===== PDF page 25 =====
+Team # apmcm24207218  P25 of 101 
+ 
+ 
+a. Determination of Objective Function and Decision Variables 
+ 
+(1) Objective Function 
+ 
+Based on the AR(2) model:  
+𝑦𝑡 = 𝑐 + ϕ1𝑦𝑡−1 + ϕ2𝑦𝑡−2 + ϵ𝑡 
+The objective is to minimize the sum of squared errors: 
+min ∑(𝑦𝑡 − 𝑐 − 𝜙1𝑦𝑡−1 − 𝜙2𝑦𝑡−2)2
+9
+𝑡=3
+ 
+ 
+(2) Decision Variables 
+ 
+The continuous variables are discretized into finite ranges with binary variables: 
+𝑐 ∈ [1000,1300], 𝑠𝑡𝑒𝑝𝑠𝑖𝑧𝑒 = 10, 𝑟𝑒𝑞𝑢𝑖𝑟𝑖𝑛𝑔31𝑏𝑖𝑛𝑎𝑟𝑦𝑣𝑎𝑟𝑖𝑎𝑏𝑙𝑒𝑠 
+𝜑1[0.7,0.8], 𝑠𝑡𝑒𝑝𝑠𝑖𝑧𝑒 = 0.01, 𝑟𝑒𝑞𝑢𝑖𝑟𝑖𝑛𝑔11𝑏𝑖𝑛𝑎𝑟𝑦𝑣𝑎𝑟𝑖𝑎𝑏𝑙𝑒𝑠 
+𝜑2 ∈ [0.1,0.2], 𝑠𝑡𝑒𝑝𝑠𝑖𝑧𝑒 = 0.01, 𝑟𝑒𝑞𝑢𝑖𝑟𝑖𝑛𝑔11𝑏𝑖𝑛𝑎𝑟𝑦𝑣𝑎𝑟𝑖𝑎𝑏𝑙𝑒𝑠 
+Total variable vector:𝑥 = [𝑥𝑐, 𝑥𝜑1, 𝑥𝜑2] 
+ 
+(3) QUBO Model Numerical Results 
+ 
+The key parameter values obtained through solving the QUBO model are: 
+Table 1: Model Parameter Statistics 
+Parameter Mean Std Dev Min Max 
+c 1102.0 134.99 1000 1300 
+φ₁ 0.75 0.052 0.70 0.80 
+φ₂ 0.148 0.045 0.10 0.20 
+ 
+b. Implementation of Simulated Annealing Algorithm and Demand Prediction 
+ 
+(1) Computational Approach of Simulated Annealing Algorithm 
+ 
+The simulated annealing algorithm simulates the physical annealing process to solve 
+the QUBO problem. The specific implementation approach is as follows: 
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-295-
+
+===== PDF page 26 =====
+Team # apmcm24207218  P26 of 101 
+ 
+ 
+ⅰ. Variable Encoding Scheme 
+ 
+Three decision variables are discretized in this problem. The constant term c and 
+autoregressive coefficients φ₁, φ₂ are encoded into binary variables: 
+⚫ For c, considering its range [1000, 1300] and step size 10, 31 binary variables are 
+needed. 
+⚫ For φ₁, with range [0.7, 0.8] and step size 0.01, 11 binary variables are needed. 
+⚫ For φ₂, with range [0.1, 0.2] and step size 0.01, 11 binary variables are needed. 
+Thus, a complete solution consists of 53 binary variables, each representing a specific 
+value within its corresponding parameter range. 
+ 
+ⅱ. Algorithm Control Parameters 
+ 
+To balance global exploration and local refinement capabilities, the following 
+parameters are set: 
+⚫ Initial temperature set to 100, ensuring sufficient acceptance probability in the 
+initial phase. 
+⚫ Cooling rate chosen as 0.95, guaranteeing gradual temperature decrease. 
+⚫ Termination temperature set to 0.1, ensuring adequate search process. 
+⚫ 100 iterations at each temperature level, allowing sufficient system evolution. 
+⚫ Maximum iteration count set to 1000, preventing excessive computation. 
+ 
+ⅲ. Search Strategy Design 
+ 
+The core of the algorithm lies in effective solution space exploration. For each current 
+solution: 
+1. Randomly select 1-3 binary bits for flipping to generate new candidate solutions. 
+2. Verify feasibility of new solutions, ensuring parameter values remain within valid 
+ranges. 
+3. Calculate objective function value change ΔE. 
+4. Apply Metropolis criterion for solution acceptance: 
+◆ If ΔE<0, indicating improvement, accept directly 
+◆ If ΔE>0, accept with probability exp(-ΔE/T), which decreases with 
+temperature 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-296-
+
+===== PDF page 27 =====
+Team # apmcm24207218  P27 of 101 
+ 
+ 
+ 
+ⅳ. Multiple Runs and Result Integration 
+ 
+Considering the algorithm's stochastic nature, a multiple-run strategy is adopted: 
+1. Perform 10 independent algorithm runs 
+2. Use different random initial solutions for each run 
+3. Record the best solution and corresponding parameter values from each run 
+4. Extract valuable information through statistical analysis: 
+◆ Calculate parameter means as final estimates 
+◆ Analyze parameter distribution characteristics 
+◆ Evaluate solution stability and reliability 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-297-
+
+===== PDF page 28 =====
+Team # apmcm24207218  P28 of 101 
+ 
+ 
+ 
+ 
+ⅴ. Temperature Control Mechanism 
+ 
+Temperature control directly influences the algorithm's search behavior: 
+- In high-temperature phase (initial stage), algorithm tends towards broad exploration 
+- As temperature decreases, algorithm gradually shifts towards local refinement 
+- In final low-temperature phase, focuses on local optimization 
+ 
+(2) October Demand Prediction 
+ 
+Using the simulated annealing algorithm, 10 solutions were obtained: 
+Table 2: Prediction Results Details 
+Parameter Mean Std Dev Min Max 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-298-
+
+===== PDF page 29 =====
+Team # apmcm24207218  P29 of 101 
+ 
+ 
+1 1000 0.80 0.10 10521.60 
+2 1000 0.80 0.10 10521.60 
+3 1300 0.70 0.11 9867.92 
+4 1000 0.80 0.14 10942.08 
+5 1000 0.80 0.14 10942.08 
+6 1000 0.80 0.20 11572.80 
+7 1000 0.70 0.20 10514.00 
+8 1300 0.70 0.20 10814.00 
+9 1120 0.70 0.10 9582.80 
+10 1300 0.70 0.19 10708.88 
+ 
+(3) Results Visualization 
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-299-
+
+===== PDF page 30 =====
+Team # apmcm24207218  P30 of 101 
+ 
+ 
+ 
+(4) Final Prediction Results 
+ 
+Statistical analysis of the 10 solutions yields the following final prediction results: 
+Table 3: October Demand Prediction 
+Statistic Value 
+Mean Prediction 10598.776 
+Standard Deviation 594.32 
+Minimum Prediction 9582.80 
+Maximum Prediction 11572.80 
+95% Confidence Interval [10004.46, 11193.10] 
+ 
+The prediction results indicate: 
+1. The best prediction for October's demand is 10598.776. 
+2. The prediction range is between 9582.80 and 11572.80. 
+3. Compared to September's actual value (10588), the prediction shows a stable trend 
+with slight growth. 
+ 
+B. Second Problem Model Establishment and Solution 
+1.Model Preparation 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-300-
+
+===== PDF page 31 =====
+Team # apmcm24207218  P31 of 101 
+ 
+ 
+a. Modeling Principles and Approach 
+In applying Support Vector Machine (SVM) to classify the Iris dataset, we face 
+several major challenges. 
+ 
+(1) Analysis of Key Challenges 
+ 
+In applying Support Vector Machine (SVM) to classify the Iris dataset, we face 
+several major challenges. 
+The first challenge lies in the complexity of multi-class classification. Since the Iris 
+dataset contains three classes (Iris-setosa, Iris-versicolor, and Iris-virginica), while 
+traditional SVM is essentially a binary classification algorithm, we must design an 
+appropriate strategy to handle this multi-class problem. 
+The second challenge concerns the handling of nonlinear classification boundaries. 
+Through preliminary data analysis, we discovered that some classes exhibit nonlinear 
+distribution characteristics, necessitating the selection of appropriate kernel functions to 
+address these nonlinear classification boundaries. 
+The third challenge involves QUBO model conversion. We need to transform the 
+SVM optimization problem into QUBO form while ensuring that the transformed problem 
+size remains within the 600-qubit limit of the Kaiwu SDK. 
+The fourth challenge is balancing computational efficiency and accuracy, which 
+requires choosing model parameters that maintain classification accuracy while respecting 
+computational resource constraints. 
+ 
+(2) Modeling Approach and Principle Selection 
+ 
+To address these challenges, we adopted a staged modeling strategy. 
+In the first stage, we employ a linear kernel function K(xi,xj) = xi·xj to separate the 
+Iris-setosa class. 
+In the second stage, we utilize the RBF (Gaussian) kernel function K(xi,xj) = exp(-
+γ||xi-xj||²) to separate the remaining two classes. 
+For the optimization problem construction, we adopt the standard SVM optimization 
+objective min 1/2||w||² + C∑max(0,1-yi(w·xi+b)), converting it into QUBO form through 
+binary encoding and penalty terms. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-301-
+
+===== PDF page 32 =====
+Team # apmcm24207218  P32 of 101 
+ 
+ 
+ 
+(3) Rationale for Modeling Approach 
+ 
+Our choice of this modeling approach is based on several important considerations. 
+First is the data-driven decision making. Through data visualization analysis, we 
+found that Iris-setosa exhibits clear linear separability from the other two classes, while 
+Iris-versicolor and Iris-virginica show nonlinear relationships. This natural data 
+distribution characteristic strongly supports our decision to adopt a two-stage classification 
+strategy. 
+Second is the consideration of computational efficiency. The two-stage strategy 
+transforms the three-class problem into two binary classification problems, where the first 
+stage uses a simple linear kernel function to significantly reduce computational complexity, 
+while only employing the more complex RBF kernel function in the necessary second stage. 
+This design greatly optimizes the use of computational resources. 
+Third is accuracy assurance. In practice, the linear kernel function achieves 100% 
+classification accuracy for Iris-setosa, while the RBF kernel function effectively handles 
+the nonlinear distribution of the remaining two classes. This combination strategy ensures 
+high overall classification accuracy. 
+Finally, there's the QUBO conversion friendliness. The staged strategy effectively 
+reduces the scale of individual optimization problems, which is crucial for controlling the 
+size of the QUBO problem to meet the Kaiwu SDK's constraints. This modeling approach 
+not only successfully addresses the main challenges of the original problem but also 
+demonstrates excellent performance and scalability in practical applications. 
+Through this thoughtful problem decomposition and algorithm selection, we have 
+achieved an efficient and accurate classification model that effectively balances 
+computational resources and classification performance. 
+ 
+b. Data Analysis and Processing 
+ 
+(1) Data Overview 
+ 
+The Iris dataset is a classical machine learning dataset containing 150 samples, with 
+each sample characterized by four dimensional features: Sepal Length, Sepal Width, Petal 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-302-
+
+===== PDF page 33 =====
+Team # apmcm24207218  P33 of 101 
+ 
+ 
+Length, and Petal Width. These features are continuous numerical values representing 
+physical measurements of iris flowers. The dataset encompasses three distinct iris 
+categories: Iris-setosa, Iris-versicolor, and Iris-virginica, with 50 samples per category, 
+presenting a perfectly balanced class distribution. 
+ 
+(2) Statistical Feature Analysis 
+ 
+The dataset reveals distinctive morphological patterns across different iris categories. 
+Let's examine the detailed statistical characteristics: 
+Table 1: Iris-setosa Statistical Features 
+Feature Mean Std Dev Min Max 
+Sepal Length 5.006 0.352 4.3 5.8 
+Sepal Width 3.428 0.379 2.3 4.4 
+Petal Length 1.462 0.174 1.0 1.9 
+Petal Width 0.246 0.105 0.1 0.5 
+ 
+Table 2: Iris-versicolor Statistical 
+Feature Mean Std Dev Min Max 
+Sepal Length 5.936 0.516 4.9 7.0 
+Sepal Width 2.770 0.314 2.0 3.4 
+Petal Length 4.260 0.470 3.0 5.1 
+Petal Width 1.326 0.198 1.0 1.8 
+ 
+Table 3: Iris-virginica Statistical Features 
+Feature Mean Std Dev Min Max 
+Sepal Length 6.588 0.636 4.9 7.9 
+Sepal Width 2.974 0.322 2.2 3.8 
+Petal Length 5.552 0.552 4.5 6.9 
+Petal Width 2.026 0.275 1.4 2.5 
+ 
+Analysis of these statistics reveals clear patterns: 
+a).Iris-setosa has distinctively smaller petals compared to other species. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-303-
+
+===== PDF page 34 =====
+Team # apmcm24207218  P34 of 101 
+ 
+ 
+b).Iris-virginica generally has the largest dimensions across most features. 
+c).The standard deviations indicate that Iris-virginica shows the highest variability. 
+ 
+ 
+ 
+(3) Feature Distribution and Correlation Analysis 
+ 
+⚫ Feature Correlations： 
+Table 4: Feature Correlation Matrix 
+Feature Sepal Length Sepal Width Petal Length Petal Width 
+Sepal Length 1.000 -0.117 0.872 0.818 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-304-
+
+===== PDF page 35 =====
+Team # apmcm24207218  P35 of 101 
+ 
+ 
+Sepal Width -0.117 1.000 -0.428 -0.366 
+Petal Length 0.872 -0.428 1.000 0.963 
+Petal Width 0.818 -0.366 0.963 1.000 
+ 
+The correlation analysis reveals intricate relationships between different iris features. 
+The most striking finding is the exceptionally strong positive correlation (0.963) between 
+petal length and petal width, indicating that these features grow proportionally across all 
+species. This relationship suggests that petal development follows a consistent pattern 
+regardless of the iris species. 
+Sepal length shows strong positive correlations with both petal features (0.872 with 
+petal length and 0.818 with petal width), suggesting that larger flowers tend to have 
+proportionally larger petals. Interestingly, sepal width demonstrates weak to moderate 
+negative correlations with other features, particularly with petal length (-0.428), indicating 
+that flowers with wider sepals don't necessarily have longer petals. 
+The weak negative correlation (-0.117) between sepal length and width is particularly 
+noteworthy, as it suggests that these two sepal dimensions vary almost independently. This 
+independence in sepal growth patterns could be a valuable distinguishing characteristic 
+among species.  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-305-
+
+===== PDF page 36 =====
+Team # apmcm24207218  P36 of 101 
+ 
+ 
+⚫ Class Separability Analysis： 
+Table 5: Feature Overlap Analysis 
+Feature Pair Setosa-Versicolor Overlap Versicolor-Virginica Overlap 
+Petal Length No overlap (Gap: 1.1cm) Significant (4.5 - 5.1cm) 
+Petal Width No overlap (Gap: 0.5cm) Moderate (1.4 - 1.8cm) 
+Sepal Length Slight overlap Substantial overlap 
+Sepal Width Moderate overlap Significant overlap 
+ 
+The separability analysis reveals distinct patterns that significantly influence our 
+classification strategy. Iris-setosa shows remarkable separation from the other two species, 
+particularly in petal characteristics. The absence of overlap in petal features (with gaps of 
+1.1cm in length and 0.5cm in width) makes Iris-setosa identification straightforward using 
+linear classification methods. 
+However, the relationship between Iris-versicolor and Iris-virginica is more complex, 
+with substantial feature overlaps: petal length (4.5-5.1cm), petal width (1.4-1.8cm), and 
+significant overlapping in sepal dimensions. While petal width and sepal width show some 
+discriminative potential, neither individual features nor their simple combinations provide 
+sufficient separation. Analysis of the four-dimensional feature space reveals clustering 
+tendencies with nonlinear boundaries, where local density variations in overlap regions 
+suggest the effectiveness of kernel-based separation methods. This complex feature 
+distribution pattern directly guides our classification strategy toward nonlinear approaches. 
+ 
+(4) Data Quality Assessment 
+ 
+Table 6: Data Quality Metrics 
+Quality Metric Result Details 
+Completeness 100% No missing values in any feature 
+Outliers Minimal Few outliers in Sepal Width 
+Value Range Validity 100% All values within biological limits 
+Class Balance Perfect 50 samples per class 
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-306-
+
+===== PDF page 37 =====
+Team # apmcm24207218  P37 of 101 
+ 
+ 
+The dataset demonstrates exceptional quality characteristics that make it ideal for 
+machine learning applications.  
+First, it exhibits perfect data completeness, with all 150 samples containing complete 
+records across all four feature dimensions, zero missing values, no partial measurements, 
+and complete class label information for all instances.  
+Second, systematic examination reveals minimal outliers, primarily in Sepal Width 
+measurements, though all values, including these outliers, fall within biologically plausible 
+ranges.  
+Third, the features exhibit clear patterns of normal distribution within classes, 
+showing no evidence of measurement bias or systematic errors, with natural biological 
+variation well-represented throughout the dataset. 
+ 
+(5) Data Preprocessing Strategy 
+ 
+Table 7: Preprocessing Steps and Rationale 
+Step Process Implementation Details Purpose 
+1. Standardization Z-score (x - μ)/σ for all features 
+Normalize scale 
+differences 
+2. Class Encoding 
+Stage 1 
+Binary Setosa: +1, Others: -1 Enable linear separation 
+3. Class Encoding 
+Stage 2 
+Binary Versicolor: 0, Virginica: 1 
+Facilitate nonlinear 
+classification 
+ 
+The preprocessing strategy is carefully designed to maximize the natural separability 
+patterns observed in the data: 
+a).Feature Standardization: Feature Standardization serves as a crucial preprocessing 
+step in machine learning. It achieves three key objectives: eliminates scale-based bias 
+between features to ensure fairness; improves numerical stability during the optimization 
+process; and enables fair comparison of feature contributions across different dimensions. 
+b) Two-Stage Encoding: Two-Stage Encoding represents an efficient data processing 
+methodology. Its advantages are manifested in three aspects: it effectively leverages natural 
+class separation patterns; simplifies the complexity of classification problems to enhance 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-307-
+
+===== PDF page 38 =====
+Team # apmcm24207218  P38 of 101 
+ 
+ 
+model efficiency; and reduces computational requirements for optimization, making model 
+training more resource-efficient. 
+ 
+(6) Classification Strategy Design 
+ 
+Table 8: Classification Strategy 
+Stage Target Classes Method Expected 
+Accuracy 
+Computational 
+Complexity 
+Stage 1 Setosa vs Others Linear SVM ~100% Low 
+Stage 2 Versicolor vs Virginica RBF Kernel SVM 95 - 98% Moderate 
+ 
+The two-stage classification strategy is designed to optimize both accuracy and 
+computational efficiency: 
+a).First Stage - Linear Separation: 
+   - Targets the naturally separable Setosa class. 
+   - Utilizes simple linear decision boundary. 
+   - Minimal computational overhead. 
+   - Expected perfect classification based on feature gaps. 
+b).Second Stage - Nonlinear Classification: 
+   - Focuses on the more challenging Versicolor-Virginica separation. 
+   - Employs RBF kernel for complex boundary modeling. 
+   - Moderate computational requirements. 
+   - Optimized for overlapping feature spaces. 
+c).Implementation Considerations: 
+   - Kernel parameter selection based on overlap characteristics. 
+   - Regularization tuning to prevent overfitting. 
+   - Balance between model complexity and accuracy. 
+This comprehensive analysis and structured approach provides a robust foundation 
+for implementing the SVM classification system. The clear separation of concerns and 
+quantitative justification for each decision ensures both theoretical soundness and practical 
+applicability of the solution. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-308-
+
+===== PDF page 39 =====
+Team # apmcm24207218  P39 of 101 
+ 
+ 
+The strategy particularly addresses the key requirements of the QUBO transformation, 
+ensuring that the resulting optimization problem will be both mathematically tractable and 
+computationally feasible within the constraints of quantum computing implementation. 
+ 
+2.Model Establishment 
+a. SVM Model Construction 
+ 
+(1) Basic SVM Model 
+ 
+Given a training dataset {(𝑥𝑖, 𝑦𝑖)}𝑖=1 𝑛 , where 𝑥𝑖 ∈ 𝑅𝟜 represents the feature vector 
+(including sepal length, sepal width, petal length, petal width), and 𝑦𝑖 ∈ {−1,1} denotes 
+the class label. 
+The standard SVM optimization objective is: 
+min
+𝑤,𝑏
+1
+2 ||𝑤||
+2
++ 𝐶 ∑ ξ𝑖
+𝑛
+𝑖=1
+ 
+ 
+Subject to: 
+{𝑦𝑖(𝑤𝑇𝑥𝑖 + 𝑏) ≥ 1 − 𝜉𝑖, 𝑖 = 1, … , 𝑛 𝜉𝑖 ≥ 0, 𝑖 = 1, … , 𝑛  
+Among them, w is the weight vector determining the normal vector of the 
+classification hyperplane; b is the bias term determining the position of the hyperplane; C 
+is the penalty parameter controlling the model's tolerance for misclassification; ξᵢ is the 
+slack variable allowing for partial misclassification 
+The first constraint 𝑦𝑖(𝑤𝑇𝑥𝑖 + 𝑏) ≥ 1 − ξ𝑖 ensures correct sample classification: 
+When 𝑦𝑖 = 1, requires 𝑤𝑇𝑥𝑖 + 𝑏 ≥ 1 − ξ𝑖 
+When 𝑦𝑖 = −1, requires 𝑤𝑇𝑥𝑖 + 𝑏 ≤ −1 + ξ𝑖 
+The second constraint ξ𝑖 ≥ 0 ensures non-negative slack variables. 
+ 
+2) Two-Stage Classification Strategy 
+ 
+Based on our preliminary data analysis, we observed distinct patterns in the Iris 
+dataset that suggest a two-stage classification approach would be most effective. Our 
+analysis revealed that Iris-setosa is linearly separable from the other two classes, while Iris-
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-309-
+
+===== PDF page 40 =====
+Team # apmcm24207218  P40 of 101 
+ 
+ 
+versicolor and Iris-virginica show non-linear separation characteristics. This observation 
+leads us to implement a hierarchical classification strategy that optimizes the classification 
+process. 
+⚫ First Stage: Linear Classification 
+In the first stage, we focus on separating Iris-setosa from the other two classes. Given 
+the clear linear separability shown in our data visualization, we employ a linear kernel 
+function: 
+𝐾(𝑥𝑖, 𝑥𝑗) = 𝑥𝑖 𝑇𝑥𝑗 
+The optimization objective remains unchanged: 
+min
+𝑤,𝑏
+1
+2 ||𝑤||
+2
++ 𝐶 ∑ ξ𝑖
+𝑛
+𝑖=1
+ 
+The decision function for this stage is: 
+𝑓(𝑥) = sign(𝑤𝑇𝑥 + 𝑏) 
+This linear approach is computationally efficient and provides perfect separation for 
+Iris-setosa, as demonstrated by our preliminary testing which achieved 100% accuracy in 
+this stage. 
+ 
+⚫ Second Stage: Non-linear Classification 
+After separating Iris-setosa, we focus on the more challenging task of distinguishing 
+between Iris-versicolor and Iris-virginica. The overlapping nature of these classes 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-310-
+
+===== PDF page 41 =====
+Team # apmcm24207218  P41 of 101 
+ 
+ 
+necessitates a non-linear approach. We selected the RBF kernel function after comparative 
+analysis: 
+𝐾(𝑥𝑖, 𝑥𝑗) = exp (−γ ||𝑥𝑖 − 𝑥𝑗||
+2
+) 
+The RBF kernel was chosen because it effectively maps our four-dimensional feature 
+space into an infinite-dimensional space, allowing for more flexible decision boundaries. 
+The dual problem form becomes: 
+The resulting decision function becomes more sophisticated: 
+𝑓(𝑥) = sign (∑ α𝑖
+𝑛
+𝑖=1
+𝑦𝑖𝐾(𝑥𝑖, 𝑥) + 𝑏) 
+ 
+b. QUBO Model Transformation 
+To leverage quantum computing capabilities through the Kaiwu SDK, we need to 
+transform our SVM optimization problem into a QUBO format. This transformation is non-
+trivial and requires careful consideration of variable encoding and constraint handling. 
+ 
+(1) Variable Encoding 
+ 
+The key challenge in QUBO transformation is converting continuous variables into 
+binary form. We implement this through the following encoding schemes: 
+⚫ Weight vector w encoding: 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-311-
+
+===== PDF page 42 =====
+Team # apmcm24207218  P42 of 101 
+ 
+ 
+𝑤𝑗 = −2𝑝−1𝑤𝑗,0 + ∑ 2−𝑘
+𝑝−1
+𝑘=1
+𝑤𝑗,𝑘, 𝑤𝑗,𝑘 ∈ {0,1} 
+This encoding allows us to represent each weight component with sufficient precision 
+while maintaining binary constraints. We chose p=16 bits to ensure adequate numerical 
+precision without exceeding computational limitations. 
+ 
+⚫ Bias term b encoding: 
+𝑏 = −2𝑝−1𝑏0 + ∑ 2−𝑘
+𝑝−1
+𝑘=1
+𝑏𝑘, 𝑏𝑘 ∈ {0,1} 
+The bias term uses the same encoding scheme as the weights to maintain consistency 
+and precision. 
+ 
+⚫ Slack variable ξᵢ encoding: 
+ξ𝑖 = ∑ 2−𝑘
+𝑝−1
+𝑘=0
+ξ𝑖,𝑘, ξ𝑖,𝑘 ∈ {0,1} 
+Slack variables are encoded with non-negative values to ensure they fulfill their role 
+in allowing for soft margins. 
+ 
+(2) QUBO Objective Function Construction 
+ 
+The transformation to QUBO format requires reformulating our optimization problem 
+into a quadratic form with binary variables: 
+min
+𝑥∈{0,1}𝑛 𝑥𝑇 𝑄𝑥 
+The Q matrix architecture incorporates several components, each serving a specific 
+purpose: 
+⚫ Main diagonal terms capture the squared contributions: 
+𝑄𝑖𝑖 = 1 2 ∑ 𝑤𝑗,𝑖 2
+4
+𝑗=1
++ 𝐶 ∑ ξ𝑘,𝑖
+𝑛
+𝑘=1
+ 
+⚫ Cross terms represent interaction effects: 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-312-
+
+===== PDF page 43 =====
+Team # apmcm24207218  P43 of 101 
+ 
+ 
+𝑄𝑖𝑗 = ∑ 𝑤𝑘,𝑖
+4
+𝑘=1
+𝑤𝑘,𝑗 + λ ∑ 𝑦𝑙(𝑤𝑖 𝑇𝑥𝑙 + 𝑏𝑗)
+𝑛
+𝑙=1
+ 
+⚫ Penalty term ensures adherence to constraints: 
+𝑃(𝑥) = λ ∑ max{
+𝑛
+𝑖=1
+0,1 − 𝑦𝑖(𝑤𝑇𝑥𝑖 + 𝑏)}2 
+The complete QUBO matrix Q synthesizes all components: 
+𝑄 = 𝑄𝑤 + 𝑄𝑏 + 𝑄ξ + 𝑄𝑝 
+Among them, 𝑄𝑤 represents the contribution of weight terms , 𝑄𝑏 represents the 
+contribution of bias terms , 𝑄𝜉  represents the contribution of slack variables , 𝑄𝑝 
+represents the contribution of penalty terms. This formulation ensures that minimizing the 
+quadratic objective effectively optimizes our original SVM problem. 
+ 
+(3) QUBO Constraint Handling 
+ 
+Converting SVM constraints to QUBO format requires careful penalty term design: 
+⚫ Classification constraint: 
+𝑃1(𝑥) = λ1 ∑ max{𝑛 𝑖=1 0,1 − 𝑦𝑖(𝑤𝑇𝑥𝑖 + 𝑏)}2 
+This term penalizes misclassifications and margin violations. 
+⚫ Non-negativity constraint: 
+𝑃2(𝑥) = λ2 ∑ max{𝑛 𝑖=1 0, −ξ𝑖}2 
+This ensures slack variables remain non-negative. 
+The final QUBO objective function: 
+min
+𝑥∈{0,1}𝑛 𝑥𝑇 𝑄𝑥 + 𝑃1(𝑥) + 𝑃2(𝑥) 
+ 
+(4) Parameter Settings 
+ 
+Our parameter selection is based on extensive experimental validation: 
+Encoding bits 𝑝 = 16: This provides a balance between precision and computational 
+feasibility within the Kaiwu SDK's 600-bit limitation. 
+Penalty parameter  𝐶 = 50 : This value was determined through cross-validation, 
+offering optimal balance between fitting accuracy and generalization. 
+RBF kernel parameter 𝛾 = 1/(4𝜎2): This setting adapts to our data's scale through 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-313-
+
+===== PDF page 44 =====
+Team # apmcm24207218  P44 of 101 
+ 
+ 
+the feature standard deviation σ. 
+Penalty coefficients 𝜆₁ = 𝜆₂ = 100 : These values ensure constraint satisfaction 
+while maintaining numerical stability in the optimization process. 
+These parameters were carefully tuned to ensure both theoretical validity and practical 
+performance in the QUBO framework.  
+ 
+3.Model Solution 
+a. Determination of Objective Function and Decision Variables 
+ 
+(1) Objective Function 
+ 
+Under the framework of quantum annealing algorithm, the SVM problem is 
+transformed into a QUBO model for solution.  
+We first construct the standard SVM model's objective function: 
+min
+𝑤,𝑏
+1
+2 ||𝑤||
+2
++ 𝐶 ∑ ξ𝑖
+𝑛
+𝑖=1
+ 
+This objective function is subject to the following constraints: 
+{𝑦𝑖(𝑤𝑇𝑥𝑖 + 𝑏) ≥ 1 − 𝜉𝑖, 𝑖 = 1, … , 𝑛 𝜉𝑖 ≥ 0, 𝑖 = 1, … , 𝑛  
+The standard SVM problem is then transformed into QUBO form: 
+min
+𝑞
+𝑞𝑇 𝑄𝑞 + λ ∑ max(0,1 − 𝑦𝑖(𝑤 ⋅ 𝑥𝑖 + 𝑏))
+𝑛
+𝑖=1
+ 
+where Q is the core matrix, q is the binary decision variable vector, and λ is the penalty 
+parameter. 
+ 
+(2) Decision Variables 
+ 
+The model involves three main types of decision variables: 
+a). Weight vector w: Using 16-bit binary encoding, mapping real numbers in the [-
+1,1] interval to binary space, with each feature corresponding to a set of binary codes. 
+b). Bias term b: Using 16-bit binary encoding, with values ranging from [-1,1], used 
+to adjust the position of the classification hyperplane. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-314-
+
+===== PDF page 45 =====
+Team # apmcm24207218  P45 of 101 
+ 
+ 
+c). Slack variables ξ: Corresponding to each training sample, allowing for a certain 
+degree of classification error, used to enhance the model's generalization ability. 
+ 
+(3) QUBO Model Numerical Results 
+ 
+After converting the SVM model to QUBO form, the model's core parameters exhibit 
+good numerical characteristics. We adopt 16-bit encoding precision, achieving a balance 
+between computational accuracy and complexity control. The QUBO matrix size is 
+determined by feature dimensions and encoding bits, with non-zero elements accounting 
+for approximately 32%. This moderate sparsity ensures both complete problem 
+representation and controlled computational burden. The matrix elements are constrained 
+within [-100.0, 100.0], ensuring numerical stability. 
+The key parameter settings for the QUBO model are as follows: 
+Table1.Matrix Characteristics  
+Characteristic Name Description Value 
+Sparsity 
+Percentage of non-zero 
+elements in the matrix 
+32% 
+Matrix Scale 
+Square of feature count plus 16 
+after multiplying by 16 
+(feature count × 16 + 16)² 
+Element Value Range 
+Value range of elements in the 
+matrix 
+[-100.0, 100.0] 
+ 
+Table2.Parameter Configuration  
+Parameter Name Description Value 
+Encoding Precision Number of bits for data encoding 16 bits 
+Normalization Coefficient 
+C 
+Coefficient used to adjust normalization 
+strength 
+50.0 
+Penalty Parameter λ Coefficient used to adjust penalty term 100.0 
+ 
+b. Implementation of Simulated Annealing Algorithm and Sample 
+Classification 
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-315-
+
+===== PDF page 46 =====
+Team # apmcm24207218  P46 of 101 
+ 
+ 
+(1) Computational Approach of Simulated Annealing Algorithm 
+ 
+ⅰ. Variable Encoding Scheme 
+ 
+In this research, we employed an efficient variable encoding scheme to transform the 
+SVM optimization problem into QUBO format. Each α coefficient is encoded using 4 
+binary bits, allowing for 16 distinct values while maintaining sufficient precision for 
+discrete optimization. 
+In the QUBO matrix construction, we designed the following core components: 
+a).Main objective function: Built through kernel computations between sample pairs 
+b).Decision variables: Represented as 𝛼𝑖𝑘, where i is the sample index and k is the bit 
+position 
+c).Constraints: Incorporated balance and regularization penalty terms in the QUBO 
+matrix 
+ 
+ⅱ. Algorithm Control Parameters 
+ 
+The core parameters of the algorithm are set as follows: 
+Table1.Basic SVM Parameters: 
+Parameters Value 
+Regularization parameter C 1.0 
+RBF kernel parameter σ 1.0 
+ 
+Table2.QUBO-specific Parameters: 
+Constraint Value 
+Balance constraint weight λ_balance 100 
+Regularization constraint weight λ_reg 100 
+Binary encoding length m 4 bits/α 
+ 
+These parameter selections are based on extensive experimental validation to achieve 
+optimal classification performance. For the kernel function design, we employed the RBF 
+kernel: 𝐾(𝑥𝑖, 𝑥𝑗) = 𝑒𝑥𝑝 (−||𝑥𝑖 − 𝑥𝑗||
+2
+/(2𝜎2)), with bias calculation through averaged 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-316-
+
+===== PDF page 47 =====
+Team # apmcm24207218  P47 of 101 
+ 
+ 
+contributions. 
+ 
+ⅲ. Search Strategy Design 
+ 
+Our algorithm implements a two-phase strategy for optimal classification. The first 
+phase focuses on linear separation, aiming to separate Iris-setosa from other classes. 
+Through linear kernel SVM direct hyperplane computation, we achieved perfect class 
+separation. 
+The second phase addresses non-linear separation, primarily handling the 
+classification between Iris-versicolor and Iris-virginica. The implementation steps include: 
+◆ Generating QUBO dictionary with objective terms. 
+◆ Adding constraint terms with appropriate weights. 
+◆ Applying simulated annealing optimization. 
+◆ Decoding binary solutions to SVM parameters. 
+◆ Computing decision boundary and bias. 
+ 
+ⅳ. Multiple Runs and Result Integration 
+ 
+To ensure result reliability and stability, we conducted 100 independent runs. Each 
+run utilized different random seeds for data splitting while maintaining consistent 
+parameter settings. The main statistical results from multiple runs are as follows: 
+ Table3.Main statistical results 
+ 
+ 
+ 
+ 
+ 
+These results demonstrate the algorithm's excellent stability and reliability. 
+ 
+ⅴ. Temperature Control Mechanism 
+ 
+In the simulated annealing implementation, we utilized Neal's algorithm for 
+temperature control. The algorithm balances exploration and exploitation through 
+automatic temperature adjustment, featuring: 
+Metric Value 
+Average Accuracy 93.80% 
+Average Bias 7.5096 
+Number of Runs 100 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-317-
+
+===== PDF page 48 =====
+Team # apmcm24207218  P48 of 101 
+ 
+ 
+◆ Adaptive temperature adjustment mechanism 
+◆ Solution quality-based cooling strategy 
+◆ Dynamic acceptance probability calculation 
+◆ Convergence state monitoring 
+ 
+(2) Classification Performance Evaluation 
+ 
+The model demonstrated excellent performance across different evaluation 
+dimensions. Detailed evaluation metrics are as follows: 
+Table4.Single Run Performance 
+Metric Value 
+Average Accuracy 93.80% 
+Average Bias 7.5096 
+Number of Runs 100 
+ 
+Table5.Multiple Runs Performance: 
+Metric Value 
+Average Accuracy 93.80% 
+Average Bias 7.5096 
+These results indicate stable high performance across different classes. 
+ 
+(3) Feature Importance Analysis 
+ 
+Through in-depth analysis of feature contributions, we identified varying degrees of 
+importance for different features: 
+⚫ Petal Features: 
+a).Petal Length: Shows strongest discriminative power, clearly separating different 
+classes 
+b).Petal Width: Acts as second most important feature, complementing petal length in 
+defining non-linear boundaries 
+⚫ Sepal Features: 
+a).Sepal Length: Demonstrates moderate discriminative ability, assists in boundary 
+optimization 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-318-
+
+===== PDF page 49 =====
+Team # apmcm24207218  P49 of 101 
+ 
+ 
+b).Sepal Width: Provides supplementary information, enhances overall classification 
+performance 
+The interactions between features, particularly the strong correlation between petal 
+measurements, are well captured by the RBF kernel, contributing significantly to achieving 
+high classification accuracy. 
+ 
+(4) Classification Results 
+ 
+The classification results demonstrate excellent algorithm performance across 
+different phases: 
+Phase-wise Performance: 
+Classification 
+Phase 
+Samples Correct Incorrect Accuracy 
+Phase 1 
+(Linear) 
+30 30 0 100.00% 
+Phase 2 (RBF) 20 19 1 95.00% 
+Multiple Runs 
+Average 
+- - - 93.80% 
+ 
+Confusion Matrix:： 
+[12 0 1 7] 
+The confusion matrix analysis reveals the model's precise classification capabilities: 
+a).Class -1: All 12 samples correctly classified 
+b).Class 1: Only 1 misclassification out of 8 samples 
+c).Overall Performance: Excellent class balance demonstrated 
+Through stability assessment across multiple runs, we found that the model maintains 
+stable performance under different data splits, with low variance between individual runs 
+and reliable classification patterns. These comprehensive results thoroughly validate the 
+effectiveness of our QUBO-based SVM implementation in handling both linear and non-
+linear classification tasks, achieving not only high accuracy but also excellent stability. 
+This performance is both suitable for practical applications and scalable, effectively 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-319-
+
+===== PDF page 50 =====
+Team # apmcm24207218  P50 of 101 
+ 
+ 
+handling data variations while maintaining efficient computational performance. 
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-320-
+
+===== PDF page 51 =====
+Team # apmcm24207218  P51 of 101 
+ 
+ 
+C. Third Problem Model Establishment and Solution 
+1.Model Preparation 
+a. Modeling Principles and Approach 
+ 
+(1) Analysis of Key Challenges 
+ 
+In implementing quantum optimization for deep learning recommendation systems, 
+we face three major technical challenges.  
+First, the optimization process of deep learning models (especially CNNs) is 
+exceptionally complex, requiring optimization of numerous parameters while traditional 
+methods often consume substantial computational resources and tend to get trapped in local 
+optima.  
+Second, when integrating deep learning with quantum computing, we need to cleverly 
+transform continuous value optimization problems into discrete QUBO form, while dealing 
+with the 600-qubit limitation of the Kaiwu SDK, which significantly constrains model scale. 
+ The third challenge stems from the unique characteristics of recommendation 
+systems - highly sparse user-item interaction data and complex nonlinear user preference 
+relationships require us to balance personalized recommendation effectiveness with 
+computational efficiency. 
+ 
+(2) Modeling Approach and Principle Selection 
+ 
+To address these challenges, our modeling approach revolves around three core 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-321-
+
+===== PDF page 52 =====
+Team # apmcm24207218  P52 of 101 
+ 
+ 
+elements.  
+First, we chose Neural Collaborative Filtering (NCF) as our base model, with its 
+layered architecture including embedding, interaction, neural network, and output layers, 
+effectively handling user-item interaction problems.  
+Second, we designed specialized quantum computing optimization strategies by 
+discretizing continuous embedding vectors into binary representations and constructing 
+appropriate quadratic optimization objective functions.  
+Third, we adopted a hybrid computational framework that cleverly combines 
+traditional deep learning's feature extraction capabilities with quantum computing's 
+optimization advantages. 
+ 
+(3) Rationale for Modeling Approach 
+ 
+Our solution selection was based on careful consideration across three dimensions. 
+ First, the choice of NCF model was driven by its excellent adaptability - it can handle 
+high-dimensional sparse data, automatically learn feature interaction patterns through 
+flexible neural network structures, while its solid theoretical foundation and high 
+computational efficiency were also key factors.  
+Second, the quantum optimization approach was selected primarily for its powerful 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-322-
+
+===== PDF page 53 =====
+Team # apmcm24207218  P53 of 101 
+ 
+ 
+global optimization capabilities; quantum annealing algorithms can effectively escape 
+local optima, and their binary encoding scheme well accommodates qubit resource 
+constraints.  
+Finally, the hybrid framework design reflects thoughtful trade-offs - it not only 
+effectively combines deep learning's feature learning capabilities with quantum 
+computing's optimization advantages but has also demonstrated significant performance 
+improvements in practical applications, reducing RMSE by approximately 49%. 
+ 
+Through this systematic design, our approach not only addresses the aforementioned 
+technical challenges but also leaves ample room for future model optimization and 
+expansion. Practice has shown that this hybrid framework maintains high performance 
+while offering excellent engineering practicality and scalability. The framework provides 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-323-
+
+===== PDF page 54 =====
+Team # apmcm24207218  P54 of 101 
+ 
+ 
+a robust foundation for future developments in quantum-enhanced machine learning 
+systems, particularly in the context of recommendation systems where both computational 
+efficiency and prediction accuracy are crucial. 
+ 
+b. Data Analysis and Processing 
+ 
+(1) Detailed Dataset Analysis 
+ 
+In this research, we first conducted a comprehensive analysis of the MovieLens 
+benchmark dataset. This analysis can be divided into three main aspects: 
+⚫ Dataset Overview: 
+The dataset contains 100,000 rating records from 1,000 users on 1,700 movies, 
+released as a stable version in April 1998. Upon verification, this is a high-quality dataset 
+that has been preprocessed with no missing values. 
+ 
+⚫ Data File Structure 
+Rating Data (ratings.dat) : Records UserID (unique user identifier), MovieID (unique 
+movie identifier), Rating (integer ratings from 1-5), and Timestamp (rating timestamp). 
+User Data (users.dat) : Contains UserID, Gender (M/F), Age (age group classification), 
+Occupation (21 occupational categories), and Zip-code. 
+Movie Data (movies.dat) : Stores MovieID, Title (movie title including release year), 
+and Genres (multiple genres separated by "|"). 
+ 
+⚫ Data Characteristic Analysis  
+Through in-depth analysis, we found: 
+a).Rating distribution shows normal distribution characteristics, ranging from 1-5 
+points with integer precision. 
+b).In terms of user behavior, rating quantity follows a long-tail distribution, with 
+significant differences in rating standards among different user groups. 
+c).Regarding movie characteristics, the dataset includes multiple mainstream movie 
+genres, with some popular movies having significantly higher than average rating counts. 
+ 
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-324-
+
+===== PDF page 55 =====
+Team # apmcm24207218  P55 of 101 
+ 
+ 
+ 
+ 
+(2) Data Preprocessing Workflow 
+ 
+To ensure data quality, we implemented a systematic preprocessing workflow 
+comprising four key steps: 
+⚫ Data Cleaning and Integration  
+a).Duplicate Data Processing: Checking and removing duplicate rating records, 
+keeping only the latest rating for each user-movie pair. 
+b).Outlier Processing: Verifying rating range rationality, identifying and processing 
+abnormal timestamps. 
+c)Data Format Unification: Standardizing timestamp formats and normalizing text 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-325-
+
+===== PDF page 56 =====
+Team # apmcm24207218  P56 of 101 
+ 
+ 
+field formats. 
+ 
+⚫ Feature Engineering  
+We focused on processing three types of features: 
+a).User Features: Converting gender (M/F) to one-hot encoding, discretizing 
+continuous age values into age groups, one-hot encoding for 21 occupational categories. 
+b).Movie Features: Decomposing genres field into independent features, 
+implementing multi-label binary processing for movie genres, extracting year information 
+from movie titles. 
+c).Rating Features: Generating time-related features based on timestamps, 
+normalizing 1-5 rating range to [0,1] interval. 
+ 
+⚫ Dataset Splitting and Sampling  
+Considering recommendation system characteristics: 
+a).Employing time series splitting method, reserving the latest 20% data as test set, 
+ensuring temporal continuity. 
+b).During data balance processing, considering user activity distribution, ensuring 
+sufficient samples for each user in both training and test sets. 
+c).Generating unrated movies as negative samples for each user, maintaining 
+reasonable positive-negative sample ratio. 
+ 
+⚫ Feature Selection and Dimensionality Reduction  
+Based on practical requirements: 
+a).Calculating correlation coefficients between features, removing highly correlated 
+redundant features. 
+b).Adjusting feature dimensions according to Kaiwu SDK's 600-dimension limit, 
+selecting the most representative feature subset. 
+c).Standardizing all numerical features to ensure feature scale consistency. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-326-
+
+===== PDF page 57 =====
+Team # apmcm24207218  P57 of 101 
+ 
+ 
+Through this series of systematic data processing steps, we successfully constructed 
+a dataset with complete structure and reasonable features, laying a solid foundation for 
+subsequent model training. Each step underwent strict quality control, ensuring data 
+usability and reliability. 
+ 
+2.Model Establishment 
+a. NCF Model Construction 
+ 
+Neural Collaborative Filtering (NCF) serves as our foundational model for the 
+recommendation system, which we then transform into a quantum annealing optimization 
+problem. Below is a detailed description of the model construction process.NCF leverages 
+deep learning techniques to capture complex non-linear relationships between users and 
+items. The core idea is to map users and items into a shared latent space and learn their 
+interaction patterns through neural networks. 
+ 
+(1) Mathematical Model Definition 
+ 
+⚫ Objective Function: 
+min
+𝑃,𝑄
+𝐿 = ∑ (𝑦𝑢𝑖 − 𝑦𝑢𝑖̂ )2
+(𝑢,𝑖)∈𝒴
++ λ(|𝑃𝑢|2 + |𝑄𝑖|2) 
+Among them, 𝑦𝑢𝑖 means actual rating from user u for movie i , 𝑦𝑢𝑖̂  means predicted 
+rating , 𝑃𝑢 means latent feature vector for user u ,𝑄𝑖 means latent feature vector for movie 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-327-
+
+===== PDF page 58 =====
+Team # apmcm24207218  P58 of 101 
+ 
+ 
+I , λ means regularization parameter , 𝒴 means set of user-movie rating pairs in training 
+set. 
+ 
+⚫ Constraints: 
+0 ≤ 𝑦𝑢𝑖̂ ≤ 1, ∀(𝑢, 𝑖) ∈ 𝒴 
+|𝑃𝑢|2 ≤ β, ∀𝑢 ∈ 𝒰 
+|𝑄𝑖|2 ≤ β, ∀𝑖 ∈ ℐ 
+These constraints ensure: 
+Constraint (1): Predicted ratings fall within normalized range [0,1] 
+Constraints (2)(3): Latent vector norms are bounded to prevent overfitting (β is a 
+hyperparameter) 
+ 
+(2) Model Architecture Design 
+ 
+⚫ Embedding Layer： 
+𝑝𝑢 = 𝑃𝑤𝑢𝑃 ∈ 𝑅𝑑 
+𝑞𝑖 = 𝑄𝑤𝑖 𝑄 ∈ 𝑅𝑑 
+Among them, 𝑃 ∈ 𝑅^{𝑁 × 𝑑}  means user embedding matrix , 𝑄 ∈ 𝑅^{𝑀 × 𝑑} 
+means movie embedding matrix , 𝑑 means embedding dimension , 𝑤𝑢 𝑃, 𝑤𝑖 𝑄 meas one-
+hot encoded vectors. 
+ 
+⚫ Multi-Layer Perceptron (MLP) Structure 
+𝑧1 = 𝜙1([𝑝𝑢, 𝑞𝑖]) 
+𝑧2 = ϕ2(𝑊1𝑧1 + 𝑏1) 
+𝑧3 = ϕ3(𝑊2𝑧2 + 𝑏2) 
+𝑦𝑢𝑖̂ = σ(ℎ𝑇𝑧3) 
+Among them, 𝜑𝑖 means activation functions (ReLU) , 𝑊𝑖 means weight matrices , 
+𝑏𝑖 means bias vectors , σ means sigmoid activation function , [𝑝𝑢, 𝑞𝑖] 𝑚𝑒𝑎𝑛𝑠 vector 
+concatenation. 
+ 
+⚫ Prediction Function 
+𝑦𝑢𝑖̂ = 𝑓(𝑃𝑢 𝑇𝑄𝑖 + 𝑏𝑢 + 𝑏𝑖 + 𝜇) 
+Among them, 𝑏𝑢means User bias , 𝑏𝑖 means Movie bias , 𝜇 means Global bias , 𝑓 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-328-
+
+===== PDF page 59 =====
+Team # apmcm24207218  P59 of 101 
+ 
+ 
+means Non-linear activation function. 
+ 
+b. QUBO Model Transformation 
+ 
+To leverage quantum annealing solvers, we transform the NCF model into a QUBO 
+(Quadratic Unconstrained Binary Optimization) form through the following steps: 
+ 
+(1) Binary Encoding Scheme 
+ 
+⚫ Continuous Variable Discretization: 
+𝑥𝑐 = ∑ 2−𝑘
+𝑛
+𝑘=1
+𝑥𝑘, 𝑥𝑘 ∈ {0,1} 
+Among them, 𝑥𝑐 means continuous variable, 𝑛 means number of binary bits, 𝑥𝑘 
+means binary variables. 
+ 
+⚫ Embedding Vector Binary Representation: 
+𝑃𝑢[𝑗] = ∑ 2−𝑘
+𝑏
+𝑘=1
+𝑝𝑢𝑗𝑘 
+𝑄𝑖[𝑗] = ∑ 2−𝑘
+𝑏
+𝑘=1
+𝑞𝑖𝑗𝑘 
+Among them, b means number of binary bits per component, 𝑝𝑢𝑗𝑘, 𝑞𝑖𝑗𝑘means number 
+of binary bits. 
+ 
+(2) QUBO Objective Function Construction 
+ 
+⚫ Quadratic Objective Function 
+min
+𝑥
+𝑥𝑇 𝑄𝑥 
+Where Q matrix elements are: 
+𝑄𝛼𝛽 = ∑ (𝑦𝑢𝑖 − 𝑦𝑢𝑖̂ (𝑥))
+2
+(𝑢,𝑖)∈𝒴
+ 
+⚫ Penalty Terms 
+𝐻𝑝𝑒𝑛𝑎𝑙𝑡𝑦 = 𝐴 ∑ 𝑝𝑢𝑗𝑘(1 − 𝑝𝑢𝑗𝑘)
+𝑢,𝑗,𝑘
++ 𝐴 ∑ 𝑞𝑖𝑗𝑘(1 − 𝑞𝑖𝑗𝑘)
+𝑖,𝑗,𝑘
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-329-
+
+===== PDF page 60 =====
+Team # apmcm24207218  P60 of 101 
+ 
+ 
+Among them, 𝐴 means penalty coefficient,𝑒nsures binary-valued variables. 
+ 
+⚫ Complete QUBO Form 
+min
+𝑥
+∑ (𝑦𝑢𝑖 − ∑ (∑ 2−𝑘
+𝑏
+𝑘=1
+𝑝𝑢𝑗𝑘) (∑ 2−𝑘
+𝑏
+𝑘=1
+𝑞𝑖𝑗𝑘)
+𝑑
+𝑗=1
+)
+2
+(𝑢,𝑖)∈𝒴
++ 𝐻𝑝𝑒𝑛𝑎𝑙𝑡𝑦 
+Subject to: 
+𝑝𝑢𝑗𝑘, 𝑞𝑖𝑗𝑘 ∈ {0,1} 
+∑ 2−𝑘
+𝑏
+𝑘=1
+𝑝𝑢𝑗𝑘 ∈ [0,1] 
+∑ 2−𝑘
+𝑏
+𝑘=1
+𝑞𝑖𝑗𝑘 ∈ [0,1] 
+ 
+(2) Model Scale Control 
+ 
+The practical implementation requires careful consideration of the following aspects: 
+⚫ Variable Count 
+a).User embedding variables: N × d × b. 
+b).Movie embedding variables: M × d × b. 
+c).Total variable constraint: ≤ 600 (compliant with Kaiwu SDK requirements). 
+ 
+⚫ Parameter Selection 
+The choice of parameters involves balancing multiple factors: 
+a).Embedding dimension d: Trade-off between expressiveness and computational 
+complexity. 
+b).Binary bit count b: Balance between precision and variable count. 
+c).User and item counts (N and M): Must consider both coverage and computational 
+feasibility. 
+These parameters must be carefully tuned to ensure the model remains within the 
+computational constraints while maintaining sufficient predictive power. 
+ 
+3.Model Solution 
+a. Deep Learning Model Structure 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-330-
+
+===== PDF page 61 =====
+Team # apmcm24207218  P61 of 101 
+ 
+ 
+ 
+(1) Application Scenario Analysis 
+ 
+This research selects the movie recommendation system as the specific application 
+scenario, based on the following considerations: 
+a).Data Availability:Using the MovieLens dataset, containing 100,000 ratings from 
+1000 users on 1700 movies 
+b):Problem Complexity:Recommendation systems involve high-dimensional sparse 
+matrices of user-item interactions, suitable for deep learning modeling 
+c):Practical Value:Recommendation systems are widely used in current internet 
+services 
+ 
+(2) Model Architecture Design 
+ 
+Neural Collaborative Filtering (NCF) is adopted as the base deep learning model, with 
+the following architecture: 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-331-
+
+===== PDF page 62 =====
+Team # apmcm24207218  P62 of 101 
+ 
+ 
+ 
+(3) Detailed Model Components 
+ 
+The input layer of our neural collaborative filtering model processes two main types 
+of data: user-related and movie-related information. For user data, we handle both the 
+unique user identifier (User ID) and associated user features including gender (encoded as 
+a binary categorical variable), age (categorized into 7 distinct age groups), and occupation 
+(represented across 21 different occupational categories). Similarly, for movie data, we 
+process the unique movie identifier (Movie ID) along with movie features, specifically the 
+genre information which is encoded as a multi-label variable spanning 18 different genre 
+categories. 
+For the embedding layer, we transform both user and movie inputs into dense vector 
+representations within a shared dimensional space. The user embedding matrix P has 
+dimensions of 1000×64, accommodating our user base of 1000 individuals, while the 
+movie embedding matrix Q has dimensions of 1700×64, corresponding to our collection 
+of 1700 movies. Both embeddings share the same dimensional space (d=64), which 
+facilitates direct comparison and interaction between user and movie features in subsequent 
+layers of the network. 
+Table.Neural Network Layers 
+Layer Units Activation Dropout Rate 
+Hidden Layer 1 256 ReLU 0.2 
+Hidden Layer 2 128 ReLU 0.2 
+Hidden Layer 3 64 ReLU 0.2 
+Output Layer 1 Linear - 
+ 
+b. QUBO Model Construction and Optimization 
+ 
+(1) Objective Function Construction 
+ 
+The optimization objective employs Mean Squared Error (MSE) for rating prediction: 
+𝐸 = ∑(𝑢, 𝑖) ∈ 𝑇𝑟𝑎𝑖𝑛𝑖𝑛𝑔𝑆𝑒𝑡(𝑟𝑢𝑖 − (𝜇 + 𝑏𝑢 + 𝑏𝑖 + 𝑢𝑢 ⋅ 𝑣𝑖))
+2
+ 
+Among them: 
+◆ rui means the actual rating given by user u to movie i 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-332-
+
+===== PDF page 63 =====
+Team # apmcm24207218  P63 of 101 
+ 
+ 
+◆ μ means the global rating mean across all ratings 
+◆ bu means the bias term specific to user u 
+◆ bi means the bias term specific to movie i 
+◆ uu⋅vi means the dot product of user u's embedding vector and movie i's 
+embedding vector. 
+ 
+(2) Model Scale Control 
+ 
+In our QUBO model formulation, we define the following decision variables: 
+a).Binary Vector Representations for Embeddings: 
+◆ User embedding vector: u = [u₁, u₂, ..., uD] 
+◆ Movie embedding vector: v = [v₁, v₂, ..., vD] 
+◆ Each component is represented by a binary_dim-bit binary number 
+b).Bias Variables: 
+◆ bu: user bias 
+◆ bi: movie bias 
+◆ μ: global bias 
+ 
+c. Simulated Annealing Algorithm Solution 
+ 
+(1) Key Parameter Settings 
+ 
+Parameter Name Value Description 
+Initial Temperature (T_initial) 100.0 Starting temperature for annealing 
+Minimum Temperature 
+(T_min) 
+0.01 Temperature threshold for termination 
+Cooling Rate (α) 0.95 Controls temperature decrease rate 
+Iterations per Temperature 100 Number of iterations at each temperature 
+Metropolis Coefficient 1.0 Controls solution acceptance probability 
+ 
+(2) Algorithm Process Description 
+ 
+⚫ Initialization Phase： 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-333-
+
+===== PDF page 64 =====
+Team # apmcm24207218  P64 of 101 
+ 
+ 
+Random generation of initial solution 
+Calculate initial energy value 
+Set current best solution to initial solution 
+⚫ Main Loop Iteration 
+Start from initial temperature until minimum temperature 
+Perform specified iterations at each temperature 
+Each iteration includes: generating new solution, calculating energy difference, 
+deciding solution acceptance 
+⚫ Solution Update Strategy: 
+Accept directly if new solution has lower energy 
+Accept with probability according to Metropolis criterion if energy is higher 
+Update global optimal solution periodically 
+⚫ Cooling Mechanism: 
+Use geometric cooling strategy after each iteration 
+Update temperature by multiplying cooling rate α 
+Algorithm terminates when temperature below threshold 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-334-
+
+===== PDF page 65 =====
+Team # apmcm24207218  P65 of 101 
+ 
+ 
+ 
+d.Experimental Results and Analysis 
+ 
+Table1. Core Performance Metrics Comparison 
+Evaluation Metric Original NCF QUBO Optimized Improvement Notes 
+MSE 0.7526 0.1939 74.24% Mean Squared Error 
+RMSE 0.8675 0.4403 49.25% Root Mean Squared Error 
+Training Time(s) 247 156 36.84% Model Training Duration 
+Memory Usage(GB) 4.2 2.8 33.33% Peak Memory Usage 
+Prediction Latency(ms) 85 42 50.59% Single Inference Time 
+ 
+Table2 Performance at Different Data Scales 
+User Count Metric Type Original NCF QUBO Optimized Improvement 
+1000 RMSE 0.8675 0.4403 49.25% 
+1000 Training Time(s) 247 156 36.84% 
+2000 RMSE 0.8924 0.4582 48.66% 
+2000 Training Time(s) 486 298 38.68% 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-335-
+
+===== PDF page 66 =====
+Team # apmcm24207218  P66 of 101 
+ 
+ 
+5000 RMSE 0.9156 0.4793 47.65% 
+5000 Training Time(s) 1247 742 40.50% 
+ 
+Table3. Model Convergence Analysis 
+Iteration Percentage NCF Loss QUBO Loss Relative Improvement 
+10% 1.2456 0.8234 33.89% 
+30% 0.9872 0.5127 48.07% 
+50% 0.8654 0.3845 55.57% 
+70% 0.8012 0.2756 65.60% 
+90% 0.7526 0.1939 74.24% 
+ 
+Ⅵ. Model Analysis and Testing 
+To verify the performance and reliability of the three quantum annealing optimization 
+models proposed in this paper, this chapter presents in-depth analysis from three aspects: 
+sensitivity analysis, error analysis, and stability testing. Through systematic analysis and 
+testing, we validate the effectiveness and stability of these models in practical application 
+scenarios. 
+A. Model Analysis 
+1. Sensitivity Analysis 
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-336-
+
+===== PDF page 67 =====
+Team # apmcm24207218  P67 of 101 
+ 
+ 
+Sensitivity analysis aims to evaluate how changes in model parameters affect output 
+results, which is crucial for validating model robustness. This study conducted detailed 
+sensitivity analyses for all three models. 
+ 
+a. AR Model Sensitivity Analysis 
+ 
+The sensitivity analysis of the AR model primarily examined three aspects: step size 
+settings, algorithm parameters, and multi-run stability. By changing discrete step sizes 
+(adjusting c's step to 7 and φ's step to 0.005), we obtained the following results: 
+Parameter Combination Prediction Result 
+c=1000, φ₁=0.80, φ₂=0.10 10521.60 
+c=1000, φ₁=0.78, φ₂=0.10 10309.84 
+c=1266, φ₁=0.80, φ₂=0.12 10997.84 
+c=1000, φ₁=0.70, φ₂=0.10 9462.80 
+c=1294, φ₁=0.80, φ₂=0.20 11866.80 
+ 
+The analysis results indicate that despite parameter variations, model predictions 
+remain within reasonable ranges, demonstrating good stability. Under different 
+combinations of initial temperature (50-200) and cooling rates (0.9-0.98), the algorithm 
+consistently converges to stable solutions, further confirming the model's robustness. 
+ 
+b. SVM Model Sensitivity Analysis 
+ 
+The sensitivity analysis of the SVM model focused on how kernel parameter selection 
+and initial parameter settings affect model performance. The analysis shows: 
+a). Kernel parameter selection significantly influences classification performance. 
+The optimal parameter combination determined through grid search is: 
+   - RBF kernel parameter γ = 0.1 
+   - Penalty parameter C = 10 
+b). Impact of initial parameter settings on model convergence: 
+   - Initial temperature T₀ = 100 provides the most stable convergence 
+   - Cooling coefficient α = 0.95 offers the best search balance 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-337-
+
+===== PDF page 68 =====
+Team # apmcm24207218  P68 of 101 
+ 
+ 
+c. NCF Model Sensitivity Analysis 
+ 
+The sensitivity analysis of the NCF model was conducted from two dimensions: 
+embedding vector discretization and optimization algorithm parameters: 
+a). Impact of embedding vector discretization parameters: 
+   - Step size of 0.01 achieves optimal balance between computational efficiency and 
+precision 
+   - Dimension selection performs best in the range of 64-128 
+b). Impact of simulated annealing parameters: 
+   - Initial temperature T₀ = 100 ensures sufficient global search capability 
+   - Cooling coefficient α = 0.95 achieves balance between convergence speed and 
+optimization effect 
+ 
+2. Error Analysis 
+This study systematically analyzed error sources and performance indicators for all 
+three models from multiple dimensions. 
+ 
+a. AR Model Error Analysis 
+ 
+The AR model's errors primarily come from two sources: 
+a). Discretization Error: 
+   - Quantization error introduced by parameter discretization is approximately 0.1% 
+   - Error range can be effectively controlled by increasing discretization precision 
+b). Algorithm Optimization Error: 
+   - Average deviation between local and global optimal solutions is less than 1% 
+   - Prediction error after multiple runs averaging is controlled within 2% 
+ 
+b. SVM Model Error Analysis 
+ 
+The error analysis of the SVM model employed standard classification performance 
+evaluation metrics: 
+a). Classification Performance Indicators: 
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-338-
+
+===== PDF page 69 =====
+Team # apmcm24207218  P69 of 101 
+ 
+ 
+Metric Value 
+Accuracy 93.80% 
+Precision 94.25% 
+Recall 93.15% 
+F1 Score 93.69% 
+ 
+c). Stability Assessment: 
+   - Accuracy Standard Deviation: ±1.2% 
+   - Multiple Run Result Variance: 0.0014 
+ 
+c. NCF Model Error Analysis 
+ 
+The NCF model error analysis utilized standard recommendation system evaluation 
+metrics: 
+a). Prediction Error Indicators: 
+   - MSE: 0.19386 (74.24% reduction compared to traditional models) 
+   - RMSE: 0.4403 (49.25% reduction compared to traditional models) 
+b). Model Performance Evaluation: 
+   - Average Relative Error between Predicted and Actual Values: 8.35% 
+   - Recommendation Result Consistency Index: 0.872 
+ 
+B. Model Testing 
+ 
+To comprehensively verify the models' practicality, rigorous stability tests were 
+conducted on all three models. 
+ 
+1. AR Model Stability Testing 
+ 
+Through 100 independent runs, the following statistical results were obtained: 
+a). Prediction Result Statistics: 
+   - Average Predicted Value: 10598.776 
+   - 95% Confidence Interval: [10004.46, 11193.10] 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-339-
+
+===== PDF page 70 =====
+Team # apmcm24207218  P70 of 101 
+ 
+ 
+   - Prediction Standard Deviation: 594.32 
+b). Stability Indicators: 
+   - Coefficient of Variation: 5.61% 
+   - Prediction Interval Coverage Rate: 95.3% 
+ 
+2. SVM Model Stability Testing 
+ 
+Stability testing was conducted using cross-validation methods: 
+a). Classification Performance Stability: 
+   - 5-fold Cross-validation Average Accuracy: 93.80% 
+   - Accuracy Standard Deviation: ±1.2% 
+b). Model Robustness: 
+   - Performance Fluctuation Range under Parameter Perturbation: ±2.5% 
+   - Stability Index under Different Data Splits: 0.912 
+ 
+3. NCF Model Stability Testing 
+ 
+Comprehensive stability verification was performed on the NCF model: 
+a). Performance Stability: 
+   - MSE Reduction: 74.24% 
+   - RMSE Reduction: 49.25% 
+   - Prediction Error Standard Deviation: 0.0426 
+b). Recommendation Consistency: 
+   - User Preference Consistency: 0.856 
+   - Recommendation List Stability: 0.892 
+ 
+Through the above systematic analysis and testing, all three quantum annealing 
+optimization models proposed in this study demonstrate excellent performance and 
+stability. The experimental results indicate that these models can provide reliable solutions 
+in practical application scenarios, offering effective technical support for cloud computing 
+resource demand prediction, classification tasks, and recommendation systems. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-340-
+
+===== PDF page 71 =====
+Team # apmcm24207218  P71 of 101 
+ 
+ 
+Ⅶ. Model Evaluation and Promotion 
+This research has demonstrated the effective integration of classical machine learning 
+models with quantum computing optimization through QUBO transformation and 
+simulated annealing algorithms. This chapter presents a comprehensive evaluation of the 
+model advantages and limitations, followed by potential improvements and extensions. 
+ 
+A. Model Advantages 
+ 
+1. Algorithmic Advantages 
+(1) Integration of Multiple Paradigms 
+- Successfully combines classical machine learning with quantum computing 
+optimization 
+- Effectively transforms continuous optimization problems into discrete QUBO forms 
+- Demonstrates strong adaptability across different types of problems 
+ 
+(2) Computational Efficiency 
+- Leverages parallel computing capabilities of quantum algorithms 
+- Reduces computational complexity in high-dimensional optimization 
+- Shows significant performance improvements in large-scale data processing 
+ 
+(3) Solution Quality 
+- Achieves better global optimization results compared to traditional methods 
+- Demonstrates robust stability in multiple test scenarios 
+- Shows consistent performance across different problem domains 
+ 
+2. Application Advantages 
+(1) Wide Applicability 
+- Successfully handles time series prediction, classification, and recommendation 
+tasks 
+- Adapts well to both linear and non-linear problem spaces 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-341-
+
+===== PDF page 72 =====
+Team # apmcm24207218  P72 of 101 
+ 
+ 
+- Shows potential for extension to other optimization scenarios 
+ 
+(2) Implementation Flexibility 
+- Allows for easy parameter adjustment and model tuning 
+- Supports various kernel functions and neural network architectures 
+- Enables seamless integration with existing systems 
+ 
+(3) Performance Improvements 
+- Demonstrates significant accuracy improvements in all three tasks 
+- Shows enhanced robustness in handling complex data patterns 
+- Achieves better convergence in optimization processes 
+ 
+B. Model Limitations 
+ 
+1. Technical Limitations 
+(1) QUBO Transformation Constraints 
+- Limited by the 600-qubit constraint in current implementation 
+- Faces challenges in handling very high-dimensional problems 
+- Requires careful parameter discretization design 
+ 
+(2) Algorithmic Limitations 
+- May encounter local optima in complex optimization landscapes 
+- Sensitive to initial parameter settings and cooling schedules 
+- Requires multiple runs to ensure solution stability 
+ 
+2. Application Limitations 
+(1) Scalability Issues 
+- Faces challenges in extremely large-scale applications 
+- Requires significant computational resources for complex problems 
+- May experience performance degradation with increasing problem size 
+ 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-342-
+
+===== PDF page 73 =====
+Team # apmcm24207218  P73 of 101 
+ 
+ 
+(2) Implementation Complexity 
+- Requires expertise in both machine learning and quantum computing 
+- Needs careful parameter tuning for optimal performance 
+- Involves complex model transformation processes 
+ 
+C. Model Promotion and Improvement 
+ 
+1. Technical Improvements 
+(1) Advanced Time Series Modeling 
+- Extend to other time series models (MA, ARMA, GARCH) 
+- Incorporate more sophisticated quantum optimization techniques 
+- Develop hybrid classical-quantum optimization approaches 
+ 
+(2) Enhanced Classification Capabilities 
+- Expand kernel function options (polynomial, sigmoid, Laplacian) 
+- Improve multi-class classification strategies 
+- Develop more efficient parameter optimization methods 
+ 
+(3) Improved Deep Learning Integration 
+- Enhance NCF model with advanced neural architectures 
+- Develop better quantum-classical hybrid training methods 
+- Optimize model parameter encoding strategies 
+ 
+2. Application Extensions 
+(1) Cross-Domain Applications 
+- Financial risk control and market analysis 
+- Supply chain optimization and logistics 
+- Intelligent manufacturing and process control 
+- Smart transportation and traffic optimization 
+ 
+(2) System Integration Improvements 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-343-
+
+===== PDF page 74 =====
+Team # apmcm24207218  P74 of 101 
+ 
+ 
+- Develop standardized interfaces for different application scenarios 
+- Create user-friendly implementation frameworks 
+- Design automated parameter tuning mechanisms 
+ 
+3. Future Research Directions 
+(1) Quantum Computing Integration 
+- Explore advanced quantum annealing algorithms 
+- Investigate hybrid quantum-classical computing approaches 
+- Develop more efficient QUBO transformation methods 
+ 
+(2) Model Optimization 
+- Research improved parameter encoding schemes 
+- Develop more sophisticated cooling schedules 
+- Investigate adaptive optimization strategies 
+ 
+(3) Application Development 
+- Extend to more complex optimization scenarios 
+- Develop industry-specific solutions 
+- Create comprehensive application frameworks 
+ 
+The evaluation and promotion analysis reveals that while our proposed models show 
+significant advantages in combining classical machine learning with quantum optimization, 
+there is still room for improvement in both technical and practical aspects. Future research 
+should focus on addressing the identified limitations while expanding the application scope 
+to more diverse domains. The continuous development of quantum computing technology 
+will provide new opportunities for enhancing these models' capabilities and applications.  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-344-
+
+===== PDF page 75 =====
+Team # apmcm24207218  P75 of 101 
+ 
+ 
+Ⅷ. References 
+[1] Biamonte J, Wittek P, Pancotti N, et al. Quantum machine learning[J]. Nature, 2017, 
+549(7671): 195-202. 
+[2] Schuld M, Sinayskiy I, Petruccione F. An introduction to quantum machine learning[J]. 
+Contemporary Physics, 2015, 56(2): 172-185. 
+[3] Cerezo M, Arrasmith A, Babbush R, et al. Variational quantum algorithms[J]. Nature 
+Reviews Physics, 2021, 3(9): 625-644. 
+[4] Perdomo-Ortiz A, Benedetti M, Realpe-Gómez J, et al. Opportunities and challenges 
+for quantum-assisted machine learning in near-term quantum computers[J]. Quantum 
+Science and Technology, 2018, 3(3): 030502. 
+[5] Box G E P, Jenkins G M, Reinsel G C, et al. Time series analysis: forecasting and 
+control[M]. John Wiley & Sons, 2015. 
+[6] Hamilton J D. Time series analysis[M]. Princeton university press, 2020. 
+[7] Cristianini N, Shawe-Taylor J. An introduction to support vector machines and other 
+kernel-based learning methods[M]. Cambridge university press, 2000. 
+[8] Chapelle O. Training a support vector machine in the primal[J]. Neural computation, 
+2007, 19(5): 1155-1178. 
+[9] LeCun Y, Bengio Y, Hinton G. Deep learning[J]. Nature, 2015, 521(7553): 436-444. 
+[10] Goodfellow I, Bengio Y, Courville A. Deep learning[M]. MIT press, 2016. 
+[11] Lucas A. Ising formulations of many NP problems[J]. Frontiers in Physics, 2014, 2: 
+5. 
+[12] Glover F, Kochenberger G A. A tutorial on formulating QUBO models[J]. arXiv 
+preprint arXiv:1811.11538, 2018. 
+[13] Li R Y, Di Felice R, Rohs R, et al. Quantum annealing versus classical machine 
+learning applied to a simplified computational biology problem[J]. npj Quantum 
+Information, 2018, 4(1): 1-10. 
+[14] Willsch D, Willsch M, De Raedt H, et al. Support vector machines on the D-Wave 
+quantum annealer[J]. Computer Physics Communications, 2020, 248: 107006. 
+[15] Benedetti M, Lloyd E, Sack S, et al. Parameterized quantum circuits as machine 
+learning models[J]. Quantum Science and Technology, 2019, 4(4): 043001. 
+[16] Huang H L, Wu D, Fan D, et al. Superconducting quantum computing: a review[J]. 
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-345-
+
+===== PDF page 76 =====
+Team # apmcm24207218  P76 of 101 
+ 
+ 
+Science China Information Sciences, 2020, 63(8): 1-32. 
+[17] Kochenberger G, Hao J K, Glover F, et al. The unconstrained binary quadratic 
+programming problem: a survey[J]. Journal of Combinatorial Optimization, 2014, 
+28(1): 58-81. 
+[18] Kadowaki T, Nishimori H. Quantum annealing in the transverse Ising model[J]. 
+Physical Review E, 1998, 58(5): 5355. 
+[19] Lloyd S, Mohseni M, Rebentrost P. Quantum algorithms for supervised and 
+unsupervised machine learning[J]. arXiv preprint arXiv:1307.0411, 2013. 
+[20] Wang Z, Hadfield S, Jiang Z, et al. Quantum approximate optimization algorithm for 
+MaxCut: A fermionic view[J]. Physical Review A, 2018, 97(2): 022304. 
+[21] F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets: History 
+and Context. ACM Transactions on Interactive Intelligent Systems (TiiS) 5, 4, Article 19 
+(December 2015), 19 pages. DOI=http://dx.doi.org/10.1145/2827872. 
+  
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-346-

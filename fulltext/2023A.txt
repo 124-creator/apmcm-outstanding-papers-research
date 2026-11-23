@@ -1,0 +1,2174 @@
+
+===== PDF page 1 =====
+Team#apmcm2309364
+TeamNumber: apmcm2309364
+ProblemChosen: A
+2023APMCMsummarysheet
+InordertocopewithApplepickingrobotshavelowrecognitionrate,slowspeedandlowaccuracy
+inimagerecognition. weusetheimprovedHoughcircletransformationmethodtoestablishthefirst
+typeofmodelforidentifyingapples.Tobetteridentifyapplesmoreaccuratelyincomplexsituations,
+weextractedthefeaturevalueinformationofapplesthroughCNNconvolutionalnetwork,conducted
+deep learning on the provided apple images, and established a second type of apple recognition
+modelbasedonYOLOv4andVGG19. Inaddition,whencalculatingthequalityoftheapplesinthe
+image, we invented a brightness-estimation method ourselves to make the calculated apple quality
+moreconsistentwiththeactualsituation.
+Question 1requires us to identify the number of apples in the image.We use Lab color space
+conversionandGaussianfilteringmethodtopreprocesstheimage.Takingadvantageofthecharac-
+teristicthatripeapplesarered,wedrewthea*channelmapintheLabcolorspaceandbinarizedit.
+Then, taking advantage that apples can be approximately regarded as circles in a two-dimensional
+plane,weusedanimprovedHoughcircletransformationmethod,andthenumberofapplesidenti-
+fiedinAppendix1was3094.
+Questions 2 and 3requireustoidentifythepositionandmaturityofapplesintheimage. We
+used the YOLOv4 network in the CNN convolutional network for deep learning, input the image
+dataofartifitialframeselectionandrecognitionformodeltraining,andusedthetrainedThemodel
+wasusedforidentification,anditwasfoundthattheresultsoftheapplepositionweresimilartothe
+resultsofthefirstmodel,indicatingthatthemodelwaswelltrained. Whencalculatingthematurity
+inquestion3,wealsodefinedamaturityfunctionHtoquantifythematurityoftheapples.
+Question 4 requires us to calculate the mass of apples. We further considered the imaging
+principle of ”large near, small far”, analyzed the impact of focal length and the distance between
+the apple and the lens on the results, and believed that if only calculating the quality of the apple
+basedsolelyontheareaoftheapple’stwo-dimensionalimagemaybeverydifferentfromtheactual
+situation. Based on this, we proposed a brightness-estimation method to correct the results, and
+calculatedthecorrectedapplequalityusingthedataresultsobtainedfromthefirstthreequestions.
+Question 5requiresustoidentifyapplesfromdifferentfruits. Wenoticedthatyolov4isatarget
+detectionmodel, whichismorebiasedtowardsimageclassification, andthenumberofsamplesin
+Appendix2istoolarge, andtheefficiencyofmanuallydividingthetrainingsetislow. Therefore,
+we used the VGG19 network with more convolutional layers to train the model. Compared with
+YOLOv4,ithashigherefficiencyandlearningdepth.
+The innovation of this article is that we use geometric methods, deep learning methods and
+buildmodelsfromdifferentangles,andanalyzeandcomparetheresultsobtained,sothatthemodel
+has high credibility. At the same time, we also considered many practical problems that may not
+havebeenconsideredinthequestions,andgaveusoursolutions.
+Keywords:Imagerecognition Houghcircletransform, CNNconvolutionalnetwork
+deeplearning YOLOnetwork VGG19
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-347-
+
+===== PDF page 2 =====
+Team#apmcm2309364
+Contents
+1. Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1.1 QuestionBackground. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1.2 RestatementofProblem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+2. Problem analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.1 AnalysisofProblemOne . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.2 AnalysisofProblemTwo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.3 AnalysisofProblemThree . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.4 AnalysisofProblemFour . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.5 AnalysisofProblemFive . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3. Model Hypothesis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3.1 Assumption1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3.2 Assumption2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3.3 Assumption3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3.4 Assumption4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4. Notations. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+5. Model Establishment and Solution of Problem 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+5.1 EstablishmentofAppleRecognitionCountingModel. . . . . . . . . . . . . . . . . . . . . . . 6
+5.1.1 Image Data Preprocessing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+5.1.2 Methods for Identifying Apples in Images. . . . . . . . . . . . . . . . . . . . . . . . . . 9
+5.1.3 Statistical Methods for Counting Apples and Their Improvements . . . . . . . . . 11
+5.2 ResultsandHistogramofappledistribution. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+6. Model Establishment and Solution of Problem 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+6.1 EstablishmentoftheApplePositionDeterminationModel . . . . . . . . . . . . . . . . . . . 15
+6.1.1 Principle Overview of YOLOv4 network . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+6.1.2 The Application of the YOLOv4 network and Results in this Problem. . . . . . . 16
+6.1.3 Comparison of Model Recognition and Sensitivity Analysis . . . . . . . . . . . . . 20
+6.2 Resultsand2DScatterPlotofGeometricCoordinates . . . . . . . . . . . . . . . . . . . . . . 20
+7. Model Establishment and Solution of Problem 3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+7.1 Establishmentofapplematuritydetectionmodel . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+7.1.1 The Application of YOLOv4 Network and Results in this Problem . . . . . . . . . 21
+7.1.2 Establishment of numerical calculation model for maturity . . . . . . . . . . . . . 22
+7.2 ResultsandHistogramofappleripenessdistribution . . . . . . . . . . . . . . . . . . . . . . . 22
+8. Model Establishment and Solution of Problem 4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+8.1 PreliminaryestimatesforApple. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+8.2 Radanceandradiationintensity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+8.3 Establishmentandcalculationoptimizationofrangingmodel . . . . . . . . . . . . . . . . . 26
+8.4 Estimateofactualfruitsizeandmass. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+8.5 Resultsandmassdistributionhistogram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-348-
+
+===== PDF page 3 =====
+Team#apmcm2309364
+9. Model Establishment and Solution of Problem 5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+9.1 Establishmentofanimprovedapplerecognitionmodel. . . . . . . . . . . . . . . . . . . . . . 31
+9.1.1 Principle Overview of VGG19 network . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+9.1.2 The Application of the VGG19 network . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+9.2 ResultsandhistogramforallAppleimageIDnumbers. . . . . . . . . . . . . . . . . . . . . . 34
+10. Model Evaluation and Further Discussion. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+10.1 Merit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+10.2 Shortcoming . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+10.3 ImprovementMeasures. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+11. References . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+12. Appendix. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-349-
+
+===== PDF page 4 =====
+Team#apmcm2309364 Page1of41
+I. Introduction
+1 . 1 Question Background
+Apple-pickingrobotshavebecomearecenthotspot. Inthepast,appleharvestingreliedmainly
+on manual labor, requiring a large workforce for several days during the apple’s ripening period.
+However, with the aging rural workforce and the trend of young people leaving villages for work,
+many places are experiencing a shortage of labor during the apple harvesting season. To address
+this issue, people have started developing apple-picking robots. But due to variations in orchard
+environmentsandcontrolledexperiments,thewidespreadadoptionandapplicationofvariousapple-
+pickingrobotsgloballyhavenotbeenideal.
+At the same time, existing robots mostly cannot achieve precise identification of obstacles
+suchasleaves,branches,andfruits. Directharvestingmaypotentiallydamagethefruitsoreventhe
+harvesting equipment, impacting efficiency and fruit quality. Additionally, there are shortcomings
+intherecognitionanddifferentiationtechnologiesfordifferentharvestedfruits,makingpost-harvest
+identificationofappleschallenging.
+Therefore, itisessentialtoestablishanefficientandaccurateappleimagerecognitionmodel.
+This paper analyzes features such as the number, position, ripeness, and quality of apples in apple
+imagesbyusingimagesegmentationandrecognitiontechniques,mathematicalmodels,andthedeep
+learning network, and then proposes a feasible apple image recognition algorithm to address these
+challenges.
+1 . 2 Restatement of Problem
+Consideringthebackgroundinformationandrestrictedconditionsintheproblemstatement,the
+followingproblemsshouldbesolved:
+Question 1:Preprocess the image dataset in Attachment 1, analyze the relationship between
+the number of apples and various parameters in the image dataset, determine the required image
+features,establishamathematicalmodel,andcountthenumberofapplesineachimage. Thendraw
+ahistogramofthedistributionofthenumberofapplestovisualizethedata.
+Question 2:Inthepreviousquestion,wehavealreadydeterminedthenumberofapples. Next,
+we need to identify the position of each apple in the image. We establish a Cartesian coordinate
+systemwiththelower-leftcorneroftheimageastheorigin. Sinceoneimagemaycontainmultiple
+apples, we need to assign a unique number to each apple and store the coordinate information for
+allapples. Then,wewilldrawascatterplotoftheapplecoordinatestovisualizethedata.
+Question 3:Inthisquestion,weneedtofindareasonablemethodtocalculatetheripenessof
+applesandthenapplythismethodtoperformthecalculations. Theresultsshouldbevisualizedby
+creatingahistogramthatrepresentsthedistributionofripenessforallapples,tovisualizethedata.
+Question 4:In question 1 and 2, we have already determined the number and positions of
+apples. Now,weneedtocalculatethetwo-dimensionalareaoftheapplesbasedonthisinformation.
+Thekeyliesindeterminingtheboundariesoftheapples. Additionally,wearerequiredtoestimate
+the mass of apples. Since we cannot directly measure the mass, we can only obtain an estimate.
+Therefore, weneedtoestablishtherelationshipbetweenthetwo-dimensionalareaofapplesinthe
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-350-
+
+===== PDF page 5 =====
+Team#apmcm2309364 Page2of41
+imageandtheirmassforestimation. Subsequently,wewillvisualizethedistributionofthemassof
+allapplesbycreatingahistogram.
+Question 5:In this question, the task is to identify apples from various fruit images. This in-
+volvesamorein-depthextractionofapple-specificimagefeatures,trainingamodelforapplerecog-
+nition, and applying it to determine which images in Attachment 3 contain apples. Subsequently,
+the distribution of their ID numbers will be visualized through the creation of a histogram for data
+analysis.
+II. Problem analysis
+2 . 1 Analysis of Problem One
+In Problem 1, based on the provided apple image data in Attachment 1, we aim to identify
+featuresthatcanhelpusrecognizerelevantinformationaboutapples. Itisobservedthatripeapples
+exhibitthecharacteristicsofbeingredandhavinganapproximatelysphericalappearance(whichcan
+be considered circular in a two-dimensional image). Based on these two features, we can identify
+applesintheimage. Beforeestablishingthemodel,weneedtopreprocesstheimagedata.
+Here, we convert the original RGB image to the Lab image. Subsequently, we filter the a*
+component(representingthespectrumchangefromgreentored)toobtaintheA-channelimagein
+theLabcolorspace. WeperformbinarizationonthisA-channelimageandapplyGaussianfiltering
+for noise reduction. Next, utilizing the circular features, we employ an improved Hough circle
+transform  to detect and count the number of circles in the image. Additionally, we merge circles
+withhighoverlap. Finally,wesolvethedatainAttachment1andplotthehistogram.
+2 . 2 Analysis of Problem Two
+In Problem 2, we need to identify the positions of apples in each image. Building on the
+preprocessing of all images in problem one and obtaining the number of apples in each image, we
+can roughly determine the positions of apples using the model developed in Problem 1 with the
+obtained centroids after numbering them. However, after analysis and comparison, we found that
+thereisstillacertaindeviationbetweenthegeometriccenteroftheappleandthecentroidobtained
+fromtheHoughcircle.
+Therefore, we adopted a new recognition method based on deep learning to determine the
+coordinatesofeachapple,usingtheYOLOv4network. Wefirsttrainthemodelusingimageswith
+clear and distinctive features, then apply the trained model to all images in Attachment 1. Finally,
+wecomparetherecognitionresultswiththetrainingresultsandtheresultsfromProblem1,conduct
+sensitivityanalysisonthemodel,andplotascatterplotofthegeometriccoordinatesofallapples.
+2 . 3 Analysis of Problem Three
+In Problem 3, we can follow the approach used in Problem 2, utilizing the YOLOv4 network
+formodeltraining. However,duringtraining,itisnecessarytoannotatethemanuallyaddedbound-
+ing boxes with the ripeness status of the apples (ripe, semi-ripe, and unripe). Subsequently, the
+modelistrained,andthetrainedmodelisappliedtoidentifytheripenessstatusofeachappleinthe
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-351-
+
+===== PDF page 6 =====
+Team#apmcm2309364 Page3of41
+images. We obtain information about the ripeness status and confidence level of each recognized
+apple. Basedonthisinformation, wecandesignafunctiontomeasureappleripeness, allowingus
+tocalculatetheripenessofeachapple. Finally,ahistogramdepictingtheripenessdistributionofall
+applesisgeneratedforfurtheranalysis.
+2 . 4 Analysis of Problem Four
+In Problem 4,we want to solve in this question is to calculate the area of a two-dimensional
+imageandestimatethemassoftheapple. Fortheareaproblem,wemightaswellusetheradius rad
+we obtained in the first question to calculate it as a simple estimate. As we said in the hypothesis,
+we assume that the density of apples does not change significantly during the development cycle,
+which is a fixed value, which may be recorded as ρ. In addition, our team noticed that there are
+obvious differences in the image in Appendix 1 The problem of large near and far small results
+in the error result that for some apples in the image, the actual apples are larger and the apples in
+the image are smaller. To this end, our team reviewed relevant literature on calculating the actual
+distanceofobjectsthroughtwo-dimensionalplaneimages. Unfortunately,themethodsreviewedin
+the literature were not applicable to the dilemma faced by our team. After discussion, we finally
+proposedanewmethod-thebrightness-estimationmethodtoapproximatelyestimatetheactualsize
+of the apple. In this method we need to know the focal length of the camera when shooting, and
+finallywedrawthemassdistributionhistogramofallapples.
+2 . 5 Analysis of Problem Five
+This question requires us to distinguish apples from other fruits in the image, which requires
+us to extract more information features about apples, instead of calculating the location, maturity,
+quality,etc. ofappleslikethepreviousquestions. IfwecontinuetousetheYOLOv4network,when
+the number of training times is high, the time complexity will be too high. Therefore, we should
+choose a deep learning algorithm with more convolutional layers and faster computing speed so
+that we can be more accurate. and efficiently identify apples. At the same time, considering that
+therearetoomanyAppleIDnumbers,wechoosetoclusterevery1,000consecutiveIDs,countthe
+numberofappleimageswithinthese1,000IDs,andthendrawahistogram.
+III. Model Hypothesis
+3 . 1 Assumption 1
+Thereareoftensmallandnumerousapplesinthebackgroundoftheimagethataredifficultto
+count. Forthepurposeofensuringthespeedandaccuracyofimagerecognition,wewillignorethe
+smallapplesintheimage.
+Explanation: Thisassumptionisreasonableandsufficient. Forthehypotheticalsituation,inreal
+life,youcanbetteridentifytheapplesbygettingclosertoreducethedistance,takingpartialimages,
+andchangingtheshootingangle,insteadofforcingitonthenumerousanddifficult-to-countapples
+inthebackground. detection,whichcannotguaranteethespeedandaccuracyofrecognition.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-352-
+
+===== PDF page 7 =====
+Team#apmcm2309364 Page4of41
+3 . 2 Assumption 2
+The fruit volume and density of apples are basically unchanged during the ripening period of
+thefruit. Ifsmallerrorsareignored,theycanberegardedasfixedvalues.
+Explanation: Generally speaking, the fruit develops during the fruiting period and the overall
+shape continues to expand. When the fruit shape is basically stable, it begins to enter the fruit
+maturitystage. Theexternalmanifestationofthefruitduringtheripeningstageismainlythechange
+in the color of the peel. Its shape and quality are basically unchanged, and its density can also be
+consideredunchanged.
+3 . 3 Assumption 3
+All apples are red apples. Green apples are considered immature red apples, and we believe
+that their degree of ripeness is linearly related to the degree of the apple’s gradient from green to
+red.
+Explanation: Theappearanceofgreenapplesandunriperedapplesareverysimilar,andsincethe
+imagedatawecanobtainareonlytwo-dimensionalimageswithlowerpixels,wecannotaccurately
+distinguishbetweenthetwo. Consideringthatmostoftheimagedatatypesareredapples, wecan
+think that all apple types are red apples, and the ripeness of apples can only be distinguished by
+color, so it is assumed that apple color changes and ripeness changes are linear The relevant ones
+makeiteasierforustobuildmodels,andthegapwiththeactualsituationisverysmall.
+3 . 4 Assumption 4
+Intheimagedatagiven,allphotosweretakenundernaturallightwithuniformandsoftlight.
+Theobjectscapturedwereallstilllife,andnoghostingwasproducedduringtheshooting. Thefocal
+lengthoftheshootingequipmentusedisthesame.
+Explanation: The time for picking apples is generally during the day, so there is no need for
+anotherstronglightsource,andthestronglightsourcewillhaveagreatimpactontheimagingand
+affect the recognition results. We believe that the light is uniform and soft natural light, which is
+easy to eliminate interference factors. Under normal circumstances, the position of the apple does
+not change much due to the influence of the external environment. At least we can think that the
+apple is stationary while shooting, eliminating the interference of ghost images during imaging on
+therecognitionresults. Andsincetheimagingequipmentofapickingrobotisthesame,inpractical
+applicationswecanthinkthattheshootingfocallengthofallpicturesisthesame.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-353-
+
+===== PDF page 8 =====
+Team#apmcm2309364 Page5of41
+IV. Notations
+Symbol Description
+γ Parameterusedtodescribetheoverlapratebetweentwocircles
+µ Weightingfactorsusedtomeasurematurity
+H Functionusedtorepresenttheripenessofanapple
+eH Parameterusedtorepresentaveragematurity
+Wimg Theaveragebrightnessofacertainareaonatwo-dimensionalgrayscaleimage
+Gm×n Representsthegrayvaluematrixofpixelsonatwo-dimensionalgrayscaleimageofsizemxn
+||A|| SumallelementsofmatrixA
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-354-
+
+===== PDF page 9 =====
+Team#apmcm2309364 Page6of41
+V. Model Establishment and Solution of Problem 1
+5 . 1 Establishment of Apple Recognition Counting Model
+5 . 1 . 1 Image Data Preprocessing
+Atfirst,weneedtopreprocesstheimagedataprovidedinAttachment1. Weobservedthatthe
+providedimagedataisinRGBformat. Inordertofilterouttheredcolorofapplesintheimage,we
+plottedtheR-channelimage. However,wenoticedthatduetointerferencefromothercolors(such
+asthebrowncoloroftreebranches),theresultingimageafterbinarizationisnotideal,asshownin
+thefollowingfigure:
+(a) Theoriginalimage.
+ (b) The R channel image in the RGB color space after binary
+processing.
+Figure 1 Comparison of original image and RGB grayscale image
+Afterreviewingrelevantliteratureandconductinganalysis,wehavedeterminedthatselecting
+the A channel image in the Lab color space (hereafter referred to as the A channel image) is a
+preferablechoice. Thisisbecausethea*componentintheAchannelimagerepresentsthespectrum
+changefromgreentored,whichcaneffectivelyadapttobackgroundspredominantlycomposedof
+greenleaves. Additionally,ithelpsmitigateinterferencefromothercolors.
+Below is the process of converting the original image’s RGB parameters to Lab parameters.
+Since RGB parameters cannot be directly converted to Lab parameters, we opt for using XYZ pa-
+rametersasanintermediatestep,i.e.,RGB→XYZ→Lab. Theconversionformulasareasfollows:
+P art1 : (RGB to XY Z)
+Assuming r, g, and b are the pixel values for the three channels, with a range of [0, 255], the
+conversionformulaisasfollows:
+8
+>>>><
+>>>>:
+R = gamma( r 255.0 )
+G = gamma( g 255.0 )
+B = gamma( b 255.0 )
+(1)
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-355-
+
+===== PDF page 10 =====
+Team#apmcm2309364 Page7of41
+gamma(x) =
+8
+><
+>:
+( x + 0.055 1.055 )2.4 (x > 0.04045)
+x
+12.92 (otherwise)
+(2)
+Thegammafunctionisusedfornon-lineartonemappinginimageswiththeaimofenhancing
+contrast. Theexpressionsmentionedaboverepresentcommonlyusedgammafunctions.
+2
+664 X Y
+Z
+3
+775 = M
+2
+664 R G
+B
+3
+775 (3)
+WherethetransformationmatrixMisgivenby
+M =
+0
+BB@ 0.4124 0.3576 0.1805 0.2126 0.7152 0.0722
+0.0193 0.1192 0.9505
+1
+CCA
+P art2 : (XY Z to Lab)
+L∗ = 116f (Y /Yn) − 16
+a∗ = 500[f (X/Xn) − f (Y /Yn)] (4)
+b∗ = 200[f (Y /Yn) − f (Z/Zn)]
+And
+f (t) =
+8
+><
+>:
+t
+1
+3 if t > ( 6 29 )3
+1
+3 ( 29 6 )2t + 4 29 otherwise (5)
+Inthetwoformulasabove,L*,a*,andb*representthevaluesofthethreechannelsinthefinal
+Lab color space. X, Y, Z are the values calculated after converting RGB to XYZ, and Xn, Yn, Zn
+aretypicallysettothedefaultvaluesof95.047,100.0,and108.883.
+Basedontheaboveprinciples,weimplementedtheprocessofconvertingRGBtoLabthrough
+code. Then,inMATLAB,fortheLabimageobtained,wefilteredthea*componentandplottedits
+binarized image based on the L value. The result is the binary image of the A-channel in the Lab
+colorspace,asshownbelow:
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-356-
+
+===== PDF page 11 =====
+Team#apmcm2309364 Page8of41
+Figure 2 The channel image
+(a) TheRchannelimageintheRGBcolor
+spaceafterbinaryprocessing.
+(b) Thea*channelimageintheLabcolor
+spaceafterbinaryprocessing.
+(c) Thea*channelimageintheLabcolor
+space.
+Aftercomparison,wecanobservethatthebinarizedimageobtainedusingtheLabcolorspace
+doesindeedhavebetterresultsthantheoneobtainedusingtheRGBcolorspace.
+However, this alone is not sufficient. Through zooming in and contrasting the images, it is
+evident that there are numerous noise points in the image, and there is a noticeable aliasing effect
+at the edges, likely due to the low resolution of the image. This is unfavorable for the subsequent
+Hough Circle Transform. Therefore, we need to apply denoising techniques to make the image
+relativelysmooth.
+Here,weemploythemethodofGaussianfiltering:
+BelowisabriefintroductiontotheGaussianfilteringmethod:
+Gaussian filtering is a process of weighted averaging for the entire image. The value of each
+pixelisobtainedbytakingtheweightedaverageofitsownvalueandthevaluesofotherpixelsinits
+neighborhood. It is a form of linear smoothing filter commonly used to eliminate Gaussian noise.
+Gaussianfilteringiswidelyappliedinthedenoisingprocessofimageprocessing.
+One − dimensional Gaussiandistribution :
+G(x) = 1√ 2πσ e− x2 2σ2
+T wo − dimensionalGaussiandistribution :
+G(x, y) = 1 2πσ2 e− x2 +y2 2σ2
+Where σistypicallychosenas1. ThefollowingisaschematicdiagramoftheGaussiandistri-
+bution.
+-5 -4 -3 -2 -1 0 1 2 3 4 5
+x
+0
+0.05
+0.1
+0.15
+0.2
+0.25
+0.3
+0.35
+0.4
+G(x)
+(d) GaussianfunctionG(x)
+ (e) GaussianfunctionG(x,y)
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-357-
+
+===== PDF page 12 =====
+Team#apmcm2309364 Page9of41
+Weadoptatwo-dimensionalGaussianfilteringhere.
+After debugging, we chose a suitable Gaussian kernel to apply Gaussian filtering to the pre-
+viously obtained a* channel image. The resulting denoised image, when compared to the original,
+appearssignificantlysmoother.
+(f) Theimagebeforefiltering.
+ (g) Theimageafterfiltering.
+Figure 3 Comparison chart before and after Gaussian filtering
+Atthispoint,wehavecompletedthepreprocessingoftheimagedata.
+5 . 1 . 2 Methods for Identifying Apples in Images
+After completing the preprocessing of the image data, our next step is to devise a method to
+identify apples in the processed images and determine the boundaries of the apples, facilitating
+subsequentcountingandstatistics.
+Considering the characteristic nearly circular shape of apples in two-dimensional images, we
+adoptedanimprovedHoughcircletransformmethodtoidentifyapplesintheimage. Thefollowing
+isabriefdescriptionoftheHoughcircletransform:
+TheHoughcircletransformisanextensionoftheclassicalHoughtransform,whichisusedfor
+detectinglinesinimages. Theprincipleisasfollows:
+1. Wecanuse (a, b, r)todefineacirclewithcenter (a, b)andradius r.
+2. Ifacirclepassesthroughthepoint (x1, y1),thenitsatisfiestheequation:
+(x1 − a)2 + (y1 − b)2 = r2
+3. Therefore,allcirclespassingthroughthepoint (x1, y1)canberepresentedas (a1(i), b1(i), r1(i)),
+where r1 ∈ (0, +∞). Eachvalueoficorrespondstoadifferentcircle,and (a1(i), b1(i), r1(i))
+representsaninfinitesetofcirclespassingthroughthepoint (x1, y1).
+4. All circles passing through the point (x1, y1) can be represented as (a1(i), b1(i), r1(i)), all
+circles passing through the point (x2, y2) can be represented as (a2(i), b2(i), r2(i)), and all
+circles passing through the point (x3, y3) can be represented as (a3(i), b3(i), r3(i)). If these
+three points lie on the same circle, then there exists a set of values (a0, b0, c0)such that a0 =
+a1(k) = a2(k) = a3(k), b0 = b1(k) = b2(k) = b3(k), and r0 = r1(k) = r2(k) = r3(k),
+meaningthatthesethreepointssimultaneouslylieonthecircle (a0, b0, c0).
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-358-
+
+===== PDF page 13 =====
+Team#apmcm2309364 Page10of41
+5. Analyzing all circles passing through the point (x1, y1), when r1(i)is determined, the trajec-
+toryof (a1(i), b1(i))isacirclewithcenter (x1, y1, r1(i))andradius r1(i). Therefore,allcircles
+(a1(i), b1(i), r1(i))formaconewithvertexat (x1, y1, 0)andaconeangleof90degrees. The
+intersectionpointAofthethreeconesisthecirclepassingthroughthesethreepointssimulta-
+neously. ThepointAwiththehighestcumulativecountisapotentialcenterofthecircle.
+Figure 4 Hough Circle Transform diagram (Image Sourced from the internet).
+The Hough circle transform can accurately identify some circles that may exist in the image.
+However, this method involves a massive computational load, resulting in slow code execution.
+Therefore, we opted for a more efficient and flexible Hough gradient method. This method sig-
+nificantly reduces the computational load compared to the standard Hough circle transform and
+producesgoodresults.
+ThefollowingisanexplanationoftheimplementationoftheHoughgradientmethodforcircle
+detection:
+• Step1:Apply Canny edge detection to the obtained binary image to identify the positions of
+edgepointsintheimage.
+• Step2:For each non-zero point in the edge image, compute its local gradient by using the
+imgradientxy()functiontocalculatethefirst-orderderivativesinthexandydirections,ob-
+tainingthegradient.
+• Step3:Based on the gradients of the obtained edge points, accumulate each point in the accu-
+mulatorarrayalongthelinespecifiedbytheslope(wheretheslopevariesfromtheminimum
+tothemaximumvalueasdefined).
+• Step4:Mark the position of each non-zero pixel in the edge image when simultaneously with
+eachaccumulation.
+• Step5:Then, select candidate centers from these points in the two-dimensional accumulator,
+ensuring that these centers are both greater than a given threshold and larger than all their
+neighbors. Thesecandidatecentersarearrangedindescendingorderbasedontheiraccumula-
+tionvalues,facilitatingtheappearanceofthecenterwiththemostsupportpixelsfirst.
+• Step6:Thesepixelsarethensortedbasedontheirdistancesfromthecenter. Startingfromthe
+minimumdistancetothemaximumradius,selectthemostsuitableradiusthatencompassesall
+non-zeropixels.
+• Step7:Ifacenterreceivessufficientsupportfromnon-zeropixelsintheedgeimageandhasan
+adequatedistancefromthepreviouslyselectedcenters,thenitwillberetained.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-359-
+
+===== PDF page 14 =====
+Team#apmcm2309364 Page11of41
+ThepointsthatareultimatelyretainedarethecentersoftheapplecirclesfoundbytheHough
+Gradient method. Based on the number of centers in the image, we can preliminarily estimate the
+approximatenumberofapplesintheimage.
+Belowaretheresultsoftheapplecountobtainedusingthismethod.
+(a) binaryimageresult
+ (b) correspondingoriginalimageresult
+Thisistheflowchartofourentireapplerecognitionandcountingalgorithm:
+Figure 5 Flowchart of the Apple Recognition Algorithm.
+5 . 1 . 3 Statistical Methods for Counting Apples and Their Improvements
+In the previous section, we found a method to identify apples in the image. However, upon
+practical comparison, we discovered that due to factors such as lighting and shooting angles, the
+obtainedcountofapplesmaydifferfromtheactualcount,leadingtosignificantdiscrepanciesinthe
+results.
+Through analysis, we have identified that apples are not perfectly circular but appear as a
+combination of multiple circles. Therefore, the algorithm is prone to situations where one apple
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-360-
+
+===== PDF page 15 =====
+Team#apmcm2309364 Page12of41
+isrecognizedasmultipleapples,especiallyattheboundaries. Toaddressthisissue,weproposean
+optimizationtotheoriginalmodelbasedontheoverlappingarearatioofapplecircles.
+Weproposethefollowingimprovedmethodtoaddressthisissue:
+1. Basedonthepreviouslyobtaineddataforallcirclecenters (xi, yi)andtheirradii riwecalculate
+thedistances dij(i ̸= j) ∈ (0, ri + rj).
+2. Foreaseofdiscussion,let’sdenote R1 =max(ri, rj), R2 =min(ri, rj), d = dij.
+3. Next, we introduce the parameter γ = R1 − d R2 ∈ (0, 1), The introduction ofγ is intended to assist us in determining whether one of the circles should be eliminated in cases where two
+circlesoverlap.
+4. Forthispurpose,weneedtofindathresholdvalue λ,When γ > λ,weconsiderthattheoverlap
+degreeofthetwocirclesisrelativelyhigh,andweremovethecirclewiththesmallerradiusN.
+5. The number of circles retained is the optimized count of apples. Use the Count function to
+performthecounting.
+Figure 6 Flowchart of the Optimization Model for Eliminating Duplicate Circles.
+Next,let’ssearchfor λ
+Whencomparingtherecognitionimagewiththeoriginalimage,weobservethatwhen γ<0i.e.,
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-361-
+
+===== PDF page 16 =====
+Team#apmcm2309364 Page13of41
+when R1 < d,neithercircle’scenterisinsidetheothercircle. Inthiscase,eitherthereisnooverlap
+ortheoverlappingareaisverysmall. Wecanconsidertheseastwoseparateappleswithoutfurther
+discussion. When γ>1, the smaller circle is completely encompassed by the larger circle, and we
+canconsideritasoneapple.
+So,the λweareseekingshouldbeavaluegreaterthan0andlessthan1.
+O1 O2
+A
+B
+d
+R1
+R2
+θ
+Figure 7 Schematic diagram of two circles overlapping
+When γ ∈ (0, 1)，wecanobservethattherearetwointersectionpointsbetweenthetwocircles.
+By connecting the center of the smaller circle with these two intersection points, we can obtain an
+angle θ. Wecanfindthatwhen R1 and R2 arebothknown,theareaofoverlapisrelatedto θandis
+negativelycorrelated(i.e.,thesmaller θ,thelargertheoverlappingarea). Fromtheimages,wecan
+O1 O2
+A
+B
+d′
+R1
+R2
+θ′
+Figure 8 The bigger
+O1 O2
+A
+B
+d′′
+R1
+R2
+θ′′
+Figure 9 The smaller
+alsoobservethatasthevalueofγincreases,thedistancedbetweenthemdecreases,and θcontinues
+todecreaseaswell.
+O1 O2
+A
+B
+d θ
+Figure 10 Overlap area i estimation diagram
+Fromthis,wecaninferthattheparameter γhasapositivecorrelationwiththeoverlappingarea.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-362-
+
+===== PDF page 17 =====
+Team#apmcm2309364 Page14of41
+In this case, we choose λ=0.5 as the threshold for determining whether two circles overlap.
+When γ=0.5,theangle θis120°. Throughcalculation,wefindthatatthispoint,theoverlapdegree
+ofthetwocirclesisabove70%.Soweconsidertheoverlaptoberelativelyhigh,andthetwocircles
+areidentifiedasoneapple.
+5 . 2 Results and Histogram of apple distribution
+Thecomparisonbetweentheresultsbeforeandafteroptimizationisshownbelow:
+(a) The recognition results before opti-
+mization.
+(b) Therecognitionresultsafteroptimiza-
+tion.
+(c) Thepresentationintheoriginalimage.
+Figure 11 The comparison of effects before and after correction
+From this, it is evident that the improved model does enhance recognition accuracy, and the
+recognized results align well with the distribution and count of apples in the original image. This
+canbeusedtocalculatethequantityofapples.
+Accordingtothismodel,wewillplottheobtainedresultsusingabarchart,asshownbelow:
+/s48 /s49/s48 /s50/s48 /s51/s48 /s52/s48
+/s48
+/s49/s48
+/s50/s48
+/s51/s48
+/s52/s48
+/s53/s48
+/s32
+/s32
+The number of images
+The number of apples
+Figure 12 The histogram of the distribution of all apples in Attachment 1
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-363-
+
+===== PDF page 18 =====
+Team#apmcm2309364 Page15of41
+On the basis of the histogram, we plotted a fitting curve and observed that the curve exhibits
+anapproximatenormaldistribution. Sincetheprovidedimagesofapplesarerandomandwithouta
+specificpattern,wecanconsidertheobtainedresultstobesatisfactory,indicatingahighstabilityof
+themodel.
+VI. Model Establishment and Solution of Problem 2
+6 . 1 Establishment of the Apple Position Determination Model
+FromthesolutiontotheProblem1,weobservedthatusingtheHoughCircleTransformmethod
+allowedustodeterminethecenterofeachHoughcircle. However,theremightbeacertaindeviation
+between the circle center positions and the actual center position of the apple cluster. To improve
+themodel’saccuracy,weadoptedtheYOLOv4networkandemployedadeeplearningapproachto
+determinethecoordinatesoftheapples. TheresultscanbecomparedwiththosefromtheProblem
+1 to assess the accuracy and rationality of the model. Below is an introduction to the YOLOv4
+network.
+1
+6 . 1 . 1 Principle Overview of YOLOv4 network
+The YOLOv4 object detection network is a one-stage object detection network, consisting of
+threemainparts: Backbone,Neck,andHead.
+Figure 13 The composition of YOLOv4.
+Throughthe Figure 16,wecanclearlyseeitsprocess. Belowaredetailedexplanations:
+• TheYOLOv4networkusesCSPDarkNet-53asthebackboneforextractingfeaturesfromthe
+inputimages. Thebackbonehasfiveresidualblockmodules,andthefeaturemapoutputsfrom
+theresidualblockmodulesarefusedattheneckoftheYOLOv4network.
+• TheSPPmoduleintheneckconcatenatesthemax-poolingoutputsofthelow-resolutionfeature
+map to extract the most representative features. The SPP module uses kernels of size 1-by-
+1, 5-by-5, 9-by-9, and 13-by-13 for the max-pooling operation. The stride value is set to 1.
+1WhenusingtheVOLOv4algorithm,wereferredtothereferencesinMATLABHelp,thelinkisasfollows
+https://ww2.mathworks.cn/help/vision/ug/object-detection-using-yolov4-deep-learning.html
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-364-
+
+===== PDF page 19 =====
+Team#apmcm2309364 Page16of41
+Concatenatingthefeaturemapsincreasesthereceptivefieldofbackbonefeaturesandincreases
+the accuracy of the network for detecting small objects. The concatenated feature maps from
+theSPPmodulearefusedwiththehigh-resolutionfeaturemapsbyusingaPAN.ThePANuses
+upsamplinganddownsamplingoperationstosetbottom-upandtop-downpathsforcombining
+thelow-levelandhigh-levelfeatures.
+Figure 14 YOLOv4 Network Algorithm Flowchart.
+• ThePANmoduleoutputsasetofaggregatedfeaturemapstouseforpredictions. TheYOLOv4
+networkhasthreedetectionheads. EachdetectionheadisaYOLOv3networkthatcomputes
+thefinalpredictions. TheYOLOv4networkoutputsfeaturemapsofsizes19-by-19,38-by-38,
+and76-by-76topredicttheboundingboxes,classificationscores,andobjectnessscores.
+• TinyYOLOv4networkisalightweightversionoftheYOLOv4networkwithfewernetwork
+layers. The tiny YOLO v4 network uses a feature pyramid network as the neck and has two
+YOLO v3 detection heads. The network outputs feature maps of size 13-by-13 and 26-by-26
+forcomputingpredictions.
+6 . 1 . 2 The Application of the YOLOv4 network and Results in this Problem
+Before training the model with the YOLOv4 network, we need to select samples from the
+provided apple image data in Attachment 1 and preprocess these data. The process of selecting
+samplesandpreprocessingisoutlinedbelow:
+(a)
+ (b)
+ (c)
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-365-
+
+===== PDF page 20 =====
+Team#apmcm2309364 Page17of41
+(d)
+ (e)
+ (f)
+Figure 15 Examples of selected sample images
+Werandomlyselected100imagesastrainingsamples. Here,weprovideafewtoillustratethat
+thechosenappleimagesexhibitavarietyofdistinctivefeatures.
+Then we utilized the Image Labeler toolbox in MATLAB to manually annotate the selected
+samples by bounding boxes, where each box represents the region containing an apple. After pro-
+cessing, we obtained a 90x2 table. The first column holds the paths of the images, and the second
+columnstoresthecoordinatesofalltheboundingboxesineachimage.
+The results after adding bounding boxes are as follows. Similarly, we provide examples of
+theseimageswithaddedboundingboxes:
+(a)
+ (b)
+ (c)
+(d)
+ (e)
+ (f)
+Figure 16 Results with bounding boxes added
+After completing the annotation, all box coordinates are labeled and recorded for subsequent
+calculationofthepositionofeachapple.
+Then,wetaketheselected100processedsampleimagesandrandomlydividethemintothree
+setsinan 8 : 1 : 1ratiousingthe rand()function. ThesesetsarereferredtoasthetrainingsetK1,
+validationsetK2,andtestsetK3,respectively.
+Uptothispoint,wehavecompletedthepreprocessingofthetrainingsamples.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-366-
+
+===== PDF page 21 =====
+Team#apmcm2309364 Page18of41
+Figure 17 Data preprocessing flowchart of Problem 2
+ThenweinputthesamplesintotheYOLOv4modelfortraining:
+1. First,weperformconvolutionoperation: Performconvolutionoperationonthetrainingsetto
+extract the feature values of the input information. It’s important to note that in the process
+of scene recognition, we are not instantly recognizing all targets in the entire scene. Instead,
+wefocusonlocallyperceivingasinglefeatureinthesceneandthenperformlocaloperations
+throughhigherlevelstoobtainglobalinformation. Thefollowingdiagramshowsthestructure
+oftheconvolutionallayer.
+Figure 18 Convolutional Layer Structure Diagram (Image Sourced from the Internet)
+2. Next, we enter the pooling layer. The purpose of the pooling layer is to compress the image.
+It exists between multiple convolutional layers and performs feature dimension reduction on
+imageinformation. Itcompressesglobalinformationoftheimageandreducesthenumberof
+parameterstopreventoverfittingandimprovefaulttolerance. Poolingcanbedividedintomax
+pooling and average pooling operations. The following diagram illustrates these two pooling
+operations.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-367-
+
+===== PDF page 22 =====
+Team#apmcm2309364 Page19of41
+Figure 19 Pooling Layer Structure Diagram (Image Sourced from the Internet)
+3. Finally,weenterthefullyconnectedlayer. Here,weperformfullyconnectedoperationsonall
+featureimages. Ifoverfittingoccurs,weuseoperationssuchasdropoutandlocalnormalization
+torandomlydeletesomeneuronsgeneratedduringtheneuralnetworktrainingprocess.
+4. Afterextractingfeaturesfromthetrainingset,let’sdenotetheextractedfeatureinformationasε.
+Then,weusing εtorecognizethevalidationset. Thenumberofrecognizedapplesisdenoted
+asm,andtheirpositionsare (xi, yi),Subsequently,basedonthepreviouslymanuallyselected
+results,wecalculatethenumberofapplesMandtheirpositions(x0i, y0i)inthevalidationset.
+WeperformconfidencecalculationforthemodelandrecorditinTrainingLoss.
+5. Check whether the value of Training Loss satisfies the confidence interval I, If it does not
+satisfy,thenperformconvolutionoperationagainonthetrainingsettore-extractfeatureinfor-
+mation,denotedas ε∗. Ifitsatisfies,proceedtothenextstep.
+6. Usethefeatureinformationthatpassedthetesttoexaminethetestset. Similarly,calculateits
+feasibilityandrecorditinValidationLossforsubsequentevaluationofthemodel’scredibility.
+Figure 20 Flowchart of model training(part)
+Atthispoint,wehavecompletedthetrainingofthesamplemodelundertheYOLOv4network,
+whichcanbeusedforthesubsequentdetectionofapplepositions.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-368-
+
+===== PDF page 23 =====
+Team#apmcm2309364 Page20of41
+6 . 1 . 3 Comparison of Model Recognition and Sensitivity Analysis
+We plot the result (the left) against the apple position obtained by Hall circle transformation from
+question1(theright)
+After comparison, we found that although there was a slight error in the number of identifications
+between the two, the distribution of point coordinates generally coincided, which shows that the
+applepositioncoordinatesweobtainedarerelativelyaccurate.
+/s48 /s51/s48 /s54/s48 /s57/s48 /s49/s50/s48 /s49/s53/s48 /s49/s56/s48 /s50/s49/s48 /s50/s52/s48 /s50/s55/s48
+/s48
+/s51/s48
+/s54/s48
+/s57/s48
+/s49/s50/s48
+/s49/s53/s48
+/s49/s56/s48
+y
+x
+(a) Thescatterplotoftheresultsfromthemodelinquestion2
+/s48 /s51/s48 /s54/s48 /s57/s48 /s49/s50/s48 /s49/s53/s48 /s49/s56/s48 /s50/s49/s48 /s50/s52/s48 /s50/s55/s48
+/s48
+/s51/s48
+/s54/s48
+/s57/s48
+/s49/s50/s48
+/s49/s53/s48
+/s49/s56/s48
+y
+x (b) Thescatterplotoftheresultsfromthemodelinquestion2
+6 . 2 Results and 2D Scatter Plot of Geometric Coordinates
+Our final scatterplot is as follows: Each point represents the geometric coordinate position of
+thegeometriccenterofanappleinthefigure.
+/s48 /s51/s48 /s54/s48 /s57/s48 /s49/s50/s48 /s49/s53/s48 /s49/s56/s48 /s50/s49/s48 /s50/s52/s48 /s50/s55/s48
+/s48
+/s51/s48
+/s54/s48
+/s57/s48
+/s49/s50/s48
+/s49/s53/s48
+/s49/s56/s48
+y
+x
+Figure 21 2D Scatter Plot of Geometric Coordinates
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-369-
+
+===== PDF page 24 =====
+Team#apmcm2309364 Page21of41
+VII. Model Establishment and Solution of Problem 3
+7 . 1 Establishment of apple maturity detection model
+7 . 1 . 1 The Application of YOLOv4 Network and Results in this Problem
+Similar to the second question, we randomly selected 100 images as training samples. In ad-
+ditiontotheframeadditionoperation,wealsoperformedamaturitystatusjudgmentoneachapple,
+usingR,S,andItorepresentmatureandsemi-ripeapplesrespectively.matureandimmature.
+We can refer to the model in question 2 for the process of feature information extraction, and
+willnotgointodetailshere. Thedifferencefromquestion2isthatthistimethenumberoffeature
+informationsetsweextractedincreased. Thefeatureinformationofmatureapples,semi-ripeapples
+andimmatureapplesist1,t2,t3.
+Figure 22 Schematic flow diagram of this process
+After the above operations, three types of feature information are used to identify the image
+ofattachment1respectively,andthecredibilityoftheapplestatusistestedbycomparingthethree
+typesoffeatureinformation,andtheonewiththehighestcredibilityisselectedasthejudgmentfor
+identifyingtheripestatusoftheapple,andItisrepresentedinthefigureasfollows:
+(Forexample,R:94%indicatesthatthisappleismature,andthecredibilityis94%)
+(a)
+ (b)
+Figure 23 Schematic diagram of maturity identification results
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-370-
+
+===== PDF page 25 =====
+Team#apmcm2309364 Page22of41
+Throughtheabovetrainingprocessofthemodel,wecangetaroughjudgmentoftheripeness
+status of each apple and its credibility. Next, we hope to quantify this information and express it
+withaunifiedparametermaturity.
+7 . 1 . 2 Establishment of numerical calculation model for maturity
+Throughthedatasolvedintheprevioussection,wecangetthefollowingparameters:
+Thenumbersofripe,semi-ripe,andimmatureapplesinallimagesisrecordedasA,B,andC.
+Theripenessstatusofeachapple label ∈ {R, S, I}
+Theconfidencelevelofeachapple’sripenessp
+Toquantitativelyexpressthematurityofeachapple,weintroducethematurityfactor µ
+µ =
+8
+>>>><
+>>>>:
+1, if label is R
+1
+2 , if label is S
+0, if label is I
+Andweassigntheabovevalueto µaccordingtoitsripenessstatusforeachapple.
+Sowecanpreliminarilythinkthattheapple’smaturityHisrelatedtotheproductof µandits
+credibilityp. WerecordmaturityasH
+Sowecaninitiallyget:
+H = µp
+Aftertesting,wefoundthattheerrorincalculatingmaturityinthiswayisrelativelylarge. An-
+alyzingthereason,webelievethattheripestateofapplesisnotbinaryopposition,soitisnecessary
+to consider the possible ripe state of apples under the probability of (1-p). Here we introduce the
+averagematurity eH,andisgivenby:
+eH =
+8
+>>>>>><
+>>>>>>:
+1
+2
+P pbi
+B + C , if label is R P pai
+A + C , if label is S P(pai + 1 2 pbi)
+A + B , if label is I
+(6)
+Amongthem, pai, pbi, and pbi respectivelyrepresentthecredibilityofanapplewithlabelsR,
+S,andI.
+SowecangetthecalculationformulaofthemodifiedmaturityH:
+H = µp + (1 − p) eH (7)
+Basedonthis,wecancalculatethematurityHofeachapple.
+7 . 2 Results and Histogram of apple ripeness distribution
+Wedrewahistogramofapplematuritydistributionwithevery5%ofmaturityasintervalstep.
+We can find that most of the identified apples are relatively mature, which is consistent with the
+actual situation. But at the same time, because there are too few immature apples, if they are all
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-371-
+
+===== PDF page 26 =====
+Team#apmcm2309364 Page23of41
+representedinonehistogram,thedatavisualizationeffectwillbepoor,sowedividethehistogram
+intotwopartsanddrawthemseparately,asfollows:
+Figure 24 Histogram of ripeness distribution of unripe apples
+/s48 /s49/s48 /s50/s48 /s51/s48 /s52/s48
+/s48
+/s50
+/s52
+/s54
+/s56
+/s49/s48
+/s49/s50
+/s32
+/s32
+The number of apple
+M aturity/%
+/s53/s48 /s54/s48 /s55/s48 /s56/s48 /s57/s48 /s49/s48/s48
+/s48
+/s49/s48/s48
+/s50/s48/s48
+/s51/s48/s48
+/s52/s48/s48
+/s53/s48/s48
+/s54/s48/s48
+/s55/s48/s48
+/s56/s48/s48
+/s57/s48/s48
+/s32
+/s32
+The number of apple
+M aturity/%
+Figure 25 Ripeness distribution histogram of ripe and semi-ripe apples
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-372-
+
+===== PDF page 27 =====
+Team#apmcm2309364 Page24of41
+VIII. Model Establishment and Solution of Problem 4
+8 . 1 Preliminary estimates for Apple
+Generally, apples are represented by 70, 80, 90, etc. The unit is mm, indicating the diameter.
+Here we might as well take the diameter of the apple as 9cm. According to the image radius rad
+calculatedinquestion1,wecanapproximateCalculatethevolumeofapple,sowehave
+V = 4 3 πr3
+Hereweneedtodeterminethefocallengthofthecameraandthedistancefromwhichweare
+shooting. Ourfocallengthisselectedasthestandardfocallength 60mm. Asapreliminaryestimate,
+wedonotconsiderthedifferentpositionsoftheapplebutdefaulttothesamepositionoftheapple,
+recordedas D,thenwehave
+Vtrue = η3D3
+f 3
+4π
+3 r3
+Therefore,themassoftheappleisestimatedtobe
+m = ρVtrue = 4η3D3
+3f 3 πρr3
+Next,weneedtoestimateareasonableratio D f tohelpusimproveaccuracy. Infact,thescale
+ofapixelonatwo-dimensionalimagecorrespondsto 0.04cminreality(werecordthisratioas η),
+then we can use the area of the two-dimensional image as a rough distance estimate, we A two-
+dimensional image with a size of 270 × 185 was segmented, and the result is shown in the figure
+below
+Figure 26 The segmented image
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-373-
+
+===== PDF page 28 =====
+Team#apmcm2309364 Page25of41
+In this segmented picture of 7 × 9 that is all apples, it is not difficult to estimate that one
+appleoccupiesaboutthesizeofoneandahalfsquares,soitscorrespondingimagediametercanbe
+estimatedtobe 1.8cmandtheactualdiameteris 9cm,so
+D
+f = 9 1.8 = 5
+Therefore,themassofapplesisestimatedtobe
+m = 4 375 πρr3
+Using the above formula, we obtain the quality histogram of apple quality, as shown in the
+Fig.27
+/s48 /s49/s48/s48 /s50/s48/s48 /s51/s48/s48 /s52/s48/s48 /s53/s48/s48 /s54/s48/s48
+/s48
+/s50/s48/s48
+/s52/s48/s48
+/s54/s48/s48
+/s56/s48/s48
+/s49/s48/s48/s48
+/s49/s50/s48/s48
+/s32
+/s32
+The number of apple
+Apple's  mass/g
+Figure 27 Mass distribution histogram of apples
+Ascanbeseenfromtheimage,thisestimationresultisveryinaccurate,soweneedtoimprove
+ourestimationmodel.
+8 . 2 Radance and radiation intensity
+Asweallknow,radiance Leisaphysicalquantityusedtocharacterizetheradiantfluxperunit
+areaandunitsolidangleofasurfaceradiationsource. Inaddition,insensors(cameras,humaneyes,
+etc.), radiance is the most commonly used to describe the perceived radiation. Quantity is also the
+mostimportantquantity.
+Le = d2Φe
+cos θdAdΩ
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-374-
+
+===== PDF page 29 =====
+Team#apmcm2309364 Page26of41
+In the formula, e is the specified direction, Φe is the radiation flux in the specified direction,
+dAistheareaelement,cos θisthenormalangleoftheareaelement, Ωisthesolidangle.
+Now,let’sconsiderthesituationwhereadigitalcameratakesapicture. Let’sassumethatthe
+areaelementatthedistance ris dA,theradianceis L,thelight-receivingarea(thatis,theareaofthe
+digital camera) is S, the focal length of the camera is f, and the imaging The generated irradiance
+is Eimg. Then,thesolidangleformedonthecamerasurfaceelementcanbewrittenas
+dΩ = dA r2
+Theradiationfluxpassingthroughthecamerais
+dΦ = dΩLS = LS r2 dA
+Lettheimagesizeofsurfacemicro-elementsonthecamerabe dA′,thenwehave
+dA′ = f 2
+r2 dA
+Therefore,theirradianceimagedbythesurfaceelementsis
+Eimg = dΦ dA′ = LSdA r2 · r2 f 2dA = LS f 2 (8)
+The formula (8) indicates that the imaging irradiance Eimg of the object will not change with
+thechangeofdistance d(herewedefaulttotheaperturesetting,exposuretimeandotherparameters
+ofthecameraeverytimeaphotoistakensettingsareconsistent).
+8 . 3 Establishment and calculation optimization of ranging model
+Thecolorspaceweselectedpreviouslyisthe Labcolorspace,and Labhappenstousenumer-
+icalvaluestofitthecolorspaceofhumanvisualperception,wherethe Lcomponentcorrespondsto
+thebrightnessperceivedbythehumaneye. Basedonthis,ourteamproposedamethodtoestimate
+thedistanceofobjectsintwo-dimensionalimagesbyusingthe Lcomponentinthe Labcolorspace.
+Thebasicstepsareasfollows:
+•convertsthe Lcomponentmapintoagrayscaleimage,anditsvaluecanapproximatelyrep-
+resentthebrightnessofthepixel.
+•framesthepositionoftheappleinthegrayscaleimage
+• accumulates the grayscale values of the pixels in the frame and averages the area. This
+average value can be regarded as the average brightness of the object H, which is proportional to
+theradiationintensityoftheobject E. YoumaywishtoremembertheratioThecoefficientis l
+•Theradiationintensitysatisfiestheinversesquarelawwiththesamedistance,andtheactual
+distanceoftheobjectcanbeestimated.
+Denotethegrayvaluematrixofeachpixelinthetwo-dimensionalgrayscaleimageas Gm×n,
+where G(i, j)represents the ith row and jth column of the grayscale image. For the gray value of
+the pixel, record the frame range of the i (i = 1, 2, · · · , k)th apple on the image as the restriction
+matrix Xk×2, Yk×2 (Xk1 < Xk2, Yk1 < Yk2). Therefore, the average brightness corresponding to
+the ithappleonthegrayscaleimagecanbeexpressedas
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-375-
+
+===== PDF page 30 =====
+Team#apmcm2309364 Page27of41
+Wi =
+X
+x
+X
+y
+G(x, y)
+η2(xi1 − xi2)(yi1 − yi2) , i = 1, 2, · · · k (9)
+s.t:
+x ∈ [Xi1, Xi2], y ∈ [Yi1, Yi2]
+Thenaccordingtothedefinitionofradiationintensity,wehave
+lWi = Ei = dΦi
+dAi
+= LS η2r2
+thatis
+ri = 1 η
+r
+LS
+lWi
+, i = 1, 2, · · · , k
+Theradiance Lintheformulaisaphysicalquantitythatdoesnotchangewithdistance,sothe
+distance is a function of the average brightness. The lower the average brightness, the farther the
+distance,whichisinlinewithourintuitivejudgmentoftheimage.
+Since we cannot obtain the values of parameters L, S, l, we hope to select a standard image
+(required to contain only one apple and the identified apple position is highly consistent with the
+position of the image), and the distance between the apples in the image Denoted as r0 = 1m, the
+two-dimensionalimageareais S0,andtherealareais A0,sowehave
+ri = ri
+r0
+=
+r
+LS
+lWi
+· lW0
+LS =
+r
+W0
+Wi
+(10)
+Thisisthefinalresultoftherangingmodel. Weeliminatetheparametersthatwecannotobtain
+throughtheratio,andfinallyobtaintherelationshipbetweenrangingandtheaveragebrightnessof
+thetwo-dimensionalplaneimage,whichwillhelpuscompletetherangingtask.
+In order to reduce the complexity of the algorithm and optimize the model, we also need to
+optimize the calculation formula of average brightness. To this end, we introduce the Hadamard
+product operation of the matrix and record ”∗” as the Hadamard product operator. In addition, we
+recordthenorm ||A|| = P Atorepresentthecalculationoftheelementsofthematrix Aand.
+Nowlet’simprovethesummationoperationofthegrayvaluematrix. Wesetthe”0-1”column
+vectorsinthe x, y directionas α, β. Theirdefinitionsare:
+αi(t) =
+8
+<
+:
+1, if xi1 ≤ t ≤ xi2
+0, others
+t = 1, 2, · · · m
+βi(t) =
+8
+<
+:
+1, if yi1 ≤ t ≤ yi2
+0, others
+t = 1, 2, · · · n
+Among them, αi(t), βi(t)respectively represent the value of the tth row of the ”0-1” column
+vectorofthe ithapple. Wemightaswellremembertherangematrixas
+Ri = αiβT i
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-376-
+
+===== PDF page 31 =====
+Team#apmcm2309364 Page28of41
+Itisworthpointingoutthattherangematrix Rigeneratedby αi, βi,itselfisalsoa”0-1”matrix
+containingonly 0, 1elements. Therefore,thesummationoperationofthegrayvaluematrixcanbe
+rewrittenasamatrixTheoperationof-Hadamardproductoperation,thatis
+X
+x
+X
+y
+G(x, y) = ||G ∗ R|| (11)
+Itisnotdifficulttofindthat x, yherenolongerneedtolimititsvaluerangebutcantraversethe
+entiregrayvaluematrix. Wedonothavetoworrythatthiswillcausethealgorithmtoslowdown,
+becausethisisessentiallyabasicmatrixoperation.
+As an example, we might as well consider the gray value matrix G4×4 of a two-dimensional
+grayscaleimageof 4 × 4as
+G =
+2
+66664
+1 2 3 4
+5 6 7 8
+9 10 11 12
+13 14 15 16
+3
+77775
+Theframerangeofanappleaboveitis [1, 2] × [2, 3],then
+α =
+h
+1 1 0 0
+iT
+β =
+h
+0 1 1 0
+iT
+Thentherangematrixis
+R = αβT =
+2
+66664
+0 1 1 0
+0 1 1 0
+0 0 0 0
+0 0 0 0
+3
+77775
+Sotheresultis
+||G ∗ R|| =
+  2 66664 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 3 77775 ∗ 2 66664 0 1 1 0 0 1 1 0 0 0 0 0 0 0 0 0 3 77775   =   2 66664 0 2 3 0 0 6 7 0 0 0 0 0 0 0 0 0 3 77775   = 18
+Next,weoptimizetheareacalculationfortheframedrange. Notethatthearea Softheframed
+rangecanbeexpressedas
+Si = η2(xi1 − xi2)(yi1 − yi2) = η2||αiβT i ||
+Thereforetheareacolumnvectoris
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-377-
+
+===== PDF page 32 =====
+Team#apmcm2309364 Page29of41
+S =
+2
+666664 S1 S2 ...
+Sk
+3
+777775 = η2
+2
+666664 ||α1βT 1 || ||α2βT 2 || ...
+||αkβT k ||
+3
+777775
+Then
+ri =
+r
+W0
+Wi
+, i = 1, 2, · · · , k
+In
+Wi = ||G ∗ Ri|| Si = ||G ∗ Ri|| η2||αiβT i || , i = 1, 2, · · · , k
+Thatis
+r = η
+s
+||αβT ||
+||G ∗ R|| W0 (12)
+Thisistheoptimizedrelativedistancecalculationformula,whichcanbeusedtoapproximately
+represent the real distance. After successfully solving the problem of different fruit distances, we
+willnextcompletethecalculationoftheactualareaandmassofthefruit.
+8 . 4 Estimate of actual fruit size and mass
+Supposethefocallengthofthecamerais f,thedistanceofthefruitis rtrue,andtheareaofthe
+two-dimensional plane is S. According to the imaging and area similarity laws, the relative actual
+size Arel canbeobtainedfor
+A′ = r2 true
+f 2 S
+Thereasonwhytheaboveformulaisarelativeareaisthattheaboveformulaisequivalentto
+A′ = r2r−2 0
+f 2r−2 0 S
+= r2 relA0
+S0
+S
+Thatis
+Arel = A′
+A0
+= r2 rel S S0
+Substitutingthepreviouslyobtainedformulainto,wehave
+Arel = W0η2
+f 2
+||αβT ||S
+||G ∗ R||S0
+= 1 f 2 ||αβT || ||α0βT 0 || W0 Wi
+Thisistheareaenclosedbythebox. Consideringthattheboxisbasicallytangenttotheedge
+oftheapple,andtheapplecanbeapproximatelyregardedasacircle,weneedtomeasuretherela-
+tionship between the area of the box and the area of the fruit. To this end, we introduce The new
+parameter δ helpsusaccomplishthistask,whichisdefinedas
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-378-
+
+===== PDF page 33 =====
+Team#apmcm2309364 Page30of41
+δ = πr2
+S ≈ πr2 4r2 = π 4
+Thatis
+A = δArel = π 4f 2 ||αβT || ||α0βT 0 || W0 Wi
+Then,forthemasscalculationofappleswecanmakethefollowingestimate
+m = 4πρ 3
+r  A
+π
+3
+= πρ 6f 3
+s ||αβT ||W0
+||α0βT 0 ||Wi
+3
+Inthisway,theestimateofqualitycanbecalculatedentirelyfromthebrightnessvaluesonthe
+two-dimensionalplane.
+8 . 5 Results and mass distribution histogram
+Figure 28 Mass distribution histogram of apples
+/s48 /s53/s48 /s49/s48/s48 /s49/s53/s48 /s50/s48/s48 /s50/s53/s48 /s51/s48/s48
+/s48
+/s49/s48/s48
+/s50/s48/s48
+/s51/s48/s48
+/s52/s48/s48
+/s53/s48/s48
+/s32
+/s32
+The number of apple
+Apple's mass/g
+/s48 /s53/s48 /s49/s48/s48 /s49/s53/s48 /s50/s48/s48 /s50/s53/s48 /s51/s48/s48 /s51/s53/s48 /s52/s48/s48 /s52/s53/s48 /s53/s48/s48 /s53/s53/s48 /s54/s48/s48
+/s48
+/s49/s48/s48
+/s50/s48/s48
+/s51/s48/s48
+/s52/s48/s48
+/s53/s48/s48
+/s54/s48/s48
+/s55/s48/s48
+/s56/s48/s48
+/s57/s48/s48
+/s49/s48/s48/s48
+/s49/s49/s48/s48
+/s49/s50/s48/s48
+/s49/s51/s48/s48
+/s32
+/s32
+The number of apple
+Apple's mass/g
+ M odel 1
+ M odel 4
+Figure 29 Mass distribution histogram of apples
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-379-
+
+===== PDF page 34 =====
+Team#apmcm2309364 Page31of41
+FromthecomparisonchartbetweenModel1andModel4,wecanknowthatthemodelresults
+weestablishedarequitegood,whichalsoconfirmstherationalityofourmodeling.
+IX. Model Establishment and Solution of Problem 5
+After consulting the relevant literature, we can learn that YOLOv4 is often used for target
+detection,whileVGG19isoftenusedforimageclassification. Bothbelongtoconvolutionalneural
+networks(CNN).
+SowechooseVGG19forsolvingProblem5.
+9 . 1 Establishment of an improved apple recognition model
+9 . 1 . 1 Principle Overview of VGG19 network
+OneofthemostfamousobjectrecognitionnetworksatthetimewascalledVGG19. Eachlayer
+of the neural network would use the output of the previous layer to further extract more complex
+featuresuntilitwascomplexenoughtobeusedtoidentifyobjects,soeachlayerEachlayercanbe
+regardedasanextractorofmanylocalfeatures.
+ThefollowingistheprincipledescriptionofVGG19:
+Figure 30 Partial structural diagram of VGG19(Image Sourced from the internet)
+VGG19networkmodel,whichincludes5convolutionmodules,5poolinglayers,3fullycon-
+nected layers and 1 softmax classifier. Among them, 5 convolution modules contain a total of 16
+convolutionlayers. TheconvolutionkernelsizeoftheVGG19networkmodelis3×3,andthestep
+sizeis1.
+The core operation of the convolutional neural network is the convolution operation, which
+is shown in Figure 2. In Figure 2, a 3×3 convolution kernel slides on the original image, and the
+covered value is multiplied by the corresponding position of the weight on the convolution kernel
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-380-
+
+===== PDF page 35 =====
+Team#apmcm2309364 Page32of41
+and then added. The obtained value is filled in the corresponding position of the feature map, that
+is,extractedThefeaturesoftheoriginalimagearereflectedonthefeaturemap.
+Each convolution kernel extracts one feature and generates one feature map. Then, by stack-
+ing 64 feature maps of 64 convolution kernels, a three-dimensional feature map will be obtained.
+Convolution kernels in different convolution layers are used to extract different feature informa-
+tion. Shallow convolution kernels mainly extract pixel features such as color, edges and patches;
+middle-level convolution kernels mainly extract texture features such as stripes and shapes; high-
+levelconvolutionkernelsExtractmoreabstractsemanticfeaturessuchastext.
+Inordertocomparethequalityofimagestitching,thisarticleselectsthefeaturesextractedfrom
+the1stto5thconvolutionallayersintheVGG19networkmodelasthemaincomparisonfeatures.
+Aftereachlayerofconvolutionoperationiscompleted,athree-dimensionalfeaturemapstacked
+bytwo-dimensionalfeaturemapswillbeobtained. Thethree-dimensionalfeaturemapisshownfol-
+lowed.
+Figure 31 Three-dimensional feature map transformation (Image Sourced from the internet)
+Each color of the feature map represents a two-dimensional feature map obtained by convo-
+lution with a convolution kernel. This article takes the fifth layer as an example for analysis. 256
+convolutions After the kernel completes the convolution operation, a 56×56×256 feature map is
+obtained. In the figure, nW = 56, nH = 56, nC = 256. Analyze the second layer of the first layer
+separately. dimensionalfeaturemap,whichcanbeexpressedasa56×56matrix F1
+F1 =
+2
+666664 a1 a2 . . . a56 a57 a58 . . . a112 ...
+a3081 a3082 . . . a3136
+3
+777775
+Similarly,definethematrixofthesecondlayerfeaturemapasF2,andsoon. Eachfeaturemap
+correspondstoamatrix,andthelastfeaturemapcorrespondstoamatrix. F256. Theneachmatrix
+isflattenedintoarowvector,thatis,thematrixF1istransformedinto
+H1 =
+h
+a1 a2 . . . a3136
+i
+Thenthethree-dimensionalfeaturemapoftheconvolutionallayerwillbetransformedaccord-
+ingly.
+Theentirefeaturemapcanbeexpressedasa3136×256matrixK,thatis
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-381-
+
+===== PDF page 36 =====
+Team#apmcm2309364 Page33of41
+K =
+h
+H1 H2 . . . H255 H256
+iT
+Atthistime,theGrammatrixcanbeexpressedas
+G = KK T
+In the formula, KT is the transposed matrix of matrix K. Obviously the matrix G is a 256×56
+symmetric matrix, which represents the 256 feature maps of the fifth convolution layer. The co-
+occurrencecorrelationbetweenthe256featuresinthetablecanbeusedtorepresentthestyleofan
+image, and then the style of the two images can be represented by the co-occurrence correlation.
+The degree of difference determines the quality of image splicing. The function Ls is used as an
+indextocomparethedegreeofstyledifferencebetweentwoimages,thatis
+8
+>>>><
+>>>>:
+L =
+mX
+k=0
+wkEk
+Ek = 1 4N 2 k M 2 k X i,j (Gk i,j − Ak i,j)2
+Gk istheGrammatrixoftheoriginalimageinthekconvolutionlayer; Ak istheGrammatrix
+ofthesplicedimageinthekconvolutionlayer; N k isthe1stlayerofthetwoimages. Thenumber
+of channels of the feature map; M k is the product of the length and width of the k-th layer feature
+mapofthetwoimages;wkistheweightofthek-layerimage.
+9 . 1 . 2 The Application of the VGG19 network
+We apply the principle of this network, take all the apple images provided in Appendix 2 as
+samples, use the VGG19 network for deep learning, and use the trained model for detection in
+Appendix3.
+HereweuseMATLABforsimulation,andtherecognitionresultsareasfollows:
+(a) Therecognitionresultistomato
+ (b) Therecognitionresultisapple
+Figure 32 Apple recognition result window after VGG19 training
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-382-
+
+===== PDF page 37 =====
+Team#apmcm2309364 Page34of41
+9 . 2 Results and histogram for all Apple image ID numbers
+TheresultsofthemodelwetrainedthroughVCG19forrecognitionareasfollows: Theabscissa
+istheIDoftheimage. Startingfromthefirstone,wetakeevery1,000picturesasagrid. Theordinate
+is the number of images identified as apples in these 1,000 pictures. The result should be between
+0and1,000. Aftercomparison,itisfoundthatallAllcomply.
+/s48 /s53/s48/s48/s48 /s49/s48/s48/s48/s48 /s49/s53/s48/s48/s48 /s50/s48/s48/s48/s48
+/s48
+/s49/s48/s48
+/s50/s48/s48
+/s51/s48/s48
+/s52/s48/s48
+/s53/s48/s48
+/s54/s48/s48
+/s55/s48/s48
+/s56/s48/s48
+The number of image
+Apple's ID
+Figure 33 Histogram for all Apple image ID numbers
+According to the model we trained, not only apples can be recognized, we also recognized other
+fruitsanddrewthedistributionhistogramoftheirimageIDnumbers. Theresultsareasfollows:
+/s52/s48/s48/s48 /s54/s48/s48/s48 /s56/s48/s48/s48 /s49/s48/s48/s48/s48 /s49/s50/s48/s48/s48 /s49/s52/s48/s48/s48 /s49/s54/s48/s48/s48 /s49/s56/s48/s48/s48 /s50/s48/s48/s48/s48
+/s48
+/s50/s48
+/s52/s48
+/s54/s48
+/s56/s48
+/s49/s48/s48
+/s49/s50/s48
+/s49/s52/s48
+/s49/s54/s48
+/s49/s56/s48
+The number of carambola
+Carambola'ID
+/s50/s48/s48/s48 /s52/s48/s48/s48 /s54/s48/s48/s48 /s56/s48/s48/s48 /s49/s48/s48/s48/s48 /s49/s50/s48/s48/s48 /s49/s52/s48/s48/s48 /s49/s54/s48/s48/s48 /s49/s56/s48/s48/s48 /s50/s48/s48/s48/s48
+/s48
+/s53/s48
+/s49/s48/s48
+/s49/s53/s48
+/s50/s48/s48
+/s50/s53/s48
+The number of pear
+Pear's ID
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-383-
+
+===== PDF page 38 =====
+Team#apmcm2309364 Page35of41
+/s50/s48/s48/s48 /s52/s48/s48/s48 /s54/s48/s48/s48 /s56/s48/s48/s48 /s49/s48/s48/s48/s48 /s49/s50/s48/s48/s48 /s49/s52/s48/s48/s48 /s49/s54/s48/s48/s48 /s49/s56/s48/s48/s48 /s50/s48/s48/s48/s48
+/s48
+/s50/s48
+/s52/s48
+/s54/s48
+/s56/s48
+/s49/s48/s48
+/s49/s50/s48
+/s49/s52/s48
+/s49/s54/s48
+/s49/s56/s48
+/s50/s48/s48
+The number of plum
+Plum's ID
+/s48 /s53/s48/s48/s48 /s49/s48/s48/s48/s48 /s49/s53/s48/s48/s48 /s50/s48/s48/s48/s48
+/s48
+/s49/s48/s48
+/s50/s48/s48
+/s51/s48/s48
+/s52/s48/s48
+/s53/s48/s48
+/s54/s48/s48
+/s55/s48/s48
+The number of tamotoes
+Tamotoes'ID
+Figure 34 Histograms for other fruits’ image ID numbers
+X. Model Evaluation and Further Discussion
+10 . 1 Merit
+• Model for Problem 1’sadvantagesarethatthealgorithmisfastandtime-consuming,itcan
+accuratelyrecognizeimageswithobviousapplefeaturesandthedrawncircularboundaryishighly
+consistentwiththeedgeoftheapple;
+•Compared with the deep learning algorithm, the algorithm does not require pre-training. It
+onlyneedstoadjusttheparameterstodirectlydetectandidentifyappleimages. Thisismoresuitable
+forscenesthatrequiretemporarydetection;
+•Theoutputofthealgorithmalsoincludesthecentercoordinatesandradiusparametersofthe
+detectedcircle, whichfacilitatesourteamtoestablishacoordinatesystemandsolvethefollowing
+problems.
+• Model for Problem 2 and 3 UsingtheYOLOv4network,thetrainingspeedisfastandthe
+modelmemoryfootprintissmall
+• Model for Problem 4isderivedthroughstrictmathematicalmeans. Fromatheoreticalpoint
+ofview,themodelisscientificandreliableenough. Inaddition,wealsomadefulluseoftheresults
+of the problem 1 model to test the model. The result is that the speed and accuracy of the model
+havebeenimprovedcomparedwithmodel1;
+• In this model, we fully considered the large and small situations in the imaging image, and
+innovatively proposed a method of estimating image distance using image brightness - the bright-
+ness estimation method. The final results show that this method is very effective. Reasonable and
+effective.
+• Model for Problem 5UsingtheVGG19network,themodelhasahightrainingdepthanda
+largenumberofparameters. Aftertraining,itcanachievehighaccuracy.
+10 . 2 Shortcoming
+• Model for Problem 1reliesheavilyonthecolorfeaturesandshapefeaturesofapplesandis
+more sensitive to the recognition of color features. This will cause some things with similar color
+featuresbutnotapplestobemistakenlydetectedasapples. Atthesametime,therecognitioneffect
+ofgreenapplesispoor;
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-384-
+
+===== PDF page 39 =====
+Team#apmcm2309364 Page36of41
+• The parameter selection of this model is a matter of high trial and error cost, and the ad-
+justment of parameters is even more laborious. Our team spent a lot of time adjusting appropriate
+parameterstomakethedetectionresultsaspossibleaspossible. Good.
+• Model for Problem 2 and 3The training depth of YOLOv4 network is not enough, and
+misjudgmentsmayoccur.
+• Model for Problem 4The derivation of this model contains some approximate estimates,
+whichwillreducetheaccuracyofthemodel’scalculationresults;
+• The establishment of the model requires many conditions. For example, it is assumed that
+theimagingisallnaturallightandtheinfluenceofotherlightsourcesisexcluded. Atthesametime,
+theaccuracyofthemodelisalsoaffectedbytheaccuracyofthepreviousAppledetectionmodel.
+• Model for Problem 5The VGG19 network model is relatively complex, takes a long time
+to train, is difficult to adjust parameters, has large storage capacity, and has high requirements for
+GPUperformance.
+10 . 3 Improvement Measures
+• Model for Problem 1Butinfact,wecanalsoenhancethesensitivityofthealgorithmtothe
+appleshapecharacteristics,thatis,theaccuracyofthetest,bycorrectingthedetectionresultsofthe
+centerofthecirclemultipletimes. Weusedthegradientmethodinthisarticle,sowecancorrectthe
+circulardetectionresultsandreducethefalsedetectionratebydrawingacirclewiththreepoints.
+• Model for Problem 4In the model, we assume parameters such as focal length to help our
+team build the model, which is also the core of the entire model. In real life, when we take an
+image, we can record the focal length of the image at the same time, so we can perform separate
+calculations for each image, which makes the results more accurate. In addition, we can also keep
+theshootingdistanceasconsistentaspossibleandthelightingconditionsequalasmuchastheerror
+allows. Undersuchactualconditions,theaccuracyofthemodelwillbegreatlyimproved.
+XI. References
+[1] Li Changlu. Research on identification and positioning of apple picking robots
+based on machine vision [D]. Lanzhou University of Technology, 2023. DOI:
+10.27206/d.cnki.ggsgu.2022.000718.
+[2] ZhangJunkai,LiXin,HanJunxian,etc.Researchonoptimizationofpickingrobotsystemunder
+deep learning algorithm [J]. Agricultural Mechanization Research, 2024, 46(04): 58-62. DOI:
+10.13427/j.cnki.njyi.20230728.001.
+[3] Yang Chunyan. A circle detection method based on Hough transform [J]. Journal of Baicheng
+NormalUniversity,2016,30(02): 65-68.
+[4] WangYong,TaoZhaosheng,ShiXinyu,etc.Appletargetdetectionmethodwithdifferentma-
+turitylevelsbasedonimprovedYOLOv5s[J/OL].JournalofNanjingAgriculturalUniversity:
+1-13[2023-11-26].http://kns.cnki.net/kcms/detail/32.1148.S.20230926.1201.002.html.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-385-
+
+===== PDF page 40 =====
+Team#apmcm2309364 Page37of41
+[5] Ma Fangda, Liu Zeping, Chen Shihai, etc. Image stitching quality evaluation algorithm based
+onVGG19convolutionalneuralnetwork[J].JournalofQingdaoUniversity(EngineeringTech-
+nologyEdition),2023,38(02): 31-36.DOI:10.13306/j.1006-9798.2023.02.005.
+[6] Xu Weisen. Research on target recognition algorithm for agricultural picking apples[J]. Elec-
+tronicWorld,2018(14):44-45.DOI:10.19353/j.cnki.dzsj.2018.14.017.
+[7] LiuXiaoyang.Researchonimagerecognitionalgorithmofmultifunctionalfruitandvegetable
+pickingrobot[D].JiangsuUniversity,2021.DOI:10.27170/d.cnki.gjsuu.2020.000972.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-386-

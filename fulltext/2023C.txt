@@ -1,0 +1,1547 @@
+
+===== PDF page 1 =====
+Team # apmcm2303763
+Team Number: apmcm2303763
+Problem Chosen: C
+2023 APMCM summary sheet
+This paper addresses multiple issues pertaining to the development and impact of
+new energy vehicles in China.
+In the first problem, patent numbers, subsidies, per capita disposable income, and
+charging station quantities from 2010 to 2022 are collected and used as influencing
+factors. The sales volume of new energy vehicles is the dependent variable.A multiple
+regression equation is established, with regression coefficients indicating the importance
+of each factor. The order of importance is determined as subsidies, patents, per capita
+income, and charging station growth rate.
+In the second problem, seven indicators representing the electric vehicle indus-
+try’s development, including market penetration rate, number of charging stations, and
+production volume, are identified. Time series analysis using ARIMA models is con-
+ducted on market penetration rate and sales volume, identified as pivotal development
+indicators.
+The third problem involves data collection on new energy and traditional vehicles,
+employing the least squares method for analysis.A population competition model pre-
+dicts future trends in the ownership and sales of new energy and traditional vehicles,
+validated against original data.
+For the fourth problem, the export volume of new energy vehicles is selected as
+the policy-influenced indicator. Historical restrictions from major market countries on
+China’s new energy development are investigated using a time series approach. A DID
+model is employed to ascertain the strong negative correlation between foreign policy
+implementations and China’s new energy vehicle exports.
+Lastly, the fifth problem entails establishing a polynomial model based on urban
+car statistics to derive data for a city of one million inhabitants. This data is used to
+construct a model assessing the impact of vehicle electrification on the environment,
+considering factors like gasoline emissions’ CO2 coefficients.
+Keywords: New Energy Vehicles Regression Analysis Time Series Policy Impact
+Environmental Impact Urban Car Statistics
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-410-
+
+===== PDF page 2 =====
+Team # apmcm2303763
+Contents
+1. Introduction. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 1 Background . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1 . 2 Problem Restatement. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+2. Assumptions and Justifications . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+3. Notations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+4. Main Factors : What Affect the Development of NEEVs? . . . . . . . . . . . . . . . 3
+4 . 1 Data Description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+4 . 1 . 1 Data Collection and Pre-processing . . . . . . . . . . . . . . . . . . . . . . . . . 3
+4 . 2 New Energy Electric Vehicle Development Model. . . . . . . . . . . . . . . . . . . . 4
+4 . 2 . 1 Influencing Factors and Index Setting . . . . . . . . . . . . . . . . . . . . . . . . 4
+4 . 2 . 2 Multiple Linear Regression Model . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+4 . 2 . 3 Results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+5. What Will the NEEVs Be In the Next 10 Years? . . . . . . . . . . . . . . . . . . . . . . . 6
+5 . 1 The Data . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+5 . 1 . 1 Data Collection and Data Pre-processing . . . . . . . . . . . . . . . . . . . . 6
+5 . 2 Forecast model for the development of NEEVs in China . . . . . . . . . . . . . . . 7
+5 . 2 . 1 Influencing Factors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+5 . 2 . 2 ARIMA time series forecasting . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+5 . 2 . 3 Results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+6. An Impact on the Global Traditional Energy Vehicle Industry . . . . . . . . . . . 13
+6 . 1 Data Description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+6 . 1 . 1 Data collection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+6 . 1 . 2 Data Pre-processing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+6 . 2 Impact Analysis Model: New Energy Electric Vehicles on Traditional
+Vehicle Market. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+6 . 2 . 1 Optimal Species Competition Model in Math Modeling . . . . . . . . . . 13
+6 . 2 . 2 Results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+7. Resistance to China’s NEEVs and the Impact . . . . . . . . . . . . . . . . . . . . . . . . . 16
+7 . 1 Index Setting . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+7 . 2 Difference-in-Differences Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+7 . 3 Results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-411-
+
+===== PDF page 3 =====
+Team # apmcm2303763
+8. Making Difference:Changes the Electrification Brings to the City of One
+Million People. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+8 . 1 Data Description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+8 . 2 Composite Model of Urban Population and Carbon Emissions per Hun-
+dred Kilometers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+8 . 2 . 1 Urban Population and Fitting Model for Total Public Buses and
+Cars . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+8 . 2 . 2 The Fitted Model for Carbon Emissions and Vehicle Numbers. . . . . 20
+9. An Open Letter:New Energy Electric Vehicles Moisten Your Life and Mine 21
+10. Sensitivity Analysis and Error Analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+11. Model Evaluation and Further Discussion . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+11 . 1 Model Evaluation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+11 . 1 . 1 Advantages of the Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+11 . 1 . 2 Shortcomings of the Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+11 . 2 Promotion of the Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+12. References . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+13. Appendix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-412-
+
+===== PDF page 4 =====
+Team # apmcm2303763 Page 1 of 31
+I. Introduction
+1 . 1 Background
+In recent years, countries around the world have been calling for low-carbon and
+environmental protection. Only by developing clean energy and new energy industries
+can we promote the vigorous development of new energy in the world. In the face
+of global greenhouse warming and worsening environmental pollution, fuel emissions
+from traditional vehicles have become the main cause of greenhouse warming. In such
+a general environment, new energy vehicles,especially electric vehicles(EV), emerged
+as the times require.
+With the development of the science and technology, China has continuously
+increased its requirements for vehicular exhaust emission. New energy electric vehi-
+cles(NEEVs), as a new, eco-friendly, and efficient industry, conforms to the concept of
+green energy and can effectively reduce environmental pollution.[1] So the development
+and impact of new energy electric vehicles are the two topics people more and more
+concerned on.
+But the development of new energy electric vehicles is affected by factors from
+various aspects.They may from the government policies,production technology, infras-
+tructures, value for money compared to substitute goods,and so on.Identifying the factors
+that affect the development of new energy electric vehicles, making reasonable judg-
+ments on the importance of each factor, and predicting future development trends and
+social impacts are urgent issues that need to be solved at the moment.
+1 . 2 Problem Restatement
+Taking into account the background information and restricted constraints identified
+in the problem statement, we need to settle the following questions:
+★ Problem 1
+Figure out the main influencing factors on the development of new energy electric
+vehicles, establish corresponding mathematical models, and explain how the factors
+affect the development of new energy electric vehicles in China.
+★ Problem 2
+Choose appropriate influencing factors that can reflect the development of China’s
+new energy electric vehicles, select the indicators which affect the chosen factors
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-413-
+
+===== PDF page 5 =====
+Team # apmcm2303763 Page 2 of 31
+and collect more detailed data of them, establish rational mathematical models,
+and forecast the development of new energy electric vehicles in China in the next
+ten years.
+★ Problem 3
+Based on the findings of problem 1 and 2, and extend Chinese model to the world,
+collect required data and improve the model, analyze the impact of the new energy
+electric vehicle industry on the traditional energy vehicle industry.
+★ Problem 4
+In order to limit the rapid development of new energy electric vehicles in China,
+some countries have introduced policies to boycott Chinese new energy vehicles,
+establish a model that reflects the impact of these policies on the development of
+new energy electric vehicles in China.
+★ Problem 5
+Analyze the influences of the urban new energy electric vehicles on the ecological
+environment, plug in a city of one million people and get the result.
+★ Problem 6
+According to the model and conclusion of the previous question, write an open letter
+to propagandize the benefits of new energy electric vehicles and the contribution
+of their industry to countries around the world.
+II. Assumptions and Justifications
+Assumption 1
+Assuming that the data obtained from the search has a certain degree of credibility
+and rationality.
+Assumption 2
+Assuming in the optimal species competition differential equation model, when
+new energy vehicles exist independently, they follow the logistic pattern of population
+change.
+Assumption 3
+Assuming that the new energy electric vehicles in the optimal species competition
+differential equation model are treated as pure electric vehicles.
+Assumption 4
+Assuming that all new energy electric vehicles in problem 5 are purely electric.
+Assumption 5
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-414-
+
+===== PDF page 6 =====
+Team # apmcm2303763 Page 3 of 31
+Assume that urban vehicles in problem 5 do not include trucks, and all fuel vehicles
+use gasoline as energy consumption.
+III. Notations
+Symbol Description
+𝑢𝑛 The policy subsidy amount for the year n
+𝑢
+′
+𝑛 Revised policy subsidy indicators
+𝑧𝑛 The number of relevant patents for the year n
+𝑘𝑛 The median personal disposable income for the year n
+𝑐𝑛 The number of electric vehicle charging stations as of year n
+𝑐
+′
+𝑛 The growth rate of charging stations in year n
+𝑦 Objective function
+𝑛 years
+𝜂 market penetration
+𝑦
+′
+The potential number of the entire market
+IV. Main Factors : What Affect the Development of
+NEEVs?
+4 . 1 Data Description
+4 . 1 . 1 Data Collection and Pre-processing
+In order to analyze the main factors that affect the development of new energy
+electric vehicles in China, relevant data sets need to be collected. Owing to various
+statistical departments associated with distinct elements, the Table 1 below illustrates
+the origins of the data sets utilized in this chapter alongside the explanations of variables.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-415-
+
+===== PDF page 7 =====
+Team # apmcm2303763 Page 4 of 31
+Table 1 Data source
+Production and sales Ministry of Industry and Information Technology of China
+Government subsidy
+allocation
+Ministry of Industry and Information Technology of China
+Number of related
+patent applications
+Autopat website
+Personal annual
+disposable income
+(median)
+National Bureau of Statistics
+Number of charging
+piles in stock
+China Electric Vehicle Charging Infrastructure Promotion
+Alliance
+Since most of the data obtained in the preliminary work is not in a form that can
+be directly used, these data should receive some preliminary processing.
+In order to eliminate the influence of different dimensions of each set of data and
+facilitate the construction of a multivariate regression model, data for each variable
+should be normalized. Due to the relatively stable nature of the data without extreme
+outliers in its maximum and minimum values, this paper utilizes min-max normalization
+to process the data. It can be represented by the following formula:
+𝑥
+′
+= 𝑥−𝑚𝑖𝑛(𝑥) 𝑚𝑎𝑥(𝑥)−𝑚𝑖𝑛(𝑥) (1)
+𝑥 is a specific index of the variable,𝑥
+′
+∈[0, 1] ,𝑚𝑎𝑥(𝑥) and𝑚𝑖𝑛(𝑥) respectively
+represent the maximum and minimum values of the sample data.The variables mentioned
+below are all normalized by default.
+4 . 2 New Energy Electric Vehicle Development Model
+4 . 2 . 1 Influencing Factors and Index Setting
+Unless otherwise specified, the following data defaults to years as the time series.
+Comprehensive analysis of research reports from major institutions and existing
+research in this field, Sales of new energy electric vehicles (𝑦) are considered a mainly
+indicator of development. It will be used as the dependent variable in the multiple linear
+regression analysis in this chapter.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-416-
+
+===== PDF page 8 =====
+Team # apmcm2303763 Page 5 of 31
+Combined with practical considerations and according to relevant research [2, 3] ,
+the main factors affecting the development of NEEVs include subsidy policy provided
+by the state (𝑢𝑛) , number of related patents successfully applied for during this period
+(𝑧𝑛) , citizens’ personal disposable income (𝑘𝑛) , number of charging piles nationwide
+(𝑐𝑛) .
+It should be noted that the personal disposable income here is the median, not the
+average. For the median represents the middle value when all incomes are arranged in
+ascending order, offering a more robust measure that is not as heavily influenced by the
+extreme values.
+4 . 2 . 2 Multiple Linear Regression Model
+Establish a multiple linear regression model between each factor and the sales:
+𝑦 =𝛽1+𝛽2𝑧𝑛+𝛽3𝑢
+′
+𝑛+𝛽4𝑘𝑛+𝛽5𝑐
+′
+𝑛 (2)
+Among them, The growth rate of charging stations in year n𝑐
+′
+𝑛 is represented by
+the following formula:
+𝑐
+′
+𝑛 = 𝑐𝑛−𝑐𝑛−1 𝑐𝑛 (3)
+The revised policy subsidy indicators𝑢
+′
+𝑛 equals to𝑢
+3
+2
+𝑛
+4 . 2 . 3 Results
+Use the regress function in Matlab to establish a multiple linear regression model
+and obtain the estimated value of the regression coefficient𝛽,the regression model can
+be expressed as:
+𝑦 =−0.010+ 0.491𝑧𝑛+ 1.192𝑢
+′
+𝑛+ 0.319𝑘𝑛+ 0.012𝑐
+′
+𝑛 (4)
+Table 2 Model Summary
+R-squared F-test p-value Standard Estimate Error
+0.9994 423.6054 0.0364 0.0004
+The model summary shows that the R-square of the model is 0.9994,the large F
+value and the p value of 0.0364 (less than 0.05) indicate that the model is significant
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-417-
+
+===== PDF page 9 =====
+Team # apmcm2303763 Page 6 of 31
+overall and the regression coefficient is credible.The overall fitting effect is good. The
+multiple linear regression fitting plot and residual plot are shown below:
+2017 2017.5 2018 2018.5 2019 2019.5 2020 2020.5 2021 2021.5 2022
+Year
+0
+0.2
+0.4
+0.6
+0.8
+1
+1.2Normalized Index
+Multiple Linear Regression Fitting Plot
+fitting data
+original data
+1 2 3 4 5 6
+Case number
+-0.2
+-0.15
+-0.1
+-0.05
+0
+0.05
+0.1
+0.15
+Residual
+Residual Plot
+Figure 1 Multiple linear regression fitting plot and residual plot
+V. What Will the NEEVs Be In the Next 10 Years?
+5 . 1 The Data
+5 . 1 . 1 Data Collection and Data Pre-processing
+In this chapter, the sales data of NEEVs collected in the previous question are
+continued to be used. The market penetration data was gathered from China’s Ministry
+of Industry and Information Technology and supplemented by information sourced from
+the China Association of Automobile Manufacturers.
+Since it is observed that the initial data has exponential growth properties (refer to
+the left pictures in Figures 2 and 3), we perform logarithmic processing on the original
+data. The data after logarithmic processing is more stable and can make the time series
+more stable (refer to the pictures on the right of Figures 2 and 3). These data are now
+prepared and ready to be used for model fitting.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-418-
+
+===== PDF page 10 =====
+Team # apmcm2303763 Page 7 of 31
+2012 2014 2016 2018 2020 2022
+Year
+0
+1000
+2000
+3000
+4000
+5000
+6000
+7000
+Sales (thousand vehicles)
+Time Series Plot of Sales
+2012 2014 2016 2018 2020 2022
+Year
+1
+2
+3
+4
+5
+6
+7
+8
+9
+Log Sales
+Log Time Series Plot of Sales
+Figure 2 Sales time series plot and the plot with Log Transformation
+2012 2014 2016 2018 2020 2022
+Years
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+Market Penetration
+Market Penetration Over Time
+2012 2014 2016 2018 2020 2022
+Years
+−8
+−7
+−6
+−5
+−4
+−3
+−2
+Log(Market  Penetration)
+Logarithmic Transformation of Market Penetration Over Time
+Figure 3 Market penetration rate time series plot and the plot with Log Transformation
+5 . 2 Forecast model for the development of NEEVs in China
+ARIMA model is chosen due to its capability in handling time series data exhibiting
+temporal dependencies and trends. This model is particularly suitable for our dataset
+as it can account for the temporal nature and potential autocorrelation present in the
+variables, providing a robust framework for time series analysis and forecasting.
+The following diagram (Figure 4) illustrates the step-by-step process used to solve
+the problem discussed in this article.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-419-
+
+===== PDF page 11 =====
+Team # apmcm2303763 Page 8 of 31
+Figure 4 Step flow chart
+5 . 2 . 1 Influencing Factors
+Regarding the selection of influencing factors, this paper first conducts a correlation
+test on the influencing factors selected in problem 1 and some factors that are objectively
+believed to have strong relevance to the development of new energy electric vehicles.
+Figure 5 Correlation matrix between feature variables
+As can be seen from the above figure, the correlation between feature variables is
+very strong. This also shows that some feature variables provide similar information
+to other variables. Therefore, based on the selection rate of influencing factors in
+mainstream research reports on the new energy electric vehicle industry, this article
+selects sales volume and market penetration as indicators to reflect the development of
+new energy electric vehicles in China.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-420-
+
+===== PDF page 12 =====
+Team # apmcm2303763 Page 9 of 31
+Here comes the conception of market penetration(𝜂). It is related to sales data
+for the year(𝑦),and the potential sales data of the automobile market that year(𝑦
+′
+). The
+formula is as follows:
+𝜂 = 𝑦 𝑦 ′× 100% (5)
+5 . 2 . 2 ARIMA time series forecasting
+The ARIMA (Autoregressive Integrated Moving Average) model is a widely used
+time series analysis technique for forecasting future values based on historical data
+patterns. The mathematical formula of an ARIMA(p, d, q) model is represented as:
+(1−𝜙1𝐵−𝜙2𝐵2−···−𝜙2𝐵𝑝)(1−𝐵)𝑑𝑋𝑡 =(1+𝜃1𝐵+𝜃2𝐵2+···+𝜃𝑞𝐵𝑞)𝑍𝑡 (6)
+where 𝑋𝑡 is the time series data, 𝐵 is the back shift operator, 𝜙𝑖 and 𝜃𝑖 are the
+autoregressive and moving average parameters, 𝑝 is the autoregressive order, 𝑑 is the
+differencing degree, and𝑞 is the moving average order.
+In order to build an ARIMA model, it is necessary to select appropriate parameters
+𝑝,𝑞,𝑑.
+★ Step 1: Differential processing and ADF test
+Differencing aims to transform a non-stationary time series into a stationary one for
+better model fitting. Perform Augmented Dickey-Fuller (ADF) test after each differenc-
+ing. If p-value is ¡ 0.05, the test is successful. If not, continue differencing until p-value
+¡ 0.05. After first differencing, sales volume remains non-stationary with a p-value ¿
+0.05.
+2012 2014 2016 2018 2020 2022
+Year
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+First Order Log Difference
+First Order Log Difference Plot of Sales
+(a) First difference of logarithm of sales volume
+2012 2014 2016 2018 2020 2022
+Years
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+Logarithmic Differences
+Logarithmic Differences of Log_Market_Penetration Over Time
+(b) First difference of logarithm of market pen-
+etration
+Figure 6 First order difference of logarithmic time series
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-421-
+
+===== PDF page 13 =====
+Team # apmcm2303763 Page 10 of 31
+Then perform the second-order difference on the sales volume, and the p value is
+less than 0.05.
+2014 2016 2018 2020 2022
+Year
+−1.0
+−0.5
+0.0
+0.5
+1.0
+Second Order Log Difference
+Second Order Log Difference Plot of Sales
+Figure 7 Second order difference of logarithmic time series of sales volume
+The data is as follows:
+Table 3 ADF statistics and p-value
+sales volume market penetration
+ADF statistics p-value ADF statistics p-value
+first-order differencing -1.7733 0.3938 -4.4307 0.0002
+second-order differencing -3.2121 0.0193
+★ Step 2: Determination of𝑝 and𝑞
+Due to the limited amount of data, accurately determining the orders 𝑝 and𝑞 of
+the ARIMA model from the autocorrelation function (ACF) and partial autocorrelation
+function (PACF) can be quite challenging. Hence, the use of the Akaike Information
+Criterion (AIC) and Bayesian Information Criterion (BIC) is adopted to ascertain the
+values of𝑝 and𝑞.
+AIC (Akaike Information Criterion) and BIC (Bayesian Information Criterion) are
+statistical measures used for model selection among different candidate models.
+AIC balances a model’s goodness of fit with its complexity to find the best trade-
+off between them. A lower AIC value indicates a better model. It’s calculated as
+2𝑘− 2 ln(b𝐿), where 𝑘 is the number of model parameters and b𝐿 is the maximum
+likelihood function value for the model.
+Similarly, BIC also aids in model selection but penalizes complex models more.
+It aims to choose simpler models by giving a heavier penalty for complexity than AIC.
+Lower BIC values denote better models. The BIC formula is−2 ln(b𝐿)+𝑘 ln(𝑛), where
+𝑛 is the sample size.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-422-
+
+===== PDF page 14 =====
+Team # apmcm2303763 Page 11 of 31
+This paper explored various combinations of different 𝑝 and𝑞 values, calculating
+their corresponding AIC and BIC values. Ultimately, it pinpointed specific 𝑝 and 𝑞
+combinations that resulted in the lowest AIC or BIC values.
+For sales volume, two sets of 𝑝 and𝑞 values meet the criteria: 𝑝 = 3,𝑞 = 1 and
+𝑝 = 0, 𝑞 = 1 are both valid. For market penetration, there are also two sets: 𝑝 = 3,
+𝑞 = 0 and𝑝 = 3,𝑞 = 1, both meeting the conditions.
+Now, the appropriate parameters𝑝,𝑑, and𝑞 have been determined.
+5 . 2 . 3 Results
+The ARIMA(3,2,1) and ARIMA(0,2,1) models are employed to fit and fore-
+cast sales data for the forthcoming decade. Simultaneously, the ARIMA(3,1,0) and
+ARIMA(3,1,1) models are utilized for fitting and forecasting market penetration.
+Table 4 Forecast of the development of NEEVs in China in the next 10 years
+sales volume(000 vehicles) market penetration
+year ARIMA(3,2,1) ARIMA(0,2,1) ARIMA(3,1,0) ARIMA(3,1,1)
+2023 9034.13 10060.69 0.4148 0.3946
+2024 10543.80 13249.39 0.4625 0.4219
+2025 13200.22 16438.08 0.4862 0.4537
+2026 16383.31 19626.78 0.5367 0.5223
+2027 18609.43 22815.47 0.6170 0.5917
+2028 20462.89 26004.17 0.6932 0.6293
+2029 23134.30 29192.86 0.7415 0.6502
+2030 26070.49 32381.56 0.7712 0.6821
+2031 28315.21 35570.25 0.8058 0.7243
+2032 30379.75 38758.95 0.8540 0.7585
+Based on the projected data, the sales volume over the next decade is anticipated
+to surge from 9 to 10 million to a range of 30.3 to 38.7 million units. This represents a
+growth in sales data by a factor of 3.36 to 3.85 over the ten-year period.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-423-
+
+===== PDF page 15 =====
+Team # apmcm2303763 Page 12 of 31
+2010 2015 2020 2025 2030
+Year
+0
+5000
+10000
+15000
+20000
+25000
+30000
+35000
+40000
+Sales (thousand vehicles)
+ARIMA Model Forecast for Future Sales
+Actual
+Forecast
+2010 2015 2020 2025 2030
+Year
+0
+5000
+10000
+15000
+20000
+25000
+30000
+Sales (thousand vehicles)
+ARIMA Model Forecast for Future Sales
+Actual
+Forecast
+Figure 8 Sales forecast result of p=0,q=1(left) and p=3,q=1(right)
+In the next ten years, new energy electric vehicles will usher in a blowout develop-
+ment. Market penetration rises rapidly from low levels to extremely high growth rates.
+In 2023, the market penetration is expected to be around 40 percent, which is less than
+half. By 2032, the market penetration of NEEVs is projected to increase significantly
+to between 75 percent and 85 percent.
+2010 2015 2020 2025 2030
+Years
+0.0
+0.2
+0.4
+0.6
+0.8
+Market Penetration
+ARIMA Forecast of Market Penetration with Increasing Boost
+Historical Data
+Predicted Values
+2010 2015 2020 2025 2030
+Years
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+Market Penetration
+ARIMA Forecast of Market Penetration with Increasing Boost
+Historical Data
+Predicted Values
+Figure 9 Market penetration rate forecast result of p=3,q=0(left) and p=3,q=1(right)
+In the coming decade, New Energy Electric Vehicles (NEEVs) are poised to dom-
+inate the automotive industry, capturing nearly 80% of the domestic car market. They
+will progressively replace conventional fuel vehicles until the market reaches saturation.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-424-
+
+===== PDF page 16 =====
+Team # apmcm2303763 Page 13 of 31
+VI. An Impact on the Global Traditional Energy
+Vehicle Industry
+6 . 1 Data Description
+6 . 1 . 1 Data collection
+The sales data follows the statistics from problem 1 and 2. The vehicle owner-
+ship data is sourced from the International Organization of Motor Vehicle Manufactur-
+ers(IOCA) and China News Network.
+6 . 1 . 2 Data Pre-processing
+In the quest for reliable modeling, data preprocessing stands as a crucial stage.This
+process aims to fortify the dataset for modeling purposes.
+For global new energy electric vehicles and traditional energy vehicles’ sales and
+ownership data, we chose logistic regression for the former and the least squares method
+for the latter based on their suitability and goodness of fit calculations. Logistic re-
+gression is ideal for categorical outcomes, while the least squares method suits linear
+relationships, aligning with the nature of the datasets. Moreover, preprocessing the data
+offers significant benefits, such as improving data quality, refining data fit for models,
+and enhancing overall analysis robustness.
+6 . 2 Impact Analysis Model: New Energy Electric Vehicles on Tra-
+ditional Vehicle Market
+6 . 2 . 1 Optimal Species Competition Model in Math Modeling
+The optimal choice of the species competition differential equation model in in-
+dustries hinges on its capacity to replicate intricate interactions among competitors,
+mimicking the rivalry between new energy electric vehicles and traditional counterparts.
+This model effectively tracks evolutionary paths and competitive behaviors crucial for
+assessing emerging technology’s impact on established markets. Using vehicle sales
+and ownership as key metrics is motivated by their ability to portray market penetration
+and consumer adoption rates comprehensively. Sales figures mirror immediate market
+acceptance, while ownership signifies long-term commitment and market sustainability,
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-425-
+
+===== PDF page 17 =====
+Team # apmcm2303763 Page 14 of 31
+offering a holistic view of the industry’s response to the rise of new energy electric
+vehicles.
+⋄ Optimal Species Competition Differential Equation Model for Ownership
+The optimal species competition differential equation model represents the dynamic
+interaction between competing entities in an ecosystem. Mathematically, it is often
+formulated as:
+( d𝑁1(𝑡)
+d𝑡 =𝑟1𝑁1(1− 𝑁1 𝐾1 )−𝜎1𝑁1𝑁2
+d𝑁2(𝑡)
+d𝑡 =𝑟2𝑁2(1− 𝑁2 𝐾2 )−𝜎2𝑁1𝑁2 (7)
+𝑏 =𝑟(1− 𝑁 𝑘) = d(𝑁(𝑡)−𝑁(𝑡− 1)) d𝑡 (8)
+We use the subscript 1 to represent the data from the traditional automobile in-
+dustry, and the subscript 2 to the new energy automobile industry. In this section, 𝑁
+represents the processed data of global holdings;𝑟 means the maximum growth rate of
+the population;𝐾 represents maximum population size the environment can sustain;𝜎
+means the intensity of competition between entities. 𝑏 is the average annual growth rate
+of a certain population when it exists alone.
+Based on investigations into industry research reports and official news coverage, we
+have found that the development of traditional energy has essentially reached saturation
+in 2022[4] . The growth in ownership is relatively stable, 𝐾2 is infinitely close to
+the maximum saturation of the market. So the indicators of traditional energy do not
+conform to the logistic pattern of population change. That leads to the ratio parameter
+𝑁1
+𝐾1 = 0 .
+According to the definition of each indicator, we associate the existing data with the
+parameters in the formula: 𝐾2 equals to the ownership of traditional automobile industry
+in 2022, which is 11,446 million. And the𝜎 here represents the cost performance index.
+𝜎1 is the average electricity cost per 100 kilometers of new energy electric vehicles and
+the average fuel cost per 100 kilometers of traditional energy vehicles, and 𝜎2 is the
+reciprocal of𝜎1.
+Using the data above, the parameters in the model are determined. Bring these
+parameters into the model to solve and get the results.
+⋄ Optimal Species Competition Differential Equation Model for Sales Volume
+The model for sales is roughly the same as the above model, with𝐾2 changed to
+7493.56.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-426-
+
+===== PDF page 18 =====
+Team # apmcm2303763 Page 15 of 31
+6 . 2 . 2 Results
+Using this model, we obtained competition outcome data. The data of next ten
+years are showed below as data display, it demonstrates the development of new energy
+electric vehicles(NEEVs) and traditional energy vehicles(TEVs).
+Table 5 Forecast for the development of NEEVs and TEVs in the next ten years
+Ownership(000s) year Sales Volume(000s)
+NEEVs TEVs NEEVs TEVs
+170.064 144356.98 2023 140.142 6600.78
+253.653 144237.74 2024 208.285 6504.63
+378.289 144059.90 2025 308.972 6363.42
+564.081 143794.91 2026 456.989 6157.70
+840.929 143400.33 2027 672.851 5861.73
+1253.226 142813.37 2028 983.650 5444.14
+1866.708 141941.48 2029 1421.927 4872.79
+2778.356 140649.12 2030 2019.211 4128.23
+4130.402 138739.71 2031 2789.012 3229.47
+6129.517 135932.42 2032 3697.395 2263.65
+The competition results of the population model for the respective holdings and
+sales are as follows:
+2010 2015 2020 2025 2030 2035 2040 2045
+year
+0
+5
+10
+15annual inventory number
+104 Changes in the number of two groups
+new
+traditional
+X 2039
+Y 75079.2
+X 2038
+Y 56165
+2010 2015 2020 2025 2030 2035 2040 2045
+year
+0
+1000
+2000
+3000
+4000
+5000
+6000
+7000annual increment
+increasing number of two groups
+new
+traditional
+X 2032
+Y 3697.4X 2031
+Y 3229.47
+Figure 10 Competition results of ownership(left) and sales(right)
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-427-
+
+===== PDF page 19 =====
+Team # apmcm2303763 Page 16 of 31
+Based on the development trends of the two, the number of new energy electric
+vehicles and traditional energy vehicles will reach the same level between 2038 and 2039.
+And in 2041, new energy vehicles will account for more than 86% of the automobile
+market.
+Based on the development trends of the two, the sales of new energy electric vehicles
+and traditional energy vehicles will reach the same level between 2031 and 2032. And
+in 2034, new energy vehicles will account for more than 88% of the automobile market.
+VII. Resistance to China’s NEEVs and the Impact
+Because China’s share of the new energy electric vehicle market exceeds 50%
+(data statistics are as of 2022), other countries have introduced policies to protect local
+companies and inhibit the development of Chinese companies.
+Figure 11 Global new energy electric vehicle market share in 2022
+Apart from China, Europe and the United States wield the greatest influence on
+the market. Hence, we focus solely on evaluating the effects of European and American
+policies on our country’s new energy vehicles.
+7 . 1 Index Setting
+Based on a survey of past relevant research papers, China’s outbound new energy
+vehicle exports serve as a direct gauge of foreign policy impact on its electric vehicle
+industry. These exports reflect market changes due to tariffs, subsidies, and regulations,
+showcasing how international policies influence demand and industry growth.
+Hence, this section selects China’s NEEV export volume as the yardstick to assess
+the influence of foreign policies on the growth of China’s NEEV industry. We collect
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-428-
+
+===== PDF page 20 =====
+Team # apmcm2303763 Page 17 of 31
+the main policies from October 2021 to October 2023.
+★ Policy 1 (May 2021):
+The U.S. Senate Finance Committee passed the ”American Clean Energy Act”
+proposal, which allocates $31.6 billion in electric vehicle consumption tax credits.
+At the same time, it relaxes the 200,000-unit limit for automakers to enjoy tax
+credits, excluding Chinese manufacturers.
+★ Policy 2&3 (February-March 2022):
+The U.S. House of Representatives passed the American Competition Act, which
+plans to allocate $52 billion over the next five years to subsidize research and
+manufacturing in key industries such as semiconductors and automobiles.
+★ Policy 4 (June 2022):
+The passage of the tougher ”American Innovation and Competition Act” has more
+powerfully protected the development of domestic companies in the United States.
+★ Policy 5 (September 2022):
+The U.S. Inflation Reduction Act has officially become legislation. This bill con-
+tains strong unilateralism and protectionist overtones. Only companies that are on
+the list can enjoy preferential treatment.
+★ Policy 6 (September 2023):
+European Commission President von der Leyen announced in her State of the Union
+address that she would launch a countervailing investigation into China’s electric
+vehicles.
+7 . 2 Difference-in-Differences Model
+A difference-in-difference (DID) model is a statistical method used to estimate the
+causal effects of policy interventions by comparing changes in outcomes over time
+between experimental and control groups. The model is based on the traditional
+difference-in-difference (DID) approach, incorporating multiple time periods and/or
+multiple groups.
+The time series settings of policy nodes in our DID model are as follows: when
+there is a policy, the sequence value takes 1, and when there is no policy, it takes 0. Use
+the DID model to test the causal relationship between export volume and whether the
+policy is enacted, and give the correlation (negative correlation)
+Judging from the existing monthly export volume data (October 2021 to October
+2023), China’s export volume of new energy electric vehicles is gradually rising. There-
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-429-
+
+===== PDF page 21 =====
+Team # apmcm2303763 Page 18 of 31
+fore, we set the control group data that is not affected by the policy to be the arithmetic
+sequence distribution from the first group to the last group of existing data, and conduct
+DID model testing.
+7 . 3 Results
+The monthly export volume-policy diagram used in the DID model is as follows:
+Mar-21
+Apr-21
+May-21
+Jun-21
+Jul-21
+Aug-21 Sep-21
+Oct-21
+Nov-21 Dec-21
+Jan-22
+Feb-22 Mar-22 Apr-22
+May-22
+Jun-22
+Jul-22
+Aug-22 Sep-22
+Oct-22
+Nov-22 Dec-22
+Jan-23
+Feb-23 Mar-23 Apr-23
+May-23
+Jun-23
+Jul-23
+Aug-23 Sep-23
+Oct-23
+Date
+20
+40
+60
+80
+100
+120
+Exports (thousands)
+Exports Over Time
+Exports
+Policy Promulgation 1
+Policy Promulgation 2
+Policy Promulgation 3
+Policy Promulgation 4
+Policy Promulgation 5
+Policy Promulgation 6
+Figure 12 Export volume-policy diagram
+And the results of the goodness of fit and policy influence of the DID model we
+used are as follows:
+Table 6 Model Summary
+DID model Policies
+R-squared Adj.R-squared Prob (F-statistic) Coef P>|𝑡|
+0.942 0.938 2.72E-19 -15.3499 0.049
+The provided DID model exhibits a high goodness of fit, with an R-squared of 0.942
+and an adjusted R-squared of 0.938, indicating that approximately 94.2% of the variation
+in the outcome variable is explained by the included variables. The Prob (F-statistic)
+of 2.72E-19 is significantly low, suggesting that the model as a whole is statistically
+significant, indicating that the included variables jointly have a significant effect on
+the outcome. Additionally, the coefficient of policies is -15.3499, and its associated t-
+statistic yields a p-value of 0.049, which is marginally below the conventional threshold
+of 0.05. This indicates a potential significant impact of policies on the outcome variable.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-430-
+
+===== PDF page 22 =====
+Team # apmcm2303763 Page 19 of 31
+VIII. Making Difference:Changes the Electrification
+Brings to the City of One Million People
+8 . 1 Data Description
+According to authoritative industry reports in the automotive sector and publicly
+available national information, we have obtained the average electrification rates for
+buses and cars (𝑀𝑏,𝑀𝑐). Additionally, we’ve acquired the energy consumption equiva-
+lents for electric buses and cars (𝑎1,𝑎2), where energy consumption equivalents denote
+the conversion of electricity consumption per hundred kilometers to fuel consumption
+per hundred kilometers. Furthermore, we have the fuel consumption per hundred kilo-
+meters for non-electric buses and cars (𝑏1,𝑏2), as well as the carbon dioxide emission
+coefficient for gasoline (𝜔).
+8 . 2 Composite Model of Urban Population and Carbon Emissions
+per Hundred Kilometers
+To evaluate the impact of automobile electrification on the ecological environment
+in a city of one million inhabitants, it requires fitting into two nested models. Given
+the composition of vehicles in the city, for model simplification, we assume the city’s
+automobiles do not include trucks. We use carbon emissions, the most influential
+indicator, to assess the impact on the ecological environment. The first step involves
+analyzing the relationship between urban population and the quantities of electric and
+non-electric vehicles. The second step involves gathering data to reasonably fit vehicle
+quantities and carbon emissions, ultimately determining the carbon emissions after
+electrification for a city of one million inhabitants.
+8 . 2 . 1 Urban Population and Fitting Model for Total Public Buses and Cars
+Due to the strong fit between the total number of public buses and the total popu-
+lation (as shown in the figure 13(a)), the estimated total number of buses(𝐿𝑏) in a city
+of one million inhabitants is 1161.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-431-
+
+===== PDF page 23 =====
+Team # apmcm2303763 Page 20 of 31
+500 1000 1500 2000 2500 3000
+Population number
+0.5
+1
+1.5
+2
+bus number
+104 The relationship between the number of buses and the number of urban population
+bus number vs. Population number
+fitting
+Prediction boundary- 90%
+500 1000 1500 2000 2500 3000
+p
+-15000
+-10000
+-5000
+0
+5000
+b
+Residual plot
+(a) The Graph Fitting Bus Quantity to Urban
+Population
+0 500 1000 1500 2000 2500 3000 3500
+Population
+0
+0.05
+0.1
+0.15
+0.2
+0.25
+0.3
+0.35
+0.4
+0.45
+0.5
+Car ownership per capita
+Scatter plot of car ownership per capita
+(b) Scatter Plot: Car Ownership per Capita vs.
+Urban Population
+Figure 13 The Urban Population’s Relationship with Total Public Buses and Cars
+However, due to the scattered distribution between the total number of cars and
+the total population (as seen in the scatter figure 13(b)), we perform fitting on the total
+count. Then, subtracting the bus count from the total count gives us the total number of
+cars. After fitting, the estimated total vehicles in a city of one million inhabitants are
+1.0465 million, from which the number of cars(𝐿𝑐) can be calculated.
+8 . 2 . 2 The Fitted Model for Carbon Emissions and Vehicle Numbers
+We choose the total carbon dioxide emission as the representative indicator for
+carbon emissions(𝑇) .Establish a model for carbon dioxide concerning the number of
+urban buses and cars using the following formula:
+𝑇 =𝜔×[(𝑎1𝑀𝑏+𝑏1(1−𝑀𝑏))𝐿𝑏+(𝑎2𝑀𝑐+𝑏2(1−𝑀𝑐))𝐿𝑐] (9)
+Finally, we get an estimate of carbon dioxide emissions per 100 kilometers for a city
+with a population of one million.The calculation result of the model is 21545123.4782328
+kilograms.
+The figure of fitted model for carbon emissions and vehicle numbers is as follow:
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-432-
+
+===== PDF page 24 =====
+Team # apmcm2303763 Page 21 of 31
+Figure 14 The Fitted Model for Carbon Emissions and Vehicle Numbers
+IX. An Open Letter:New Energy Electric Vehicles
+Moisten Your Life and Mine
+Dear Citizens,
+As our world navigates through the challenges of environmental sustainability,
+there’s a beacon of hope shining brightly on our roads: new energy electric vehicles.
+The electrification of transportation, from cars to buses, holds immense promise in
+transforming our cities into cleaner, healthier, and more sustainable spaces. It’s time to
+recognize how significant these vehicles contribute to protecting our ecological envi-
+ronment.
+New energy electric vehicles (NEEVs) are not just a mode of transportation, they
+represent a pivotal shift toward a greener future. The benefits they offer are multifaceted
+and impactful. By choosing NEEVs, we collectively contribute to reducing greenhouse
+gas emissions, curbing air pollution, and mitigating the effects of climate change. We
+provide the future generations with a quieter, cleaner and safer living environment.
+Countries around the world have been embracing the electric vehicle industry in a
+more positive and open manner. They are adopting proactive measures and policies to
+drive innovation and foster a revolution in transportation. From the Norway to China,
+the United States to Netherlands , Governments and industries around the world are
+increasing investment in NEEV infrastructure and technology. It is precisely because of
+the accumulated efforts of all parties that the overall improvement in our quality of life
+has been achieved today.
+Electric buses,especially worth to be mention, are silently transforming our cities.
+They offer They provide a quieter, less bumpy and pollution-free mode of public trans-
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-433-
+
+===== PDF page 25 =====
+Team # apmcm2303763 Page 22 of 31
+portation. Just imagine waiting at a bus stop surrounded by clean air, with buses silently
+passing by, leaving behind no emissions. It’s a vision that’s becoming a reality in many
+cities, thanks to the widespread adoption of electric buses.
+The benefits of electric vehicles extend beyond environmental advantages. They
+also bring economic opportunities, fostering job creation and innovation in clean en-
+ergy technologies. Moreover, as the NEEV industry grows, the cost of these vehicles
+continues to decrease, making them increasingly accessible to everyone.
+However, this transition requires collective action. Each of us plays a crucial role in
+accelerating the adoption of electric vehicles. Whether it’s choosing an electric car for
+your daily commute or supporting initiatives that promote NEEV infrastructure, every
+action contributes to a more sustainable future.
+Let’s take pride in our collective efforts toward a cleaner and healthier environment.
+Let’s embrace the potential of new energy electric vehicles and support the electric
+vehicle industry, not just for ourselves but for the well-being of our planet and future
+generations.
+Together, we can drive change, one electric vehicle at a time.
+X. Sensitivity Analysis and Error Analysis
+When conducting multiple linear regression model in Problem 1, in order to explore
+the sensitivity of the model,a 85%-115% confidence interval for the most influencing
+factor should be given.
+Observing the value of the regression coefficient 𝛽 ,we can get the biggest one is
+belonged to the policy subsidy amount of NEEVs. It confirmed that policy subsidy
+amount is the most influecing factor. Therefore, we fix the values of other variables and
+perturb the subsidy coefficient, Obtain a 85%-115% confidence interval for the policy
+subsidy amount.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-434-
+
+===== PDF page 26 =====
+Team # apmcm2303763 Page 23 of 31
+2017 2017.5 2018 2018.5 2019 2019.5 2020 2020.5 2021 2021.5 2022
+Year
+0
+0.2
+0.4
+0.6
+0.8
+1
+1.2
+1.4Normalized Index
+Sensitivity Analysis Diagram
+original number
+5%
+10%
+15%
+-5%
+-10%
+-15%
+Figure 15 1
+The model’s conclusion highlights a consistently narrow range of solution fluc-
+tuation, indicating a low standard deviation. The accompanying figure illustrates the
+model’s low sensitivity and strong robustness.
+XI. Model Evaluation and Further Discussion
+11 . 1 Model Evaluation
+11 . 1 . 1 Advantages of the Model
+★ In the first question, our strength lies in identifying the factors influencing the
+development of the new energy industry through relevant research and assessing the
+extent of their impact, presenting a more intuitive display of their influence.
+★ Evolving and refining the population competition model to better align with
+the developmental patterns of industry competition. This model has the capability to
+forecast the future trends of both new energy vehicle and traditional vehicle industries
+under their mutual influence, enhancing its scientific validity.
+★ We utilized a double difference model to analyze the impact of policies on export
+volume, achieving a good fit. It holds more persuasive strength compared to traditional
+regression models.
+★ Building upon the foundation of the environmental impact of automobiles in
+various Chinese cities, the model constructed is more scientific and representative. It
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-435-
+
+===== PDF page 27 =====
+Team # apmcm2303763 Page 24 of 31
+distinguishes between the electrification rates of cars and buses, avoiding a simple
+aggregate of the two. This approach fully considers the varying degrees of vehicle
+electrification between cities, rendering the model’s outcomes more comprehensive.
+11 . 1 . 2 Shortcomings of the Model
+★ The collected sample size of data can be expanded further, providing room for
+additional optimization and improvement of the model.
+★ In the fifth problem, the discussion focuses solely on two vehicle types: cars and
+buses, presenting a relatively simplified analysis of vehicle categories.
+11 . 2 Promotion of the Model
+★ We can collect more indicators and data, and build a more complete and more
+complex mathematical model for more accurate evaluation of various indicators reflect-
+ing the development level of NEEVs.
+★ We can collect more indicators and data, make a promotion of the Difference-in-
+Differences Model. Analyze the duration of various policy lags, obtain new policy node
+time series with policy lags, and establish a more complete DID model, which may lead
+to better fitting results.
+XII. References
+[1] Zhai Jiatian. Analysis of development status and prospect of new energy vehicles.
+Automobile Applied Technology, 48(20):193–198, 2023.
+[2] Zhang Qingxin, Guo Mengmeng, and Liu Renyi. The impact of rd investment on
+the development capacity of new energyvehicle enterprises. Journal of North China
+University of Science and Technology(Social Science Edition), 23(06):27–32+60,
+2023.
+[3] He Lin. Competitiveness and industrial development trends of new energy vehicles
+in the post-subsidy era and policy recommendations. China Academic Journal
+Electronic Publishing House, 2022(04):16–23, 2022.
+[4] Hu Ansheng and Feng Xiayong. Development and changing trends of the world
+automobile industry. ChinaMachinery Electric Industry, (9):33–35, 2004.
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+亚太地区大学生数学建模竞赛组委会
+-436-
